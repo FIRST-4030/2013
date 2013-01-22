@@ -13,8 +13,6 @@ import edu.wpi.first.wpilibj.templates.subsystems.ExampleSubsystem;
  */
 public abstract class CommandBase extends Command {
     
-    asdfasdfl;
-
     public static OI oi;
     // Create a single static instance of all of your subsystems
     public static ExampleSubsystem exampleSubsystem = new ExampleSubsystem();

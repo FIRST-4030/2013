@@ -1,5 +1,6 @@
-
 package edu.wpi.first.wpilibj.templates.commands;
+
+import edu.wpi.first.wpilibj.image.*;
 
 /**
  *
@@ -8,12 +9,25 @@ package edu.wpi.first.wpilibj.templates.commands;
 public class TakePicture extends CommandBase {
 
     public TakePicture() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        requires(camera);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        ColorImage image = camera.takePicture();
+        
+        if (image != null) {
+            System.out.println("Image captured!");
+        } else {
+            System.out.println("Image not capture :-(");
+        }
+
+        if (image != null) {
+            try {
+                image.free();
+            } catch (Exception e) {
+            }
+        }
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -22,7 +36,7 @@ public class TakePicture extends CommandBase {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true

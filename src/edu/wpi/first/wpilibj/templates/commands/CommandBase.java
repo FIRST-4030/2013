@@ -8,11 +8,11 @@ import edu.wpi.first.wpilibj.templates.subsystems.*;
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
  * CommandBase stores creates and stores each control system. To access a
- * subsystem elsewhere in your code in your code use CommandBase.exampleSubsystem
- * @author Author
+ * subsystem elsewhere in your code in your code use
+ * CommandBase.exampleSubsystem
  */
 public abstract class CommandBase extends Command {
-    
+
     public static OI oi;
     // Create a single static instance of all of your subsystems
     public static Camera camera = new Camera();
@@ -24,7 +24,6 @@ public abstract class CommandBase extends Command {
         // yet. Thus, their requires() statements may grab null pointers. Bad
         // news. Don't move it.
         oi = new OI();
-
         // Show what command your subsystem is running on the SmartDashboard
         SmartDashboard.putData(camera);
     }

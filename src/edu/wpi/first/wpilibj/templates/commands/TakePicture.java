@@ -3,7 +3,9 @@ package edu.wpi.first.wpilibj.templates.commands;
 import edu.wpi.first.wpilibj.image.*;
 
 /**
- * Command to Take Picture
+ * Command to Take Picture. This will take one picture from camera subsystem,
+ * then print to console if that worked or not. Then it will exit after doing
+ * that once.
  */
 public class TakePicture extends CommandBase {
 

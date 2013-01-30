@@ -1,11 +1,12 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.image.*;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Command to Take Picture. This will take one picture from camera subsystem,
  * then print to console if that worked or not. Then it will exit after doing
- * that once.
+ * that once. Also puts output onto the Smart Dashboard
  */
 public class TakePicture extends CommandBase {
 
@@ -29,8 +30,10 @@ public class TakePicture extends CommandBase {
         getImage();
         if (currentImage == null) {
             System.out.println("TakePicture execute(): Image not capture");
+            SmartDashboard.putBoolean("Image Capture ", false);
         } else {
             System.out.println("TakePicture execute(): Image captured");
+            SmartDashboard.putBoolean("Image Capture ", true);
         }
         done = true;
     }
@@ -76,7 +79,7 @@ public class TakePicture extends CommandBase {
         freeImage();
         if (mainCamera != null) {
             currentImage = mainCamera.takePicture();
-        }else{
+        } else {
             System.err.println("TakePicture getImage(): mainCamera is null!");
         }
     }

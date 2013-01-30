@@ -66,6 +66,7 @@ public class TakePicture extends CommandBase {
         if (currentImage != null) {
             try {
                 currentImage.free();
+                currentImage = null;
             } catch (Exception e) {
                 System.err.println("TakePicture freeImage(): Failed to Free Image");
             }

@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  * Command to Take Picture. This will take one picture from camera subsystem,
  * then print to console if that worked or not. Then it will exit after doing
- * that once. Also puts output onto the Smart Dashboard
+ * that once. Also puts output onto the Smart Dashboard.
  */
 public class TakePicture extends CommandBase {
 
@@ -60,7 +60,7 @@ public class TakePicture extends CommandBase {
     }
 
     /**
-     * This frees the instance variable: currentImage, Hassle free.
+     * This frees the instance variable: currentImage.
      */
     private void freeImage() {
         if (currentImage != null) {

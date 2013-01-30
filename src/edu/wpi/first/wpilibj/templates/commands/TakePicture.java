@@ -1,11 +1,12 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.image.*;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Command to Take Picture. This will take one picture from camera subsystem,
  * then print to console if that worked or not. Then it will exit after doing
- * that once.
+ * that once. Also puts output onto the Smart Dashboard
  */
 public class TakePicture extends CommandBase {
 
@@ -13,7 +14,7 @@ public class TakePicture extends CommandBase {
     private boolean done = false;
 
     public TakePicture() {
-        requires(camera);
+        requires(mainCamera);
     }
 
     /**
@@ -23,41 +24,43 @@ public class TakePicture extends CommandBase {
     }
 
     /**
-     * Called repeatedly when this Command is scheduled to run
+     * Called repeatedly when this Command is scheduled to run.
      */
     protected void execute() {
         getImage();
         if (currentImage == null) {
             System.out.println("TakePicture execute(): Image not capture");
+            SmartDashboard.putBoolean("Image Capture ", false);
         } else {
             System.out.println("TakePicture execute(): Image captured");
-            freeImage();
+            SmartDashboard.putBoolean("Image Capture ", true);
         }
         done = true;
     }
 
     /**
-     * Make this return true when this Command no longer needs to run execute()
+     * Make this return true when this Command no longer needs to run execute().
      */
     protected boolean isFinished() {
         return done;
     }
 
     /**
-     * Called once after isFinished returns true
+     * Called once after isFinished returns true.
      */
     protected void end() {
+        freeImage();
     }
 
     /**
      * Called when another command which requires one or more of the same
-     * subsystems is scheduled to run
+     * subsystems is scheduled to run.
      */
     protected void interrupted() {
     }
 
     /**
-     * This frees the instance variable: currentImage, Hassle free!
+     * This frees the instance variable: currentImage, Hassle free.
      */
     private void freeImage() {
         if (currentImage != null) {
@@ -74,6 +77,10 @@ public class TakePicture extends CommandBase {
      */
     private void getImage() {
         freeImage();
-        currentImage = camera.takePicture();
+        if (mainCamera != null) {
+            currentImage = mainCamera.takePicture();
+        } else {
+            System.err.println("TakePicture getImage(): mainCamera is null!");
+        }
     }
 }

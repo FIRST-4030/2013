@@ -3,12 +3,14 @@ package edu.wpi.first.wpilibj.templates.commands;
 import edu.wpi.first.wpilibj.image.BinaryImage;
 import edu.wpi.first.wpilibj.image.ColorImage;
 import edu.wpi.first.wpilibj.image.NIVisionException;
+import edu.wpi.first.wpilibj.image.ParticleAnalysisReport;
 
 public class ImageProcess extends CommandBase {
 
     private boolean finished = false;
     private ColorImage currentImage;
     private BinaryImage currentBImage;
+    private ParticleAnalysisReport[] particleAnalysisReportList;
 
     public ImageProcess() {
         requires(mainCamera);
@@ -41,6 +43,8 @@ public class ImageProcess extends CommandBase {
             getBImage();
             if (currentBImage != null) {
                 freeColorImage();
+                if (getReportList()) {
+                }
             }
         }
     }
@@ -90,5 +94,28 @@ public class ImageProcess extends CommandBase {
                 System.err.println("ImageProcess freeBImage(): Failed to free image with Exception: " + ex + " " + ex.getMessage());
             }
         }
+    }
+
+    /**
+     * Sets the variable particleAnalysisReportList from currentBImage.
+     *
+     * @return True if successful, False otherwise.
+     */
+    private boolean getReportList() {
+        if (currentBImage == null) {
+            System.err.println("ImageProcess getReportList(): currentBImage is NULL!");
+            return false;
+        }
+        try {
+            particleAnalysisReportList = currentBImage.getOrderedParticleAnalysisReports();
+        } catch (Exception ex) {
+            System.err.println("ImageProcess getReportList(): Exception getting OrderedParticleAnalysisReports from currentBImage: " + ex + " " + ex.getMessage());
+            return false;
+        }
+        if (particleAnalysisReportList == null) {
+            System.err.println("ImageProcess getReportList(): particleAnalysisReportList is NULL!");
+            return false;
+        }
+        return true;
     }
 }

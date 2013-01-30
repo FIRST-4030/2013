@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.image.BinaryImage;
 import edu.wpi.first.wpilibj.image.ColorImage;
 import edu.wpi.first.wpilibj.image.NIVisionException;
 import edu.wpi.first.wpilibj.image.ParticleAnalysisReport;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class ImageProcess extends CommandBase {
 
@@ -37,6 +38,9 @@ public class ImageProcess extends CommandBase {
         end();
     }
 
+    /**
+     * Main Calculation Function.
+     */
     private void calculate() {
         getColorImage();
         if (currentImage != null) {
@@ -44,11 +48,16 @@ public class ImageProcess extends CommandBase {
             if (currentBImage != null) {
                 freeColorImage();
                 if (getReportList()) {
+                    System.out.println("ImageProcess calculate(): Success!");
+                    SmartDashboard.putBoolean("ImageProcess Calculate Success", true);
                 }
             }
         }
     }
 
+    /**
+     * Frees currentImage, then gets a new image from mainCamera.takePicture().
+     */
     private void getColorImage() {
         freeColorImage();
         currentImage = mainCamera.takePicture();
@@ -63,6 +72,9 @@ public class ImageProcess extends CommandBase {
     private static final int LUM_LOW = 60;
     private static final int LUM_HIGH = 255;
 
+    /**
+     * Frees the variable currenBImage, then gets a new one from currentImage.
+     */
     private void getBImage() {
         if (currentImage == null) {
             System.err.println("ImageProcess getBImage(): currentImage is NULL!");
@@ -76,20 +88,28 @@ public class ImageProcess extends CommandBase {
         }
     }
 
+    /**
+     * Frees the instance variable currentImage.
+     */
     private void freeColorImage() {
         if (currentImage != null) {
             try {
                 currentImage.free();
+                currentImage = null;
             } catch (Exception ex) {
                 System.err.println("ImageProcess freeColorImage(): Failed to free image with Exception: " + ex + " " + ex.getMessage());
             }
         }
     }
 
+    /**
+     * Frees the instance variable currentBImage.
+     */
     private void freeBImage() {
         if (currentBImage != null) {
             try {
                 currentBImage.free();
+                currentBImage = null;
             } catch (Exception ex) {
                 System.err.println("ImageProcess freeBImage(): Failed to free image with Exception: " + ex + " " + ex.getMessage());
             }

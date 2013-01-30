@@ -41,30 +41,24 @@ public class RobotMain extends IterativeRobot {
     }
 
     public void teleopInit() {
-        /*
-         * This makes sure that the autonomous stops running when teleop starts
-         * running. If you want the autonomous to continue until interrupted by
-         * another command, remove this line or comment it out.
-         */
         //takePictureCommand.cancel();
     }
 
     /**
-     * This function is called periodically during operator control
+     * This function is called periodically during operator control.
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
     }
 
     /**
-     * This function is called periodically during test mode
+     * This function is called periodically during test mode.
      */
     public void testPeriodic() {
         LiveWindow.run();
     }
 
     public void disabledPeriodic() {
-        System.out.println("Robot Main disabledPeriodic(): Called");
     }
 
     public void disabledInit() {

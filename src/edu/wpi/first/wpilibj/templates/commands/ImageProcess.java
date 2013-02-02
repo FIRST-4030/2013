@@ -5,6 +5,10 @@ import edu.wpi.first.wpilibj.image.ColorImage;
 import edu.wpi.first.wpilibj.image.NIVisionException;
 import edu.wpi.first.wpilibj.image.ParticleAnalysisReport;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.templates.Vst;
+import edu.wpi.first.wpilibj.templates.helpers.DistanceCalculator;
+import edu.wpi.first.wpilibj.templates.helpers.DistanceReport;
+import edu.wpi.first.wpilibj.templates.helpers.ProcessedTarget;
 
 public class ImageProcess extends CommandBase {
 
@@ -21,7 +25,7 @@ public class ImageProcess extends CommandBase {
     }
 
     protected void execute() {
-        calculate();
+        SmartDashboard.putBoolean("ImageProcess", calculate() == null);
         finished = true;
     }
 
@@ -41,18 +45,30 @@ public class ImageProcess extends CommandBase {
     /**
      * Main Calculation Function.
      */
-    private void calculate() {
+    private DistanceReport calculate() {
         getColorImage();
         if (currentImage != null) {
             getBImage();
             if (currentBImage != null) {
                 freeColorImage();
                 if (getReportList()) {
-                    System.out.println("ImageProcess calculate(): Success!");
-                    SmartDashboard.putBoolean("ImageProcess Calculate Success", true);
+                    int numberOfTargets = filterReportList();
+                    if (numberOfTargets > 0) {
+                        return DistanceCalculator.calculate(particleAnalysisReportList);
+                    } else {
+                        System.out.println("ImageProcess calculate(): No Reports");
+                        SmartDashboard.putNumber("Targets", numberOfTargets);
+                    }
+                } else {
+                    System.out.println("ImageProcess calculate(): Get Report List Failed");
                 }
+            } else {
+                System.out.println("ImageProcess calculate(): Binary Image Null.");
             }
+        } else {
+            System.out.println("ImageProcess calculate(): Color Image Null.");
         }
+        return null;
     }
 
     /**
@@ -137,5 +153,13 @@ public class ImageProcess extends CommandBase {
             return false;
         }
         return true;
+    }
+
+    private int filterReportList() {
+        if (particleAnalysisReportList == null) {
+            System.err.println("Image Process filterReportList(): null report");
+            return -1;
+        }
+        return particleAnalysisReportList.length;
     }
 }

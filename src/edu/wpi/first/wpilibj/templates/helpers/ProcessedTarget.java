@@ -36,7 +36,7 @@ public class ProcessedTarget {
         return posY;
     }
 
-    public ProcessedTarget findBiggestTarget(ProcessedTarget[] pts) {
-        int biggestArea=0;
+    public int getArea() {
+        return height * width;
     }
 }

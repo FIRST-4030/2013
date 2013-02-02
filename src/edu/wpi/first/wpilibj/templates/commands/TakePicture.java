@@ -18,7 +18,7 @@ public class TakePicture extends CommandBase {
     }
 
     /**
-     * Called just before this Command runs the first time
+     * Called just before this Command runs the first time.
      */
     protected void initialize() {
     }
@@ -74,7 +74,7 @@ public class TakePicture extends CommandBase {
     }
 
     /**
-     * Sets the instance variable: currentImage
+     * Sets the instance variable: currentImage.
      */
     private void getImage() {
         freeImage();

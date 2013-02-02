@@ -53,4 +53,8 @@ public class Camera extends Subsystem {
         }
         return image;
     }
+
+    public AxisCamera getCamera() {
+        return camera;
+    }
 }

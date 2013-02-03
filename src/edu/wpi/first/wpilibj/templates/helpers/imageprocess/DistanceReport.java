@@ -1,4 +1,4 @@
-package edu.wpi.first.wpilibj.templates.helpers;
+package edu.wpi.first.wpilibj.templates.helpers.imageprocess;
 
 /**
  *

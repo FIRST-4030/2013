@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.image.ColorImage;
 import edu.wpi.first.wpilibj.image.NIVisionException;
 import edu.wpi.first.wpilibj.image.ParticleAnalysisReport;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.templates.Vst;
 import edu.wpi.first.wpilibj.templates.helpers.DistanceCalculator;
 import edu.wpi.first.wpilibj.templates.helpers.DistanceReport;
 
@@ -46,6 +47,12 @@ public class ImageProcess extends CommandBase {
     private DistanceReport calculate() {
         getColorImage();
         if (currentImage != null) {
+            try {
+                Vst.PIXEL_HEIGHT_OF_CAMERA = currentImage.getHeight();
+                Vst.PIXEL_WIDTH_OF_CAMERA = currentImage.getWidth();
+            } catch (NIVisionException ex) {
+                System.err.println("ImageProcess calculate(): NIVisionException when getting current height/width from current Image.");
+            }
             getBImage();
             if (currentBImage != null) {
                 freeColorImage();

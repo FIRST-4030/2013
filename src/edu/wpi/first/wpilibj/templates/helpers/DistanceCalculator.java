@@ -36,16 +36,16 @@ public class DistanceCalculator {
     }
 
     private static DistanceReport internalCalculate(ProcessedTarget pt, int numberOfTargets) {
-        int distance;
+        double distance;
         distance = calculateDistance(pt);
         return new DistanceReport(distance, numberOfTargets, pt);
     }
 
     private static int calculateDistance(ProcessedTarget pt) {
-        int heightToTarget = Vst.HEIGHT_OF_TARGET_FROM_GROUND - Vst.HEIGHT_OF_AXIS_CAMERA;
-        int angleOfObservation = Vst.AXIS_CAMERA_V_OBSERVATION_ANGLE;
-        int angleToTarget;
-        int bottomOfTargetY = pt.getY() + pt.getHeight();
+        double heightToTarget = Vst.HEIGHT_OF_TARGET_FROM_GROUND - Vst.HEIGHT_OF_AXIS_CAMERA;
+        double angleOfObservation = Vst.AXIS_CAMERA_V_OBSERVATION_ANGLE;
+        double angleToTarget;
+        double bottomOfTargetY = pt.getY() + pt.getHeight();
         return 0;
     }
 

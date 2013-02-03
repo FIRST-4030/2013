@@ -1,4 +1,4 @@
-package edu.wpi.first.wpilibj.templates.helpers;
+package edu.wpi.first.wpilibj.templates.helpers.imageprocess;
 
 /**
  *
@@ -6,17 +6,17 @@ package edu.wpi.first.wpilibj.templates.helpers;
  */
 public class DistanceReport {
 
-    private int distance;
+    private double distance;
     private ProcessedTarget target;
     private int numberOfTargets;
 
-    public DistanceReport(int distance, int numberOfTargets, ProcessedTarget target) {
+    public DistanceReport(double distance, int numberOfTargets, ProcessedTarget target) {
         this.distance = distance;
         this.target = target;
         this.numberOfTargets = numberOfTargets;
     }
 
-    public int getDistance() {
+    public double getDistance() {
         return distance;
     }
 

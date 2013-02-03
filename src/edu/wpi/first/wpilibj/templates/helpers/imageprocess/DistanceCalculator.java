@@ -1,4 +1,4 @@
-package edu.wpi.first.wpilibj.templates.helpers;
+package edu.wpi.first.wpilibj.templates.helpers.imageprocess;
 
 import edu.wpi.first.wpilibj.image.ParticleAnalysisReport;
 import edu.wpi.first.wpilibj.templates.Vst;
@@ -51,7 +51,10 @@ public class DistanceCalculator {
 
     private static double getAngleToTarget(double angleOfObservation, ProcessedTarget pt) {
         double bottomOfTargetY = pt.getY() + pt.getHeight();
-        return 0;
+        double percentOfImageHeight = bottomOfTargetY * 100 / Vst.PIXEL_HEIGHT_OF_CAMERA;
+        double totalAngle = Vst.AXIS_CAMERA_H_OBSERVATION_ANGLE;
+        double angleToTarget = (totalAngle / 2) - (totalAngle * percentOfImageHeight);
+        return angleToTarget;
     }
 
     private static ProcessedTarget findBiggestTarget(ProcessedTarget[] pts) {

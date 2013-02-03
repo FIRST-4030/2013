@@ -6,8 +6,8 @@ import edu.wpi.first.wpilibj.image.NIVisionException;
 import edu.wpi.first.wpilibj.image.ParticleAnalysisReport;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.Vst;
-import edu.wpi.first.wpilibj.templates.helpers.DistanceCalculator;
-import edu.wpi.first.wpilibj.templates.helpers.DistanceReport;
+import edu.wpi.first.wpilibj.templates.helpers.imageprocess.DistanceCalculator;
+import edu.wpi.first.wpilibj.templates.helpers.imageprocess.DistanceReport;
 
 public class ImageProcess extends CommandBase {
 

@@ -41,10 +41,15 @@ public class DistanceCalculator {
         return new DistanceReport(distance, numberOfTargets, pt);
     }
 
-    private static int calculateDistance(ProcessedTarget pt) {
+    private static double calculateDistance(ProcessedTarget pt) {
         double heightToTarget = Vst.HEIGHT_OF_TARGET_FROM_GROUND - Vst.HEIGHT_OF_AXIS_CAMERA;
         double angleOfObservation = Vst.AXIS_CAMERA_V_OBSERVATION_ANGLE;
-        double angleToTarget;
+        double angleToTarget = getAngleToTarget(angleOfObservation, pt);
+        double returnValue = (heightToTarget) / Math.tan(angleToTarget);
+        return returnValue;
+    }
+
+    private static double getAngleToTarget(double angleOfObservation, ProcessedTarget pt) {
         double bottomOfTargetY = pt.getY() + pt.getHeight();
         return 0;
     }

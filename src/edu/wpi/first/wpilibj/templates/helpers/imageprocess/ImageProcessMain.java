@@ -5,8 +5,8 @@ import edu.wpi.first.wpilibj.image.ColorImage;
 import edu.wpi.first.wpilibj.image.NIVisionException;
 import edu.wpi.first.wpilibj.image.ParticleAnalysisReport;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.templates.Vst;
 import edu.wpi.first.wpilibj.templates.subsystems.Camera;
+import edu.wpi.first.wpilibj.templates.variablestores.VstC;
 
 /**
  *
@@ -33,8 +33,8 @@ public class ImageProcessMain {
         getColorImage();
         if (currentImage != null) {
             try {
-                Vst.PIXEL_HEIGHT_OF_CAMERA = currentImage.getHeight();
-                Vst.PIXEL_WIDTH_OF_CAMERA = currentImage.getWidth();
+                VstC.PIXEL_HEIGHT_OF_CAMERA = currentImage.getHeight();
+                VstC.PIXEL_WIDTH_OF_CAMERA = currentImage.getWidth();
             } catch (NIVisionException ex) {
                 System.err.println("ImageProcess calculate(): NIVisionException when getting current height/width from current Image.");
             }
@@ -71,12 +71,6 @@ public class ImageProcessMain {
             System.err.println("ImageProcess getColorImage(): mainCamera gave null image.");
         }
     }
-    private static final int HUE_LOW = 50;
-    private static final int HUE_HIGH = 155;
-    private static final int SAT_LOW = 60;
-    private static final int SAT_HIGH = 255;
-    private static final int LUM_LOW = 60;
-    private static final int LUM_HIGH = 255;
 
     /**
      * Frees the variable currenBImage, then gets a new one from currentImage.
@@ -88,7 +82,7 @@ public class ImageProcessMain {
         }
         freeBImage();
         try {
-            currentBImage = currentImage.thresholdHSL(HUE_LOW, HUE_HIGH, SAT_LOW, SAT_HIGH, LUM_LOW, LUM_HIGH);
+            currentBImage = currentImage.thresholdHSL(VstC.HUE_LOW, VstC.HUE_HIGH, VstC.SAT_LOW, VstC.SAT_HIGH, VstC.LUM_LOW, VstC.LUM_HIGH);
         } catch (NIVisionException ex) {
             System.err.println("ImageProcess getBImage(): Error While Getting currentImage's Threshold: " + ex + " " + ex.getMessage());
         }

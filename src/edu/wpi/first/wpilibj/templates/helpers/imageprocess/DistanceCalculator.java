@@ -1,7 +1,7 @@
 package edu.wpi.first.wpilibj.templates.helpers.imageprocess;
 
 import edu.wpi.first.wpilibj.image.ParticleAnalysisReport;
-import edu.wpi.first.wpilibj.templates.Vst;
+import edu.wpi.first.wpilibj.templates.variablestores.VstC;
 
 /**
  *
@@ -42,8 +42,8 @@ public class DistanceCalculator {
     }
 
     private static double calculateDistance(ProcessedTarget pt) {
-        double heightToTarget = Vst.HEIGHT_OF_TARGET_FROM_GROUND - Vst.HEIGHT_OF_AXIS_CAMERA;
-        double angleOfObservation = Vst.AXIS_CAMERA_V_OBSERVATION_ANGLE;
+        double heightToTarget = VstC.HEIGHT_OF_TARGET_FROM_GROUND - VstC.HEIGHT_OF_AXIS_CAMERA;
+        double angleOfObservation = VstC.AXIS_CAMERA_V_OBSERVATION_ANGLE;
         double angleToTarget = getAngleToTarget(angleOfObservation, pt);
         double returnValue = (heightToTarget) / Math.tan(angleToTarget);
         return returnValue;
@@ -51,8 +51,8 @@ public class DistanceCalculator {
 
     private static double getAngleToTarget(double angleOfObservation, ProcessedTarget pt) {
         double bottomOfTargetY = pt.getY() + pt.getHeight();
-        double percentOfImageHeight = bottomOfTargetY * 100 / Vst.PIXEL_HEIGHT_OF_CAMERA;
-        double totalAngle = Vst.AXIS_CAMERA_H_OBSERVATION_ANGLE;
+        double percentOfImageHeight = bottomOfTargetY * 100 / VstC.PIXEL_HEIGHT_OF_CAMERA;
+        double totalAngle = VstC.AXIS_CAMERA_H_OBSERVATION_ANGLE;
         double angleToTarget = (totalAngle / 2) - (totalAngle * percentOfImageHeight);
         return angleToTarget;
     }

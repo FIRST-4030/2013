@@ -10,7 +10,11 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstC;
  */
 public class LinearDistanceCalculator {
 
-    public static DistanceReport calculateLinearDistance(ProcessedTarget[] pts) {
+    /**
+     * This Calculates the linear distance to a target, it will take the biggest
+     * target from the list.
+     */
+    public static LinearDistanceReport calculateLinearDistance(ProcessedTarget[] pts) {
         if (pts == null) {
             System.err.println("DistanceCalculator calculate(ProcessedTarget[]): list is null");
             return null;
@@ -23,7 +27,11 @@ public class LinearDistanceCalculator {
         return internalCalculate(pt, pts.length);
     }
 
-    public static DistanceReport calculateLinearDistance(ParticleAnalysisReport[] pars) {
+    /**
+     * This Calculates the linear distance to a target, it will take the biggest
+     * target from the list.
+     */
+    public static LinearDistanceReport calculateLinearDistance(ParticleAnalysisReport[] pars) {
         if (pars == null) {
             System.err.println("DistanceCalculator calculate(ParticalAnalaysisReport[]): list is null");
             return null;
@@ -36,10 +44,10 @@ public class LinearDistanceCalculator {
         return internalCalculate(pt, pars.length);
     }
 
-    private static DistanceReport internalCalculate(ProcessedTarget pt, int numberOfTargets) {
+    private static LinearDistanceReport internalCalculate(ProcessedTarget pt, int numberOfTargets) {
         double distance;
         distance = calculateDistance(pt);
-        return new DistanceReport(distance, numberOfTargets, pt);
+        return new LinearDistanceReport(distance, numberOfTargets, pt);
     }
 
     private static double calculateDistance(ProcessedTarget pt) {

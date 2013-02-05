@@ -43,13 +43,12 @@ public class DistanceCalculator {
 
     private static double calculateDistance(ProcessedTarget pt) {
         double heightToTarget = VstC.HEIGHT_OF_TARGET_FROM_GROUND - VstC.HEIGHT_OF_AXIS_CAMERA;
-        double angleOfObservation = VstC.AXIS_CAMERA_V_OBSERVATION_ANGLE;
-        double angleToTarget = getAngleToTarget(angleOfObservation, pt);
+        double angleToTarget = getAngleToTarget(pt);
         double returnValue = (heightToTarget) / Math.tan(angleToTarget);
         return returnValue;
     }
 
-    private static double getAngleToTarget(double angleOfObservation, ProcessedTarget pt) {
+    private static double getAngleToTarget(ProcessedTarget pt) {
         double bottomOfTargetY = pt.getY() + pt.getHeight();
         double percentOfImageHeight = bottomOfTargetY * 100 / VstC.PIXEL_HEIGHT_OF_CAMERA;
         double totalAngle = VstC.AXIS_CAMERA_H_OBSERVATION_ANGLE;

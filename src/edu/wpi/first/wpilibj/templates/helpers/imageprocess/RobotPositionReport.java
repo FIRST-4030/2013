@@ -8,28 +8,29 @@ public class RobotPositionReport {
     /**
      * X Position of the Robot.
      */
-    private int x;
+    private double x;
     /**
-     * Y Position of the Robot.
+     * Y Position of the Robot. This should be the BOTTOM of the robot, not the
+     * position of the axis camera!
      */
-    private int y;
+    private double y;
     /**
      * Z Position of the Robot.
      */
-    private int z;
+    private double z;
     /**
      * Yaw of the Robot.
      */
-    private int yaw;
+    private double yaw;
     /**
      * Pitch of the Robot.
      */
-    private int pitch;
+    private double pitch;
 
     /**
      * Main Constructor for Robot Position Report.
      */
-    public RobotPositionReport(int x, int y, int z, int yaw, int pitch) {
+    public RobotPositionReport(double x, double y, double z, double yaw, double pitch) {
         this.x = x;
         this.y = y;
         this.z = z;
@@ -37,73 +38,89 @@ public class RobotPositionReport {
         this.pitch = pitch;
     }
 
+    private RobotPositionReport(RobotPositionReport rpp) {
+        x = rpp.getX();
+        y = rpp.getY();
+        z = rpp.getZ();
+        yaw = rpp.getYaw();
+        pitch = rpp.getPitch();
+    }
+
     /**
      * Gets This Report's X Position.
      */
-    public int getX() {
+    public double getX() {
         return x;
     }
 
     /**
      * Sets This Report's X Position.
      */
-    public void setX(int x) {
+    public void setX(double x) {
         this.x = x;
     }
 
     /**
      * Gets This Report's Y Position.
      */
-    public int getY() {
+    public double getY() {
         return y;
     }
 
     /**
      * Sets This Report's Y Position.
      */
-    public void setY(int y) {
+    public void setY(double y) {
         this.y = y;
     }
 
     /**
      * Gets This Report's Z Position.
      */
-    public int getZ() {
+    public double getZ() {
         return z;
     }
 
     /**
      * Sets This Report's Z Position.
      */
-    public void setZ(int z) {
+    public void setZ(double z) {
         this.z = z;
     }
 
     /**
      * Gets This Report's Yaw.
      */
-    public int getYaw() {
+    public double getYaw() {
         return yaw;
     }
 
     /**
      * Sets This Report's Yaw.
      */
-    public void setYaw(int yaw) {
+    public void setYaw(double yaw) {
         this.yaw = yaw;
     }
 
     /**
      * Gets This Report's Pitch.
      */
-    public int getPitch() {
+    public double getPitch() {
         return pitch;
     }
 
     /**
      * Sets This Report's Pitch.
      */
-    public void setPitch(int pitch) {
+    public void setPitch(double pitch) {
         this.pitch = pitch;
+    }
+
+    /**
+     * This Creates a new RobotPositionReport with the same values as this.
+     * Performs a deep copy.
+     */
+    public RobotPositionReport copy() {
+        return new RobotPositionReport(this);
     }
 }

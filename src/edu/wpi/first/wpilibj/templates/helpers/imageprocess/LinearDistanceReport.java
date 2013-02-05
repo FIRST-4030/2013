@@ -3,17 +3,18 @@ package edu.wpi.first.wpilibj.templates.helpers.imageprocess;
 /**
  * Distance Report
  */
-public class DistanceReport {
+public class LinearDistanceReport {
 
     private double distance;
     private ProcessedTarget target;
     private int numberOfTargets;
 
-    public DistanceReport(double distance, int numberOfTargets, ProcessedTarget target) {
+    public LinearDistanceReport(double distance, int numberOfTargets, ProcessedTarget target) {
         this.distance = distance;
         this.target = target;
         this.numberOfTargets = numberOfTargets;
     }
+    
 
     public double getDistance() {
         return distance;

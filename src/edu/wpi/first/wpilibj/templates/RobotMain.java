@@ -14,23 +14,20 @@ import edu.wpi.first.wpilibj.templates.commands.*;
  */
 public class RobotMain extends IterativeRobot {
 
-    private TakePicture takePictureCommand;
+    private ImageProcess ip;
 
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-        // instantiate the command used for the autonomous period
-        takePictureCommand = new TakePicture();
-
+        ip = new ImageProcess();
         // Initialize all subsystems
         CommandBase.init();
     }
 
     public void autonomousInit() {
-        // schedule the autonomous command (example)
-        takePictureCommand.start();
+        ip.start();
     }
 
     /**
@@ -41,7 +38,6 @@ public class RobotMain extends IterativeRobot {
     }
 
     public void teleopInit() {
-        //takePictureCommand.cancel();
     }
 
     /**

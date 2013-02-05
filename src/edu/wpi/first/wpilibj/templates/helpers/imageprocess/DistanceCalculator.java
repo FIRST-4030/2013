@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstC;
  */
 public class DistanceCalculator {
 
-    public static DistanceReport calculate(ProcessedTarget[] pts) {
+    public static DistanceReport calculateLinearDistance(ProcessedTarget[] pts) {
         if (pts == null) {
             System.err.println("DistanceCalculator calculate(ProcessedTarget[]): list is null");
             return null;
@@ -22,7 +22,7 @@ public class DistanceCalculator {
         return internalCalculate(pt, pts.length);
     }
 
-    public static DistanceReport calculate(ParticleAnalysisReport[] pars) {
+    public static DistanceReport calculateLinearDistance(ParticleAnalysisReport[] pars) {
         if (pars == null) {
             System.err.println("DistanceCalculator calculate(ParticalAnalaysisReport[]): list is null");
             return null;

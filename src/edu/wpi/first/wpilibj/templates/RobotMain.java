@@ -6,31 +6,24 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.templates.commands.*;
 
 /**
- * The VM is configured to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the IterativeRobot
- * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the manifest file in the resource
- * directory.
+ * Main Robot Class.
  */
 public class RobotMain extends IterativeRobot {
 
-    private TakePicture takePictureCommand;
+    private ImageProcess ip;
 
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-        // instantiate the command used for the autonomous period
-        takePictureCommand = new TakePicture();
-
+        ip = new ImageProcess();
         // Initialize all subsystems
         CommandBase.init();
     }
 
     public void autonomousInit() {
-        // schedule the autonomous command (example)
-        takePictureCommand.start();
+        ip.start();
     }
 
     /**
@@ -41,7 +34,6 @@ public class RobotMain extends IterativeRobot {
     }
 
     public void teleopInit() {
-        //takePictureCommand.cancel();
     }
 
     /**
@@ -64,4 +56,5 @@ public class RobotMain extends IterativeRobot {
     public void disabledInit() {
         System.out.println("Robot Main disabledInit(): Called");
     }
+    
 }

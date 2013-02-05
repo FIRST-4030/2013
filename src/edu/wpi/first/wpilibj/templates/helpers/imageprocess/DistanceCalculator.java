@@ -4,8 +4,8 @@ import edu.wpi.first.wpilibj.image.ParticleAnalysisReport;
 import edu.wpi.first.wpilibj.templates.variablestores.VstC;
 
 /**
- *
- * @author daboross
+ * Robot Distance Calculator. Class full of static methods to calculate the
+ * distance to a target.
  */
 public class DistanceCalculator {
 
@@ -42,14 +42,13 @@ public class DistanceCalculator {
     }
 
     private static double calculateDistance(ProcessedTarget pt) {
-        double heightToTarget = VstC.HEIGHT_OF_TARGET_FROM_GROUND - VstC.HEIGHT_OF_AXIS_CAMERA;
-        double angleOfObservation = VstC.AXIS_CAMERA_V_OBSERVATION_ANGLE;
-        double angleToTarget = getAngleToTarget(angleOfObservation, pt);
+        double heightToTarget = pt.getDistanceFromGround() - VstC.HEIGHT_OF_AXIS_CAMERA;
+        double angleToTarget = getAngleToTarget(pt);
         double returnValue = (heightToTarget) / Math.tan(angleToTarget);
         return returnValue;
     }
 
-    private static double getAngleToTarget(double angleOfObservation, ProcessedTarget pt) {
+    private static double getAngleToTarget(ProcessedTarget pt) {
         double bottomOfTargetY = pt.getY() + pt.getHeight();
         double percentOfImageHeight = bottomOfTargetY * 100 / VstC.PIXEL_HEIGHT_OF_CAMERA;
         double totalAngle = VstC.AXIS_CAMERA_H_OBSERVATION_ANGLE;
@@ -75,11 +74,11 @@ public class DistanceCalculator {
             }
         }
         if (biggestTarget < 0) {
-            System.err.println("DistanceCalculator findBiggestTarget(ProcessedTarget[]): BIGGEST TARGET ERROR!!!!!!!");
+            System.err.println("DistanceCalculator findBiggestTarget(ProcessedTarget[]): BIGGEST TARGET ERROR THIS SHOULD NEVER HAPPEN");
             return null;
         }
         if (biggestTarget > pts.length) {
-            System.err.println("DistanceCalculator findBiggestTarget(ProcessedTarget[]): BIGGEST TARGET ERROR 2!!!!!!!");
+            System.err.println("DistanceCalculator findBiggestTarget(ProcessedTarget[]): SECOND BIGGEST TARGET ERROR THIS SHOULD NEVER HAPPEN");
             return null;
         }
         return pts[biggestTarget];
@@ -103,11 +102,11 @@ public class DistanceCalculator {
             }
         }
         if (biggestTarget < 0) {
-            System.err.println("DistanceCalculator findBiggestTarget(ParticleAnalysisReport[]): BIGGEST TARGET ERROR!!!!!!!");
+            System.err.println("DistanceCalculator findBiggestTarget(ParticleAnalysisReport[]): BIGGEST TARGET ERROR THIS SHOULD NEVER HAPPEN");
             return null;
         }
         if (biggestTarget > pars.length) {
-            System.err.println("DistanceCalculator findBiggestTarget(ParticleAnalysisReport[]): BIGGEST TARGET ERROR 2!!!!!!!");
+            System.err.println("DistanceCalculator findBiggestTarget(ParticleAnalysisReport[]): SECOND BIGGEST TARGET ERROR THIS SHOULD NEVER HAPPEN");
             return null;
         }
         return new ProcessedTarget(pars[biggestTarget]);

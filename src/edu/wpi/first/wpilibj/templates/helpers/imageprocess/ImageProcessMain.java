@@ -19,7 +19,7 @@ public class ImageProcessMain {
     private static ParticleAnalysisReport[] particleAnalysisReportList;
     private static Camera mainCamera;
 
-    public static void runMe(Camera mC) {
+    public static void runReport(Camera mC) {
         mainCamera = mC;
         SmartDashboard.putBoolean("ImageProcess", calculate() == null);
         freeColorImage();

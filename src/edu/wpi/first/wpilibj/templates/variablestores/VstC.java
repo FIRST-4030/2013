@@ -35,10 +35,6 @@ public class VstC {
      */
     public static final double HEIGHT_OF_AXIS_CAMERA = 0;
     /**
-     * This is the height of the target, relative to the ground.
-     */
-    public static final double HEIGHT_OF_TARGET_FROM_GROUND = 20;
-    /**
      * This is the horizontal angle of observation of the axis camera.
      */
     public static final double AXIS_CAMERA_H_OBSERVATION_ANGLE = 47;

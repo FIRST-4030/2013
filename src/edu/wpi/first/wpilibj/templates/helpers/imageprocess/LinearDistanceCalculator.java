@@ -5,11 +5,16 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstC;
 
 /**
  * Robot Distance Calculator. Class full of static methods to calculate the
- * distance to a target.
+ * distance to a target. This Class ONLY Calculates the Distance to a target,
+ * NOT the angle or any other values.
  */
-public class DistanceCalculator {
+public class LinearDistanceCalculator {
 
-    public static DistanceReport calculate(ProcessedTarget[] pts) {
+    /**
+     * This Calculates the linear distance to a target, it will take the biggest
+     * target from the list.
+     */
+    public static LinearDistanceReport calculateLinearDistance(ProcessedTarget[] pts) {
         if (pts == null) {
             System.err.println("DistanceCalculator calculate(ProcessedTarget[]): list is null");
             return null;
@@ -22,7 +27,11 @@ public class DistanceCalculator {
         return internalCalculate(pt, pts.length);
     }
 
-    public static DistanceReport calculate(ParticleAnalysisReport[] pars) {
+    /**
+     * This Calculates the linear distance to a target, it will take the biggest
+     * target from the list.
+     */
+    public static LinearDistanceReport calculateLinearDistance(ParticleAnalysisReport[] pars) {
         if (pars == null) {
             System.err.println("DistanceCalculator calculate(ParticalAnalaysisReport[]): list is null");
             return null;
@@ -35,10 +44,10 @@ public class DistanceCalculator {
         return internalCalculate(pt, pars.length);
     }
 
-    private static DistanceReport internalCalculate(ProcessedTarget pt, int numberOfTargets) {
+    private static LinearDistanceReport internalCalculate(ProcessedTarget pt, int numberOfTargets) {
         double distance;
         distance = calculateDistance(pt);
-        return new DistanceReport(distance, numberOfTargets, pt);
+        return new LinearDistanceReport(distance, numberOfTargets, pt);
     }
 
     private static double calculateDistance(ProcessedTarget pt) {

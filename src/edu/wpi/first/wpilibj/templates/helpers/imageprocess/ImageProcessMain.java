@@ -21,7 +21,7 @@ public class ImageProcessMain {
 
     public static void runReport(Camera mC) {
         mainCamera = mC;
-        SmartDashboard.putBoolean("ImageProcess", calculate() == null);
+        SmartDashboard.putBoolean("ImageProcessLinear", calculate(false) == null);
         freeColorImage();
         freeBImage();
     }
@@ -29,7 +29,7 @@ public class ImageProcessMain {
     /**
      * Main Calculation Function.
      */
-    private static DistanceReport calculate() {
+    private static LinearDistanceReport calculate(boolean linear) {
         getColorImage();
         if (currentImage != null) {
             try {
@@ -44,7 +44,7 @@ public class ImageProcessMain {
                 if (getReportList()) {
                     int numberOfTargets = filterReportList();
                     if (numberOfTargets > 0) {
-                        return DistanceCalculator.calculate(particleAnalysisReportList);
+                        return LinearDistanceCalculator.calculateLinearDistance(particleAnalysisReportList);
                     } else {
                         System.out.println("ImageProcess calculate(): No Reports");
                         SmartDashboard.putNumber("Targets", numberOfTargets);
@@ -144,6 +144,7 @@ public class ImageProcessMain {
             System.err.println("Image Process filterReportList(): null report");
             return -1;
         }
+        // PUT CODE HERE TO FILTER REPORT LIST!
         return particleAnalysisReportList.length;
     }
 }

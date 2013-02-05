@@ -1,6 +1,7 @@
 package edu.wpi.first.wpilibj.templates.helpers.imageprocess;
 
 import edu.wpi.first.wpilibj.image.ParticleAnalysisReport;
+import edu.wpi.first.wpilibj.templates.variablestores.VstC;
 
 /**
  * Processed Target
@@ -35,8 +36,21 @@ public class ProcessedTarget {
         posY = p.boundingRectLeft;
     }
 
+    /**
+     * This will try to detect what target this is.
+     */
     private void findWhichTarget() {
         //CODE TO FIND WHICH TARGET THIS TARGET IS. EG MIDDLE HIGH, OR LOW TARGET.
+    }
+
+    /**
+     * If This is called, it should be directly after this ProcessedTarget is
+     * created.
+     */
+    public VisionTarget getVisionTarget(RobotPositionReport rpp) {
+        RobotPositionReport copy = rpp.copy();
+        copy.setY(copy.getY() + VstC.HEIGHT_OF_AXIS_CAMERA);
+        return DistanceCompare.getTargetFromRobot(this, copy);
     }
 
     public int getHeight() {

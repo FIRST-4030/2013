@@ -1,7 +1,7 @@
 package edu.wpi.first.wpilibj.templates.helpers.imageprocess;
 
 /**
- *
+ * Vision Target
  */
 public class VisionTarget {
 

@@ -14,7 +14,7 @@ public class ImageProcess extends CommandBase {
     }
 
     protected void execute() {
-        ImageProcessMain.runMe(mainCamera);
+        ImageProcessMain.runReport(mainCamera);
         finished = true;
     }
 

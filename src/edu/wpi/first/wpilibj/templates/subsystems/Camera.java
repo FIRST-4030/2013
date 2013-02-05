@@ -16,7 +16,7 @@ public class Camera extends Subsystem {
      * Default constructor for Camera. Will get the current camera instance.
      */
     public Camera() {
-        camera = this.getInstance();
+        setCameraInstance();
     }
 
     public void initDefaultCommand() {
@@ -25,9 +25,9 @@ public class Camera extends Subsystem {
     /**
      * This sets the Instance Variable camera to AxisCamera.getInstance()
      */
-    private AxisCamera getInstance() {
+    private void setCameraInstance() {
         if (this.camera != null) {
-            return this.camera;
+            return;
         }
         AxisCamera axis;
         try {
@@ -37,12 +37,14 @@ public class Camera extends Subsystem {
         }
         if (axis == null) {
             System.err.println("Camera: Unable to initialize camera");
+        } else {
+            camera = axis;
         }
-        return axis;
+
     }
 
     /**
-     * This gets the current IMAGE from the CAMERA
+     * This gets the current IMAGE from the CAMERA.
      */
     public ColorImage takePicture() {
         ColorImage image = null;
@@ -55,6 +57,7 @@ public class Camera extends Subsystem {
     }
 
     public AxisCamera getCamera() {
+        setCameraInstance();
         return camera;
     }
 }

@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.image.ColorImage;
 import edu.wpi.first.wpilibj.image.NIVisionException;
 import edu.wpi.first.wpilibj.image.ParticleAnalysisReport;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.templates.helpers.ProcessError;
 import edu.wpi.first.wpilibj.templates.subsystems.Camera;
 import edu.wpi.first.wpilibj.templates.variablestores.VstC;
 
@@ -21,7 +22,10 @@ public class ImageProcessMain {
 
     public static void runReport(Camera mC) {
         mainCamera = mC;
-        SmartDashboard.putBoolean("ImageProcessLinear", calculate(false) == null);
+        LinearDistanceReport ldp = calculateLinear();
+        ldp.getError().putToSmartDashboard("Linear Distance Calculate Error", false);
+        SmartDashboard.putNumber("Linear Distance Calculate Distance", ldp.getDistance());
+        SmartDashboard.putNumber("Linear Distance Calculate Number Of Targets", ldp.getNumberOfTargets());
         freeColorImage();
         freeBImage();
     }
@@ -29,62 +33,57 @@ public class ImageProcessMain {
     /**
      * Main Calculation Function.
      */
-    private static LinearDistanceReport calculate(boolean linear) {
-        getColorImage();
-        if (currentImage != null) {
+    private static LinearDistanceReport calculateLinear() {
+        ProcessError possibleError = new ProcessError("ImageProcessMain");
+        getColorImage(possibleError);
+        if (currentImage != null && !possibleError.isError()) {
             try {
                 VstC.PIXEL_HEIGHT_OF_CAMERA = currentImage.getHeight();
                 VstC.PIXEL_WIDTH_OF_CAMERA = currentImage.getWidth();
-            } catch (NIVisionException ex) {
-                System.err.println("ImageProcess calculate(): NIVisionException when getting current height/width from current Image.");
+            } catch (Exception ex) {
+                return new LinearDistanceReport(new ProcessError("ImageProcessMain calculateLinear", ex.toString() + " while getting current height/width from current Image."));
             }
-            getBImage();
-            if (currentBImage != null) {
+            getBImage(possibleError);
+            if (currentBImage != null && !possibleError.isError()) {
                 freeColorImage();
-                if (getReportList()) {
-                    int numberOfTargets = filterReportList();
-                    if (numberOfTargets > 0) {
+                if (getReportList(possibleError) && !possibleError.isError()) {
+                    int numberOfTargets = filterReportList(possibleError);
+                    if (numberOfTargets > 0 && !possibleError.isError()) {
                         return LinearDistanceCalculator.calculateLinearDistance(particleAnalysisReportList);
-                    } else {
-                        System.out.println("ImageProcess calculate(): No Reports");
-                        SmartDashboard.putNumber("Targets", numberOfTargets);
                     }
-                } else {
-                    System.out.println("ImageProcess calculate(): Get Report List Failed");
+                    return possibleError.isError() ? new LinearDistanceReport(possibleError) : new LinearDistanceReport(new ProcessError("ImageProcessMain calculateLinear", "No Reports In List"));
                 }
-            } else {
-                System.out.println("ImageProcess calculate(): Binary Image Null.");
+                return new LinearDistanceReport(possibleError.isError() ? possibleError : new ProcessError("ImageProcessMain", "Error Processing Report List"));
             }
-        } else {
-            System.out.println("ImageProcess calculate(): Color Image Null.");
+            return new LinearDistanceReport(possibleError.isError() ? possibleError : new ProcessError("ImageProcessMain", "Current BImage Null"));
         }
-        return null;
+        return new LinearDistanceReport(possibleError.isError() ? possibleError : new ProcessError("ImageProcessMain", "Color Image Null"));
     }
 
     /**
      * Frees currentImage, then gets a new image from mainCamera.takePicture().
      */
-    private static void getColorImage() {
+    private static void getColorImage(ProcessError possible) {
         freeColorImage();
         currentImage = mainCamera.takePicture();
         if (currentImage == null) {
-            System.err.println("ImageProcess getColorImage(): mainCamera gave null image.");
+            possible.setErrored("getColorImage", "mainCamera gave null image.");
         }
     }
 
     /**
      * Frees the variable currenBImage, then gets a new one from currentImage.
      */
-    private static void getBImage() {
+    private static void getBImage(ProcessError possible) {
         if (currentImage == null) {
-            System.err.println("ImageProcess getBImage(): currentImage is NULL!");
+            possible.setErrored("getBImage", "Null Current Image");
             return;
         }
         freeBImage();
         try {
             currentBImage = currentImage.thresholdHSL(VstC.HUE_LOW, VstC.HUE_HIGH, VstC.SAT_LOW, VstC.SAT_HIGH, VstC.LUM_LOW, VstC.LUM_HIGH);
         } catch (NIVisionException ex) {
-            System.err.println("ImageProcess getBImage(): Error While Getting currentImage's Threshold: " + ex + " " + ex.getMessage());
+            possible.setErrored("getBImage", "Error While Getting currentImage's Threshold: " + ex + " " + ex.getMessage());
         }
     }
 
@@ -121,27 +120,27 @@ public class ImageProcessMain {
      *
      * @return True if successful, False otherwise.
      */
-    private static boolean getReportList() {
+    private static boolean getReportList(ProcessError errorToPrintTo) {
         if (currentBImage == null) {
-            System.err.println("ImageProcess getReportList(): currentBImage is NULL!");
+            errorToPrintTo.setErrored("getReportList", "Current BImage is Null");
             return false;
         }
         try {
             particleAnalysisReportList = currentBImage.getOrderedParticleAnalysisReports();
         } catch (Exception ex) {
-            System.err.println("ImageProcess getReportList(): Exception getting OrderedParticleAnalysisReports from currentBImage: " + ex + " " + ex.getMessage());
+            errorToPrintTo.setErrored("getReportList", "Exception getting OrderedParticleAnalysisReports from currentBImage: " + ex + " " + ex.getMessage());
             return false;
         }
         if (particleAnalysisReportList == null) {
-            System.err.println("ImageProcess getReportList(): particleAnalysisReportList is NULL!");
+            errorToPrintTo.setErrored("getReportList", "particleAnalysisReportList is NULL!");
             return false;
         }
         return true;
     }
 
-    private static int filterReportList() {
+    private static int filterReportList(ProcessError possible) {
         if (particleAnalysisReportList == null) {
-            System.err.println("Image Process filterReportList(): null report");
+            possible.setErrored("filterReportList", "Null Report");
             return -1;
         }
         // PUT CODE HERE TO FILTER REPORT LIST!

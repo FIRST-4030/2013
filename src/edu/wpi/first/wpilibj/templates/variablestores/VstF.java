@@ -5,9 +5,13 @@ package edu.wpi.first.wpilibj.templates.variablestores;
 
 /**
  * All variables stored refer to the right-angle corner on the ground behind the
- * loading station as origin. X-axis is the line from loading station to low
- * goal. Y-axis is vertical height. Z axis is the line from high goal to
- * opposing high goal.
+ * loading station as origin.
+ *
+ * X-axis is the line from loading station to low goal.
+ *
+ * Y-axis is vertical height.
+ *
+ * Z axis is the line from high goal to opposing high goal.
  *
  * All coordinates for objects are the bottom left as looked at from the center
  * line.

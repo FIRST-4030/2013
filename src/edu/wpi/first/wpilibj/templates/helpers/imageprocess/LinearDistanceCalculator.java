@@ -1,6 +1,7 @@
 package edu.wpi.first.wpilibj.templates.helpers.imageprocess;
 
 import edu.wpi.first.wpilibj.image.ParticleAnalysisReport;
+import edu.wpi.first.wpilibj.templates.helpers.ProcessError;
 import edu.wpi.first.wpilibj.templates.variablestores.VstC;
 
 /**
@@ -17,14 +18,16 @@ public class LinearDistanceCalculator {
     public static LinearDistanceReport calculateLinearDistance(ProcessedTarget[] pts) {
         if (pts == null) {
             System.err.println("DistanceCalculator calculate(ProcessedTarget[]): list is null");
-            return null;
+            return new LinearDistanceReport(new ProcessError("LinearDistanceCalculator calculateLinearDistance", "Processed Target List Passed Is Null"));
         }
         if (pts.length < 1) {
             System.err.println("DistanceCalculator calculate(ProcessedTarget[]): list is empty");
-            return null;
+            return new LinearDistanceReport(new ProcessError("LinearDistanceCalculator calculateLinearDistance", "Processed Target List Passed Is Empty"));
+
         }
-        ProcessedTarget pt = findBiggestTarget(pts);
-        return internalCalculate(pt, pts.length);
+        ProcessError possibleError = new ProcessError("LinearDistanceCalculator");
+        ProcessedTarget pt = findBiggestTarget(pts, possibleError);
+        return possibleError.isError() ? new LinearDistanceReport(possibleError) : internalCalculate(pt, pts.length);
     }
 
     /**
@@ -34,30 +37,37 @@ public class LinearDistanceCalculator {
     public static LinearDistanceReport calculateLinearDistance(ParticleAnalysisReport[] pars) {
         if (pars == null) {
             System.err.println("DistanceCalculator calculate(ParticalAnalaysisReport[]): list is null");
-            return null;
+            return new LinearDistanceReport(new ProcessError("LinearDistanceCalculator calculateLinearDistance", "Processed Target List Passed Is Null"));
         }
         if (pars.length < 1) {
             System.err.println("DistanceCalculator calculate(ParticalAnalaysisReport[]): list is empty");
-            return null;
+            return new LinearDistanceReport(new ProcessError("LinearDistanceCalculator calculateLinearDistance", "Processed Target List Passed Is Empty"));
         }
-        ProcessedTarget pt = findBiggestTarget(pars);
-        return internalCalculate(pt, pars.length);
+
+        ProcessError possibleError = new ProcessError("LinearDistanceCalculator");
+        ProcessedTarget pt = findBiggestTarget(pars, possibleError);
+        return possibleError.isError() ? new LinearDistanceReport(possibleError) : internalCalculate(pt, pars.length);
     }
 
     private static LinearDistanceReport internalCalculate(ProcessedTarget pt, int numberOfTargets) {
         double distance;
-        distance = calculateDistance(pt);
-        return new LinearDistanceReport(distance, numberOfTargets, pt);
+        ProcessError possibleError = new ProcessError("LinearDistanceCalculator");
+        distance = calculateDistance(pt, possibleError);
+        return possibleError.isError() ? new LinearDistanceReport(possibleError) : new LinearDistanceReport(distance, numberOfTargets, pt);
     }
 
-    private static double calculateDistance(ProcessedTarget pt) {
+    private static double calculateDistance(ProcessedTarget pt, ProcessError possibleError) {
         double heightToTarget = pt.getDistanceFromGround() - VstC.HEIGHT_OF_AXIS_CAMERA;
-        double angleToTarget = getAngleToTarget(pt);
+        double angleToTarget = getAngleToTarget(pt, possibleError);
         double returnValue = (heightToTarget) / Math.tan(angleToTarget);
         return returnValue;
     }
 
-    private static double getAngleToTarget(ProcessedTarget pt) {
+    private static double getAngleToTarget(ProcessedTarget pt, ProcessError possibleError) {
+        if (pt == null) {
+            possibleError.setErrored("LinearDistanceCalculator", "Null ProcesseTarget passed to getAngleToTarget");
+            return 0.0;
+        }
         double bottomOfTargetY = pt.getY() + pt.getHeight();
         double percentOfImageHeight = bottomOfTargetY * 100 / VstC.PIXEL_HEIGHT_OF_CAMERA;
         double totalAngle = VstC.AXIS_CAMERA_H_OBSERVATION_ANGLE;
@@ -65,7 +75,7 @@ public class LinearDistanceCalculator {
         return angleToTarget;
     }
 
-    private static ProcessedTarget findBiggestTarget(ProcessedTarget[] pts) {
+    private static ProcessedTarget findBiggestTarget(ProcessedTarget[] pts, ProcessError possibleError) {
         if (pts.length < 1) {
             return null;
         }
@@ -83,17 +93,17 @@ public class LinearDistanceCalculator {
             }
         }
         if (biggestTarget < 0) {
-            System.err.println("DistanceCalculator findBiggestTarget(ProcessedTarget[]): BIGGEST TARGET ERROR THIS SHOULD NEVER HAPPEN");
+            possibleError.setErrored("LinearDistanceCalculator", "BIGGEST TARGET ERROR THIS SHOULD NEVER HAPPEN");
             return null;
         }
         if (biggestTarget > pts.length) {
-            System.err.println("DistanceCalculator findBiggestTarget(ProcessedTarget[]): SECOND BIGGEST TARGET ERROR THIS SHOULD NEVER HAPPEN");
+            possibleError.setErrored("LinearDistanceCalculator", "BIGGEST TARGET ERROR 2 THIS SHOULD NEVER HAPPEN");
             return null;
         }
         return pts[biggestTarget];
     }
 
-    private static ProcessedTarget findBiggestTarget(ParticleAnalysisReport[] pars) {
+    private static ProcessedTarget findBiggestTarget(ParticleAnalysisReport[] pars, ProcessError possibleError) {
         if (pars.length < 1) {
             return null;
         }
@@ -111,11 +121,11 @@ public class LinearDistanceCalculator {
             }
         }
         if (biggestTarget < 0) {
-            System.err.println("DistanceCalculator findBiggestTarget(ParticleAnalysisReport[]): BIGGEST TARGET ERROR THIS SHOULD NEVER HAPPEN");
+            possibleError.setErrored("LinearDistanceCalculator", "BIGGEST TARGET ERROR THIS SHOULD NEVER HAPPEN");
             return null;
         }
         if (biggestTarget > pars.length) {
-            System.err.println("DistanceCalculator findBiggestTarget(ParticleAnalysisReport[]): SECOND BIGGEST TARGET ERROR THIS SHOULD NEVER HAPPEN");
+            possibleError.setErrored("LinearDistanceCalculator", "BIGGEST TARGET ERROR 2 THIS SHOULD NEVER HAPPEN");
             return null;
         }
         return new ProcessedTarget(pars[biggestTarget]);

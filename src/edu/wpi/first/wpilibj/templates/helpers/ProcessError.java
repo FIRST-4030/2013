@@ -15,11 +15,11 @@ public class ProcessError {
     /**
      * This creates a new Error that is NOT an error.
      *
-     * @param o The object creating this error. Always use this or null.
+     * @param owner The object creating this error.
      */
-    public ProcessError(Object o) {
-        if (o != null) {
-            creator = o.getClass().getName();
+    public ProcessError(String owner) {
+        if (owner != null) {
+            creator = owner;
         }
         isError = false;
         errorString = "No Error";
@@ -29,13 +29,15 @@ public class ProcessError {
      * This creates a new Error that is an error with the given message
      *
      * @param error The Error.
-     * @param o The object creating this error. Always use this.
+     * @param owner The object creating this error.
      */
-    public ProcessError(Object o, String error) {
-        if (o == null || error == null) {
+    public ProcessError(String owner, String error) {
+        if (error == null) {
             throw new NullPointerException();
         }
-        creator = o.getClass().getName();
+        if (owner != null) {
+            creator = owner;
+        }
         isError = true;
         errorString = error;
 
@@ -90,5 +92,22 @@ public class ProcessError {
         }
         String message = (putOwner && creator != null ? "ErrCreator: " + creator + " " : "") + "ErrMessage: " + errorString;
         SmartDashboard.putString(key, message);
+    }
+
+    /**
+     * Use this method to create an error on a already created ProcessError.
+     * One implementation of this is creating a non-error ProcessError, then passing it as an argument to another method, and then retrieving an error from it if that method added an error.
+     * @param error The Error.
+     * @param owner The object creating this error.
+     */
+    public void setErrored(String owner, String error) {
+        if (error == null) {
+            throw new NullPointerException();
+        }
+        if (owner != null) {
+            creator = creator == null ? owner : creator + "+" + owner;
+        }
+        isError = true;
+        errorString = errorString == null ? error : errorString + "+" + error;
     }
 }

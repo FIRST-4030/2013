@@ -15,13 +15,12 @@ public class ProcessError {
     /**
      * This creates a new Error that is NOT an error.
      *
-     * @param o The object creating this error. Always use this.
+     * @param o The object creating this error. Always use this or null.
      */
     public ProcessError(Object o) {
-        if (o == null) {
-            throw new NullPointerException();
+        if (o != null) {
+            creator = o.getClass().getName();
         }
-        creator = o.getClass().getName();
         isError = false;
         errorString = "No Error";
     }
@@ -65,14 +64,15 @@ public class ProcessError {
      * @return The object that this originated in, its NAME.
      */
     public String getCreator() {
-        return creator;
+
+        return creator == null ? "Unknown" : creator;
     }
 
     /**
      * This method broadcasts this error to the System.err stream.
      */
     public void broadcast() {
-        String message = "Error Broadcast: Origin: " + creator + " Error: " + errorString;
+        String message = "Error Broadcast: Origin: " + getCreator() + " Error: " + errorString;
         System.err.println(message);
     }
 
@@ -88,7 +88,7 @@ public class ProcessError {
         if (key == null) {
             throw new NullPointerException();
         }
-        String message = (putOwner ? "ErrCreator: " + creator + " " : "") + "ErrMessage: " + errorString;
+        String message = (putOwner && creator != null ? "ErrCreator: " + creator + " " : "") + "ErrMessage: " + errorString;
         SmartDashboard.putString(key, message);
     }
 }

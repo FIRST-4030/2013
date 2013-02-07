@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.image.BinaryImage;
 import edu.wpi.first.wpilibj.image.ColorImage;
 import edu.wpi.first.wpilibj.image.NIVisionException;
 import edu.wpi.first.wpilibj.image.ParticleAnalysisReport;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.helpers.ProcessError;
 import edu.wpi.first.wpilibj.templates.subsystems.Camera;
 import edu.wpi.first.wpilibj.templates.variablestores.VstC;
@@ -22,6 +23,9 @@ public class ImageProcessMain {
     public static void runReport(Camera mC) {
         mainCamera = mC;
         LinearDistanceReport ldp = calculateLinear();
+        ldp.getError().putToSmartDashboard("Linear Distance Calculate Error", false);
+        SmartDashboard.putNumber("Linear Distance Calculate Distance", ldp.getDistance());
+        SmartDashboard.putNumber("Linear Distance Calculate Number Of Targets", ldp.getNumberOfTargets());
         freeColorImage();
         freeBImage();
     }

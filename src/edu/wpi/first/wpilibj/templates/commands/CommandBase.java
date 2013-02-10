@@ -17,6 +17,7 @@ public abstract class CommandBase extends Command {
     public static Camera mainCamera = new Camera();
     public static Compressor compressor = new Compressor();
     public static PressureSwitch pressureSwitch = new PressureSwitch();
+    public static TestMotors testMotors = new TestMotors();
 
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely

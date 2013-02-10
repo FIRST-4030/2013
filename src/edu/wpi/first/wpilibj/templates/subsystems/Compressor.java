@@ -4,11 +4,11 @@
  */
 package edu.wpi.first.wpilibj.templates.subsystems;
 
-import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.commands.RunCompressor;
+import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 import edu.wpi.first.wpilibj.templates.variablestores.VstP;
 
 /**
@@ -19,7 +19,7 @@ public class Compressor extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     
-    Relay compressor = new Relay(1);
+    Relay compressor = new Relay(VstM.relays.COMPRESSOR);
     
     public void initDefaultCommand() {
         setDefaultCommand(new RunCompressor());

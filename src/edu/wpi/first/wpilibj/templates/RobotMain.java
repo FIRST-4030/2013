@@ -10,19 +10,17 @@ import edu.wpi.first.wpilibj.templates.commands.*;
  */
 public class RobotMain extends IterativeRobot {
 
-    private ImageProcess ip;
-
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-        //ip = new ImageProcess();
         // Initialize all subsystems
         CommandBase.init();
     }
 
     public void autonomousInit() {
+        ImageProcess ip = new ImageProcess();
         ip.start();
     }
 
@@ -56,5 +54,4 @@ public class RobotMain extends IterativeRobot {
     public void disabledInit() {
         System.out.println("Robot Main disabledInit(): Called");
     }
-    
 }

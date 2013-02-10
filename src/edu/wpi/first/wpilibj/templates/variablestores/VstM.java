@@ -4,11 +4,18 @@ package edu.wpi.first.wpilibj.templates.variablestores;
  * This is the main variable store.
  */
 public class VstM {
+
+    /*
+     * Debug controls
+     */
+    public class Debug {
+        public final static boolean DASHBOARD = true;
+    }
+    
     /*
      * Digital input ports
      */
-
-    public class digital {
+    public class Digital {
 
         public final static int PRESSURE_SWITCH = 1;
     }
@@ -16,13 +23,13 @@ public class VstM {
     /*
      * Analog input ports
      */
-    public class analog {
+    public class Analog {
     }
 
     /*
      * PWM ports
      */
-    public class pwm {
+    public class PWM {
 
         public final static int TEST_MOTOR_1 = 9;
         public final static int TEST_MOTOR_2 = 10;
@@ -31,7 +38,7 @@ public class VstM {
     /*
      * Relay ports
      */
-    public class relays {
+    public class Relays {
 
         public final static int COMPRESSOR = 1;
     }
@@ -39,9 +46,9 @@ public class VstM {
     /*
      * Joystick axes/buttons
      */
-    public class joystick {
+    public class Joysticks {
 
-        public class xbox {
+        public class Xbox {
 
             public final static int PORT = 1;
             public final static int LEFT_X = 1;

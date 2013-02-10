@@ -9,16 +9,21 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstP;
 
 public class PressureSwitch extends Subsystem {
 
-    DigitalInput pSwitch = new DigitalInput(VstM.digital.PRESSURE_SWITCH);
+    DigitalInput pSwitch = new DigitalInput(VstM.Digital.PRESSURE_SWITCH);
 
     public void initDefaultCommand() {
         setDefaultCommand(new ReadPressureSwitch());
     }
 
     public void checkPressure() {
-        // Switch is normally closed -- opens when at pressure
-        boolean atPressure = !pSwitch.get();
-        SmartDashboard.putBoolean("At Pressure", atPressure);
-        VstP.setAtPressure(atPressure);
+        // Switch is normally closed, so invert the reading
+        VstP.setAtPressure(!pSwitch.get());
+        this.dashboard();
+    }
+
+    private void dashboard() {
+        if (VstM.Debug.DASHBOARD) {
+            SmartDashboard.putBoolean("At Pressure", VstP.atPressure());
+        }
     }
 }

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.Relay;
@@ -11,29 +7,29 @@ import edu.wpi.first.wpilibj.templates.commands.RunCompressor;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 import edu.wpi.first.wpilibj.templates.variablestores.VstP;
 
-/**
- *
- * @author Ingyram
- */
 public class Compressor extends Subsystem {
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
-    
-    Relay compressor = new Relay(VstM.relays.COMPRESSOR);
-    
+
+    Relay compressor = new Relay(VstM.Relays.COMPRESSOR);
+
     public void initDefaultCommand() {
         setDefaultCommand(new RunCompressor());
     }
-    
+
     public void start() {
-        SmartDashboard.putBoolean("Compressor Running", true);
+        this.dashboard();
         VstP.setCompressorRunning(true);
         compressor.set(Relay.Value.kForward);
     }
-    
+
     public void stop() {
-        SmartDashboard.putBoolean("Compressor Running", false);
+        this.dashboard();
         VstP.setCompressorRunning(false);
         compressor.set(Relay.Value.kOff);
+    }
+
+    private void dashboard() {
+        if (VstM.Debug.DASHBOARD) {
+            SmartDashboard.putBoolean("Compressor Running", VstP.compressorRunning());
+        }
     }
 }

@@ -17,7 +17,7 @@ public class RobotMain extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-        ip = new ImageProcess();
+        //ip = new ImageProcess();
         // Initialize all subsystems
         CommandBase.init();
     }

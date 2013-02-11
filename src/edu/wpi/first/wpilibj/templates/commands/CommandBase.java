@@ -6,9 +6,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.*;
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
- * CommandBase stores creates and stores each control system. To access a
- * subsystem elsewhere in your code in your code use
- * CommandBase.exampleSubsystem
+ * CommandBase stores creates and stores each control system.
  */
 public abstract class CommandBase extends Command {
 

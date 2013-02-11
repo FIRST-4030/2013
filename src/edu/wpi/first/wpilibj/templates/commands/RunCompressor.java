@@ -2,6 +2,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.variablestores.VstP;
 
+/**This Command continously checks whether or not Vst.atPressure(), and sets the Compressor state accordingly.*/
 public class RunCompressor extends CommandBase {
 
     public RunCompressor() {
@@ -15,10 +16,10 @@ public class RunCompressor extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (!VstP.atPressure()) {
-            compressor.start();
-        } else {
+        if (VstP.atPressure()) {
             compressor.stop();
+        } else {
+            compressor.start();
         }
     }
 

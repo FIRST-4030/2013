@@ -7,6 +7,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.commands.TestDrive;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
+/**
+ * This is a Test Motor Drive subsystem.
+ */
 public class TestMotors extends Subsystem {
 
     private Jaguar jag1, jag2;
@@ -17,16 +20,20 @@ public class TestMotors extends Subsystem {
         jag2 = new Jaguar(VstM.PWM.TEST_MOTOR_2);
         drive = new RobotDrive(jag1, jag2);
     }
-    
+
     public void initDefaultCommand() {
         setDefaultCommand(new TestDrive());
     }
 
+    /**
+     * Calls the RobotDrive method for driving with a JoyStick.
+     */
     public void drive(Joystick stick) {
         drive.arcadeDrive(stick);
     }
 
     public void stop() {
+        drive.stopMotor();
         jag1.stopMotor();
         jag2.stopMotor();
     }

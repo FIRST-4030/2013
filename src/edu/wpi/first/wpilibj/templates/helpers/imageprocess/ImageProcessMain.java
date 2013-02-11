@@ -11,7 +11,6 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstC;
 
 /**
  *
- * @author daboross
  */
 public class ImageProcessMain {
 

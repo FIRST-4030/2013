@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
- * @author Dabo Ross <Dabo.Ross at daboross.net>
  */
 public class ProcessError {
 

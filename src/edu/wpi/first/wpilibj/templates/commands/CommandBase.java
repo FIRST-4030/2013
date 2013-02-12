@@ -12,6 +12,7 @@ public abstract class CommandBase extends Command {
 
     public static OI oi;
     // Create a single static instance of all of your subsystems
+    public static Climber climber = new Climber();
     public static Camera mainCamera = new Camera();
     public static Compressor compressor = new Compressor();
     public static PressureSwitch pressureSwitch = new PressureSwitch();

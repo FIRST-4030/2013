@@ -45,10 +45,10 @@ public class VstM {
      */
     public class PWM {
 
-        public static final int LEFT_MOTOR_PORT = 9; // TODO: WHAT IS THIS PORT?
-        public static final int RIGHT_MOTOR_PORT = 10; // TODO: WHAT IS THIS PORT?
-        public static final int TOWER_MOTOR_1_PORT = 20; // TODO: WHAT IS THIS PORT?
-        public static final int TOWER_MOTOR_2_PORT = 20; // TODO: WHAT IS THIS PORT?
+        public static final int LEFT_MOTOR_PORT = 10; // TODO: WHAT IS THIS PORT?
+        public static final int RIGHT_MOTOR_PORT = 11; // TODO: WHAT IS THIS PORT?
+        public static final int TOWER_MOTOR_1_PORT = 12; // TODO: WHAT IS THIS PORT?
+        public static final int TOWER_MOTOR_2_PORT = 13; // TODO: WHAT IS THIS PORT?
         public final static int TEST_MOTOR_1 = 9;
         public final static int TEST_MOTOR_2 = 10;
         public static final int CLIMBER_MOTOR_1 = 3;

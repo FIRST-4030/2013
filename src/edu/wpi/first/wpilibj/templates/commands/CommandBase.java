@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.*;
  */
 public abstract class CommandBase extends Command {
 
-    public static OI oi;
+    //public static OI oi;
     // Create a single static instance of all of your subsystems
     public static Camera mainCamera = new Camera();
     public static Compressor compressor = new Compressor();
@@ -23,7 +23,7 @@ public abstract class CommandBase extends Command {
         // which commands extend), subsystems are not guaranteed to be
         // yet. Thus, their requires() statements may grab null pointers. Bad
         // news. Don't move it.
-        oi = new OI();
+        //oi = new OI();
     }
 
     public CommandBase(String name) {

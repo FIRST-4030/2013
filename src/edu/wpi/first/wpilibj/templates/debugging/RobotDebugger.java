@@ -1,4 +1,4 @@
-package edu.wpi.first.wpilibj.templates;
+package edu.wpi.first.wpilibj.templates.debugging;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
@@ -12,5 +12,13 @@ public class RobotDebugger {
         if (VstM.Debug.DASHBOARD) {
             SmartDashboard.putString("Debug:" + key, value);
         }
+    }
+
+    public static void push(DebugInfo di) {
+        push(di.key(), di.message());
+    }
+
+    public static void push(Debuggable d) {
+        push(d.getStatus());
     }
 }

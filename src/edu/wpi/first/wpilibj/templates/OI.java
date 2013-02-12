@@ -11,6 +11,9 @@ public class OI {
 
     private static Joystick xbox = new Joystick(VstM.Joysticks.Xbox.PORT);
 
+    public void init() {
+    }
+
     public static Joystick getDriveJoystick() {
         return xbox;
     }

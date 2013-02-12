@@ -5,6 +5,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.templates.OI;
 
 /**
  *
@@ -23,7 +24,7 @@ public class RunClimber extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        double climbSpeed = oi.getDriveJoystick().getAxisChannel(Joystick.AxisType.kThrottle);
+        double climbSpeed = OI.getDriveJoystick().getAxisChannel(Joystick.AxisType.kThrottle);
         System.out.println(climbSpeed);
     }
 

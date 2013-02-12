@@ -6,12 +6,24 @@ package edu.wpi.first.wpilibj.templates.variablestores;
 public class VstM {
 
     /*
-     * Debug controls
+     * Debug controls.
      */
     public class Debug {
 
+        /**
+         * This is the Dashboard debug variable. If DEBUG isn't true then this
+         * will not work.
+         */
         public static final boolean DASHBOARD = true;
+        /**
+         * This is the Console debug variable. If DEBUG isn't true then this
+         * will not work.
+         */
         public static final boolean CONSOLE = true;
+        /**
+         * This is the main debug variable.
+         */
+        public static final boolean DEBUG = DASHBOARD || CONSOLE;
     }
 
     /*

@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
+
 /**
  * Ground Drive Command.
  */
@@ -14,7 +16,7 @@ public class GroundDriveCommand extends CommandBase {
     // Called just before this Command runs the first time.
     protected void initialize() {
         groundDrive.driveWithXBox();
-        groundDrive.statusPush();
+        RobotDebugger.push(groundDrive);
     }
 
     // Called repeatedly when this Command is scheduled to run.

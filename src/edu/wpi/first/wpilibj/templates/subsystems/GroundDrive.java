@@ -39,13 +39,6 @@ public class GroundDrive extends Subsystem implements Debuggable {
     }
 
     /**
-     * This Just Calls RobotDebugger.push(this).
-     */
-    public void statusPush() {
-        RobotDebugger.push(this);
-    }
-
-    /**
      * Get Current Status Info.
      */
     public DebugInfo getStatus() {

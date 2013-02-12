@@ -80,7 +80,7 @@ public class ImageProcessMain {
         }
         freeBImage();
         try {
-            currentBImage = currentImage.thresholdHSL(VstC.HUE_LOW, VstC.HUE_HIGH, VstC.SAT_LOW, VstC.SAT_HIGH, VstC.LUM_LOW, VstC.LUM_HIGH);
+            currentBImage = currentImage.thresholdHSL(VstC.cameraFilter.HUE_LOW, VstC.cameraFilter.HUE_HIGH, VstC.cameraFilter.SAT_LOW, VstC.cameraFilter.SAT_HIGH, VstC.cameraFilter.LUM_LOW, VstC.cameraFilter.LUM_HIGH);
         } catch (NIVisionException ex) {
             possible.setErrored("getBImage", "Error While Getting currentImage's Threshold: " + ex + " " + ex.getMessage());
         }

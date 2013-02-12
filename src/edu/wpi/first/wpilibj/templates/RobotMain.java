@@ -3,7 +3,11 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.commands.*;
+import edu.wpi.first.wpilibj.templates.debugging.DebugInfo;
+import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
+import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
 /**
  * Main Robot Class.
@@ -17,6 +21,10 @@ public class RobotMain extends IterativeRobot {
     public void robotInit() {
         // Initialize all subsystems
         CommandBase.init();
+        RobotDebugger.push(new DebugInfo("Port Of Left Motor", VstM.PWM.LEFT_MOTOR_PORT));
+        RobotDebugger.push(new DebugInfo("Port Of Right Motor", VstM.PWM.RIGHT_MOTOR_PORT));
+        RobotDebugger.push(new DebugInfo("Port Of Tower Motor 1", VstM.PWM.TOWER_MOTOR_1_PORT));
+        RobotDebugger.push(new DebugInfo("Port Of Tower Motor 2", VstM.PWM.TOWER_MOTOR_2_PORT));
     }
 
     public void autonomousInit() {

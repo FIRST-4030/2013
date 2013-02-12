@@ -1,9 +1,8 @@
-/*
- * This is the variable store for Field information
- */
 package edu.wpi.first.wpilibj.templates.variablestores;
 
 /**
+ * This is the variable store for Field information.
+ *
  * All variables stored refer to the right-angle corner on the ground behind the
  * loading station as origin.
  *

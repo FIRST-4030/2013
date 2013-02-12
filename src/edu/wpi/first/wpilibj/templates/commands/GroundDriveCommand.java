@@ -1,22 +1,20 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.wpi.first.wpilibj.templates.commands;
 
-
 /**
- *
+ * Ground Drive Command.
  */
 public class GroundDriveCommand extends CommandBase {
 
     private boolean isDone = false;
+
     public GroundDriveCommand() {
-        // requires(GroundDriveCommandSubSystem);
+        requires(groundDrive);
     }
 
     // Called just before this Command runs the first time.
     protected void initialize() {
+        groundDrive.driveWithXBox();
+        groundDrive.statusPush();
     }
 
     // Called repeatedly when this Command is scheduled to run.

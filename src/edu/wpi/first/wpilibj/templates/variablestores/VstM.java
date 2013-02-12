@@ -1,7 +1,5 @@
 package edu.wpi.first.wpilibj.templates.variablestores;
 
-import edu.wpi.first.wpilibj.Joystick;
-
 /**
  * This is the main variable store.
  */
@@ -12,7 +10,7 @@ public class VstM {
      */
     public class Debug {
 
-        public final static boolean DASHBOARD = true;
+        public static final boolean DASHBOARD = true;
         public static final boolean CONSOLE = true;
     }
 
@@ -35,8 +33,10 @@ public class VstM {
      */
     public class PWM {
 
-        public static final int LEFT_MOTOR_PORT = 9;
-        public static final int RIGHT_MOTOR_PORT = 10;
+        public static final int LEFT_MOTOR_PORT = 9; // TODO: WHAT IS THIS PORT?
+        public static final int RIGHT_MOTOR_PORT = 10; // TODO: WHAT IS THIS PORT?
+        public static final int TOWER_MOTOR_1_PORT = 20; // TODO: WHAT IS THIS PORT?
+        public static final int TOWER_MOTOR_2_PORT = 20; // TODO: WHAT IS THIS PORT?
         public final static int TEST_MOTOR_1 = 9;
         public final static int TEST_MOTOR_2 = 10;
     }

@@ -1,7 +1,6 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.templates.OI;
 import edu.wpi.first.wpilibj.templates.subsystems.*;
 
 /**
@@ -17,6 +16,7 @@ public abstract class CommandBase extends Command {
     public static PressureSwitch pressureSwitch = new PressureSwitch();
     public static TestMotors testMotors = new TestMotors();
     public static GroundDrive groundDrive = new GroundDrive();
+    public static TowerClimbMotors towerClimbMotors = new TowerClimbMotors();
 
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely

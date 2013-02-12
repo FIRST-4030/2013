@@ -5,34 +5,43 @@ package edu.wpi.first.wpilibj.templates.variablestores;
  */
 public class VstC {
 
-    /**
-     * This is the Hue Low for getting the HSL Threshold in turning a color image into a binary image.
-     */
-    public static final int HUE_LOW = 50;
-    /**
-     * This is the Hue High for getting the HSL Threshold in turning a color image into a binary image.
-     */
-    public static final int HUE_HIGH = 155;
-    /**
-     * This is the Saturation Low for getting the HSL Threshold in turning a color image into a binary image.
-     */
-    public static final int SAT_LOW = 60;
-    /**
-     * This is the Saturation High for getting the HSL Threshold in turning a color image into a binary image.
-     */
-    public static final int SAT_HIGH = 255;
-    /**
-     * This is the Luminance Low for getting the HSL Threshold in turning a color image into a binary image.
-     */
-    public static final int LUM_LOW = 60;
-    /**
-     * This is the Luminance High for getting the HSL Threshold in turning a color image into a binary image.
-     */
-    public static final int LUM_HIGH = 255;
-    /**
-     * This is the height of the position of the Axis Camera relative to the
-     * ground.
-     */
+    public static class cameraFilter {
+
+        /**
+         * This is the Hue Low for getting the HSL Threshold in turning a color
+         * image into a binary image.
+         */
+        public static final int HUE_LOW = 50;
+        /**
+         * This is the Hue High for getting the HSL Threshold in turning a color
+         * image into a binary image.
+         */
+        public static final int HUE_HIGH = 155;
+        /**
+         * This is the Saturation Low for getting the HSL Threshold in turning a
+         * color image into a binary image.
+         */
+        public static final int SAT_LOW = 60;
+        /**
+         * This is the Saturation High for getting the HSL Threshold in turning
+         * a color image into a binary image.
+         */
+        public static final int SAT_HIGH = 255;
+        /**
+         * This is the Luminance Low for getting the HSL Threshold in turning a
+         * color image into a binary image.
+         */
+        public static final int LUM_LOW = 60;
+        /**
+         * This is the Luminance High for getting the HSL Threshold in turning a
+         * color image into a binary image.
+         */
+        public static final int LUM_HIGH = 255;
+        /**
+         * This is the height of the position of the Axis Camera relative to the
+         * ground.
+         */
+    }
     public static final double HEIGHT_OF_AXIS_CAMERA = 0;
     /**
      * This is the horizontal angle of observation of the axis camera.

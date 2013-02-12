@@ -9,13 +9,9 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstM;
  */
 public class OI {
 
-    private Joystick xbox;
+    private static Joystick xbox = new Joystick(VstM.Joysticks.Xbox.PORT);
 
-    public OI() {
-        xbox = new Joystick(VstM.Joysticks.Xbox.PORT);
-    }
-
-    public Joystick getDriveJoystick() {
+    public static Joystick getDriveJoystick() {
         return xbox;
     }
 }

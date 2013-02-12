@@ -39,6 +39,8 @@ public class VstM {
         public static final int TOWER_MOTOR_2_PORT = 20; // TODO: WHAT IS THIS PORT?
         public final static int TEST_MOTOR_1 = 9;
         public final static int TEST_MOTOR_2 = 10;
+        public static final int CLIMBER_MOTOR_1 = 3;
+        public static final int CLIMBER_MOTOR_2 = 4;
     }
 
     /*

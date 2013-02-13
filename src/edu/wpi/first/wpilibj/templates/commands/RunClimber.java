@@ -1,11 +1,9 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.templates.OI;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
 /**
  *
- * @author Robotics
  */
 public class RunClimber extends CommandBase {
 
@@ -21,8 +19,16 @@ public class RunClimber extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         double climbSpeed = oi.getDriveJoystick().getRawAxis(VstM.Joysticks.Xbox.TRIGGERS);
-        if (!VstM.Climber.isRetracting) {
-            climbSpeed *= -1;
+
+        /*
+         * Older Code, I Didn't Delete.
+         if (!VstM.Climber.isRetracting) {
+         climbSpeed *= -1; //Won't This Just Reverse The Direction No Matter Which Way It Was Going In The First Place? Like if It Started Out Positive It Would Become Negative, and if it started out negative it would become positive.
+         }
+         */
+
+        if (!((VstM.Climber.climberState() == -1) == (climbSpeed < 0) || (VstM.Climber.climberState() == 1) == climbSpeed > 0)) {
+            climbSpeed = VstM.Climber.climberState();
         }
         climber.runLadder(climbSpeed);
     }

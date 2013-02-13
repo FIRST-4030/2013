@@ -4,6 +4,7 @@
  */
 package edu.wpi.first.wpilibj.templates.subsystems;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.commands.RunClimber;
@@ -15,12 +16,15 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstM;
  *
  * @author Robotics
  */
-public class Climber extends Subsystem implements Debuggable {
+public class Climber extends Subsystem {
+
+    //objects needed by climber
+    private DigitalInput lowerLimit = new DigitalInput(VstM.Relays.LOWER_LIMIT_SWITCH);
+    private DigitalInput upperLimit = new DigitalInput(VstM.Relays.UPPER_LIMIT_SWITCH);
+    private Jaguar climber = new Jaguar(VstM.PWM.CLIMBER_MOTOR);
+    
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-
-    private Jaguar climber = new Jaguar(VstM.PWM.CLIMBER_MOTOR);
-
     public void initDefaultCommand() {
         setDefaultCommand(new RunClimber());
     }
@@ -33,7 +37,22 @@ public class Climber extends Subsystem implements Debuggable {
         climber.stopMotor();
     }
 
-    public DebugInfo getStatus() {
-        return new DebugInfo("Climber:Status", "Climber Speed:" + climber.get());
+
+    public boolean isAtLowerLimit() {
+        /* 
+         * this returns true if it's at the lower limit, assuming
+         * that the switch is normally open.
+        */
+        return lowerLimit.get(); //TODO: invert if normally closed
     }
+    
+    public boolean isAtUpperLimit() {
+        /* 
+         * this returns true if it's at the upper limit, assuming
+         * that the switch is normally open.
+        */
+        return upperLimit.get(); //TODO: invert if normally closed
+    }
+    
+    
 }

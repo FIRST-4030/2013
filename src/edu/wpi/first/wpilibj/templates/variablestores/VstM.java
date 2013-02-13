@@ -60,7 +60,9 @@ public class VstM {
     public class Relays {
 
         public final static int COMPRESSOR = 1;
-    }
+        public final static int LOWER_LIMIT_SWITCH = 2;
+         public final static int UPPER_LIMIT_SWITCH = 3;
+   }
 
     /*
      * Joystick axes/buttons

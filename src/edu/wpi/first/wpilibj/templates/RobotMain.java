@@ -1,6 +1,7 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -54,6 +55,8 @@ public class RobotMain extends IterativeRobot {
      */
     public void testPeriodic() {
         LiveWindow.run();
+        
+        double joyOut = OI.getDriveJoystick().getAxis(Joystick.AxisType.kZ);
     }
 
     public void disabledPeriodic() {

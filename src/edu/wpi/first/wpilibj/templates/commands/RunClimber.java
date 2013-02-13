@@ -25,7 +25,7 @@ public class RunClimber extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         double climbSpeed = OI.getDriveJoystick().getAxisChannel(Joystick.AxisType.kThrottle);
-        System.out.println(climbSpeed);
+        System.out.println("Climber speed: " + climbSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()

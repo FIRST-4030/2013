@@ -6,6 +6,7 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.templates.commands.ReadLimitSwitch;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
 /**
@@ -19,8 +20,7 @@ public class ClimberLimitSwitch extends Subsystem {
     private DigitalInput upperLimit = new DigitalInput(VstM.Relays.UPPER_LIMIT_SWITCH);
     
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new ReadLimitSwitch());
     }
     
     public boolean readUpper() {

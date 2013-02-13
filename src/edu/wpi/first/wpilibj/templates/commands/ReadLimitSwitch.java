@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstM;
  * @author Robotics
  */
 public class ReadLimitSwitch extends CommandBase {
-    
+
     public ReadLimitSwitch() {
         requires(climberLimitSwitch);
     }
@@ -21,13 +21,13 @@ public class ReadLimitSwitch extends CommandBase {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {        
-        if(VstM.Climber.isRetracting) {
-            if(climberLimitSwitch.readLower()) {
+    protected void execute() {
+        if (VstM.Climber.isRetracting) {
+            if (climberLimitSwitch.readLower()) {
                 VstM.Climber.isRetracting = false;
             }
         } else {
-            if(climberLimitSwitch.readUpper()) {
+            if (climberLimitSwitch.readUpper()) {
                 VstM.Climber.isRetracting = true;
             }
         }

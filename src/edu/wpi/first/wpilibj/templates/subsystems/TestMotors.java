@@ -17,7 +17,7 @@ public class TestMotors extends Subsystem {
         jag2 = new Jaguar(VstM.PWM.TEST_MOTOR_2);
         drive = new RobotDrive(jag1, jag2);
     }
-    
+
     public void initDefaultCommand() {
         setDefaultCommand(new TestDrive());
     }

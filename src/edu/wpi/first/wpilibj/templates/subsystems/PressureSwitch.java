@@ -18,7 +18,7 @@ public class PressureSwitch extends Subsystem implements Debuggable {
      * This is a Digital Pressure Switch.
      */
     DigitalInput pSwitch = new DigitalInput(VstM.Digital.PRESSURE_SWITCH);
-    
+
     public void initDefaultCommand() {
         setDefaultCommand(new ReadPressureSwitch());
     }
@@ -32,7 +32,7 @@ public class PressureSwitch extends Subsystem implements Debuggable {
         VstP.setAtPressure(!pSwitch.get());
         RobotDebugger.push(this);
     }
-    
+
     public DebugInfo getStatus() {
         return new DebugInfo("PressureSwitch:Status", VstP.atPressure() ? "At Pressure" : "Not At Pressure");
     }

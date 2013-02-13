@@ -94,8 +94,11 @@ public class ProcessError {
     }
 
     /**
-     * Use this method to create an error on a already created ProcessError.
-     * One implementation of this is creating a non-error ProcessError, then passing it as an argument to another method, and then retrieving an error from it if that method added an error.
+     * Use this method to create an error on a already created ProcessError. One
+     * implementation of this is creating a non-error ProcessError, then passing
+     * it as an argument to another method, and then retrieving an error from it
+     * if that method added an error.
+     *
      * @param error The Error.
      * @param owner The object creating this error.
      */

@@ -18,7 +18,8 @@ public abstract class CommandBase extends Command {
     public static PressureSwitch pressureSwitch = new PressureSwitch();
     public static TestMotors testMotors = new TestMotors();
     public static GroundDrive groundDrive = new GroundDrive();
-    public static TowerClimbMotors towerClimbMotors = new TowerClimbMotors();
+    public static TowerClimbMotors towerClimbMotors = null;
+    public static RunClimber runClimber = new RunClimber();
 
     public static void init() {
         OI.init();

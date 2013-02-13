@@ -1,14 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.templates.debugging.DebugInfo;
+import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
 /**
  *
- * @author Robotics
  */
 public class ReadLimitSwitch extends CommandBase {
 
@@ -22,15 +19,25 @@ public class ReadLimitSwitch extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (VstM.Climber.isRetracting) {
-            if (climberLimitSwitch.readLower()) {
-                VstM.Climber.isRetracting = false;
-            }
-        } else {
-            if (climberLimitSwitch.readUpper()) {
-                VstM.Climber.isRetracting = true;
-            }
+        if (VstM.Climber.climberState() == -1 && climberLimitSwitch.readLower()) {
+            VstM.Climber.setClimberState(0);// TODO Should This Be 1 or 0?
         }
+        if (VstM.Climber.climberState() == 1 && climberLimitSwitch.readUpper()) {
+            VstM.Climber.setClimberState(0);// TODO Should This Be 1 or 0?
+        }
+        /*
+         * Kept Old Code:
+         if (VstM.Climber.isRetracting) {
+         if (climberLimitSwitch.readLower()) {
+         VstM.Climber.isRetracting = false;
+         }
+         } else {
+         if (climberLimitSwitch.readUpper()) {
+         VstM.Climber.isRetracting = true;
+         }
+         }
+         */
+        RobotDebugger.push(climberLimitSwitch);
     }
 
     // Make this return true when this Command no longer needs to run execute()

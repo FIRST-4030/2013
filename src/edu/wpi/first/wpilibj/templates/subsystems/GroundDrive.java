@@ -41,6 +41,6 @@ public class GroundDrive extends Subsystem implements Debuggable {
      * Get Current Status Info.
      */
     public DebugInfo getStatus() {
-        return new DebugInfo("GroundDriveStatus", "Left:" + leftMotor.get() + " Right:" + rightMotor.get());
+        return new DebugInfo("GroundDrive:Status", "Left:" + leftMotor.get() + " Right:" + rightMotor.get());
     }
 }

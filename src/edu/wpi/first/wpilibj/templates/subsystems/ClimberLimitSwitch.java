@@ -1,19 +1,16 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.commands.ReadLimitSwitch;
+import edu.wpi.first.wpilibj.templates.debugging.DebugInfo;
+import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
 /**
  *
- * @author Robotics
  */
-public class ClimberLimitSwitch extends Subsystem {
+public class ClimberLimitSwitch extends Subsystem implements Debuggable {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
@@ -30,5 +27,9 @@ public class ClimberLimitSwitch extends Subsystem {
 
     public boolean readLower() {
         return lowerLimit.get();
+    }
+
+    public DebugInfo getStatus() {
+        return new DebugInfo("ClimberLimitSwitch:Status", "Upper Limit " + (upperLimit.get() ? "is" : "is not") + " triggered, Lower Limit " + (lowerLimit.get() ? "is" : "is not")+" triggered");
     }
 }

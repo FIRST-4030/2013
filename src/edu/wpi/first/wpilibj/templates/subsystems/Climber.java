@@ -7,13 +7,15 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.commands.RunClimber;
+import edu.wpi.first.wpilibj.templates.debugging.DebugInfo;
+import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
 /**
  *
  * @author Robotics
  */
-public class Climber extends Subsystem {
+public class Climber extends Subsystem implements Debuggable {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
@@ -22,12 +24,16 @@ public class Climber extends Subsystem {
     public void initDefaultCommand() {
         setDefaultCommand(new RunClimber());
     }
-    
+
     public void runLadder(double speed) {
         climber.set(speed);
     }
 
     public void stop() {
         climber.stopMotor();
+    }
+
+    public DebugInfo getStatus() {
+        return new DebugInfo("Climber:Status", "Climber Speed:" + climber.get());
     }
 }

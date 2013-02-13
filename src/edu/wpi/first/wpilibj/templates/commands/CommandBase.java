@@ -10,15 +10,14 @@ import edu.wpi.first.wpilibj.templates.subsystems.*;
  */
 public abstract class CommandBase extends Command {
 
-    //public static OI oi;
-    // Create a single static instance of all of your subsystems
-    public static Climber climber = new Climber();
-    public static Camera mainCamera = new Camera();
-    public static Compressor compressor = new Compressor();
-    public static PressureSwitch pressureSwitch = new PressureSwitch();
-    public static TestMotors testMotors = new TestMotors();
+    /**
+     * SubSystems.
+     */
     public static GroundDrive groundDrive = new GroundDrive();
-    public static RunClimber runClimber = new RunClimber();
+    public static Compressor compressor = new Compressor();
+    public static Camera mainCamera = new Camera();
+    public static Climber climber = new Climber();
+    public static PressureSwitch pressureSwitch = new PressureSwitch();
 
     public static void init() {
         OI.init();

@@ -14,9 +14,9 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstP;
  * This is the subsystem to handle the Compressor.
  */
 public class Compressor extends Subsystem implements Debuggable {
-    
+
     Relay compressor = new Relay(VstM.Relays.COMPRESSOR);
-    
+
     public void initDefaultCommand() {
         setDefaultCommand(new RunCompressor());
     }
@@ -38,8 +38,8 @@ public class Compressor extends Subsystem implements Debuggable {
         compressor.set(Relay.Value.kOff);
         RobotDebugger.push(this);
     }
-    
+
     public DebugInfo getStatus() {
-        return new DebugInfo("CompressorStatus", VstP.compressorRunning() ? "Compressor Running" : "Compressor Not Running");
+        return new DebugInfo("Compressor:Status", VstP.compressorRunning() ? "Running" : "Not Running");
     }
 }

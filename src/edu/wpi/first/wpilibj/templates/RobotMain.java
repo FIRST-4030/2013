@@ -23,8 +23,8 @@ public class RobotMain extends IterativeRobot {
         CommandBase.init();
         RobotDebugger.push(new DebugInfo("Port Of Left Motor", VstM.PWM.LEFT_MOTOR_PORT));
         RobotDebugger.push(new DebugInfo("Port Of Right Motor", VstM.PWM.RIGHT_MOTOR_PORT));
-        RobotDebugger.push(new DebugInfo("Port Of Tower Motor 1", VstM.PWM.TOWER_MOTOR_1_PORT));
-        RobotDebugger.push(new DebugInfo("Port Of Tower Motor 2", VstM.PWM.TOWER_MOTOR_2_PORT));
+        RobotDebugger.push(new DebugInfo("Port Of Tower Motor 1", VstM.PWM.CLIMBER_MOTOR_1));
+        RobotDebugger.push(new DebugInfo("Port Of Tower Motor 2", VstM.PWM.CLIMBER_MOTOR_2));
     }
 
     public void autonomousInit() {

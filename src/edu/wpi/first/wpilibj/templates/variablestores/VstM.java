@@ -79,4 +79,8 @@ public class VstM {
             public final static int RIGHT_Y = 5;
         }
     }
+    
+    public static class Climber {
+        public static boolean isRetracting = false;             
+    }
 }

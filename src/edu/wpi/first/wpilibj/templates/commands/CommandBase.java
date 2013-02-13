@@ -13,11 +13,13 @@ public abstract class CommandBase extends Command {
     /**
      * SubSystems.
      */
-    public static GroundDrive groundDrive = new GroundDrive();
     public static Compressor compressor = new Compressor();
     public static Camera mainCamera = new Camera();
     public static Climber climber = new Climber();
     public static PressureSwitch pressureSwitch = new PressureSwitch();
+    public static GroundDrive groundDrive = new GroundDrive();
+    public static RunClimber runClimber = new RunClimber();
+    public static ClimberLimitSwitch climberLimitSwitch = new ClimberLimitSwitch();
 
     public static void init() {
         OI.init();

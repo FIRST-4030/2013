@@ -17,35 +17,17 @@ public class Climber extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
-    private Jaguar climber1 = new Jaguar(VstM.PWM.CLIMBER_MOTOR_1);
-    private Jaguar climber2 = new Jaguar(VstM.PWM.CLIMBER_MOTOR_2);
+    private Jaguar climber = new Jaguar(VstM.PWM.CLIMBER_MOTOR);
 
     public void initDefaultCommand() {
         setDefaultCommand(new RunClimber());
     }
     
-    private double currentSpeed = 0;
-
-    public void raiseLadder() {
-        climber1.set(0.5);
-        climber2.set(0.5);
+    public void runLadder(double speed) {
+        climber.set(speed);
     }
 
-    public void lowerLadder() {
-        climber1.set(-0.5);
-        climber2.set(-0.5);
-    }
-    
     public void stop() {
-        climber1.set(0);
-        climber2.set(0);
-    }
-    
-    public void changeLadderSpeed(double d) {
-        currentSpeed += d;
-    }
-
-    public void update() {
-        currentSpeed *= 0.7;
+        climber.stopMotor();
     }
 }

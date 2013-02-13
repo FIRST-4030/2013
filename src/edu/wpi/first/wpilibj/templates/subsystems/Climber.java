@@ -16,6 +16,7 @@ public class Climber extends Subsystem implements Debuggable {
     }
 
     public void runLadder(double speed) {
+        //TODO Should we check if this value is between -1 and 1? Or what kind of input can the Jaguar take?
         climber.set(speed);
     }
 

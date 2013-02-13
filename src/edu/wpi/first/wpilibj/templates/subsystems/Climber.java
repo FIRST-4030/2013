@@ -28,6 +28,6 @@ public class Climber extends Subsystem {
     }
 
     public void stop() {
-        climber.set(0);
+        climber.stopMotor();
     }
 }

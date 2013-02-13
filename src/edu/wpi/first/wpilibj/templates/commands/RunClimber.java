@@ -20,7 +20,7 @@ public class RunClimber extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        double climbSpeed = OI.getDriveJoystick().getRawAxis(VstM.Joysticks.Xbox.TRIGGERS);
+        double climbSpeed = oi.getDriveJoystick().getRawAxis(VstM.Joysticks.Xbox.TRIGGERS);
         if (!VstM.Climber.isRetracting) {
             climbSpeed *= -1;
         }

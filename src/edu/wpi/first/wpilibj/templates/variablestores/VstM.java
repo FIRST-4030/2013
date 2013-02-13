@@ -33,7 +33,7 @@ public class VstM {
 
         public final static int PRESSURE_SWITCH = 1;
         public static final int CLIMBER_TOP = 2;
-        public static final int CLIMBER_BOTTOM  = 3;
+        public static final int CLIMBER_BOTTOM = 3;
     }
 
     /*
@@ -61,8 +61,8 @@ public class VstM {
 
         public final static int COMPRESSOR = 1;
         public final static int LOWER_LIMIT_SWITCH = 2;
-         public final static int UPPER_LIMIT_SWITCH = 3;
-   }
+        public final static int UPPER_LIMIT_SWITCH = 3;
+    }
 
     /*
      * Joystick axes/buttons
@@ -79,8 +79,9 @@ public class VstM {
             public final static int RIGHT_Y = 5;
         }
     }
-    
+
     public static class Climber {
-        public static boolean isRetracting = false;             
+
+        public static boolean isRetracting = false;
     }
 }

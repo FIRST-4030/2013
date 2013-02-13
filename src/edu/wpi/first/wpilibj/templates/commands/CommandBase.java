@@ -20,9 +20,16 @@ public abstract class CommandBase extends Command {
     public static GroundDrive groundDrive = new GroundDrive();
     public static RunClimber runClimber = new RunClimber();
     public static ClimberLimitSwitch climberLimitSwitch = new ClimberLimitSwitch();
+    public static TestMotors testMotors = new TestMotors();
 
+    public static OI oi;
     public static void init() {
-        OI.init();
+        // This MUST be here. If the OI creates Commands (which it very likely
+        // will), constructing it during the construction of CommandBase (from
+        // which commands extend), subsystems are not guaranteed to be
+        // yet. Thus, their requires() statements may grab null pointers. Bad
+        // news. Don't move it.
+        oi = new OI();
     }
 
     public CommandBase(String name) {

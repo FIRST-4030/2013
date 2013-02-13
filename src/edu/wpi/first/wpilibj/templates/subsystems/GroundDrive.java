@@ -29,10 +29,6 @@ public class GroundDrive extends Subsystem implements Debuggable {
         setDefaultCommand(new GroundDriveCommand());
     }
 
-    public void driveWithXBox() {
-        driveWithController(OI.getDriveJoystick());
-    }
-
     public void driveWithController(Joystick js) {
         roboDrive.arcadeDrive(js);
     }

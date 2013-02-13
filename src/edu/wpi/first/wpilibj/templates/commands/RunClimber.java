@@ -26,10 +26,10 @@ public class RunClimber extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         double climbSpeed = OI.getDriveJoystick().getRawAxis(VstM.Joysticks.Xbox.TRIGGERS);
-
-        if (climbSpeed < 0 && !climber.isAtLowerLimit()) {
+        
+        if (climbSpeed < 0 && climber.isAtLowerLimit()) {
             climber.runLadder(climbSpeed);
-        } else if (climbSpeed > 0 && !climber.isAtUpperLimit()) {
+        } else if (climbSpeed > 0 && climber.isAtUpperLimit()) {
             climber.runLadder(climbSpeed);
         } else {
             climber.stop();

@@ -38,7 +38,7 @@ public class Climber extends Subsystem {
 
     public boolean isAtLowerLimit() {
         /* 
-         * this returns if it's at the lower limit, assuming
+         * this returns true if it's at the lower limit, assuming
          * that the switch is normally open.
         */
         return lowerLimit.get(); //TODO: invert if normally closed
@@ -46,7 +46,7 @@ public class Climber extends Subsystem {
     
     public boolean isAtUpperLimit() {
         /* 
-         * this returns if it's at the upper limit, assuming
+         * this returns true if it's at the upper limit, assuming
          * that the switch is normally open.
         */
         return upperLimit.get(); //TODO: invert if normally closed

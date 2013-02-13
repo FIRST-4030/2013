@@ -80,8 +80,63 @@ public class VstM {
         }
     }
 
+    /**
+     * This Class Holds Variables For The Climber.
+     */
     public static class Climber {
 
-        public static boolean isRetracting = false;
+        /**
+         * This variable should represent the state of the Climber Motors.
+         *
+         * 0 for off.
+         *
+         * -1 for retracting
+         *
+         * 1 for extending.
+         */
+        private static int climberState = 0;
+
+        /**
+         * This should get the state of the Climber Motors. This method may not
+         * return the exact state, as this is set by other methods besides the
+         * RunClimber to tell the RunClimber what to do.
+         *
+         * 0 for off.
+         *
+         * -1 for retracting
+         *
+         * 1 for un retracting.
+         */
+        public static int climberState() {
+            return climberState;
+        }
+
+        /**
+         * This sets the value returned by climberState(). This should be called
+         * by the RunClimber every refresh and by other methods wanting to set
+         * what the RunClimber is doing.
+         *
+         * 0 for off.
+         *
+         * -1 for retracting
+         *
+         * 1 for extending.
+         */
+        public static void setClimberState(int climberStateV) {
+            if (climberStateV > 1) {
+                throw new IllegalArgumentException("To High A Value in setClimberState");
+            }
+            if (climberStateV < -1) {
+                throw new IllegalArgumentException("To Low A Value in setClimberState");
+            }
+            climberState = climberStateV;
+        }
+
+        /**
+         * This is the equevilent to: climberState()==-1
+         */
+        public static boolean isRetracting() {
+            return climberState < 0;
+        }
     }
 }

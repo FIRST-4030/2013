@@ -5,31 +5,29 @@
 package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.templates.commands.RunClimber;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
 /**
  *
  * @author Robotics
  */
-public class Climber extends Subsystem {
-
-    //objects needed by climber
-    private Jaguar climber = new Jaguar(VstM.PWM.CLIMBER_MOTOR);
-    
+public class ClimberLimitSwitch extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
+    private DigitalInput lowerLimit = new DigitalInput(VstM.Relays.LOWER_LIMIT_SWITCH);
+    private DigitalInput upperLimit = new DigitalInput(VstM.Relays.UPPER_LIMIT_SWITCH);
+    
     public void initDefaultCommand() {
-        setDefaultCommand(new RunClimber());
+        // Set the default command for a subsystem here.
+        //setDefaultCommand(new MySpecialCommand());
     }
     
-    public void runLadder(double speed) {
-        climber.set(speed);
+    public boolean readUpper() {
+        return upperLimit.get();
     }
-
-    public void stop() {
-        climber.stopMotor();
+    
+    public boolean readLower() {
+        return lowerLimit.get();
     }
 }

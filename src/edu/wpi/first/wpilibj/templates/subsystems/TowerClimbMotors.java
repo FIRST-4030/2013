@@ -11,8 +11,8 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstM;
  */
 public class TowerClimbMotors extends Subsystem {
 
-    private Jaguar motor1 = new Jaguar(VstM.PWM.TOWER_MOTOR_1_PORT);
-    private Jaguar motor2 = new Jaguar(VstM.PWM.TOWER_MOTOR_2_PORT);
+    private Jaguar motor1 = new Jaguar(VstM.PWM.CLIMBER_MOTOR_1);
+    private Jaguar motor2 = new Jaguar(VstM.PWM.CLIMBER_MOTOR_2);
 
     public TowerClimbMotors() {
     }

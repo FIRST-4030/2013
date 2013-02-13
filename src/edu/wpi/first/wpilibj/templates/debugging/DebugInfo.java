@@ -13,6 +13,14 @@ public class DebugInfo {
         this.message = message;
     }
 
+    public DebugInfo(String key, double value) {
+        this.message = String.valueOf(value);
+    }
+
+    public DebugInfo(String key, int value) {
+        this.message = String.valueOf(value);
+    }
+
     public String key() {
         return key;
     }

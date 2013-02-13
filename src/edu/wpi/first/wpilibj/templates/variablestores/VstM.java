@@ -32,6 +32,8 @@ public class VstM {
     public class Digital {
 
         public final static int PRESSURE_SWITCH = 1;
+        public static final int CLIMBER_TOP = 2;
+        public static final int CLIMBER_BOTTOM  = 3;
     }
 
     /*

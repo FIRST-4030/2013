@@ -20,7 +20,7 @@ public abstract class CommandBase extends Command {
     public static GroundDrive groundDrive = new GroundDrive();
     public static RunClimber runClimber = new RunClimber();
     public static ClimberLimitSwitch climberLimitSwitch = new ClimberLimitSwitch();
-    public static TestMotors testMotors = new TestMotors();
+    public static TestMotors testMotors = null;// new TestMotors(); I think we have GroundDrive already doing this.
     public static OI oi;
 
     public static void init() {

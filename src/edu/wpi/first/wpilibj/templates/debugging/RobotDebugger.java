@@ -2,7 +2,6 @@ package edu.wpi.first.wpilibj.templates.debugging;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
-import java.util.Hashtable;
 
 public class RobotDebugger {
 

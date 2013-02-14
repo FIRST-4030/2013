@@ -30,6 +30,6 @@ public class ClimberLimitSwitch extends Subsystem implements Debuggable {
     }
 
     public DebugInfo getStatus() {
-        return new DebugInfo("ClimberLimitSwitch:Status", "Upper Limit " + (upperLimit.get() ? "is" : "is not") + " triggered, Lower Limit " + (lowerLimit.get() ? "is" : "is not")+" triggered");
+        return new DebugInfo("ClimberLimitSwitch:Status", "Upper Limit " + (upperLimit.get() ? "is" : "is not") + " triggered, Lower Limit " + (lowerLimit.get() ? "is" : "is not") + " triggered");
     }
 }

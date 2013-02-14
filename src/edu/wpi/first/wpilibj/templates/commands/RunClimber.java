@@ -27,13 +27,14 @@ public class RunClimber extends CommandBase {
          * //Won't This Just Reverse The Direction No Matter Which Way It Was Going In The First Place? 
          * //Like if It Started Out Positive It Would Become Negative, and if it started out negative it would become positive.
          }
-         
+         */
+        //The Following Code Won't Affect Anything If The Pressure Switches Are Not Attached/Not Pressed.
         if (climbSpeed != 0) {
             if (((VstM.Climber.climberState() == -1) != (climbSpeed < 0))
                     || ((VstM.Climber.climberState() == 1) != climbSpeed > 0)) {
                 climbSpeed *= VstM.Climber.climberState();
             }
-        }*/
+        }
         climber.runLadder(climbSpeed);
     }
 // Make this return true when this Command no longer needs to run execute()

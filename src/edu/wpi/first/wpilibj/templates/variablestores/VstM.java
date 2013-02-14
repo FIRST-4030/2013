@@ -133,7 +133,7 @@ public class VstM {
         }
 
         /**
-         * This is the equevilent to: climberState()==-1
+         * This is the equivalent to: climberState()==-1
          */
         public static boolean isRetracting() {
             return climberState < 0;

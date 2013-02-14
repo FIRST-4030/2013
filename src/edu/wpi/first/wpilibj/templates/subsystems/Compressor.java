@@ -39,6 +39,6 @@ public class Compressor extends Subsystem implements Debuggable {
     }
 
     public DebugInfo getStatus() {
-        return new DebugInfo("Compressor:Status", "Compressor is " + (VstP.compressorRunning() ? "running" : "not running"));
+        return new DebugInfo("Compressor:Status", (VstP.compressorRunning() ? "running" : "not running"));
     }
 }

@@ -13,8 +13,8 @@ public class TestMotors extends Subsystem {
     private RobotDrive drive;
 
     public TestMotors() {
-        jag1 = new Jaguar(VstM.PWM.TEST_MOTOR_1);
-        jag2 = new Jaguar(VstM.PWM.TEST_MOTOR_2);
+        jag1 = new Jaguar(VstM.PWM.TEST_MOTOR_1_PORT);
+        jag2 = new Jaguar(VstM.PWM.TEST_MOTOR_2_PORT);
         drive = new RobotDrive(jag1, jag2);
     }
 

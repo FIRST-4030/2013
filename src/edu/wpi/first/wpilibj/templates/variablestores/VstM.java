@@ -9,8 +9,11 @@ public class VstM {
      * Solenoid controls
      */
     public class Solenoids {
+        
+        public final boolean shooterExtended = false;
 
-        public static final int SHOOTER_SOLENOID_PORT = 1;
+        public static final int SHOOTER_SOLENOID_SIDE_1 = 1;
+        public static final int SHOOTER_SOLENOID_SIDE_2 = 2;
     }
 
     /*

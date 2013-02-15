@@ -11,24 +11,24 @@ import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
  * @author Robotics
  */
 public class RunShooterSolenoid extends CommandBase {
-    
+
     public RunShooterSolenoid() {
         requires(shooterSolenoid);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        shooterSolenoid.stop();
+        shooterSolenoid.retract();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         if (oi.getDriveJoystick().getRawButton(1)) {
             shooterSolenoid.extend();
-            
         } else {
             shooterSolenoid.retract();
         }
+
         RobotDebugger.push(shooterSolenoid);
     }
 

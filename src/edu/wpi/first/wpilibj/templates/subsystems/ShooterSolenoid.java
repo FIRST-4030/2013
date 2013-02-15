@@ -16,26 +16,29 @@ public class ShooterSolenoid extends Subsystem implements Debuggable {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
-    private Solenoid shooterSolenoid = new Solenoid(VstM.Solenoids.SHOOTER_SOLENOID_PORT);
+    private Solenoid shooterSolenoidSide1 = new Solenoid(VstM.Solenoids.SHOOTER_SOLENOID_SIDE_1);
+    private Solenoid shooterSolenoidSide2 = new Solenoid(VstM.Solenoids.SHOOTER_SOLENOID_SIDE_2);
 
     public void initDefaultCommand() {
         setDefaultCommand(new RunShooterSolenoid());
     }
 
     public void extend() {
-        shooterSolenoid.set(true);
+        shooterSolenoidSide1.set(true);
+        shooterSolenoidSide2.set(false);
     }
 
     public void retract() {
-        shooterSolenoid.set(false);
+        shooterSolenoidSide1.set(false);
+        shooterSolenoidSide2.set(true);
     }
-
-    public void stop() {
-        shooterSolenoid.set(false);
+    
+    public boolean isExtended() {
+        return shooterSolenoidSide1.get();
     }
 
     public DebugInfoGroup getStatus() {
-        DebugInfo info = new DebugInfo("ShooterSolenoid:On", shooterSolenoid.get() ? "yes" : "no");
+        DebugInfo info = new DebugInfo("ShooterSolenoid:Extending", shooterSolenoidSide1.get() ? "yes" : "no");
         return new DebugInfoGroup(info);
     }
 }

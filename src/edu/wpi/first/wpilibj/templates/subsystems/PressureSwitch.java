@@ -1,9 +1,10 @@
-package edu.wpi.first.wpilibj.templates.subsystems;
+ package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.commands.ReadPressureSwitch;
 import edu.wpi.first.wpilibj.templates.debugging.DebugInfo;
+import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
@@ -33,7 +34,8 @@ public class PressureSwitch extends Subsystem implements Debuggable {
         RobotDebugger.push(this);
     }
 
-    public DebugInfo getStatus() {
-        return new DebugInfo("PressureSwitch:Status", VstP.atPressure() ? "At Pressure" : "Not At Pressure");
+    public DebugInfoGroup getStatus() {
+        DebugInfo info = new DebugInfo("PressureSwitch:AtPressure", VstP.atPressure()?"yes":"no");
+        return new DebugInfoGroup(info);
     }
 }

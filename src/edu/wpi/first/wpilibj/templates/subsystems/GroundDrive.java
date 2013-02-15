@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.templates.debugging.DebugInfo;
 import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
+import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
  *
@@ -30,8 +31,8 @@ public class GroundDrive extends Subsystem implements Debuggable {
         setDefaultCommand(new GroundDriveCommand());
     }
 
-    public void driveWithXBox() {
-        driveWithController(CommandBase.oi.getDriveJoystick());
+    public void driveWithDefaultController() {
+        driveWithController(VstJ.getDefaultJoystick());
     }
 
     public void driveWithController(Joystick js) {

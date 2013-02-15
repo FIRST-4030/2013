@@ -2,6 +2,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
+import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
  *
@@ -19,7 +20,7 @@ public class RunClimber extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        double climbSpeed = oi.getDriveJoystick().getRawAxis(VstM.Joysticks.Xbox.TRIGGERS);
+        double climbSpeed = VstJ.getDefaultJoystick().getRawAxis(VstJ.getClimberAxisNumber());
         climbSpeed *= 0.25;
         //The Following Code Won't Affect Anything If The Pressure Switches Are Not Attached/Not Pressed.
         if (climbSpeed != 0) {

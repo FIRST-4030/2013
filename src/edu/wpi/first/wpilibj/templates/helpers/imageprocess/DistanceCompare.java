@@ -9,7 +9,7 @@ public class DistanceCompare {
 
     /**
      * This Creates A Vision Target given a processed target and a robot
-     * position. TODO, MAKE THIS HAPPEN.
+     * position. TODO Make this possible. Low priority
      */
     public static VisionTarget getTargetFromRobot(ProcessedTarget pt, RobotPositionReport rp) {
         return null;

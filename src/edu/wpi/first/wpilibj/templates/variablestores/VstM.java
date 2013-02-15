@@ -9,9 +9,8 @@ public class VstM {
      * Solenoid controls
      */
     public class Solenoids {
-        
-        public final boolean shooterExtended = false;
 
+        public final boolean shooterExtended = false;
         public static final int SHOOTER_SOLENOID_SIDE_1 = 1;
         public static final int SHOOTER_SOLENOID_SIDE_2 = 2;
     }
@@ -73,23 +72,6 @@ public class VstM {
         public final static int COMPRESSOR = 1;
         public final static int LOWER_LIMIT_SWITCH = 2;
         public final static int UPPER_LIMIT_SWITCH = 3;
-    }
-
-    /*
-     * Joystick axes/buttons
-     */
-    public class Joysticks {
-
-        public class Xbox {
-
-            public final static int PORT = 1;
-            public final static int LEFT_X = 1;
-            public final static int LEFT_Y = 2;
-            public final static int TRIGGERS = 3;
-            public final static int RIGHT_X = 4;
-            public final static int RIGHT_Y = 5;
-            public final static int BUTTON_1 = 1;
-        }
     }
 
     /**

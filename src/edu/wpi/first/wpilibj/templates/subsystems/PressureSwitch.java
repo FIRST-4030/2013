@@ -1,4 +1,4 @@
- package edu.wpi.first.wpilibj.templates.subsystems;
+package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -35,7 +35,7 @@ public class PressureSwitch extends Subsystem implements Debuggable {
     }
 
     public DebugInfoGroup getStatus() {
-        DebugInfo info = new DebugInfo("PressureSwitch:AtPressure", VstP.atPressure()?"yes":"no");
+        DebugInfo info = new DebugInfo("PressureSwitch:AtPressure", VstP.atPressure() ? "yes" : "no");
         return new DebugInfoGroup(info);
     }
 }

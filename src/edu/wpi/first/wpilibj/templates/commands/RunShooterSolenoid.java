@@ -6,6 +6,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
+import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
  *
@@ -24,13 +25,11 @@ public class RunShooterSolenoid extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (oi.getDriveJoystick().getRawButton(VstM.Joysticks.Xbox.BUTTON_1)) {
+        if (VstJ.getDefaultJoystick().getRawButton(VstJ.getShooterButtonNumber())) {
             shooterSolenoid.extend();
         } else {
             shooterSolenoid.retract();
-
         }
-
         RobotDebugger.push(shooterSolenoid);
     }
 

@@ -7,25 +7,17 @@ import edu.wpi.first.wpilibj.Joystick;
  */
 public class FixedMappings {
 
-    private static boolean joyStickInit = false;
+    private static Joystick defaultJoystick;
 
     protected static void joyStickInit() {
-        if (FixedVars.USING_XBOX) {
-            Xbox.init();
-        } else {
-            RegularJoyStick.init();
-        }
+        defaultJoystick = new Joystick(FixedVars.USING_XBOX ? FixedVars.Xbox.PORT : FixedVars.RegularJoyStick.PORT);
     }
 
     protected static Joystick getDefaultJoyStick() {
-        if (!joyStickInit) {
+        if (defaultJoystick == null) {
             joyStickInit();
         }
-        if (FixedVars.USING_XBOX) {
-            return Xbox.defaultJoyStick;
-        } else {
-            return RegularJoyStick.defaultJoyStick;
-        }
+        return defaultJoystick;
     }
 
     protected static int getClimberAxisNumber() {
@@ -49,13 +41,8 @@ public class FixedMappings {
      */
     protected static class Xbox {
 
-        protected static final int climberAxisNumber = FixedVars.Xbox.TRIGGERS;
-        protected static final int shooterButtonNumber = FixedVars.Xbox.BUTTON_A;//TODO Is this what we want?
-        protected static Joystick defaultJoyStick;
-
-        protected static void init() {
-            defaultJoyStick = new Joystick(FixedVars.Xbox.PORT);
-        }
+        protected static final int climberAxisNumber = FixedVars.Xbox.TRIGGERS_AXIS;
+        protected static final int shooterButtonNumber = FixedVars.Xbox.A_BUTTON;//TODO Is this what we want?
     }
 
     /**
@@ -64,11 +51,6 @@ public class FixedMappings {
     private static class RegularJoyStick {
 
         protected static final int climberAxisNumber = -20;//TODO What is the climber axis number on the regular joy stick?
-        protected static final int shooterButtonNumber = -20;//TODO What is the shooter button number on the regular joy stick?
-        protected static Joystick defaultJoyStick;
-
-        protected static void init() {
-            defaultJoyStick = new Joystick(FixedVars.RegularJoyStick.PORT);
-        }
+        protected static final int shooterButtonNumber = FixedVars.RegularJoyStick.TRIGGER_BUTTON;//TODO What is the shooter button number on the regular joy stick?
     }
 }

@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.templates.HM;
 /**
  * Status Report of something.
  */
-public class DebugStatus implements DebugInfo{
+public class DebugStatus implements DebugInfo {
 
     private String key;
     private String message;
@@ -40,5 +40,13 @@ public class DebugStatus implements DebugInfo{
 
     public String message() {
         return message;
+    }
+
+    public boolean isConsole() {
+        return true;
+    }
+
+    public boolean isDashboard() {
+        return true;
     }
 }

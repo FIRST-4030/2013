@@ -12,7 +12,7 @@ public class RobotDebugger {
 
     private static Hashtable table = new Hashtable();
 
-    private static void push(String key, String message) {
+    private static void push(String key, String message, boolean isConsole, boolean isDashboard) {
         if (key == null || message == null) {
             throw new IllegalArgumentException("No Null Arguments");
         }
@@ -37,7 +37,7 @@ public class RobotDebugger {
      */
     public static void push(DebugInfo di) {
         if (VstM.Debug.DEBUG) {
-            push(di.key(), di.message());
+            push(di.key(), di.message(), di.isConsole(), di.isDashboard());
         }
     }
 

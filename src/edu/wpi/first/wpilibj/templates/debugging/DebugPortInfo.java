@@ -21,4 +21,12 @@ public class DebugPortInfo implements DebugInfo {
     public String message() {
         return message;
     }
+
+    public boolean isConsole() {
+        return true;
+    }
+
+    public boolean isDashboard() {
+        return false;
+    }
 }

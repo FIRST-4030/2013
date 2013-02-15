@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.templates.debugging;
 
+import edu.wpi.first.wpilibj.templates.HM;
+
 /**
  * Status Report of something.
  */
@@ -21,8 +23,7 @@ public class DebugInfo {
             throw new IllegalArgumentException("No Null Arguments");
         }
         this.key = key;
-        double rounded = ((int) (value * 1000)) / 1000.0;
-        this.message = String.valueOf(rounded);
+        this.message = String.valueOf(HM.round(100, value));
     }
 
     public DebugInfo(String key, int value) {

@@ -21,19 +21,16 @@ public class FixedMappings {
     }
 
     protected static int getClimberAxisNumber() {
-        if (FixedVars.USING_XBOX) {
-            return Xbox.climberAxisNumber;
-        } else {
-            return RegularJoyStick.climberAxisNumber;
-        }
+        return FixedVars.USING_XBOX ? Xbox.climberAxisNumber : RegularJoyStick.climberAxisNumber;
     }
 
-    protected static int getShooterButtonNumber() {
-        if (FixedVars.USING_XBOX) {
-            return Xbox.shooterButtonNumber;
-        } else {
-            return RegularJoyStick.shooterButtonNumber;
-        }
+    protected static int getShooterSolenoidPushButtonNumber() {
+        return FixedVars.USING_XBOX ? Xbox.solenoidButtonNumber : RegularJoyStick.solenoidButtonNumber;
+
+    }
+
+    protected static int getShooterMotorToggleButtonNumber() {
+        return FixedVars.USING_XBOX ? Xbox.shooterMotorToggleButtonNumber : RegularJoyStick.shooterMotorToggleButtonNumber;
     }
 
     /**
@@ -42,7 +39,8 @@ public class FixedMappings {
     protected static class Xbox {
 
         protected static final int climberAxisNumber = FixedVars.Xbox.TRIGGERS_AXIS;
-        protected static final int shooterButtonNumber = FixedVars.Xbox.A_BUTTON;//TODO Is this what we want?
+        protected static final int solenoidButtonNumber = FixedVars.Xbox.A_BUTTON;
+        protected static final int shooterMotorToggleButtonNumber = FixedVars.Xbox.B_BUTTON;
     }
 
     /**
@@ -51,6 +49,7 @@ public class FixedMappings {
     private static class RegularJoyStick {
 
         protected static final int climberAxisNumber = -20;//TODO What is the climber axis number on the regular joy stick?
-        protected static final int shooterButtonNumber = FixedVars.RegularJoyStick.TRIGGER_BUTTON;//TODO What is the shooter button number on the regular joy stick?
+        protected static final int solenoidButtonNumber = FixedVars.RegularJoyStick.TRIGGER_BUTTON;
+        protected static final int shooterMotorToggleButtonNumber = -20;
     }
 }

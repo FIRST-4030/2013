@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
@@ -24,7 +20,7 @@ public class RunShooterSolenoid extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (VstJ.getDefaultJoystick().getRawButton(VstJ.getShooterButtonNumber())) {
+        if (VstJ.getShooterSolenoidPushButtonValue()) {
             shooterSolenoid.extend();
         } else {
             shooterSolenoid.retract();

@@ -3,7 +3,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 import edu.wpi.first.wpilibj.templates.variablestores.VstP;
 
 /**
- * This Command continously checks whether or not Vst.atPressure(), and sets the
+ * This Command continously checks whether or not VstP.atPressure(), and sets the
  * Compressor state accordingly.
  */
 public class RunCompressor extends CommandBase {

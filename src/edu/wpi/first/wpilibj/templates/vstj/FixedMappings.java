@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj.Joystick;
 
 /**
  *
- * @author daboross
  */
 public class FixedMappings {
 

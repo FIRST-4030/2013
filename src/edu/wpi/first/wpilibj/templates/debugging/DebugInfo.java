@@ -1,7 +1,7 @@
 package edu.wpi.first.wpilibj.templates.debugging;
 
 /**
- * Status Report.
+ * Status Report of something.
  */
 public class DebugInfo {
 

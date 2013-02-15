@@ -7,6 +7,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.commands.TestDrive;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
+/**
+ * This is a "Test Motor" Sub System. You can basically do whatever you want
+ * with this, as we have DriveMotors driving the robot. Anything permanent
+ * though should be put into a new SubSytem.
+ */
 public class TestMotors extends Subsystem {
 
     private Jaguar jag1, jag2;

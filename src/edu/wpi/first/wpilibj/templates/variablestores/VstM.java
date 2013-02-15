@@ -5,8 +5,8 @@ package edu.wpi.first.wpilibj.templates.variablestores;
  */
 public class VstM {
 
-    /*
-     * Solenoid controls
+    /**
+     * Solenoid controls.
      */
     public class Solenoids {
 
@@ -15,7 +15,7 @@ public class VstM {
         public static final int SHOOTER_SOLENOID_SIDE_2 = 2;
     }
 
-    /*
+    /**
      * Debug controls.
      */
     public class Debug {
@@ -36,8 +36,8 @@ public class VstM {
         public static final boolean DEBUG = DASHBOARD || CONSOLE;
     }
 
-    /*
-     * Digital input ports
+    /**
+     * Digital input ports.
      */
     public class Digital {
 
@@ -46,26 +46,26 @@ public class VstM {
         public static final int CLIMBER_BOTTOM = 3;
     }
 
-    /*
-     * Analog input ports
+    /**
+     * Analog input ports.
      */
     public class Analog {
     }
 
-    /*
-     * PWM ports
+    /**
+     * PWM ports.
      */
     public class PWM {
 
         public static final int LEFT_MOTOR_PORT = 1;
         public static final int RIGHT_MOTOR_PORT = 2;
-        public static final int CLIMBER_MOTOR = 3;
+        public static final int CLIMBER_MOTOR_PORT = 3;
         public static final int TEST_MOTOR_1_PORT = 4;
         public static final int TEST_MOTOR_2_PORT = 5;
     }
 
-    /*
-     * Relay ports
+    /**
+     * Relay ports.
      */
     public class Relays {
 
@@ -127,7 +127,7 @@ public class VstM {
         }
 
         /**
-         * This is the equivalent to: climberState()==-1
+         * This is the equivalent to: climberState() == -1.
          */
         public static boolean isRetracting() {
             return climberState < 0;

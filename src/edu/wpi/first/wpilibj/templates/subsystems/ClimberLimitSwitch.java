@@ -9,7 +9,8 @@ import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
 /**
- *
+ * This is a sub system that reads 2 different Digital Inputs which are the top
+ * and bottom limit of the climber.
  */
 public class ClimberLimitSwitch extends Subsystem implements Debuggable {
     // Put methods for controlling this subsystem

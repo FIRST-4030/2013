@@ -1,9 +1,7 @@
 package edu.wpi.first.wpilibj.templates.vstj;
 
 /**
- * Fixed Variables, like button numbers / ports
- *
- * @author daboross
+ * Fixed Variables, like button numbers / ports.
  */
 class FixedVars {
 

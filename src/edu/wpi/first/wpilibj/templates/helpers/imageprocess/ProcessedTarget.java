@@ -4,24 +4,24 @@ import edu.wpi.first.wpilibj.image.ParticleAnalysisReport;
 import edu.wpi.first.wpilibj.templates.variablestores.VstC;
 
 /**
- * Processed Target
+ * Processed Target.
  */
 public class ProcessedTarget {
 
     /**
-     * Height Of This Target On Screen
+     * Height Of This Target On Screen.
      */
     private int height;
     /**
-     * Width Of This Target On Screen
+     * Width Of This Target On Screen.
      */
     private int width;
     /**
-     * XPos On Screen
+     * XPos On Screen.
      */
     private int posX;
     /**
-     * YPos On Screen
+     * YPos On Screen.
      */
     private int posY;
     /**

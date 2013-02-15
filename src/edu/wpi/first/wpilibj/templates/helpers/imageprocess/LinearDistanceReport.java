@@ -3,7 +3,7 @@ package edu.wpi.first.wpilibj.templates.helpers.imageprocess;
 import edu.wpi.first.wpilibj.templates.helpers.ProcessError;
 
 /**
- * Distance Report
+ * Linear Distance Report.
  */
 public class LinearDistanceReport {
 

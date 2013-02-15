@@ -20,9 +20,11 @@ public class RobotMain extends IterativeRobot {
     public void robotInit() {
         // Initialize all subsystems
         CommandBase.init();
+        //Tell the person on the Console/SmartDashboard what ports things should be.
         RobotDebugger.push(new DebugInfo("Port Of Left Motor", VstM.PWM.LEFT_MOTOR_PORT));
         RobotDebugger.push(new DebugInfo("Port Of Right Motor", VstM.PWM.RIGHT_MOTOR_PORT));
-        RobotDebugger.push(new DebugInfo("Port Of Tower Motor", VstM.PWM.CLIMBER_MOTOR));
+        RobotDebugger.push(new DebugInfo("Port Of Tower Motor", VstM.PWM.CLIMBER_MOTOR_PORT));
+        
     }
 
     public void autonomousInit() {
@@ -58,6 +60,5 @@ public class RobotMain extends IterativeRobot {
     }
 
     public void disabledInit() {
-        System.out.println("Robot Main disabledInit(): Called");
     }
 }

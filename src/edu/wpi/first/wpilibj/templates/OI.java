@@ -7,14 +7,10 @@ package edu.wpi.first.wpilibj.templates;
 public class OI {
 
     /*
-     //Moved to VstJ, check it out!
-     private Joystick xbox;
-
-     public Joystick getDriveJoystick() {
-     return xbox;
-     }
+     * Moved To VstJ. With that We can create Dynamic Requests leading to
+     * different things depending on whether we are using the XBox controller or
+     * the Regular One.
      */
     public OI() {
-        //xbox = new Joystick(VstM.Joysticks.Xbox.PORT);
     }
 }

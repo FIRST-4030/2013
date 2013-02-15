@@ -9,12 +9,9 @@ import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
 /**
- *
- * @author Robotics
+ * THe Solenoid for the shooter.
  */
 public class ShooterSolenoid extends Subsystem implements Debuggable {
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
 
     private Solenoid shooterSolenoidSide1 = new Solenoid(VstM.Solenoids.SHOOTER_SOLENOID_SIDE_1);
     private Solenoid shooterSolenoidSide2 = new Solenoid(VstM.Solenoids.SHOOTER_SOLENOID_SIDE_2);

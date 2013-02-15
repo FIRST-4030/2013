@@ -8,9 +8,12 @@ import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
+/**
+ * This is the Climber Motor SubSystem.
+ */
 public class Climber extends Subsystem implements Debuggable {
 
-    private Jaguar climber = new Jaguar(VstM.PWM.CLIMBER_MOTOR);
+    private Jaguar climber = new Jaguar(VstM.PWM.CLIMBER_MOTOR_PORT);
 
     public void initDefaultCommand() {
         setDefaultCommand(new RunClimber());

@@ -1,9 +1,7 @@
 package edu.wpi.first.wpilibj.templates.helpers;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 /**
- *
+ * Error in vision process.
  */
 public class ProcessError {
 

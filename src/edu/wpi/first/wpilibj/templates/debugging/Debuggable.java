@@ -5,5 +5,8 @@ package edu.wpi.first.wpilibj.templates.debugging;
  */
 public interface Debuggable {
 
-    public DebugInfo getStatus();
+    /**
+     * This should ALWAYS contain a group with the same keys!!!!.
+     */
+    public DebugInfoGroup getStatus();
 }

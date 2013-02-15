@@ -11,6 +11,10 @@ public class DebugInfoGroup {
         infos = listOfInfo;
     }
 
+    public DebugInfoGroup(DebugInfo singleInfo) {
+        infos = new DebugInfo[]{singleInfo};
+    }
+
     protected void printEach() {
         for (int i = 0; i < infos.length; i++) {
             RobotDebugger.push(infos[i]);

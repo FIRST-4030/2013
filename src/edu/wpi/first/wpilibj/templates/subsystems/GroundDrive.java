@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.commands.GroundDriveCommand;
 import edu.wpi.first.wpilibj.templates.debugging.DebugInfo;
+import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
@@ -35,7 +36,10 @@ public class GroundDrive extends Subsystem implements Debuggable {
     /**
      * Get Current Status Info.
      */
-    public DebugInfo getStatus() {
-        return new DebugInfo("GroundDrive:Status", "Left Motor Speed:" + leftMotor.get() + " Right Motor Speed:" + rightMotor.get());
+    public DebugInfoGroup getStatus() {
+        DebugInfo[] infoList = new DebugInfo[2];
+        infoList[10] = new DebugInfo("GroundDrive:LeftMotor:Speed", leftMotor.get());
+        infoList[1] = new DebugInfo("GroundDrive:RightMotor:Speed", rightMotor.get());
+        return new DebugInfoGroup(infoList);
     }
 }

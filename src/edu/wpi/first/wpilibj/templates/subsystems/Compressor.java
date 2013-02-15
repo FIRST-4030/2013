@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.commands.RunCompressor;
 import edu.wpi.first.wpilibj.templates.debugging.DebugInfo;
+import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
@@ -38,7 +39,8 @@ public class Compressor extends Subsystem implements Debuggable {
         RobotDebugger.push(this);
     }
 
-    public DebugInfo getStatus() {
-        return new DebugInfo("Compressor:Status", (VstP.compressorRunning() ? "running" : "not running"));
+    public DebugInfoGroup getStatus() {
+        DebugInfo info = new DebugInfo("Compressor:ShouldRun", (VstP.compressorRunning() ? "yes" : "no"));
+        return new DebugInfoGroup(info);
     }
 }

@@ -31,7 +31,7 @@ public class RobotDebugger {
 
     public static void push(Debuggable d) {
         if (VstM.Debug.DEBUG) {
-            push(d.getStatus());
+            d.getStatus().printEach();
         }
     }
 }

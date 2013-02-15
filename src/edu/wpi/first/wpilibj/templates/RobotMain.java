@@ -4,6 +4,9 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.templates.commands.*;
+import edu.wpi.first.wpilibj.templates.debugging.DebugInfo;
+import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
+import edu.wpi.first.wpilibj.templates.debugging.DebugPortInfo;
 import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
@@ -20,14 +23,22 @@ public class RobotMain extends IterativeRobot {
     public void robotInit() {
         // Initialize all subsystems
         CommandBase.init();
-        //Tell the person on the Console/SmartDashboard what ports things should be.
-        RobotDebugger.push(new DebugStatus("Port Of Left Motor", VstM.PWM.LEFT_MOTOR_PORT));
-        RobotDebugger.push(new DebugStatus("Port Of Right Motor", VstM.PWM.RIGHT_MOTOR_PORT));
-        RobotDebugger.push(new DebugStatus("Port Of Tower Motor", VstM.PWM.CLIMBER_MOTOR_PORT));
-        RobotDebugger.push(new DebugStatus("Port Of First Shooter Motor", VstM.PWM.FIRST_SHOOTER_MOTOR_PORT));
-        RobotDebugger.push(new DebugStatus("Port Of Second Shooter Motor", VstM.PWM.SECOND_SHOOTER_MOTOR_PORT));
     }
-
+    
+    private void pushPorts() {
+        //Tell the person on the Console/SmartDashboard what ports things should be.
+        DebugInfo[] infoList = new DebugInfo[7];
+        infoList[0] = new DebugPortInfo("LeftMotor", VstM.PWM.LEFT_MOTOR_PORT);
+        infoList[1] = new DebugPortInfo("RightMotor", VstM.PWM.RIGHT_MOTOR_PORT);
+        infoList[2] = new DebugPortInfo("ClimberMotor", VstM.PWM.CLIMBER_MOTOR_PORT);
+        infoList[3] = new DebugPortInfo("FirstShooterMotor", VstM.PWM.FIRST_SHOOTER_MOTOR_PORT);
+        infoList[4] = new DebugPortInfo("SecondShooterMotor", VstM.PWM.SECOND_SHOOTER_MOTOR_PORT);
+        infoList[5] = new DebugPortInfo("ClimberBottomSwitch", VstM.Digital.CLIMBER_BOTTOM);
+        infoList[6] = new DebugPortInfo("ClimberTopSwitch", VstM.Digital.CLIMBER_TOP);
+        DebugInfoGroup debugInfoGroup = new DebugInfoGroup(infoList);
+        RobotDebugger.push(debugInfoGroup);
+    }
+    
     public void autonomousInit() {
         ImageProcess ip = new ImageProcess();
         ip.start();
@@ -39,7 +50,7 @@ public class RobotMain extends IterativeRobot {
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
     }
-
+    
     public void teleopInit() {
     }
 
@@ -56,10 +67,10 @@ public class RobotMain extends IterativeRobot {
     public void testPeriodic() {
         LiveWindow.run();
     }
-
+    
     public void disabledPeriodic() {
     }
-
+    
     public void disabledInit() {
     }
 }

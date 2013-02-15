@@ -23,14 +23,13 @@ public class RunShooterSolenoid extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if(oi.getDriveJoystick().getRawButton(1)) {
-            RobotDebugger.push("RunShooterSolenoid", "Solenoid extending (hopefully)");
+        if (oi.getDriveJoystick().getRawButton(1)) {
             shooterSolenoid.extend();
-         
+            
         } else {
-            RobotDebugger.push("RunShooterSolenoid", "Solenoid retracting (hopefully)");
             shooterSolenoid.retract();
         }
+        RobotDebugger.push(shooterSolenoid);
     }
 
     // Make this return true when this Command no longer needs to run execute()

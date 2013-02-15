@@ -21,9 +21,8 @@ public class DebugInfo {
             throw new IllegalArgumentException("No Null Arguments");
         }
         this.key = key;
-        int roundedBig = ((int) (value * 1000));
-        double finalRounded = roundedBig / 1000.0;
-        this.message = String.valueOf(value);
+        double rounded = ((int) (value * 1000)) / 1000.0;
+        this.message = String.valueOf(rounded);
     }
 
     public DebugInfo(String key, int value) {

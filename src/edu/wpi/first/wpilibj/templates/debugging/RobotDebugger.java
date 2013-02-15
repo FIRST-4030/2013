@@ -16,14 +16,14 @@ public class RobotDebugger {
         if (key == null || message == null) {
             throw new IllegalArgumentException("No Null Arguments");
         }
-        if (!message.equals((String) table.get(key))) {
-            table.put(key, message);
-            if (VstM.Debug.DEBUG) {
-                if (VstM.Debug.CONSOLE) {
+        if (VstM.Debug.DEBUG && (isConsole || isDashboard)) {
+            if (!message.equals((String) table.get(key))) {
+                table.put(key, message);
+                if (VstM.Debug.CONSOLE && isConsole) {
                     System.out.println("Update: " + key + ": " + message);
                 }
 
-                if (VstM.Debug.DASHBOARD) {
+                if (VstM.Debug.DASHBOARD & isDashboard) {
                     SmartDashboard.putString("Status:" + key, message);
                 }
             }

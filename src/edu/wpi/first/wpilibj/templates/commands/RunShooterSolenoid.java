@@ -32,7 +32,7 @@ public class RunShooterSolenoid extends CommandBase {
     protected void end() {
     }
 
-    // subsystems is scheduled to run
     protected void interrupted() {
+        end();
     }
 }

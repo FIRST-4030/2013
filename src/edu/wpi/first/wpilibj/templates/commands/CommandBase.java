@@ -22,6 +22,7 @@ public abstract class CommandBase extends Command {
     public static ClimberLimitSwitch climberLimitSwitch = new ClimberLimitSwitch();
     public static TestMotors testMotors = null;// new TestMotors(); I think we have GroundDrive already doing this.
     public static OI oi;
+    public static ShooterSolenoid shooterSolenoid = new ShooterSolenoid();
 
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely

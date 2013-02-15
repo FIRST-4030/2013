@@ -6,6 +6,14 @@ package edu.wpi.first.wpilibj.templates.variablestores;
 public class VstM {
 
     /*
+     * Solenoid controls
+     */
+    public class Solenoids {
+
+        public static final int SHOOTER_SOLENOID_PORT = 1;
+    }
+
+    /*
      * Debug controls.
      */
     public class Debug {

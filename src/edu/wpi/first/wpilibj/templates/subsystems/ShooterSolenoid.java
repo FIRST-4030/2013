@@ -32,10 +32,6 @@ public class ShooterSolenoid extends Subsystem implements Debuggable {
         shooterSolenoidSide1.set(false);
         shooterSolenoidSide2.set(true);
     }
-    
-    public boolean isExtended() {
-        return shooterSolenoidSide1.get();
-    }
 
     public DebugInfoGroup getStatus() {
         DebugInfo info = new DebugInfo("ShooterSolenoid:Extending", shooterSolenoidSide1.get() ? "yes" : "no");

@@ -34,6 +34,4 @@ public class ShooterSolenoid extends Subsystem {
     public void stop() {
         shooterSolenoid.set(false);
     }
-    
-    
 }

@@ -26,6 +26,7 @@ public class RunShooterSolenoid extends CommandBase {
         if(oi.getDriveJoystick().getRawButton(1)) {
             RobotDebugger.push("RunShooterSolenoid", "Solenoid extending (hopefully)");
             shooterSolenoid.extend();
+         
         } else {
             RobotDebugger.push("RunShooterSolenoid", "Solenoid retracting (hopefully)");
             shooterSolenoid.retract();

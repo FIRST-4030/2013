@@ -2,7 +2,7 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.templates.commands.RunShooterSolenoid;
+import edu.wpi.first.wpilibj.templates.commands.RunShooter;
 import edu.wpi.first.wpilibj.templates.debugging.DebugInfo;
 import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
@@ -17,7 +17,7 @@ public class ShooterSolenoid extends Subsystem implements Debuggable {
     private Solenoid shooterSolenoidSide2 = new Solenoid(VstM.Solenoids.SHOOTER_SOLENOID_SIDE_2);
 
     public void initDefaultCommand() {
-        setDefaultCommand(new RunShooterSolenoid());
+        setDefaultCommand(new RunShooter());
     }
 
     public void extend() {

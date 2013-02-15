@@ -5,11 +5,10 @@ import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
  *
- * @author Robotics
  */
-public class RunShooterSolenoid extends CommandBase {
+public class RunShooter extends CommandBase {
 
-    public RunShooterSolenoid() {
+    public RunShooter() {
         requires(shooterSolenoid);
     }
 

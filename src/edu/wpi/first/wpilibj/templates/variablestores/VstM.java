@@ -88,6 +88,7 @@ public class VstM {
             public final static int TRIGGERS = 3;
             public final static int RIGHT_X = 4;
             public final static int RIGHT_Y = 5;
+            public final static int BUTTON_1 = 1;
         }
     }
 

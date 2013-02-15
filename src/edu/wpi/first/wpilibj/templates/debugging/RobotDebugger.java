@@ -34,4 +34,8 @@ public class RobotDebugger {
             d.getStatus().printEach();
         }
     }
+
+    public static void push(DebugInfoGroup infoGroup) {
+        infoGroup.printEach();
+    }
 }

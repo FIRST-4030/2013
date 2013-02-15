@@ -57,7 +57,6 @@ public class ProcessError {
         if (!isError) {
             return "No Error";
         }
-
         return errorString;
     }
 
@@ -65,7 +64,6 @@ public class ProcessError {
      * @return The object that this originated in, its NAME.
      */
     public String getCreator() {
-
         return creator == null ? "Unknown" : creator;
     }
 
@@ -75,22 +73,6 @@ public class ProcessError {
     public void broadcast() {
         String message = "Error Broadcast: Origin: " + getCreator() + " Error: " + errorString;
         System.err.println(message);
-    }
-
-    /**
-     * This method puts this error's message and creator to the SmartDashboard
-     * under the name specified.
-     *
-     * @param key The key to put the message under.
-     * @param putOwner Whether or not to include the creator's name in this
-     * message.
-     */
-    public void putToSmartDashboard(String key, boolean putOwner) {
-        if (key == null) {
-            throw new NullPointerException();
-        }
-        String message = (putOwner && creator != null ? "ErrCreator: " + creator + " " : "") + "ErrMessage: " + errorString;
-        SmartDashboard.putString(key, message);
     }
 
     /**

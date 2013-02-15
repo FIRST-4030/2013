@@ -5,6 +5,9 @@ import edu.wpi.first.wpilibj.image.ColorImage;
 import edu.wpi.first.wpilibj.image.NIVisionException;
 import edu.wpi.first.wpilibj.image.ParticleAnalysisReport;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.templates.debugging.DebugInfo;
+import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
+import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.helpers.ProcessError;
 import edu.wpi.first.wpilibj.templates.subsystems.Camera;
 import edu.wpi.first.wpilibj.templates.variablestores.VstC;
@@ -22,9 +25,14 @@ public class ImageProcessMain {
     public static void runReport(Camera mC) {
         mainCamera = mC;
         LinearDistanceReport ldp = calculateLinear();
-        ldp.getError().putToSmartDashboard("Linear Distance Calculate Error", false);
-        SmartDashboard.putNumber("Linear Distance Calculate Distance", ldp.getDistance());
-        SmartDashboard.putNumber("Linear Distance Calculate Number Of Targets", ldp.getNumberOfTargets());
+        DebugInfo[] infoList = new DebugInfo[5];
+        infoList[0] = new DebugInfo("LinearDistanceCalculate:Error:IsError", ldp.getError().isError() ? "yes" : "no");
+        infoList[1] = new DebugInfo("LinearDistanceCalculator:Error:Owner", ldp.getError().getCreator());
+        infoList[2] = new DebugInfo("LinearDistanceCalculator:Error:Error", ldp.getError().getMessage());
+        infoList[3] = new DebugInfo("LinearDistanceCalculate:Distance", ldp.getDistance());
+        infoList[4] = new DebugInfo("LinearDistanceCalculate:NumTargets", ldp.getNumberOfTargets());
+        DebugInfoGroup infoGroup = new DebugInfoGroup(infoList);
+        RobotDebugger.push(infoGroup);
         freeColorImage();
         freeBImage();
     }

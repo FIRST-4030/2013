@@ -13,17 +13,17 @@ public abstract class CommandBase extends Command {
     /**
      * SubSystems.
      */
+    public static ShooterMotors shooterMotors = new ShooterMotors();
+    public static ShooterSolenoid shooterSolenoid = new ShooterSolenoid();
+    public static PressureSwitch pressureSwitch = new PressureSwitch();
     public static Compressor compressor = new Compressor();
     public static Camera mainCamera = new Camera();
     public static Climber climber = new Climber();
-    public static PressureSwitch pressureSwitch = new PressureSwitch();
     public static GroundDrive groundDrive = new GroundDrive();
     public static RunClimber runClimber = new RunClimber();
     public static ClimberLimitSwitch climberLimitSwitch = new ClimberLimitSwitch();
     public static TestMotors testMotors = null;// new TestMotors(); I think we have GroundDrive already doing this.
     public static OI oi;
-    public static ShooterSolenoid shooterSolenoid = new ShooterSolenoid();
-    public static ShooterMotors shooterMotors = new ShooterMotors();
 
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely

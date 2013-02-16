@@ -28,6 +28,7 @@ public class RunShooterMotors extends CommandBase {
         if (VstJ.getShooterMotorToggleButtonValue() != buttonPressedLast) {
             buttonPressedLast = !buttonPressedLast;
             motorsToggled = !motorsToggled;
+            System.out.println("Toggling Shooter Motors");
         }
     }
 

@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.Joystick;
  */
 public class VstJ {
 
-    public static final boolean USING_XBOX = false;
+    public static boolean USING_XBOX = false;
 
     public static Joystick getDefaultJoystick() {
         return FixedMappings.getDefaultJoyStick();

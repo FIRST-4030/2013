@@ -10,7 +10,7 @@ public class FixedMappings {
     private static Joystick defaultJoystick;
 
     protected static void joyStickInit() {
-        defaultJoystick = new Joystick(VstJ.USING_XBOX ? FixedVars.Xbox.PORT : FixedVars.RegularJoyStick.PORT);
+        defaultJoystick = new Joystick(FixedVars.PORT);
     }
 
     protected static Joystick getDefaultJoyStick() {

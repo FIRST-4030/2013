@@ -1,7 +1,6 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.templates.OI;
 import edu.wpi.first.wpilibj.templates.subsystems.*;
 
 /**
@@ -14,7 +13,7 @@ public abstract class CommandBase extends Command {
      * SubSystems.
      */
     public static Compressor compressor = new Compressor();
-    public static Camera mainCamera = null;//new Camera();
+    public static Camera mainCamera = new Camera();
     public static Climber climber = new Climber();
     public static PressureSwitch pressureSwitch = new PressureSwitch();
     public static GroundDrive groundDrive = new GroundDrive();
@@ -23,6 +22,7 @@ public abstract class CommandBase extends Command {
     public static ShooterSolenoid shooterSolenoid = new ShooterSolenoid();
     public static ShooterMotors shooterMotors = new ShooterMotors();
     public static TestMotors testMotors = null;// new TestMotors(); I think we have GroundDrive already doing this.
+    
 
     public static void init() {
     }

@@ -23,7 +23,7 @@ public class Camera extends Subsystem {
     }
 
     /**
-     * This sets the Instance Variable camera to AxisCamera.getInstance()
+     * This sets the Instance Variable camera to AxisCamera.getInstance().
      */
     private void setCameraInstance() {
         if (this.camera != null) {
@@ -32,26 +32,23 @@ public class Camera extends Subsystem {
         AxisCamera axis;
         try {
             axis = AxisCamera.getInstance();
-        } catch (Exception e) {
+        } catch (Throwable t) {
             axis = null;
         }
-        if (axis == null) {
-            System.err.println("Camera: Unable to initialize camera");
-        } else {
+        if (axis != null) {
             camera = axis;
         }
-
     }
 
     /**
      * This gets the current IMAGE from the CAMERA.
      */
     public ColorImage takePicture() {
+        setCameraInstance();
         ColorImage image = null;
         try {
             image = camera.getImage();
-        } catch (Exception e) {
-            System.err.println("Camera: Unable to capture image from camera");
+        } catch (Throwable t) {
         }
         return image;
     }

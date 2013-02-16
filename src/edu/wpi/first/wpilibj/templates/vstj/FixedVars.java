@@ -5,12 +5,13 @@ package edu.wpi.first.wpilibj.templates.vstj;
  */
 class FixedVars {
 
+    protected static final int PORT = 1;
+
     /**
      * This is the XBox controller.
      */
     protected static class Xbox {
 
-        protected static final int PORT = 1;
         protected static final int LEFT_X_AXIS = 1;
         protected static final int LEFT_Y_AXIS = 2;
         protected static final int TRIGGERS_AXIS = 3;
@@ -27,7 +28,6 @@ class FixedVars {
      */
     protected static class RegularJoyStick {
 
-        protected static final int PORT = 1;
         protected static final int X_AXIS = 1;
         protected static final int Y_AXIS = 2;
         protected static final int TRIGGER_BUTTON = 1;

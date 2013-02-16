@@ -50,4 +50,8 @@ public class RobotDebugger {
     public static void push(DebugInfoGroup infoGroup) {
         infoGroup.printEach();
     }
+
+    public static void clearMap() {
+        table = new Hashtable();
+    }
 }

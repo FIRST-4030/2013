@@ -26,8 +26,7 @@ public class RunClimber extends CommandBase implements Debuggable {
         climber.stop();
         isClimbing.addDefault("Disable Climber", Boolean.FALSE);
         isClimbing.addObject("Enable Climber", Boolean.TRUE);
-        checkEnabled();
-        SmartDashboard.putData("Climber Enabled", isClimbing);
+        SmartDashboard.putData("Climber", isClimbing);
 
     }
 

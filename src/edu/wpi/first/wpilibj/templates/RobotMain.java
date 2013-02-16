@@ -74,5 +74,6 @@ public class RobotMain extends IterativeRobot {
     }
 
     public void disabledInit() {
+        RobotDebugger.clearMap();
     }
 }

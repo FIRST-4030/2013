@@ -22,9 +22,13 @@ public abstract class CommandBase extends Command {
     public static ShooterSolenoid shooterSolenoid = new ShooterSolenoid();
     public static ShooterMotors shooterMotors = new ShooterMotors();
     public static TestMotors testMotors = null;// new TestMotors(); I think we have GroundDrive already doing this.
-    
+    /**
+     * Commands.
+     */
+    public static XBoxDashboard controllerUpdate = new XBoxDashboard();
 
     public static void init() {
+        controllerUpdate.start();
     }
 
     public CommandBase(String name) {

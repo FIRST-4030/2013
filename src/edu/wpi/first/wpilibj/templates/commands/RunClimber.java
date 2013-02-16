@@ -44,6 +44,8 @@ public class RunClimber extends CommandBase implements Debuggable {
                 }
             }
             climber.runLadder(climbSpeed);
+        }else{
+            climber.runLadder(0);
         }
         RobotDebugger.push(climber);
         RobotDebugger.push(this);

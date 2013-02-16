@@ -51,8 +51,8 @@ public class GroundDrive extends Subsystem implements Debuggable {
             return;
         }
         lastController = js;
-        double speed = multiplier * js.getY();
-        double turn = multiplier * js.getX();
+        double speed = multiplier * js.getX();
+        double turn = multiplier * js.getY();
         roboDrive.arcadeDrive(speed, turn);
     }
 

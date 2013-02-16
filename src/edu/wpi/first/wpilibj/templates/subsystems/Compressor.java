@@ -26,7 +26,7 @@ public class Compressor extends Subsystem implements Debuggable {
      */
     public void start() {
         VstP.setCompressorRunning(true);
-        compressor.set(Relay.Value.kForward);
+        compressor.set(Relay.Value.kOn);
         RobotDebugger.push(this);
     }
 

@@ -1,8 +1,6 @@
 package edu.wpi.first.wpilibj.templates.vstj;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
-import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 
 /**
  * This class holds variables about JoySticks. It is slightly variable. It holds
@@ -10,7 +8,7 @@ import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
  */
 public class VstJ {
 
-    public static final boolean USING_XBOX = true;
+    public static final boolean USING_XBOX = false;
 
     public static Joystick getDefaultJoystick() {
         return FixedMappings.getDefaultJoyStick();

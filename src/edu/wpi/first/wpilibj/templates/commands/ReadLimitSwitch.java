@@ -4,7 +4,8 @@ import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
 /**
- * Read the limit switch and set VstM.Climber.climberState according to the limit switches.
+ * Read the limit switch and set VstM.Climber.climberState according to the
+ * limit switches.
  */
 public class ReadLimitSwitch extends CommandBase {
 

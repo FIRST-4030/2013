@@ -4,6 +4,7 @@ package edu.wpi.first.wpilibj.templates.vstj;
  * Fixed Variables, like button numbers / ports.
  */
 class FixedVars {
+
     /**
      * Whether to use the XBox controller or the Regular Joy Stick.
      */

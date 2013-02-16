@@ -7,11 +7,11 @@ import edu.wpi.first.wpilibj.Joystick;
  * different joystick configurations.
  */
 public class VstJ {
-    
+
     public static Joystick getDefaultJoystick() {
         return FixedMappings.getDefaultJoyStick();
     }
-    
+
     public static int getClimberAxisNumber() {
         return FixedMappings.getClimberAxisNumber();
     }
@@ -19,11 +19,11 @@ public class VstJ {
     public static double getClimberAxisValue() {
         return FixedMappings.getDefaultJoyStick().getRawAxis(FixedMappings.getClimberAxisNumber());
     }
-    
+
     public static int getShooterSolenoidPushButtonNumber() {
         return FixedMappings.getShooterSolenoidPushButtonNumber();
     }
-    
+
     public static boolean getShooterSolenoidPushButtonValue() {
         return FixedMappings.getDefaultJoyStick().getRawButton(FixedMappings.getShooterSolenoidPushButtonNumber());
     }

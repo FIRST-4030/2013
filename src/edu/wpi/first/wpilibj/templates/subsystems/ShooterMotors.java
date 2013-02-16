@@ -12,14 +12,14 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstM;
  *
  */
 public final class ShooterMotors extends Subsystem implements Debuggable {
-    
+
     private Jaguar firstMotor = new Jaguar(VstM.PWM.FIRST_SHOOTER_MOTOR_PORT);
     private Jaguar secondMotor = new Jaguar(VstM.PWM.SECOND_SHOOTER_MOTOR_PORT);
-    
+
     public ShooterMotors() {
         setSpeed(0);
     }
-    
+
     protected void initDefaultCommand() {
         setDefaultCommand(new RunShooterMotors());
     }
@@ -39,7 +39,7 @@ public final class ShooterMotors extends Subsystem implements Debuggable {
         firstMotor.set(speed * 0.75);
         secondMotor.set(speed);
     }
-    
+
     public DebugInfoGroup getStatus() {
         DebugStatus[] infoList = new DebugStatus[2];
         infoList[0] = new DebugStatus("ShooterMotors:FirstMotorSpeed", firstMotor.get());

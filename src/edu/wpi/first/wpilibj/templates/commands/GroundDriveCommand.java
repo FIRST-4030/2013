@@ -1,12 +1,16 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
+import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
+import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 
 /**
  * Ground Drive Command.
  */
-public class GroundDriveCommand extends CommandBase {
+public class GroundDriveCommand extends CommandBase implements Debuggable {
 
+    private boolean highSpeed = false;
     private boolean isDone = false;
 
     public GroundDriveCommand() {
@@ -36,5 +40,9 @@ public class GroundDriveCommand extends CommandBase {
     // Called when another command which requires one or more of the same subsystems is scheduled to run
     protected void interrupted() {
         end();
+    }
+
+    public DebugInfoGroup getStatus() {
+        return new DebugInfoGroup(new DebugStatus("GroundDrive:Speed", highSpeed ? "High" : "Low"));
     }
 }

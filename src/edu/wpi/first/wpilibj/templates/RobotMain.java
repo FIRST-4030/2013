@@ -5,10 +5,11 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.templates.commands.*;
 import edu.wpi.first.wpilibj.templates.debugging.DebugInfo;
-import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
-import edu.wpi.first.wpilibj.templates.debugging.DebugPortInfo;
+import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
+import edu.wpi.first.wpilibj.templates.debugging.Message;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
+import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
  * Main Robot Class.
@@ -27,18 +28,19 @@ public class RobotMain extends IterativeRobot {
 
     private void pushPorts() {
         //Tell the person on the Console/SmartDashboard what ports things should be.
-        DebugInfo[] infoList = new DebugInfo[9];
-        infoList[0] = new DebugPortInfo("LeftMotor", VstM.PWM.LEFT_MOTOR_PORT);
-        infoList[1] = new DebugPortInfo("RightMotor", VstM.PWM.RIGHT_MOTOR_PORT);
-        infoList[2] = new DebugPortInfo("ClimberMotor", VstM.PWM.CLIMBER_MOTOR_PORT);
-        infoList[3] = new DebugPortInfo("FirstShooterMotor", VstM.PWM.FIRST_SHOOTER_MOTOR_PORT);
-        infoList[4] = new DebugPortInfo("SecondShooterMotor", VstM.PWM.SECOND_SHOOTER_MOTOR_PORT);
-        infoList[5] = new DebugPortInfo("ClimberBottomSwitch", VstM.Digital.CLIMBER_BOTTOM);
-        infoList[6] = new DebugPortInfo("ClimberTopSwitch", VstM.Digital.CLIMBER_TOP);
-        infoList[7] = new DebugPortInfo("ShooterSoenoid1", VstM.Solenoids.SHOOTER_SOLENOID_SIDE_1);
-        infoList[8] = new DebugPortInfo("ShooterSoenoid2", VstM.Solenoids.SHOOTER_SOLENOID_SIDE_2);
-        DebugInfoGroup debugInfoGroup = new DebugInfoGroup(infoList);
-        RobotDebugger.push(debugInfoGroup);
+        String info = "Port Info: ";
+        info += ("LeftMotor:" + VstM.PWM.LEFT_MOTOR_PORT);
+        info += ("RightMotor:" + VstM.PWM.RIGHT_MOTOR_PORT);
+        info += ("ClimberMotor:" + VstM.PWM.CLIMBER_MOTOR_PORT);
+        info += ("FirstShooterMotor:" + VstM.PWM.FIRST_SHOOTER_MOTOR_PORT);
+        info += ("SecondShooterMotor:" + VstM.PWM.SECOND_SHOOTER_MOTOR_PORT);
+        info += ("ClimberBottomSwitch:" + VstM.Digital.CLIMBER_BOTTOM);
+        info += ("ClimberTopSwitch:" + VstM.Digital.CLIMBER_TOP);
+        info += ("ShooterSoenoid1:" + VstM.Solenoids.SHOOTER_SOLENOID_SIDE_1);
+        info += ("ShooterSoenoid2:" + VstM.Solenoids.SHOOTER_SOLENOID_SIDE_2);
+        DebugInfo debugInfo = new Message(info);
+        RobotDebugger.push(debugInfo);
+        RobotDebugger.push(new DebugStatus("USING XBOX", VstJ.USING_XBOX));
     }
 
     public void autonomousInit() {

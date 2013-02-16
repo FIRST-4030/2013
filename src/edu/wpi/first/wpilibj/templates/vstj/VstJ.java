@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj.Joystick;
  */
 public class VstJ {
 
+    public static final boolean USING_XBOX = true;
+
     public static Joystick getDefaultJoystick() {
         return FixedMappings.getDefaultJoyStick();
     }
@@ -28,11 +30,27 @@ public class VstJ {
         return FixedMappings.getDefaultJoyStick().getRawButton(FixedMappings.getShooterSolenoidPushButtonNumber());
     }
 
-    public static int getShooterMotorToggleButtonNumber() {
-        return FixedMappings.getShooterMotorToggleButtonNumber();
+    public static int getShooterMotorSpeedUpButtonNumber() {
+        return FixedMappings.getShooterMotorSpeedUpButtonNumber();
     }
 
-    public static boolean getShooterMotorToggleButtonValue() {
-        return FixedMappings.getDefaultJoyStick().getRawButton(FixedMappings.getShooterMotorToggleButtonNumber());
+    public static boolean getShooterMotorSpeedUpButtonValue() {
+        return FixedMappings.getDefaultJoyStick().getRawButton(FixedMappings.getShooterMotorSpeedUpButtonNumber());
+    }
+
+    public static boolean getShooterMotorSpeedDownButtonValue() {
+        return FixedMappings.getDefaultJoyStick().getRawButton(FixedMappings.getShooterMotorSpeedDownButtonNumber());
+    }
+
+    public static int getShooterMotorSpeedDownButtonNumber() {
+        return FixedMappings.getShooterMotorSpeedDownButtonNumber();
+    }
+
+    public static int getDriveSpeedToggleButtonNumber() {
+        return FixedMappings.getDriveSpeedToggleButtonNumber();
+    }
+
+    public static boolean getDriveSpeedToggleButtonValue() {
+        return FixedMappings.getDefaultJoyStick().getRawButton(FixedMappings.getDriveSpeedToggleButtonNumber());
     }
 }

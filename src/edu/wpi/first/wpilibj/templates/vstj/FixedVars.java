@@ -6,11 +6,6 @@ package edu.wpi.first.wpilibj.templates.vstj;
 class FixedVars {
 
     /**
-     * Whether to use the XBox controller or the Regular Joy Stick.
-     */
-    protected static final boolean USING_XBOX = true;
-
-    /**
      * This is the XBox controller.
      */
     protected static class Xbox {
@@ -36,5 +31,8 @@ class FixedVars {
         protected static final int X_AXIS = 1;
         protected static final int Y_AXIS = 2;
         protected static final int TRIGGER_BUTTON = 1;
+        protected static final int TOP_MIDDLE_BUTTON = 3;
+        protected static final int TOP_LEFT_BUTTON = 4;
+        protected static final int TOP_RIGHT_BUTTON = 5;
     }
 }

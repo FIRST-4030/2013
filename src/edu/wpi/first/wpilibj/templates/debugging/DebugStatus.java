@@ -34,6 +34,14 @@ public class DebugStatus implements DebugInfo {
         this.message = String.valueOf(value);
     }
 
+    public DebugStatus(String key, boolean value) {
+        if (key == null) {
+            throw new IllegalArgumentException("No Null Arguments");
+        }
+        this.key = key;
+        this.message = value ? "yes" : "no";
+    }
+
     public String key() {
         return key;
     }

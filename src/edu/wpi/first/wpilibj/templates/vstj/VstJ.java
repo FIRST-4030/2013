@@ -1,6 +1,8 @@
 package edu.wpi.first.wpilibj.templates.vstj;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
+import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 
 /**
  * This class holds variables about JoySticks. It is slightly variable. It holds

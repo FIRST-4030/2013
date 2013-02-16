@@ -18,7 +18,7 @@ public class RunShooterMotors extends CommandBase implements Debuggable {
     protected void initialize() {
         shooterMotors.setSpeed(0);
     }
-    private int motorSpeed = 0;
+    private double motorSpeed = 0;
     private boolean buttonPressedLastUp = false;
     private boolean buttonPressedLastDown = false;
 

@@ -14,7 +14,7 @@ public abstract class CommandBase extends Command {
      * SubSystems.
      */
     public static Compressor compressor = new Compressor();
-    public static Camera mainCamera = new Camera();
+    public static Camera mainCamera = null;//new Camera();
     public static Climber climber = new Climber();
     public static PressureSwitch pressureSwitch = new PressureSwitch();
     public static GroundDrive groundDrive = new GroundDrive();

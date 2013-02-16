@@ -18,9 +18,9 @@ public class RunShooterSolenoid extends CommandBase {
 
     protected void execute() {
         if (VstJ.getShooterSolenoidPushButtonValue()) {
-            shooterSolenoid.extend();
-        } else {
             shooterSolenoid.retract();
+        } else {
+            shooterSolenoid.extend();
         }
         RobotDebugger.push(shooterSolenoid);
     }

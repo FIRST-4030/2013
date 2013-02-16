@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
 import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
+import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
  * Ground Drive Command.
@@ -19,13 +20,16 @@ public class GroundDriveCommand extends CommandBase implements Debuggable {
 
     // Called just before this Command runs the first time.
     protected void initialize() {
-        groundDrive.driveWithDefaultController();
+        groundDrive.stop();
         RobotDebugger.push(groundDrive);
     }
 
     // Called repeatedly when this Command is scheduled to run.
     protected void execute() {
-        isDone = true;
+        updateHighSpeed();
+        groundDrive.setSpeedMutliplier(highSpeed ? 1 : 0.5);
+        groundDrive.driveWithDefaultController();
+        RobotDebugger.push(groundDrive);
     }
 
     // Make this return true when this Command no longer needs to run execute().
@@ -44,5 +48,15 @@ public class GroundDriveCommand extends CommandBase implements Debuggable {
 
     public DebugInfoGroup getStatus() {
         return new DebugInfoGroup(new DebugStatus("GroundDrive:Speed", highSpeed ? "High" : "Low"));
+    }
+    private boolean lastPressed;
+
+    private void updateHighSpeed() {
+        if (VstJ.getDriveSpeedToggleButtonValue() != lastPressed) {
+            if (lastPressed) {
+                highSpeed = !highSpeed;
+            }
+            lastPressed = !lastPressed;
+        }
     }
 }

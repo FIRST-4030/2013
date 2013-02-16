@@ -29,21 +29,49 @@ public class GroundDrive extends Subsystem implements Debuggable {
         setDefaultCommand(new GroundDriveCommand());
     }
 
+    /**
+     * Sets a variable that will be multiplied by the input from whatever
+     * joystick there is. Must be between 0 and 1.
+     */
+    public void setSpeedMutliplier(double d) {
+        if (d < 0 || d > 1) {
+            throw new IllegalArgumentException();
+        }
+        multiplier = d;
+    }
+    private double multiplier;
+
     public void driveWithDefaultController() {
         driveWithController(VstJ.getDefaultJoystick());
     }
+    private Joystick lastController;
 
     public void driveWithController(Joystick js) {
-        roboDrive.arcadeDrive(js);
+        if (js == null) {
+            return;
+        }
+        lastController = js;
+        double speed = multiplier * js.getY();
+        double turn = multiplier * js.getX();
+        roboDrive.arcadeDrive(speed, turn);
+    }
+
+    public void driveWithLast() {
+        driveWithController(lastController);
     }
 
     /**
      * Get Current Status Info.
      */
     public DebugInfoGroup getStatus() {
-        DebugStatus[] infoList = new DebugStatus[2];
+        DebugStatus[] infoList = new DebugStatus[3];
         infoList[0] = new DebugStatus("GroundDrive:LeftMotor:Speed", leftMotor.get());
         infoList[1] = new DebugStatus("GroundDrive:RightMotor:Speed", rightMotor.get());
+        infoList[2] = new DebugStatus("GroundDrive:SpeedMultiplier", multiplier);
         return new DebugInfoGroup(infoList);
+    }
+
+    public void stop() {
+        roboDrive.stopMotor();
     }
 }

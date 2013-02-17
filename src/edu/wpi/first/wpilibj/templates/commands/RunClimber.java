@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.variablestores.DashboardStore;
+import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
  * This Command runs the climber motors (The ones powering the "cart" that goes
@@ -25,6 +26,10 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
     private double speed = 0;
     private boolean lowerPressed;
     private boolean upperPressed;
+    /**
+     * False is going down, true is going up.
+     */
+    private boolean lastAutoState = false;
 
     public RunClimber() {
         requires(climber);
@@ -49,9 +54,14 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
     private void runClimber() {
         if (DashboardStore.getIsClimberEnabled()) {
             if (DashboardStore.getIsClimberAuto()) {
-                
+                if (upperPressed) {
+                    lastAutoState = false;
+                } else if (lowerPressed) {
+                    lastAutoState = true;
+                }
+                speed = lastAutoState ? 0.8 : -0.8;
             } else {
-                
+                speed = VstJ.getLadderControlAxisValue() - 0.1;
                 if (upperPressed && speed > 0) {
                     speed = 0;
                 }

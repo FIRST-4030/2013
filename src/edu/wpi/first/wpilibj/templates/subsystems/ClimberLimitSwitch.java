@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.commands.ReadLimitSwitch;
 import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
 import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
+import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
@@ -35,8 +36,8 @@ public class ClimberLimitSwitch extends Subsystem implements Debuggable {
 
     public DebugOutput getStatus() {
         DebugStatus[] infoList = new DebugStatus[2];
-        infoList[0] = new DebugStatus("ClimberLimitSwitch:UpperLimit:Triggered", upperLimit.get());
-        infoList[1] = new DebugStatus("ClimberLimitSwitch:LowerLimit:Triggered", lowerLimit.get());
+        infoList[0] = new DebugStatus("ClimberLimitSwitch:UpperLimit:Triggered", upperLimit.get(), DebugLevel.HIGH);
+        infoList[1] = new DebugStatus("ClimberLimitSwitch:LowerLimit:Triggered", lowerLimit.get(), DebugLevel.HIGH);
         DebugInfoGroup infoGroup = new DebugInfoGroup(infoList);
         return infoGroup;
     }

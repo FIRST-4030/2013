@@ -1,5 +1,6 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
@@ -77,6 +78,6 @@ public class RunShooterMotors extends CommandBase implements Debuggable {
     }
 
     public DebugOutput getStatus() {
-        return new DebugStatus("ShooterMotors:ShouldBeSpeed", motorSpeed);
+        return new DebugStatus("ShooterMotors:ShouldBeSpeed", motorSpeed, DebugLevel.LOW);
     }
 }

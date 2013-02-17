@@ -8,13 +8,15 @@ package edu.wpi.first.wpilibj.templates.debugging;
  */
 public abstract class DebugInfo extends DebugOutput {
 
-    public abstract String key();
+    protected abstract String key();
 
-    public abstract String message();
+    protected abstract String message();
 
-    public abstract boolean isConsole();
+    protected abstract boolean isConsole();
 
-    public abstract boolean isDashboard();
+    protected abstract boolean isDashboard();
+    
+    protected abstract int debugLevel();
 
     protected void debug() {
         RobotDebugger.push(this);

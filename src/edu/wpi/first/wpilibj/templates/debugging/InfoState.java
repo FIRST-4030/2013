@@ -13,25 +13,30 @@ public class InfoState extends DebugInfo {
 
     private String key;
     private String message;
+    private int level;
 
-    public InfoState(String owner, String state) {
+    public InfoState(String owner, String state, int level) {
         this.key = owner + ":State";
         this.message = state;
     }
 
-    public String key() {
+    protected String key() {
         return key;
     }
 
-    public String message() {
+    protected String message() {
         return message;
     }
 
-    public boolean isConsole() {
+    protected boolean isConsole() {
         return false;
     }
 
-    public boolean isDashboard() {
+    protected boolean isDashboard() {
         return true;
+    }
+
+    protected int debugLevel() {
+        return level;
     }
 }

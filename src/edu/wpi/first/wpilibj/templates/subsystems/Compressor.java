@@ -3,6 +3,7 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.commands.RunCompressor;
+import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
@@ -11,7 +12,8 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 import edu.wpi.first.wpilibj.templates.variablestores.VstP;
 
 /**
- * This is the subsystem to handle the Compressor. It will power depending on VstP values.
+ * This is the subsystem to handle the Compressor. It will power depending on
+ * VstP values.
  */
 public class Compressor extends Subsystem implements Debuggable {
 
@@ -40,6 +42,6 @@ public class Compressor extends Subsystem implements Debuggable {
     }
 
     public DebugOutput getStatus() {
-        return new DebugStatus("Compressor:ShouldRun", (VstP.compressorRunning() ? "yes" : "no"));
+        return new DebugStatus("Compressor:ShouldRun", VstP.compressorRunning(), DebugLevel.LOW);
     }
 }

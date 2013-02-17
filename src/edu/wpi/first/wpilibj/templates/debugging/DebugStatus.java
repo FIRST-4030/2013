@@ -17,52 +17,73 @@ public class DebugStatus extends DebugInfo {
 
     private String key;
     private String message;
+    private int level;
 
-    public DebugStatus(String key, String message) {
+    public DebugStatus(String key, String message, int level) {
+        if (level < DebugLevel.NEVER || level > DebugLevel.ALWAYS) {
+            throw new IllegalArgumentException("To High/Low of a level");
+        }
         if (key == null || message == null) {
             throw new IllegalArgumentException("No Null Arguments");
         }
         this.key = key + ":Status";
         this.message = message;
+        this.level = level;
     }
 
-    public DebugStatus(String key, double value) {
+    public DebugStatus(String key, double value, int level) {
+        if (level < DebugLevel.NEVER || level > DebugLevel.ALWAYS) {
+            throw new IllegalArgumentException("To High/Low of a level");
+        }
         if (key == null) {
             throw new IllegalArgumentException("No Null Arguments");
         }
         this.key = key + ":Status";
         this.message = String.valueOf(HM.round(100, value));
+        this.level = level;
     }
 
-    public DebugStatus(String key, int value) {
+    public DebugStatus(String key, int value, int level) {
+        if (level < DebugLevel.NEVER || level > DebugLevel.ALWAYS) {
+            throw new IllegalArgumentException("To High/Low of a level");
+        }
         if (key == null) {
             throw new IllegalArgumentException("No Null Arguments");
         }
         this.key = key + ":Status";
         this.message = String.valueOf(value);
+        this.level = level;
     }
 
-    public DebugStatus(String key, boolean value) {
+    public DebugStatus(String key, boolean value, int level) {
+        if (level < DebugLevel.NEVER || level > DebugLevel.ALWAYS) {
+            throw new IllegalArgumentException("To High/Low of a level");
+        }
         if (key == null) {
             throw new IllegalArgumentException("No Null Arguments");
         }
         this.key = key + ":Status";
         this.message = value ? "Yes" : "No";
+        this.level = level;
     }
 
-    public String key() {
+    protected String key() {
         return key;
     }
 
-    public String message() {
+    protected String message() {
         return message;
     }
 
-    public boolean isConsole() {
+    protected boolean isConsole() {
         return true;
     }
 
-    public boolean isDashboard() {
+    protected boolean isDashboard() {
         return true;
+    }
+
+    protected int debugLevel() {
+        return level;
     }
 }

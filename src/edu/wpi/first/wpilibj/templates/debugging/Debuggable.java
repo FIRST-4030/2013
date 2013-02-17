@@ -8,7 +8,7 @@ package edu.wpi.first.wpilibj.templates.debugging;
 public interface Debuggable {
 
     /**
-     * This should ALWAYS contain a group with the same keys!!!!.
+     * This should ALWAYS contain a group with the same keys!!!!. (And Levels)
      */
     public DebugOutput getStatus();
 }

@@ -11,26 +11,38 @@ public class Message extends DebugInfo {
     private static int number = 0;
     private String message;
     private String key;
+    private int level;
 
-    public Message(String message) {
+    public Message(String message, int level) {
+        if (level < DebugLevel.NEVER || level >DebugLevel.ALWAYS) {
+            throw new IllegalArgumentException("To low/high of a level in Message()");
+        }
+        if (message == null) {
+            throw new IllegalArgumentException("Null Message");
+        }
         number++;
         this.message = message;
         key = "Message:" + number;
+        this.level = level;
     }
 
-    public String key() {
+    protected String key() {
         return key;
     }
 
-    public String message() {
+    protected String message() {
         return message;
     }
 
-    public boolean isConsole() {
+    protected boolean isConsole() {
         return true;
     }
 
-    public boolean isDashboard() {
+    protected boolean isDashboard() {
         return false;
+    }
+
+    protected int debugLevel() {
+        return level;
     }
 }

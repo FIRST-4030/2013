@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.templates.commands.*;
 import edu.wpi.first.wpilibj.templates.debugging.DebugInfo;
+import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.Message;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
@@ -35,7 +36,7 @@ public class RobotMain extends IterativeRobot {
         info += ("ClimberTopSwitch:" + VstM.Relays.CLIMBER_UPPER_LIMIT_SWITCH + " - ");
         info += ("ShooterSoenoid1:" + VstM.Solenoids.SHOOTER_SOLENOID_SIDE_1 + " - ");
         info += ("ShooterSoenoid2:" + VstM.Solenoids.SHOOTER_SOLENOID_SIDE_2 + " - ");
-        DebugInfo debugInfo = new Message(info);
+        DebugInfo debugInfo = new Message(info, DebugLevel.LOWEST);
         RobotDebugger.push(debugInfo);
     }
 

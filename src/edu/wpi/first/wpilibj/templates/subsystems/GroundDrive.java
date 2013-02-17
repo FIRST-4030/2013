@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.commands.GroundDriveCommand;
 import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
 import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
+import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
@@ -66,9 +67,9 @@ public class GroundDrive extends Subsystem implements Debuggable {
      */
     public DebugOutput getStatus() {
         DebugStatus[] infoList = new DebugStatus[3];
-        infoList[0] = new DebugStatus("GroundDrive:LeftMotor:Speed", leftMotor.get());
-        infoList[1] = new DebugStatus("GroundDrive:RightMotor:Speed", rightMotor.get());
-        infoList[2] = new DebugStatus("GroundDrive:SpeedMultiplier", multiplier);
+        infoList[0] = new DebugStatus("GroundDrive:LeftMotor:Speed", leftMotor.get(), DebugLevel.MID);
+        infoList[1] = new DebugStatus("GroundDrive:RightMotor:Speed", rightMotor.get(), DebugLevel.MID);
+        infoList[2] = new DebugStatus("GroundDrive:SpeedMultiplier", multiplier, DebugLevel.HIGHEST);
         return new DebugInfoGroup(infoList);
     }
 

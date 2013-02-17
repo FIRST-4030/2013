@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.templates.variablestores;
 
+import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
+
 /**
  * This is the main variable store. It holds a lot of things.
  */
@@ -40,6 +42,11 @@ public class VstM {
          * This is the main debug variable.
          */
         public static final boolean DEBUG = DASHBOARD || CONSOLE;
+        /**
+         * This is the minimum level a report has to be in order to be pushed.
+         * Always Use DebugLevel.LEVELNAME
+         */
+        public static final int DEBUG_LEVEL = DebugLevel.HIGH;
     }
 
     /**

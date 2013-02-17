@@ -15,11 +15,11 @@ public class RobotDebugger {
     /**
      * This pushes this info to the SmartDashboard/Console.
      */
-    private static void push(String key, String message, boolean isConsole, boolean isDashboard) {
+    private static void rawPush(String key, String message, boolean isConsole, boolean isDashboard, int debugLevel) {
         if (key == null || message == null) {
             throw new IllegalArgumentException("No Null Arguments");
         }
-        if (VstM.Debug.DEBUG && (isConsole || isDashboard)) {
+        if (VstM.Debug.DEBUG && (debugLevel >= VstM.Debug.DEBUG_LEVEL)) {
             if (!message.equals((String) table.get(key))) {
                 table.put(key, message);
                 if (VstM.Debug.CONSOLE && isConsole) {
@@ -38,28 +38,22 @@ public class RobotDebugger {
      * only for other places. If you have a subsystem it should inherent
      * Debuggable, then you should push it.
      */
-    protected static void push(DebugInfo di) {
-        if (VstM.Debug.DEBUG) {
-            push(di.key(), di.message(), di.isConsole(), di.isDashboard());
-        }
+    protected static void pushInfo(DebugInfo di) {
+        rawPush(di.key(), di.message(), di.isConsole(), di.isDashboard(), di.debugLevel());
     }
 
     /**
      * Check the status of the Debuggable and push it if Debugging is one.
      */
     public static void push(Debuggable d) {
-        if (VstM.Debug.DEBUG) {
-            d.getStatus().debug();
-        }
+        d.getStatus().debug();
     }
 
     /**
      * Push this DebugOutput if Debugging.
      */
     public static void push(DebugOutput dp) {
-        if (VstM.Debug.DEBUG) {
-            dp.debug();
-        }
+        dp.debug();
     }
 
     /**

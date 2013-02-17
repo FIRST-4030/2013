@@ -3,6 +3,7 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.commands.RunClimber;
+import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
@@ -30,6 +31,6 @@ public class Climber extends Subsystem implements Debuggable {
     }
 
     public DebugOutput getStatus() {
-        return new DebugStatus("Climber:Speed", climber.get());
+        return new DebugStatus("Climber:Speed", climber.get(), DebugLevel.HIGHEST);
     }
 }

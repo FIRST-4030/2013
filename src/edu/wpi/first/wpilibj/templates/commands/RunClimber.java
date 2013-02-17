@@ -2,6 +2,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.debugging.DebugInfo;
 import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
+import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
@@ -80,8 +81,8 @@ public class RunClimber extends CommandBase implements Debuggable {
 
     public DebugOutput getStatus() {
         DebugInfo[] infoList = new DebugInfo[2];
-        infoList[0] = new InfoState("Climber", isEnabled() ? "Enabled" : "Disabled");
-        infoList[1] = new DebugStatus("ClimberShouldBe", speed);
+        infoList[0] = new InfoState("Climber", isEnabled() ? "Enabled" : "Disabled",  DebugLevel.HIGHEST);
+        infoList[1] = new DebugStatus("ClimberShouldBe", speed, DebugLevel.LOW);
         return new DebugInfoGroup(infoList);
     }
     private boolean isEnabled;

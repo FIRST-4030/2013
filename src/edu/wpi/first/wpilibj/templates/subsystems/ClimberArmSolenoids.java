@@ -3,6 +3,7 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.commands.RunClimberArmSolenoids;
+import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.InfoState;
@@ -47,6 +48,6 @@ public final class ClimberArmSolenoids extends Subsystem implements Debuggable {
     }
 
     public DebugOutput getStatus() {
-        return new InfoState("ClimberArmSolenoids", state);
+        return new InfoState("ClimberArmSolenoids", state, DebugLevel.LOW);
     }
 }

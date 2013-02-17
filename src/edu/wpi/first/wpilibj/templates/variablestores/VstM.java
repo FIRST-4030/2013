@@ -86,6 +86,11 @@ public class VstM {
     public static class Climber {
 
         /**
+         * This represents whether or not the Climber is enabled, from the input
+         * on the SmartDashboardrd.
+         */
+        public static boolean climberEnabled = false;
+        /**
          * This variable should represent the state of the Climber Motors.
          *
          * 0 for off.

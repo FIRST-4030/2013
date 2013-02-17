@@ -12,16 +12,17 @@ public abstract class CommandBase extends Command {
     /**
      * SubSystems.
      */
-    public static Compressor compressor = new Compressor();
-    public static Camera mainCamera = new Camera();
-    public static Climber climber = new Climber();
-    public static PressureSwitch pressureSwitch = new PressureSwitch();
-    public static GroundDrive groundDrive = new GroundDrive();
-    public static RunClimber runClimber = new RunClimber();
-    public static ClimberLimitSwitch climberLimitSwitch = new ClimberLimitSwitch();
-    public static ShooterSolenoid shooterSolenoid = new ShooterSolenoid();
-    public static ShooterMotors shooterMotors = new ShooterMotors();
-    public static TestMotors testMotors = null;// new TestMotors(); I think we have GroundDrive already doing this.
+    protected static Compressor compressor = new Compressor();
+    protected static Camera mainCamera = new Camera();
+    protected static Climber climber = new Climber();
+    protected static PressureSwitch pressureSwitch = new PressureSwitch();
+    protected static GroundDrive groundDrive = new GroundDrive();
+    protected static RunClimber runClimber = new RunClimber();
+    protected static ClimberLimitSwitch climberLimitSwitch = new ClimberLimitSwitch();
+    protected static ShooterSolenoid shooterSolenoid = new ShooterSolenoid();
+    protected static ShooterMotors shooterMotors = new ShooterMotors();
+    protected static TestMotors testMotors = null;// new TestMotors(); I think we have GroundDrive already doing this.
+    protected static ClimberArmSolenoids climberArmSolenoids = null;
     /**
      * Commands.
      */

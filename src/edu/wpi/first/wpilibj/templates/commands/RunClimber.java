@@ -1,11 +1,10 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
+import edu.wpi.first.wpilibj.templates.variablestores.DashboardStore;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
@@ -14,19 +13,14 @@ import edu.wpi.first.wpilibj.templates.vstj.VstJ;
  */
 public class RunClimber extends CommandBase implements Debuggable {
 
-    private SendableChooser isClimbing;
-
     public RunClimber() {
         requires(climber);
-        isClimbing = new SendableChooser();
+        DashboardStore.initClimber();
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
         climber.stop();
-        isClimbing.addDefault("Disable Climber", Boolean.FALSE);
-        isClimbing.addObject("Enable Climber", Boolean.TRUE);
-        SmartDashboard.putData("Climber", isClimbing);
 
     }
 
@@ -76,7 +70,7 @@ public class RunClimber extends CommandBase implements Debuggable {
     private boolean isEnabled;
 
     private void checkEnabled() {
-        isEnabled = Boolean.TRUE == isClimbing.getSelected();
+        isEnabled = DashboardStore.getClimberEnabled();
     }
 
     private boolean isEnabled() {

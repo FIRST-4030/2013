@@ -4,20 +4,20 @@ package edu.wpi.first.wpilibj.templates.debugging;
  *
  * @author daboross
  */
-public class Message implements DebugInfo {
+public class Message extends DebugInfo {
 
     private static int number = 0;
     private String message;
-    private int numberthis;
+    private String key;
 
     public Message(String message) {
         number++;
         this.message = message;
-        numberthis = number;
+        key = "Message:" + number;
     }
 
     public String key() {
-        return "Message" + numberthis;
+        return key;
     }
 
     public String message() {

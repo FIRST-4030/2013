@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.templates.HM;
 /**
  * Status Report of something.
  */
-public class DebugStatus implements DebugInfo {
+public class DebugStatus extends DebugInfo {
 
     private String key;
     private String message;
@@ -39,7 +39,7 @@ public class DebugStatus implements DebugInfo {
             throw new IllegalArgumentException("No Null Arguments");
         }
         this.key = key;
-        this.message = value ? "yes" : "no";
+        this.message = value ? "Yes" : "No";
     }
 
     public String key() {

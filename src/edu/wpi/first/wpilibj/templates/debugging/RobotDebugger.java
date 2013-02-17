@@ -20,11 +20,11 @@ public class RobotDebugger {
             if (!message.equals((String) table.get(key))) {
                 table.put(key, message);
                 if (VstM.Debug.CONSOLE && isConsole) {
-                    System.out.println("Update: " + key + ": " + message);
+                    System.out.println("DebugChange: " + key + ": " + message);
                 }
 
                 if (VstM.Debug.DASHBOARD & isDashboard) {
-                    SmartDashboard.putString("Status:" + key, message);
+                    SmartDashboard.putString(key, message);
                 }
             }
         }
@@ -35,7 +35,7 @@ public class RobotDebugger {
      * only for other places. If you have a subsystem it should inherent
      * Debuggable, then you should push it.
      */
-    public static void push(DebugInfo di) {
+    protected static void push(DebugInfo di) {
         if (VstM.Debug.DEBUG) {
             push(di.key(), di.message(), di.isConsole(), di.isDashboard());
         }
@@ -43,12 +43,14 @@ public class RobotDebugger {
 
     public static void push(Debuggable d) {
         if (VstM.Debug.DEBUG) {
-            d.getStatus().printEach();
+            d.getStatus().debug();
         }
     }
 
-    public static void push(DebugInfoGroup infoGroup) {
-        infoGroup.printEach();
+    public static void push(DebugOutput dp) {
+        if (VstM.Debug.DEBUG) {
+            dp.debug();
+        }
     }
 
     public static void clearMap() {

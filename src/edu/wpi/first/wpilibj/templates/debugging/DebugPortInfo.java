@@ -4,7 +4,7 @@ package edu.wpi.first.wpilibj.templates.debugging;
  *
  * @author daboross
  */
-public class DebugPortInfo implements DebugInfo {
+public class DebugPortInfo extends DebugInfo {
 
     private String key;
     private String message;

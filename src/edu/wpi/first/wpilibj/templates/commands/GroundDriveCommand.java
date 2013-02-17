@@ -1,6 +1,6 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
+import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
@@ -46,8 +46,8 @@ public class GroundDriveCommand extends CommandBase implements Debuggable {
         end();
     }
 
-    public DebugInfoGroup getStatus() {
-        return new DebugInfoGroup(new DebugStatus("GroundDrive:Speed", highSpeed ? "High" : "Low"));
+    public DebugOutput getStatus() {
+        return new DebugStatus("GroundDrive:Speed", highSpeed ? "High" : "Low");
     }
     private boolean lastPressed;
 

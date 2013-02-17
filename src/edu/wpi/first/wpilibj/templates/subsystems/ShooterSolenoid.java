@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.commands.RunShooterSolenoid;
 import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
-import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
+import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
@@ -30,8 +30,7 @@ public class ShooterSolenoid extends Subsystem implements Debuggable {
         shooterSolenoidSide2.set(true);
     }
 
-    public DebugInfoGroup getStatus() {
-        DebugStatus info = new DebugStatus("ShooterSolenoid:Extending", shooterSolenoidSide1.get() ? "yes" : "no");
-        return new DebugInfoGroup(info);
+    public DebugOutput getStatus() {
+        return new DebugStatus("ShooterSolenoid:Extending", shooterSolenoidSide1.get() ? "yes" : "no");
     }
 }

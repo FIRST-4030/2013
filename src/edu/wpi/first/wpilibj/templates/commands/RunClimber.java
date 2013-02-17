@@ -2,7 +2,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
+import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
@@ -44,7 +44,7 @@ public class RunClimber extends CommandBase implements Debuggable {
                 }
             }
             climber.runLadder(climbSpeed);
-        }else{
+        } else {
             climber.runLadder(0);
         }
         RobotDebugger.push(climber);
@@ -70,8 +70,8 @@ public class RunClimber extends CommandBase implements Debuggable {
         RobotDebugger.push(this);
     }
 
-    public DebugInfoGroup getStatus() {
-        return new DebugInfoGroup(new InfoState("ClimberEnabled", isEnabled() ? "Enabled" : "Disabled"));
+    public DebugOutput getStatus() {
+        return new InfoState("Climber", isEnabled() ? "Enabled" : "Disabled");
     }
     private boolean isEnabled;
 

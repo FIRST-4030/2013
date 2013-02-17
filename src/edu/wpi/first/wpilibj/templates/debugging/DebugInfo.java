@@ -4,13 +4,17 @@ package edu.wpi.first.wpilibj.templates.debugging;
  *
  * @author daboross
  */
-public interface DebugInfo {
+public abstract class DebugInfo extends DebugOutput {
 
-    public String key();
+    public abstract String key();
 
-    public String message();
+    public abstract String message();
 
-    public boolean isConsole();
+    public abstract boolean isConsole();
 
-    public boolean isDashboard();
+    public abstract boolean isDashboard();
+
+    protected void debug() {
+        RobotDebugger.push(this);
+    }
 }

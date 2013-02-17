@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.commands.RunClimber;
 import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
-import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
+import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
@@ -28,8 +28,7 @@ public class Climber extends Subsystem implements Debuggable {
         climber.stopMotor();
     }
 
-    public DebugInfoGroup getStatus() {
-        DebugStatus info = new DebugStatus("Climber:Speed", climber.get());
-        return new DebugInfoGroup(info);
+    public DebugOutput getStatus() {
+        return new DebugStatus("Climber:Speed", climber.get());
     }
 }

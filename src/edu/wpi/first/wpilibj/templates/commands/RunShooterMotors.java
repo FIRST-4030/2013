@@ -1,6 +1,6 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
+import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
@@ -69,7 +69,7 @@ public class RunShooterMotors extends CommandBase implements Debuggable {
         end();
     }
 
-    public DebugInfoGroup getStatus() {
-        return new DebugInfoGroup(new DebugStatus("ShooterMotors:ShouldBeSpeed", motorSpeed));
+    public DebugOutput getStatus() {
+        return new DebugStatus("ShooterMotors:ShouldBeSpeed", motorSpeed);
     }
 }

@@ -4,14 +4,14 @@ package edu.wpi.first.wpilibj.templates.debugging;
  *
  * @author daboross
  */
-public class InfoState implements DebugInfo {
+public class InfoState extends DebugInfo {
 
     private String key;
     private String message;
 
     public InfoState(String owner, String state) {
-        this.key = owner+":State";
-        this.message=state;
+        this.key = owner + ":State";
+        this.message = state;
     }
 
     public String key() {

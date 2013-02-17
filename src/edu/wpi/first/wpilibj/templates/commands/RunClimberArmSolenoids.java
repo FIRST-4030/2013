@@ -22,21 +22,26 @@ public class RunClimberArmSolenoids extends CommandBase {
     private boolean justStarted = true;
 
     protected void execute() {
-        if (VstJ.getClimberArmSolenoidToggleButtonValue() != pressedLast) {
-            justStarted = false;
-            if (pressedLast) {
-                on = !on;
+        if (DashboardStore.getClimberEnabled()) {
+            if (VstJ.getClimberArmSolenoidToggleButtonValue() != pressedLast) {
+                justStarted = false;
+                if (pressedLast) {
+                    on = !on;
+                }
+                pressedLast = !pressedLast;
             }
-            pressedLast = !pressedLast;
-        }
-        if (justStarted) {
-            climberArmSolenoids.retract();
-        } else {
-            if (on) {
-                climberArmSolenoids.extendSlow();
+
+            if (justStarted) {
+                climberArmSolenoids.retract();
             } else {
-                climberArmSolenoids.release();
+                if (on) {
+                    climberArmSolenoids.extendSlow();
+                } else {
+                    climberArmSolenoids.release();
+                }
             }
+        } else {
+            climberArmSolenoids.retract();
         }
     }
 

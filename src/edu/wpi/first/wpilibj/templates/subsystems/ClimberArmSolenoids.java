@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
 /**
+ * This is the subSystem for the Solenoid controlling the (I can't remember what
+ * this word is?) that pushes out the climber "arm".
  *
  * @author daboross
  */

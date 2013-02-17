@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
 /**
- * THe Solenoid for the shooter.
+ * The Solenoid for the shooter. This should be controlled by RunShooterSolenoid.
  */
 public class ShooterSolenoid extends Subsystem implements Debuggable {
 

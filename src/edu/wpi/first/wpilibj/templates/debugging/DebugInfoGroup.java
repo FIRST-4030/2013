@@ -1,9 +1,8 @@
 package edu.wpi.first.wpilibj.templates.debugging;
 
 /**
- * This is a group of Debug Info. You can use RobotDebugger to deal with it if
- * you find yourself with one. Though this should usually only be used in the
- * getStatus() method of a Debuggable.
+ * This is a group of Debug Info. You can use RobotDebugger.push() to deal with it if
+ * you find yourself with one.
  */
 public class DebugInfoGroup extends DebugOutput {
 

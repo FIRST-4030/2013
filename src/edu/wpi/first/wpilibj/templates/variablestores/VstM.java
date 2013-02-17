@@ -1,7 +1,7 @@
 package edu.wpi.first.wpilibj.templates.variablestores;
 
 /**
- * This is the main variable store.
+ * This is the main variable store. It holds a lot of things.
  */
 public class VstM {
 

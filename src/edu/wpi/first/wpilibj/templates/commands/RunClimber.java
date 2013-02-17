@@ -11,7 +11,11 @@ import edu.wpi.first.wpilibj.templates.variablestores.DashboardStore;
 import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
+ * This Command runs the climber motors (The ones powering the "cart" that goes
+ * up/down the ladder) according to a set speed, that is increased/decreased
+ * with buttons.
  *
+ * Same kind of drive as RunShooterMotors, but with different buttons.
  */
 public class RunClimber extends CommandBase implements Debuggable {
 
@@ -20,7 +24,6 @@ public class RunClimber extends CommandBase implements Debuggable {
         DashboardStore.initClimber();
     }
 
-    // Called just before this Command runs the first time
     protected void initialize() {
         climber.stop();
 
@@ -29,7 +32,6 @@ public class RunClimber extends CommandBase implements Debuggable {
     private boolean extendButtonLastPressed = false;
     private boolean retractButtonLastPressed = false;
 
-    // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         checkEnabled();
         if (isEnabled) {
@@ -60,20 +62,16 @@ public class RunClimber extends CommandBase implements Debuggable {
         RobotDebugger.push(this);
         RobotDebugger.push(climber);
     }
-// Make this return true when this Command no longer needs to run execute()
 
     protected boolean isFinished() {
         return false;
     }
 
-    // Called once after isFinished returns true
     protected void end() {
         climber.stop();
         RobotDebugger.push(climber);
     }
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
     protected void interrupted() {
         this.end();
         isEnabled = false;

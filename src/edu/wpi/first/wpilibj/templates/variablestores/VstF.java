@@ -14,6 +14,8 @@ package edu.wpi.first.wpilibj.templates.variablestores;
  *
  * All coordinates for objects are the bottom left as looked at from the center
  * line.
+ * 
+ * This currently does not do anything.
  */
 public class VstF {
 

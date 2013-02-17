@@ -8,7 +8,9 @@ import edu.wpi.first.wpilibj.templates.variablestores.DashboardStore;
 import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
- *
+ * This Command runs the Climber out-pushing solenoid from input received from
+ * VstJ.getClimberArmSolenoidToggleButtonValue(), as well as
+ * DashboardStore.getClimberEnabled().
  */
 public class RunClimberArmSolenoids extends CommandBase implements Debuggable {
 
@@ -24,6 +26,16 @@ public class RunClimberArmSolenoids extends CommandBase implements Debuggable {
     private String status = "No Status Set";
 
     protected void execute() {
+        /**
+         * Basically this is saying, if the climber is disabled then set the
+         * state to retract. If the climber is enabled, then look for the button
+         * press. The first time the button is pressed after the climber is
+         * enabled the solenoid will go into slow extend mode, and stay in that
+         * mode until the climber is disabled.
+         *
+         * NOTE: When I say Climber Enabled or Climber Disabled, I am talking
+         * about a setting in the SmartDashboard.
+         */
         if (DashboardStore.getClimberEnabled()) {
             if (VstJ.getClimberArmSolenoidToggleButtonValue()) {
                 extending = true;
@@ -39,7 +51,7 @@ public class RunClimberArmSolenoids extends CommandBase implements Debuggable {
             status = "Extending";
             climberArmSolenoids.extend();
         } else {
-            status+="-NotExtending";
+            status += "-NotExtending";
             climberArmSolenoids.retract();
         }
         RobotDebugger.push(climberArmSolenoids);

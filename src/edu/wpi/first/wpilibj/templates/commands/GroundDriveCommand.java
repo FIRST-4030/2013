@@ -7,7 +7,10 @@ import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
- * Ground Drive Command.
+ * Ground Drive Command. This command takes input from the default joystick and
+ * sets the drive motors accordingly. Using arcade drive. Also, it will take
+ * input from a toggle button whether to go into high speed or low speed mode.
+ * When in low speed mode the values retrieved from the controller are halved.
  */
 public class GroundDriveCommand extends CommandBase implements Debuggable {
 
@@ -39,6 +42,7 @@ public class GroundDriveCommand extends CommandBase implements Debuggable {
 
     // Called once after isFinished returns true
     protected void end() {
+        groundDrive.stop();
     }
 
     // Called when another command which requires one or more of the same subsystems is scheduled to run

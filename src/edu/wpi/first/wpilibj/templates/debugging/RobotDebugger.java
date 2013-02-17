@@ -12,6 +12,9 @@ public class RobotDebugger {
 
     private static Hashtable table = new Hashtable();
 
+    /**
+     * This pushes this info to the SmartDashboard/Console.
+     */
     private static void push(String key, String message, boolean isConsole, boolean isDashboard) {
         if (key == null || message == null) {
             throw new IllegalArgumentException("No Null Arguments");
@@ -41,18 +44,32 @@ public class RobotDebugger {
         }
     }
 
+    /**
+     * Check the status of the Debuggable and push it if Debugging is one.
+     */
     public static void push(Debuggable d) {
         if (VstM.Debug.DEBUG) {
             d.getStatus().debug();
         }
     }
 
+    /**
+     * Push this DebugOutput if Debugging.
+     */
     public static void push(DebugOutput dp) {
         if (VstM.Debug.DEBUG) {
             dp.debug();
         }
     }
 
+    /**
+     * Clear the map. This will basically force RobotDebugger to push the next
+     * values of keys to SmartDashboard/Console.
+     *
+     * Regularly the RobotDebugger stores the last set value for a key, and
+     * won't push to Console/SmartDashboard unless that value has changed. This
+     * method removes all stored key values.
+     */
     public static void clearMap() {
         table = new Hashtable();
     }

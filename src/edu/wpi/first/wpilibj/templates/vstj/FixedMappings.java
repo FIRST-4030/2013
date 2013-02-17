@@ -3,7 +3,15 @@ package edu.wpi.first.wpilibj.templates.vstj;
 import edu.wpi.first.wpilibj.Joystick;
 
 /**
+ * This class contains mostly fixed mappings between variables in FixedVars, and
+ * what things do things.
  *
+ * In each controller, (XBox or Logitech), it holds a number for each action (an
+ * action beings something like "climberExtendButton" or
+ * "shooterSolenoidPushButton").
+ *
+ * The protected methods return values depending on what joystick is selected.
+ * (This being gotten from VstJj.usingXBox).
  */
 public class FixedMappings {
 

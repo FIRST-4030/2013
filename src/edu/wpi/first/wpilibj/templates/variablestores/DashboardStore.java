@@ -4,6 +4,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
+ * This is a variable store that stores values that are on the SmartDashboard.
+ * Each time you ask for one it will check the SmartDashboard and return you the
+ * value the SmartDashboard gives it.
  *
  * @author daboross
  */

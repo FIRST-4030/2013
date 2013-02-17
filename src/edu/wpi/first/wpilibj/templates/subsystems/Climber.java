@@ -9,7 +9,8 @@ import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
 /**
- * This is the Climber Motor SubSystem.
+ * This is the Climber Motor SubSystem. It moves the "cart" up and down the
+ * ladder on the robot.
  */
 public class Climber extends Subsystem implements Debuggable {
 

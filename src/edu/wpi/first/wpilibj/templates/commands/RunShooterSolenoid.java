@@ -4,7 +4,8 @@ import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
- *
+ * This Command runs the shooter push solenoid according to the input received
+ * from VstJ.getShooterSolenoidPushButtonValue().
  */
 public class RunShooterSolenoid extends CommandBase {
 
@@ -17,6 +18,7 @@ public class RunShooterSolenoid extends CommandBase {
     }
 
     protected void execute() {
+        //If button pressed, retract, otherwise, extend.
         if (VstJ.getShooterSolenoidPushButtonValue()) {
             shooterSolenoid.retract();
         } else {

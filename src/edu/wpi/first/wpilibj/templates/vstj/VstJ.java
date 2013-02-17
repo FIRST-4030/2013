@@ -3,8 +3,11 @@ package edu.wpi.first.wpilibj.templates.vstj;
 import edu.wpi.first.wpilibj.Joystick;
 
 /**
- * This class holds variables about JoySticks. It is slightly variable. It holds
- * different joystick configurations.
+ * This class holds variables about JoySticks.
+ *
+ * It will give different output (by using different mapping) depending on
+ * whether the user has selected to use the XBox controller or the logitech
+ * controller.
  */
 public class VstJ {
 

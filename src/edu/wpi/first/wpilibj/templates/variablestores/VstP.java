@@ -1,19 +1,20 @@
 package edu.wpi.first.wpilibj.templates.variablestores;
 
 /**
- * Pneumatics variable store.
+ * Pneumatics variable store. This stores whether the System is at pressure and
+ * whether the compressor is running.
  */
 public class VstP {
 
-    static private boolean atPressure = false;
-    static private boolean compressorRunning = false;
+    private static boolean atPressure = false;
+    private static boolean compressorRunning = false;
 
     /**
      * This function returns whether or not the PressureSwitch is at Pressure.
      *
      * @return A stored value that is set with setAtPressure().
      */
-    static public boolean atPressure() {
+    public static boolean atPressure() {
         return atPressure;
     }
 
@@ -22,7 +23,7 @@ public class VstP {
      *
      * @param atP Whether or not the Pressure Switch is at pressure.
      */
-    static public void setAtPressure(boolean atP) {
+    public static void setAtPressure(boolean atP) {
         atPressure = atP;
     }
 
@@ -31,7 +32,7 @@ public class VstP {
      *
      * @return A stored value that is set with setCompressorRunning().
      */
-    static public boolean compressorRunning() {
+    public static boolean compressorRunning() {
         return compressorRunning;
     }
 
@@ -40,7 +41,7 @@ public class VstP {
      *
      * @param running Whether or not the compressor is running.
      */
-    static public void setCompressorRunning(boolean running) {
+    public static void setCompressorRunning(boolean running) {
         compressorRunning = running;
     }
 }

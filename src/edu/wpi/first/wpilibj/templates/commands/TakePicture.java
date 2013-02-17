@@ -13,6 +13,9 @@ public class TakePicture extends CommandBase {
     private ColorImage currentImage = null;
     private boolean done = false;
 
+    /**
+     * Default Constructor.
+     */
     public TakePicture() {
         requires(mainCamera);
     }

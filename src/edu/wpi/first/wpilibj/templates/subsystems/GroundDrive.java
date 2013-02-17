@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
- * Robot SubSystem GroundDrive.
+ * Robot SubSystem GroundDrive. This is the main Driving SubSystem.
  */
 public class GroundDrive extends Subsystem implements Debuggable {
 

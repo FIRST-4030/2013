@@ -5,17 +5,35 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
+ * This Command will get information from the smart dashboard and set which
+ * controller/what port that controller is on accordingly.
  *
  * @author daboross
  */
 public class SmartdashboardJoystick extends CommandBase {
 
+    /**
+     * Sendable Chooser for.
+     */
     private SendableChooser which;
+    /**
+     * Sendable Chooser for what port the XBox controller is.
+     */
     private SendableChooser xboxPort;
+    /**
+     * Sendable Chooser for what port the logitech controller is.
+     */
     private SendableChooser logitechPort;
+
+    /**
+     * Default Constructor.
+     */
+    public SmartdashboardJoystick() {
+    }
 
     protected void initialize() {
         which = new SendableChooser();
+        //If Using XBox current, set the default option to XBox, otherwise set the default option to Logitech.
         if (VstJ.usingXBox) {
             which.addDefault("XBox", Boolean.TRUE);
             which.addObject("Logitech", Boolean.FALSE);
@@ -24,6 +42,7 @@ public class SmartdashboardJoystick extends CommandBase {
             which.addObject("XBox", Boolean.TRUE);
         }
         SmartDashboard.putData("WhichController", which);
+        //Put 4 ports on the XBox chooser, and if the port is the current XBox port, then make it the default.
         xboxPort = new SendableChooser();
         for (int i = 1; i < 5; i++) {
             if (i == VstJ.xBoxJoystickPort) {
@@ -33,6 +52,7 @@ public class SmartdashboardJoystick extends CommandBase {
             }
         }
         SmartDashboard.putData("xboxPort", xboxPort);
+        //Put 4 ports on the Logitech chooser, and if the port is the current XBox port, then make it the default.
         logitechPort = new SendableChooser();
         for (int i = 1; i < 5; i++) {
             if (i == VstJ.xBoxJoystickPort) {
@@ -45,6 +65,7 @@ public class SmartdashboardJoystick extends CommandBase {
     }
 
     protected void execute() {
+        // Set VstJ values retrieved from the SendableChoosers.
         VstJ.usingXBox = which.getSelected() == Boolean.TRUE;
         VstJ.xBoxJoystickPort = ((Integer) xboxPort.getSelected()).intValue();
         VstJ.logitechJoystickPort = ((Integer) logitechPort.getSelected()).intValue();

@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 import edu.wpi.first.wpilibj.templates.variablestores.VstP;
 
 /**
- * This is the subsystem to handle the Compressor.
+ * This is the subsystem to handle the Compressor. It will power depending on VstP values.
  */
 public class Compressor extends Subsystem implements Debuggable {
 

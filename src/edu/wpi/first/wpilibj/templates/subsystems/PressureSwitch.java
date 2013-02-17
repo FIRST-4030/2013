@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstP;
 
 /**
  * SubSystem for reading the PressureSwitch and outputting to VstP.
+ *
+ * This is the pressure switch in the compressor system.
  */
 public class PressureSwitch extends Subsystem implements Debuggable {
 

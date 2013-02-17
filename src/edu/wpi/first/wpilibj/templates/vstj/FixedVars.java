@@ -1,7 +1,10 @@
 package edu.wpi.first.wpilibj.templates.vstj;
 
 /**
- * Fixed Variables, like button numbers / ports.
+ * This class contains all protected static final int variables.
+ *
+ * It stores what buttons/axis on the XBox and Logitech Joysticks correspond to
+ * what numbers in getRawButton or getRawAxis.
  */
 final class FixedVars {
 

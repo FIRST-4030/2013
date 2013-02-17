@@ -1,6 +1,8 @@
 package edu.wpi.first.wpilibj.templates.debugging;
 
 /**
+ * This is a "message" that is to be sent to the Console. It will not output
+ * into SmartDashboard when given to RobotDebugger.
  *
  * @author daboross
  */

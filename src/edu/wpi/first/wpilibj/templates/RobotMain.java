@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
 /**
- * Main Robot Class.
+ * Main Robot Class. This is the main Robot Class.
  */
 public class RobotMain extends IterativeRobot {
 
@@ -19,13 +19,12 @@ public class RobotMain extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-        // Initialize all subsystems
         CommandBase.init();
         pushPorts();
     }
 
     private void pushPorts() {
-        //Tell the person on the Console/SmartDashboard what ports things should be.
+        //Tell the person on the Console what ports things should be.
         String info = "Port Info: ";
         info += ("LeftMotor:" + VstM.PWM.LEFT_MOTOR_PORT + " - ");
         info += ("RightMotor:" + VstM.PWM.RIGHT_MOTOR_PORT + " - ");

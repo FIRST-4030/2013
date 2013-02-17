@@ -17,6 +17,8 @@ public class VstM {
         public static final int CLIMBER_ARM_1_SIDE_2 = 4;
         public static final int CLIMBER_ARM_2_SIDE_1 = 5;
         public static final int CLIMBER_ARM_2_SIDE_2 = 6;
+        public static final int SHOOTER_DUMP_SOLENOID_SIDE_1 = 7;
+        public static final int SHOOTER_DUMP_SOLENOID_SIDE_2 = 8;
     }
 
     /**

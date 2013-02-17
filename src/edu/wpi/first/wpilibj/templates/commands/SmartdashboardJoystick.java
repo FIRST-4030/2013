@@ -25,7 +25,7 @@ public class SmartdashboardJoystick extends CommandBase {
         }
         SmartDashboard.putData("WhichController", which);
         xboxPort = new SendableChooser();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 1; i < 5; i++) {
             if (i == VstJ.xBoxJoystickPort) {
                 xboxPort.addDefault("XBox is Number " + i, Integer.valueOf(i));
             } else {
@@ -34,7 +34,7 @@ public class SmartdashboardJoystick extends CommandBase {
         }
         SmartDashboard.putData("xboxPort", xboxPort);
         logitechPort = new SendableChooser();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 1; i < 5; i++) {
             if (i == VstJ.xBoxJoystickPort) {
                 logitechPort.addDefault("Logitech Controller is Number " + i, Integer.valueOf(i));
             } else {

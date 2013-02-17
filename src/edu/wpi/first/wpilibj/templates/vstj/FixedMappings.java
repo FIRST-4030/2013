@@ -62,9 +62,9 @@ public class FixedMappings {
     private static class RegularJoyStick {
 
         protected static final int climberAxisNumber = -20;//TODO What is the climber axis number on the regular joy stick?
-        protected static final int solenoidButtonNumber = FixedVars.RegularJoyStick.BUTTON.TRIGGER;
-        protected static final int shooterMotorSpeedUpButtonNumber = FixedVars.RegularJoyStick.BUTTON.TOP_RIGHT;
-        protected static final int shooterMotorSpeedDownButtonNumber = FixedVars.RegularJoyStick.BUTTON.TOP_LEFT;
-        protected static final int driveSpeedToggleButton = FixedVars.RegularJoyStick.BUTTON.TOP_MIDDLE;
+        protected static final int solenoidButtonNumber = FixedVars.RegularJoyStick.BUTTON.TOP_OF_JOYSTICK.TRIGGER;
+        protected static final int shooterMotorSpeedUpButtonNumber = FixedVars.RegularJoyStick.BUTTON.TOP_OF_JOYSTICK.RIGHT;
+        protected static final int shooterMotorSpeedDownButtonNumber = FixedVars.RegularJoyStick.BUTTON.TOP_OF_JOYSTICK.LEFT;
+        protected static final int driveSpeedToggleButton = FixedVars.RegularJoyStick.BUTTON.TOP_OF_JOYSTICK.MIDDLE;
     }
 }

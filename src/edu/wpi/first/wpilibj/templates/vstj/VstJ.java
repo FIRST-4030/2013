@@ -10,7 +10,7 @@ public class VstJ {
 
     public static boolean usingXBox = false;
     public static int xBoxJoystickPort = 1;
-    public static int logitechJoystickPort = 1;
+    public static int logitechJoystickPort = 2;
 
     public static Joystick getDefaultJoystick() {
         return FixedMappings.getDefaultJoyStick();

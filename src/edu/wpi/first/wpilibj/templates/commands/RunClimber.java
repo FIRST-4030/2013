@@ -48,18 +48,18 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
         if (isEnabled) {
             if (VstJ.getClimberExtendButtonValue() != extendButtonLastPressed) {
                 if (!extendButtonLastPressed) {
-                    if (speed + 0.1 < 1) {
-                        speed += 0.1;
+                    if (speed + 0.2 < 1) {
+                        speed += 0.2;
                     } else {
                         speed = 1;
                     }
-                    extendButtonLastPressed = !extendButtonLastPressed;
                 }
+                extendButtonLastPressed = !extendButtonLastPressed;
             }
             if (VstJ.getClimberRetractButtonValue() != retractButtonLastPressed) {
                 if (!retractButtonLastPressed) {
-                    if (speed - 0.1 > -1) {
-                        speed -= 0.1;
+                    if (speed - 0.2 > -1) {
+                        speed -= 0.2;
                     } else {
                         speed = -1;
                     }
@@ -75,7 +75,7 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
         } else {
             speed = 0;
         }
-        //climber.runLadder(speed);
+        climber.runLadder(speed);
         RobotDebugger.push(this);
         RobotDebugger.push(climber);
         RobotDebugger.push(climberLimitSwitch);

@@ -14,7 +14,7 @@ public class DebugInfoGroup extends DebugOutput {
 
     protected void debug() {
         for (int i = 0; i < infos.length; i++) {
-            RobotDebugger.push(infos[i]);
+            RobotDebugger.pushInfo(infos[i]);
         }
     }
 }

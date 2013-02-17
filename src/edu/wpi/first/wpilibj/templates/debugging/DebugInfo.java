@@ -15,7 +15,7 @@ public abstract class DebugInfo extends DebugOutput {
     protected abstract boolean isConsole();
 
     protected abstract boolean isDashboard();
-    
+
     protected abstract int debugLevel();
 
     protected void debug() {

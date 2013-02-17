@@ -14,7 +14,7 @@ public class Message extends DebugInfo {
     private int level;
 
     public Message(String message, int level) {
-        if (level < DebugLevel.NEVER || level >DebugLevel.ALWAYS) {
+        if (level < DebugLevel.NEVER || level > DebugLevel.ALWAYS) {
             throw new IllegalArgumentException("To low/high of a level in Message()");
         }
         if (message == null) {

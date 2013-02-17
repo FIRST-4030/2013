@@ -76,4 +76,8 @@ public class GroundDrive extends Subsystem implements Debuggable {
     public void stop() {
         roboDrive.stopMotor();
     }
+
+    public static void disabled() {
+        roboDrive.stopMotor();
+    }
 }

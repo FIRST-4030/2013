@@ -19,7 +19,7 @@ public class RobotDebugger {
         if (key == null || message == null) {
             throw new IllegalArgumentException("No Null Arguments");
         }
-        if (VstM.Debug.DEBUG && (debugLevel >= VstM.Debug.DEBUG_LEVEL)) {
+        if (VstM.Debug.DEBUG && (debugLevel >= DebugLevel.CURRENT)) {
             if (!message.equals((String) table.get(key))) {
                 table.put(key, message);
                 if (VstM.Debug.CONSOLE && isConsole) {

@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.templates.debugging.DebugInfo;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.Message;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
+import edu.wpi.first.wpilibj.templates.subsystems.GroundDrive;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
 /**
@@ -70,6 +71,7 @@ public class RobotMain extends IterativeRobot {
     }
 
     public void disabledPeriodic() {
+        GroundDrive.disabled();
     }
 
     public void disabledInit() {

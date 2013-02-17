@@ -25,10 +25,10 @@ public class Message extends DebugInfo {
     }
 
     public boolean isConsole() {
-        return false;
+        return true;
     }
 
     public boolean isDashboard() {
-        return true;
+        return false;
     }
 }

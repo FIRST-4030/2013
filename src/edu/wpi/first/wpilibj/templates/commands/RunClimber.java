@@ -8,7 +8,6 @@ import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.variablestores.DashboardStore;
-import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
@@ -26,34 +25,40 @@ public class RunClimber extends CommandBase implements Debuggable {
         climber.stop();
 
     }
-    private double lastSpeed;
+    private double speed = 0;
+    private boolean extendButtonLastPressed = false;
+    private boolean retractButtonLastPressed = false;
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         checkEnabled();
         if (isEnabled) {
-            double climbSpeed = 0;
-            if (VstJ.getClimberExtendButtonValue()) {
-                climbSpeed += 1;
+            if (VstJ.getClimberExtendButtonValue() != extendButtonLastPressed) {
+                if (!extendButtonLastPressed) {
+                    if (speed + 0.1 < 1) {
+                        speed += 0.1;
+                    } else {
+                        speed = 1;
+                    }
+                    extendButtonLastPressed = !extendButtonLastPressed;
+                }
             }
-            if (VstJ.getClimberRetractButtonValue()) {
-                climbSpeed -= 1;
+            if (VstJ.getClimberRetractButtonValue() != retractButtonLastPressed) {
+                if (!retractButtonLastPressed) {
+                    if (speed - 0.1 > 0) {
+                        speed -= 0.1;
+                    } else {
+                        speed = 0;
+                    }
+                }
+                retractButtonLastPressed = !retractButtonLastPressed;
             }
-            /*if (climbSpeed != 0) {
-             if (((VstM.Climber.climberState() == -1) != (climbSpeed < 0))
-             || ((VstM.Climber.climberState() == 1) != climbSpeed > 0)) {
-             climbSpeed = VstM.Climber.climberState();
-             }
-             }*/
-            climbSpeed *= 0.5;
-            climber.runLadder(climbSpeed);
-            lastSpeed = climbSpeed;
         } else {
-            climber.runLadder(0);
-            lastSpeed = 0;
+            speed = 0;
         }
-        RobotDebugger.push(climber);
+        climber.runLadder(speed);
         RobotDebugger.push(this);
+        RobotDebugger.push(climber);
     }
 // Make this return true when this Command no longer needs to run execute()
 
@@ -78,7 +83,7 @@ public class RunClimber extends CommandBase implements Debuggable {
     public DebugOutput getStatus() {
         DebugInfo[] infoList = new DebugInfo[2];
         infoList[0] = new InfoState("Climber", isEnabled() ? "Enabled" : "Disabled");
-        infoList[1] = new DebugStatus("ClimberShould", lastSpeed);
+        infoList[1] = new DebugStatus("ClimberShouldBe", speed);
         return new DebugInfoGroup(infoList);
     }
     private boolean isEnabled;

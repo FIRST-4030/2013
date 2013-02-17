@@ -11,67 +11,83 @@ import edu.wpi.first.wpilibj.Joystick;
  */
 public class VstJ {
 
-    public static boolean usingXBox = false;
-    public static int xBoxJoystickPort = 1;
-    public static int logitechJoystickPort = 2;
+    private static Joystick[] joySticks;
 
-    public static Joystick getDefaultJoystick() {
-        return FixedMappings.getDefaultJoyStick();
+    protected static void joyStickInit() {
+        joySticks = new Joystick[2];
+        for (int i = 0; i < joySticks.length; i++) {
+            joySticks[i] = new Joystick(i);
+        }
     }
 
-    public static int getClimberExtendButtonNumber() {
-        return FixedMappings.getClimberExtendButtonNumber();
+    private static Joystick getJoystick(int number) {
+        if (number < 0 || number > 2) {
+            throw new IllegalArgumentException("To High/Low number for getJoystick()");
+        }
+        return joySticks[number];
     }
 
-    public static boolean getClimberExtendButtonValue() {
-        return FixedMappings.getDefaultJoyStick().getRawButton(FixedMappings.getClimberExtendButtonNumber());
+    public static Joystick getDriveJoystick() {
+        return getJoystick(FV.DRIVE_JOYSTICK);
+    }
+    public static Joystick getShooterJoystick(){
+        return getJoystick(FV.SHOOTER_JOYSTICK);
     }
 
-    public static int getClimberRetractButtonNumber() {
-        return FixedMappings.getClimberRetractButtonNumber();
-    }
-
-    public static boolean getClimberRetractButtonValue() {
-        return FixedMappings.getDefaultJoyStick().getRawButton(FixedMappings.getClimberRetractButtonNumber());
-    }
-
-    public static int getShooterSolenoidPushButtonNumber() {
-        return FixedMappings.getShooterSolenoidPushButtonNumber();
+    public static double getLadderControlAxisValue() {
+        return getJoystickAxis(Mappings.ladderControlAxisJoystickNumber, Mappings.ladderControlAxisNumber);
     }
 
     public static boolean getShooterSolenoidPushButtonValue() {
-        return FixedMappings.getDefaultJoyStick().getRawButton(FixedMappings.getShooterSolenoidPushButtonNumber());
-    }
-
-    public static int getShooterMotorSpeedUpButtonNumber() {
-        return FixedMappings.getShooterMotorSpeedUpButtonNumber();
+        return getJoystickButton(Mappings.shooterSolenoidButtonJoystickNumber, Mappings.shooterMotorSpeedDownButtonNumber);
     }
 
     public static boolean getShooterMotorSpeedUpButtonValue() {
-        return FixedMappings.getDefaultJoyStick().getRawButton(FixedMappings.getShooterMotorSpeedUpButtonNumber());
+        return getJoystickButton(Mappings.shooterMotorSpeedUpButtonJoystickNumber, Mappings.shooterMotorSpeedUpButtonNumber);
     }
 
     public static boolean getShooterMotorSpeedDownButtonValue() {
-        return FixedMappings.getDefaultJoyStick().getRawButton(FixedMappings.getShooterMotorSpeedDownButtonNumber());
-    }
-
-    public static int getShooterMotorSpeedDownButtonNumber() {
-        return FixedMappings.getShooterMotorSpeedDownButtonNumber();
-    }
-
-    public static int getDriveSpeedToggleButtonNumber() {
-        return FixedMappings.getDriveSpeedToggleButtonNumber();
+        return getJoystickButton(Mappings.shooterMotorSpeedDownButtonJoystickNumber, Mappings.shooterMotorSpeedDownButtonNumber);
     }
 
     public static boolean getDriveSpeedToggleButtonValue() {
-        return FixedMappings.getDefaultJoyStick().getRawButton(FixedMappings.getDriveSpeedToggleButtonNumber());
+        return getJoystickButton(Mappings.driveSpeedToggleButtonJoystickNumber, Mappings.driveSpeedToggleButtonNumber);
     }
 
-    public static int getClimberArmSolenoidToggleButtonNumber() {
-        return FixedMappings.getClimberArmToggleButtonNumber();
+    public static boolean getClimberArmStartToggleButtonValue() {
+        return getJoystickButton(Mappings.climberArmSolenoidStartButtonJoystickNumber, Mappings.climberArmSolenoidStartButtonNumber);
     }
 
-    public static boolean getClimberArmSolenoidToggleButtonValue() {
-        return FixedMappings.getDefaultJoyStick().getRawButton(FixedMappings.getClimberArmToggleButtonNumber());
+    private static boolean getJoystickButton(int joyStick, int buttonNumber) {
+        return getJoystick(joyStick).getRawButton(buttonNumber);
+    }
+
+    private static double getJoystickAxis(int joyStick, int axisNumber) {
+        return getJoystick(joyStick).getRawAxis(axisNumber);
+    }
+
+    /**
+     * Mappings for joysticks.
+     */
+    private static class Mappings {
+        //
+
+        protected static final int climberArmSolenoidStartButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+        protected static final int climberArmSolenoidStartButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.BOTTOM_LEFT;
+        //
+        protected static final int shooterSolenoidButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+        protected static final int shooterSolenoidButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.TRIGGER;
+        //
+        protected static final int shooterMotorSpeedUpButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+        protected static final int shooterMotorSpeedUpButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.RIGHT;
+        //
+        protected static final int shooterMotorSpeedDownButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+        protected static final int shooterMotorSpeedDownButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.LEFT;
+        //
+        protected static final int driveSpeedToggleButtonJoystickNumber = FV.DRIVE_JOYSTICK;
+        protected static final int driveSpeedToggleButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.MIDDLE;
+        //
+        protected static final int ladderControlAxisJoystickNumber = FV.SHOOTER_JOYSTICK;
+        protected static final int ladderControlAxisNumber = FV.AXIS.X;
     }
 }

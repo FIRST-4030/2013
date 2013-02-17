@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 public class RunClimberArmSolenoids extends CommandBase implements Debuggable {
 
     public RunClimberArmSolenoids() {
-        DashboardStore.initClimber();
+        DashboardStore.initIsClimberEnabled();
         requires(climberArmSolenoids);
     }
 
@@ -37,8 +37,8 @@ public class RunClimberArmSolenoids extends CommandBase implements Debuggable {
          * NOTE: When I say Climber Enabled or Climber Disabled, I am talking
          * about a setting in the SmartDashboard.
          */
-        if (DashboardStore.getClimberEnabled()) {
-            if (VstJ.getClimberArmSolenoidToggleButtonValue()) {
+        if (DashboardStore.getIsClimberEnabled()) {
+            if (VstJ.getClimberArmStartToggleButtonValue()) {
                 extending = true;
             }
             if (!extending) {

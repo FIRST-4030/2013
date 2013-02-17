@@ -21,31 +21,18 @@ public class RunClimberArmSolenoids extends CommandBase implements Debuggable {
     protected void initialize() {
         climberArmSolenoids.retract();
     }
-    private boolean pressedLast = false;
-    private boolean on = false;
     private boolean justStarted = true;
     private String status = "No Status Set";
 
     protected void execute() {
         if (DashboardStore.getClimberEnabled()) {
-            if (VstJ.getClimberArmSolenoidToggleButtonValue() != pressedLast) {
-                justStarted = false;
-                if (pressedLast) {
-                    on = !on;
-                }
-                pressedLast = !pressedLast;
-            }
             if (justStarted) {
                 status = "Just Started";
                 climberArmSolenoids.retract();
-            } else {
-                if (on) {
-                    status = "ExtendSlow";
-                    climberArmSolenoids.extendSlow();
-                } else {
-                    status = "release";
-                    climberArmSolenoids.release();
-                }
+            } else if (VstJ.getClimberArmSolenoidToggleButtonValue()) {
+                justStarted = false;
+                climberArmSolenoids.extendSlow();
+                status = "ExtendSlow";
             }
         } else {
             status = "Not Enabled";

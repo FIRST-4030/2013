@@ -2,8 +2,6 @@ package edu.wpi.first.wpilibj.templates;
 
 /**
  * This class holds various helpful methods, such as rounding.
- *
- * @author daboross
  */
 public class HM {
 

@@ -25,7 +25,7 @@ public abstract class CommandBase extends Command {
     /**
      * Commands.
      */
-    public static XBoxDashboard controllerUpdate = new XBoxDashboard();
+    public static SmartdashboardJoystick controllerUpdate = new SmartdashboardJoystick();
 
     public static void init() {
         controllerUpdate.start();

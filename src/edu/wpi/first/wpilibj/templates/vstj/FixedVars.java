@@ -5,7 +5,8 @@ package edu.wpi.first.wpilibj.templates.vstj;
  */
 class FixedVars {
 
-    protected static final int PORT = 1;
+    protected static final int PORT1 = 1;
+    protected static final int PORT2 = 2;
 
     /**
      * This is the XBox controller.

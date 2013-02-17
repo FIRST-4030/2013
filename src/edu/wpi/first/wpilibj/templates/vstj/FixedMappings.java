@@ -7,38 +7,41 @@ import edu.wpi.first.wpilibj.Joystick;
  */
 public class FixedMappings {
 
-    private static Joystick defaultJoystick;
+    private static Joystick[] joySticks;
 
     protected static void joyStickInit() {
-        defaultJoystick = new Joystick(FixedVars.PORT);
+        joySticks = new Joystick[4];
+        for (int i = 0; i < joySticks.length; i++) {
+            joySticks[i] = new Joystick(i);
+        }
     }
 
     protected static Joystick getDefaultJoyStick() {
-        if (defaultJoystick == null) {
+        if (joySticks == null) {
             joyStickInit();
         }
-        return defaultJoystick;
+        return joySticks[VstJ.usingXBox ? VstJ.xBoxJoystickPort : VstJ.logitechJoystickPort];
     }
 
     protected static int getClimberAxisNumber() {
-        return VstJ.USING_XBOX ? Xbox.climberAxisNumber : RegularJoyStick.climberAxisNumber;
+        return VstJ.usingXBox ? Xbox.climberAxisNumber : RegularJoyStick.climberAxisNumber;
     }
 
     protected static int getShooterSolenoidPushButtonNumber() {
-        return VstJ.USING_XBOX ? Xbox.solenoidButtonNumber : RegularJoyStick.solenoidButtonNumber;
+        return VstJ.usingXBox ? Xbox.solenoidButtonNumber : RegularJoyStick.solenoidButtonNumber;
 
     }
 
     protected static int getShooterMotorSpeedUpButtonNumber() {
-        return VstJ.USING_XBOX ? Xbox.shooterMotorSpeedUpButtonNumber : RegularJoyStick.shooterMotorSpeedUpButtonNumber;
+        return VstJ.usingXBox ? Xbox.shooterMotorSpeedUpButtonNumber : RegularJoyStick.shooterMotorSpeedUpButtonNumber;
     }
 
     protected static int getShooterMotorSpeedDownButtonNumber() {
-        return VstJ.USING_XBOX ? Xbox.shooterMotorSpeedDownButtonNumber : RegularJoyStick.shooterMotorSpeedDownButtonNumber;
+        return VstJ.usingXBox ? Xbox.shooterMotorSpeedDownButtonNumber : RegularJoyStick.shooterMotorSpeedDownButtonNumber;
     }
 
     protected static int getDriveSpeedToggleButtonNumber() {
-        return VstJ.USING_XBOX ? Xbox.driveSpeedToggleButton : RegularJoyStick.driveSpeedToggleButton;
+        return VstJ.usingXBox ? Xbox.driveSpeedToggleButton : RegularJoyStick.driveSpeedToggleButton;
     }
 
     /**

@@ -40,7 +40,6 @@ public class RobotMain extends IterativeRobot {
         info += ("ShooterSoenoid2:" + VstM.Solenoids.SHOOTER_SOLENOID_SIDE_2);
         DebugInfo debugInfo = new Message(info);
         RobotDebugger.push(debugInfo);
-        RobotDebugger.push(new DebugStatus("USING XBOX", VstJ.USING_XBOX));
     }
 
     public void autonomousInit() {

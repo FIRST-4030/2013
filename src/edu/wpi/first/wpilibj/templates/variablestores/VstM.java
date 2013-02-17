@@ -68,8 +68,6 @@ public class VstM {
         public static final int CLIMBER_MOTOR_PORT = 10;
         public static final int FIRST_SHOOTER_MOTOR_PORT = 4;
         public static final int SECOND_SHOOTER_MOTOR_PORT = 5;
-        public static final int TEST_MOTOR_1_PORT = 5;
-        public static final int TEST_MOTOR_2_PORT = 6;
     }
 
     /**

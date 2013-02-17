@@ -13,15 +13,26 @@ class FixedVars {
      */
     protected static class Xbox {
 
-        protected static final int LEFT_X_AXIS = 1;
-        protected static final int LEFT_Y_AXIS = 2;
-        protected static final int TRIGGERS_AXIS = 3;
-        protected static final int RIGHT_X_AXIS = 4;
-        protected static final int RIGHT_Y_AXIS = 5;
-        protected static final int A_BUTTON = 1;
-        protected static final int B_BUTTON = 2;
-        protected static final int X_BUTTON = 3;
-        protected static final int Y_BUTTON = 4;
+        protected static class AXIS {
+
+            protected static final int LEFT_X = 1;
+            protected static final int LEFT_Y = 2;
+            protected static final int TRIGGERS = 3;
+        }
+
+        protected static class BUTTON {
+
+            protected static final int A = 1;
+            protected static final int B = 2;
+            protected static final int X = 3;
+            protected static final int Y = 4;
+            protected static final int LEFT_TRIGGER = 5;
+            protected static final int RIGHT_TRIGGER = 6;
+            protected static final int BACK = 7;
+            protected static final int START = 8;
+            protected static final int LEFT_CIRCLE_PUSH = 9;
+            protected static final int RIGHT_CIRCLE_PUSH = 10;
+        }
     }
 
     /**
@@ -29,11 +40,16 @@ class FixedVars {
      */
     protected static class RegularJoyStick {
 
-        protected static final int X_AXIS = 1;
-        protected static final int Y_AXIS = 2;
-        protected static final int TRIGGER_BUTTON = 1;
-        protected static final int TOP_MIDDLE_BUTTON = 3;
-        protected static final int TOP_LEFT_BUTTON = 4;
-        protected static final int TOP_RIGHT_BUTTON = 5;
+        protected static class AXIS {
+        protected static final int X = 1;
+        protected static final int Y = 2;
+        }
+
+        protected static class BUTTON {
+        protected static final int TRIGGER = 1;
+        protected static final int TOP_MIDDLE = 3;
+        protected static final int TOP_LEFT = 4;
+        protected static final int TOP_RIGHT = 5;
+        }
     }
 }

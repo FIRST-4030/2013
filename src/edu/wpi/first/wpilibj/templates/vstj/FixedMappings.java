@@ -49,11 +49,11 @@ public class FixedMappings {
      */
     protected static class Xbox {
 
-        protected static final int climberAxisNumber = FixedVars.Xbox.TRIGGERS_AXIS;
-        protected static final int solenoidButtonNumber = FixedVars.Xbox.X_BUTTON;
-        protected static final int shooterMotorSpeedUpButtonNumber = FixedVars.Xbox.B_BUTTON;
-        protected static final int shooterMotorSpeedDownButtonNumber = FixedVars.Xbox.A_BUTTON;
-        protected static final int driveSpeedToggleButton = FixedVars.Xbox.Y_BUTTON;
+        protected static final int climberAxisNumber = FixedVars.Xbox.AXIS.TRIGGERS;
+        protected static final int solenoidButtonNumber = FixedVars.Xbox.BUTTON.LEFT_TRIGGER;
+        protected static final int shooterMotorSpeedUpButtonNumber = FixedVars.Xbox.BUTTON.B;
+        protected static final int shooterMotorSpeedDownButtonNumber = FixedVars.Xbox.BUTTON.A;
+        protected static final int driveSpeedToggleButton = FixedVars.Xbox.BUTTON.LEFT_CIRCLE_PUSH;
     }
 
     /**
@@ -62,9 +62,9 @@ public class FixedMappings {
     private static class RegularJoyStick {
 
         protected static final int climberAxisNumber = -20;//TODO What is the climber axis number on the regular joy stick?
-        protected static final int solenoidButtonNumber = FixedVars.RegularJoyStick.TRIGGER_BUTTON;
-        protected static final int shooterMotorSpeedUpButtonNumber = FixedVars.RegularJoyStick.TOP_RIGHT_BUTTON;
-        protected static final int shooterMotorSpeedDownButtonNumber = FixedVars.RegularJoyStick.TOP_LEFT_BUTTON;
-        protected static final int driveSpeedToggleButton = FixedVars.RegularJoyStick.TOP_MIDDLE_BUTTON;
+        protected static final int solenoidButtonNumber = FixedVars.RegularJoyStick.BUTTON.TRIGGER;
+        protected static final int shooterMotorSpeedUpButtonNumber = FixedVars.RegularJoyStick.BUTTON.TOP_RIGHT;
+        protected static final int shooterMotorSpeedDownButtonNumber = FixedVars.RegularJoyStick.BUTTON.TOP_LEFT;
+        protected static final int driveSpeedToggleButton = FixedVars.RegularJoyStick.BUTTON.TOP_MIDDLE;
     }
 }

@@ -9,7 +9,6 @@ import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
  *
- * @author daboross
  */
 public class RunClimberArmSolenoids extends CommandBase implements Debuggable {
 
@@ -40,6 +39,7 @@ public class RunClimberArmSolenoids extends CommandBase implements Debuggable {
             status = "Extending";
             climberArmSolenoids.extend();
         } else {
+            status+="-NotExtending";
             climberArmSolenoids.retract();
         }
         RobotDebugger.push(climberArmSolenoids);
@@ -51,7 +51,6 @@ public class RunClimberArmSolenoids extends CommandBase implements Debuggable {
     }
 
     protected void end() {
-        climberArmSolenoids.retract();
     }
 
     protected void interrupted() {

@@ -21,7 +21,6 @@ public final class ClimberArmSolenoids extends Subsystem implements Debuggable {
         solenoid1Side2 = new Solenoid(VstM.Solenoids.CLIMBER_ARM_1_SIDE_2);
         solenoid2Side1 = new Solenoid(VstM.Solenoids.CLIMBER_ARM_2_SIDE_1);
         solenoid2Side2 = new Solenoid(VstM.Solenoids.CLIMBER_ARM_2_SIDE_2);
-        retract();
     }
 
     protected void initDefaultCommand() {

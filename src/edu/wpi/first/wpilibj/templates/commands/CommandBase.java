@@ -12,24 +12,34 @@ public abstract class CommandBase extends Command {
     /**
      * SubSystems.
      */
-    protected static Compressor compressor = new Compressor();
-    protected static Camera mainCamera = new Camera();
-    protected static Climber climber = new Climber();
-    protected static PressureSwitch pressureSwitch = new PressureSwitch();
-    protected static GroundDrive groundDrive = new GroundDrive();
-    protected static RunClimber runClimber = new RunClimber();
-    protected static ClimberLimitSwitch climberLimitSwitch = new ClimberLimitSwitch();
-    protected static ShooterSolenoid shooterSolenoid = new ShooterSolenoid();
-    protected static ShooterMotors shooterMotors = new ShooterMotors();
-    protected static TestMotors testMotors = null;// new TestMotors(); I think we have GroundDrive already doing this.
-    protected static ClimberArmSolenoids climberArmSolenoids = null;
+    protected static Compressor compressor;
+    protected static Camera mainCamera;
+    protected static Climber climber;
+    protected static PressureSwitch pressureSwitch;
+    protected static GroundDrive groundDrive;
+    protected static ClimberLimitSwitch climberLimitSwitch;
+    protected static ShooterSolenoid shooterSolenoid;
+    protected static ShooterMotors shooterMotors;
+    protected static TestMotors testMotors ;
+    protected static ClimberArmSolenoids climberArmSolenoids = new ClimberArmSolenoids();
     /**
      * Commands.
      */
-    public static SmartdashboardJoystick controllerUpdate = new SmartdashboardJoystick();
+    public static SmartdashboardJoystick controllerUpdate;
 
     public static void init() {
+        //Commands:
+        controllerUpdate = new SmartdashboardJoystick();
         controllerUpdate.start();
+        //SubSystems:
+        mainCamera = new Camera();
+        pressureSwitch = new PressureSwitch();
+        compressor = new Compressor();
+        climberLimitSwitch = new ClimberLimitSwitch();
+        climber = new Climber();
+        shooterSolenoid = new ShooterSolenoid();
+        shooterMotors = new ShooterMotors();
+        groundDrive = new GroundDrive();
     }
 
     public CommandBase(String name) {

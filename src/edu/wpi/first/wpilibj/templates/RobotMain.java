@@ -32,8 +32,8 @@ public class RobotMain extends IterativeRobot {
         info += ("ClimberMotor:" + VstM.PWM.CLIMBER_MOTOR_PORT + " - ");
         info += ("FirstShooterMotor:" + VstM.PWM.FIRST_SHOOTER_MOTOR_PORT + " - ");
         info += ("SecondShooterMotor:" + VstM.PWM.SECOND_SHOOTER_MOTOR_PORT + " - ");
-        info += ("ClimberBottomSwitch:" + VstM.Digital.CLIMBER_BOTTOM + " - ");
-        info += ("ClimberTopSwitch:" + VstM.Digital.CLIMBER_TOP + " - ");
+        info += ("ClimberBottomSwitch:" + VstM.Relays.CLIMBER_LOWER_LIMIT_SWITCH + " - ");
+        info += ("ClimberTopSwitch:" + VstM.Relays.CLIMBER_UPPER_LIMIT_SWITCH + " - ");
         info += ("ShooterSoenoid1:" + VstM.Solenoids.SHOOTER_SOLENOID_SIDE_1 + " - ");
         info += ("ShooterSoenoid2:" + VstM.Solenoids.SHOOTER_SOLENOID_SIDE_2 + " - ");
         DebugInfo debugInfo = new Message(info);

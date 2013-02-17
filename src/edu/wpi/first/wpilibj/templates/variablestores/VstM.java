@@ -13,6 +13,10 @@ public class VstM {
         public final boolean shooterExtended = false;
         public static final int SHOOTER_SOLENOID_SIDE_1 = 1;
         public static final int SHOOTER_SOLENOID_SIDE_2 = 2;
+        public static final int CLIMBER_ARM_1_SIDE_1 = 3;
+        public static final int CLIMBER_ARM_1_SIDE_2 = 4;
+        public static final int CLIMBER_ARM_2_SIDE_1 = 5;
+        public static final int CLIMBER_ARM_2_SIDE_2 = 6;
     }
 
     /**
@@ -41,9 +45,7 @@ public class VstM {
      */
     public class Digital {
 
-        public final static int PRESSURE_SWITCH = 1;
-        public static final int CLIMBER_TOP = 2;
-        public static final int CLIMBER_BOTTOM = 3;
+        public static final int PRESSURE_SWITCH = 1;
     }
 
     /**
@@ -72,8 +74,8 @@ public class VstM {
     public class Relays {
 
         public final static int COMPRESSOR = 1;
-        public final static int LOWER_LIMIT_SWITCH = 2;
-        public final static int UPPER_LIMIT_SWITCH = 3;
+        public final static int CLIMBER_LOWER_LIMIT_SWITCH = 2;
+        public final static int CLIMBER_UPPER_LIMIT_SWITCH = 3;
     }
 
     /**

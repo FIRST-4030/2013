@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.image.*;
  */
 public class Camera extends Subsystem {
 
+    private boolean cameraEnabled = false;
     private AxisCamera camera = null;
 
     /**
@@ -26,7 +27,7 @@ public class Camera extends Subsystem {
      * This sets the Instance Variable camera to AxisCamera.getInstance().
      */
     private void setCameraInstance() {
-        if (this.camera != null) {
+        if (this.camera != null || !cameraEnabled) {
             return;
         }
         AxisCamera axis;
@@ -35,7 +36,9 @@ public class Camera extends Subsystem {
         } catch (Throwable t) {
             axis = null;
         }
-        if (axis != null) {
+        if (axis == null) {
+            cameraEnabled = false;
+        } else {
             camera = axis;
         }
     }

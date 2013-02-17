@@ -1,6 +1,9 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.templates.debugging.DebugInfo;
+import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
+import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
@@ -23,23 +26,31 @@ public class RunClimber extends CommandBase implements Debuggable {
         climber.stop();
 
     }
+    private double lastSpeed;
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         checkEnabled();
         if (isEnabled) {
-            double climbSpeed = VstJ.getDefaultJoystick().getRawAxis(VstJ.getClimberAxisNumber());
-            climbSpeed *= 0.25;
-            //The Following Code Won't Affect Anything If The Pressure Switches Are Not Attached/Not Pressed.
-            if (climbSpeed != 0) {
-                if (((VstM.Climber.climberState() == -1) != (climbSpeed < 0))
-                        || ((VstM.Climber.climberState() == 1) != climbSpeed > 0)) {
-                    climbSpeed *= VstM.Climber.climberState();
-                }
+            double climbSpeed = 0;
+            if (VstJ.getClimberExtendButtonValue()) {
+                climbSpeed += 1;
             }
+            if (VstJ.getClimberRetractButtonValue()) {
+                climbSpeed -= 1;
+            }
+            /*if (climbSpeed != 0) {
+             if (((VstM.Climber.climberState() == -1) != (climbSpeed < 0))
+             || ((VstM.Climber.climberState() == 1) != climbSpeed > 0)) {
+             climbSpeed = VstM.Climber.climberState();
+             }
+             }*/
+            climbSpeed *= 0.5;
             climber.runLadder(climbSpeed);
+            lastSpeed = climbSpeed;
         } else {
             climber.runLadder(0);
+            lastSpeed = 0;
         }
         RobotDebugger.push(climber);
         RobotDebugger.push(this);
@@ -65,7 +76,10 @@ public class RunClimber extends CommandBase implements Debuggable {
     }
 
     public DebugOutput getStatus() {
-        return new InfoState("Climber", isEnabled() ? "Enabled" : "Disabled");
+        DebugInfo[] infoList = new DebugInfo[2];
+        infoList[0] = new InfoState("Climber", isEnabled() ? "Enabled" : "Disabled");
+        infoList[1] = new DebugStatus("ClimberShould", lastSpeed);
+        return new DebugInfoGroup(infoList);
     }
     private boolean isEnabled;
 

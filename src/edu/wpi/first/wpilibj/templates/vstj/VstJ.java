@@ -16,12 +16,20 @@ public class VstJ {
         return FixedMappings.getDefaultJoyStick();
     }
 
-    public static int getClimberAxisNumber() {
-        return FixedMappings.getClimberAxisNumber();
+    public static int getClimberExtendButtonNumber() {
+        return FixedMappings.getClimberExtendButtonNumber();
     }
 
-    public static double getClimberAxisValue() {
-        return FixedMappings.getDefaultJoyStick().getRawAxis(FixedMappings.getClimberAxisNumber());
+    public static boolean getClimberExtendButtonValue() {
+        return FixedMappings.getDefaultJoyStick().getRawButton(FixedMappings.getClimberExtendButtonNumber());
+    }
+
+    public static int getClimberRetractButtonNumber() {
+        return FixedMappings.getClimberRetractButtonNumber();
+    }
+
+    public static boolean getClimberRetractButtonValue() {
+        return FixedMappings.getDefaultJoyStick().getRawButton(FixedMappings.getClimberRetractButtonNumber());
     }
 
     public static int getShooterSolenoidPushButtonNumber() {

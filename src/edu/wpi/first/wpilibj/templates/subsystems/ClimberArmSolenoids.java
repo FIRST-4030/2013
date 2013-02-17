@@ -29,15 +29,7 @@ public final class ClimberArmSolenoids extends Subsystem implements Debuggable {
     }
     private String state = "None Set";
 
-    public void extendFast() {
-        solenoid1Side1.set(true);
-        solenoid1Side2.set(false);
-        solenoid2Side1.set(false);
-        solenoid2Side2.set(true);
-        state = "Extend Fast";
-    }
-
-    public void extendSlow() {
+    public void extend() {
         solenoid1Side1.set(true);
         solenoid1Side2.set(false);
         solenoid2Side1.set(true);

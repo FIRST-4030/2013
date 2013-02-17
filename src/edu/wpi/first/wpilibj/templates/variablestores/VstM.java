@@ -61,7 +61,7 @@ public class VstM {
 
         public static final int LEFT_MOTOR_PORT = 1;
         public static final int RIGHT_MOTOR_PORT = 2;
-        public static final int CLIMBER_MOTOR_PORT = 3;
+        public static final int CLIMBER_MOTOR_PORT = 10;
         public static final int FIRST_SHOOTER_MOTOR_PORT = 4;
         public static final int SECOND_SHOOTER_MOTOR_PORT = 5;
         public static final int TEST_MOTOR_1_PORT = 5;
@@ -73,7 +73,7 @@ public class VstM {
      */
     public class Relays {
 
-        public final static int COMPRESSOR = 1;
+        public static final int COMPRESSOR = 1;
         public final static int CLIMBER_LOWER_LIMIT_SWITCH = 2;
         public final static int CLIMBER_UPPER_LIMIT_SWITCH = 3;
     }

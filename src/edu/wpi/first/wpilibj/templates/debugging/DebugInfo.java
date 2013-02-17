@@ -19,6 +19,6 @@ public abstract class DebugInfo extends DebugOutput {
     protected abstract int debugLevel();
 
     protected void debug() {
-        RobotDebugger.push(this);
+        RobotDebugger.pushInfo(this);
     }
 }

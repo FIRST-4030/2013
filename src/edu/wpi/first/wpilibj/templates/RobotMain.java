@@ -29,15 +29,15 @@ public class RobotMain extends IterativeRobot {
     private void pushPorts() {
         //Tell the person on the Console/SmartDashboard what ports things should be.
         String info = "Port Info: ";
-        info += ("LeftMotor:" + VstM.PWM.LEFT_MOTOR_PORT);
-        info += ("RightMotor:" + VstM.PWM.RIGHT_MOTOR_PORT);
-        info += ("ClimberMotor:" + VstM.PWM.CLIMBER_MOTOR_PORT);
-        info += ("FirstShooterMotor:" + VstM.PWM.FIRST_SHOOTER_MOTOR_PORT);
-        info += ("SecondShooterMotor:" + VstM.PWM.SECOND_SHOOTER_MOTOR_PORT);
-        info += ("ClimberBottomSwitch:" + VstM.Digital.CLIMBER_BOTTOM);
-        info += ("ClimberTopSwitch:" + VstM.Digital.CLIMBER_TOP);
-        info += ("ShooterSoenoid1:" + VstM.Solenoids.SHOOTER_SOLENOID_SIDE_1);
-        info += ("ShooterSoenoid2:" + VstM.Solenoids.SHOOTER_SOLENOID_SIDE_2);
+        info += ("LeftMotor:" + VstM.PWM.LEFT_MOTOR_PORT + " - ");
+        info += ("RightMotor:" + VstM.PWM.RIGHT_MOTOR_PORT + " - ");
+        info += ("ClimberMotor:" + VstM.PWM.CLIMBER_MOTOR_PORT + " - ");
+        info += ("FirstShooterMotor:" + VstM.PWM.FIRST_SHOOTER_MOTOR_PORT + " - ");
+        info += ("SecondShooterMotor:" + VstM.PWM.SECOND_SHOOTER_MOTOR_PORT + " - ");
+        info += ("ClimberBottomSwitch:" + VstM.Digital.CLIMBER_BOTTOM + " - ");
+        info += ("ClimberTopSwitch:" + VstM.Digital.CLIMBER_TOP + " - ");
+        info += ("ShooterSoenoid1:" + VstM.Solenoids.SHOOTER_SOLENOID_SIDE_1 + " - ");
+        info += ("ShooterSoenoid2:" + VstM.Solenoids.SHOOTER_SOLENOID_SIDE_2 + " - ");
         DebugInfo debugInfo = new Message(info);
         RobotDebugger.push(debugInfo);
     }

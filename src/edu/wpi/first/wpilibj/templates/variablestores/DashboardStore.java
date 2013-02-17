@@ -26,6 +26,7 @@ public class DashboardStore {
 
     private static void initIsClimberEnabled() {
         isClimberEnabledInit = true;
+        isClimberEnabled = new SendableChooser();
         isClimberEnabled.addDefault("Disable Climber", Boolean.FALSE);
         isClimberEnabled.addObject("Enable Climber", Boolean.TRUE);
         SmartDashboard.putData("ClimberEnabled", isClimberEnabled);

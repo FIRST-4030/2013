@@ -2,6 +2,8 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.templates.commands.RunClimber;
+import edu.wpi.first.wpilibj.templates.commands.RunClimberArmSolenoids;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
 /**
@@ -20,6 +22,7 @@ public class ClimberArmSolenoids extends Subsystem {
     }
 
     protected void initDefaultCommand() {
+        setDefaultCommand(new RunClimberArmSolenoids());
     }
 
     public void extendFast() {
@@ -39,6 +42,12 @@ public class ClimberArmSolenoids extends Subsystem {
     public void retract() {
         solenoid1Side1.set(false);
         solenoid1Side2.set(true);
+        solenoid2Side1.set(false);
+        solenoid2Side2.set(false);
+    }
+    public void release(){
+        solenoid1Side1.set(false);
+        solenoid1Side2.set(false);
         solenoid2Side1.set(false);
         solenoid2Side2.set(false);
     }

@@ -55,4 +55,12 @@ public class VstJ {
     public static boolean getDriveSpeedToggleButtonValue() {
         return FixedMappings.getDefaultJoyStick().getRawButton(FixedMappings.getDriveSpeedToggleButtonNumber());
     }
+
+    public static int getClimberArmSolenoidToggleButtonNumber() {
+        return FixedMappings.getClimberArmToggleButtonNumber();
+    }
+
+    public static boolean getClimberArmSolenoidToggleButtonValue() {
+        return FixedMappings.getDefaultJoyStick().getRawButton(FixedMappings.getClimberArmToggleButtonNumber());
+    }
 }

@@ -1,6 +1,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.variablestores.DashboardStore;
+import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
  *
@@ -8,14 +9,35 @@ import edu.wpi.first.wpilibj.templates.variablestores.DashboardStore;
  */
 public class RunClimberArmSolenoids extends CommandBase {
 
-    protected RunClimberArmSolenoids() {
+    public RunClimberArmSolenoids() {
         DashboardStore.initClimber();
+        requires(climberArmSolenoids);
     }
 
     protected void initialize() {
+        climberArmSolenoids.retract();
     }
+    private boolean pressedLast = false;
+    private boolean on = false;
+    private boolean justStarted = true;
 
     protected void execute() {
+        if (VstJ.getClimberArmSolenoidToggleButtonValue() != pressedLast) {
+            justStarted = false;
+            if (pressedLast) {
+                on = !on;
+            }
+            pressedLast = !pressedLast;
+        }
+        if (justStarted) {
+            climberArmSolenoids.retract();
+        } else {
+            if (on) {
+                climberArmSolenoids.extendSlow();
+            } else {
+                climberArmSolenoids.release();
+            }
+        }
     }
 
     protected boolean isFinished() {

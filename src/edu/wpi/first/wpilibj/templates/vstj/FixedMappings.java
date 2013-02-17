@@ -44,6 +44,10 @@ public class FixedMappings {
         return VstJ.usingXBox ? Xbox.driveSpeedToggleButton : RegularJoyStick.driveSpeedToggleButton;
     }
 
+    protected static int getClimberArmToggleButtonNumber() {
+        return VstJ.usingXBox ? Xbox.climberArmToggle : RegularJoyStick.climberArmToggle;
+    }
+
     /**
      * This is the XBox controller.
      */
@@ -54,6 +58,7 @@ public class FixedMappings {
         protected static final int shooterMotorSpeedUpButtonNumber = FixedVars.Xbox.BUTTON.B;
         protected static final int shooterMotorSpeedDownButtonNumber = FixedVars.Xbox.BUTTON.A;
         protected static final int driveSpeedToggleButton = FixedVars.Xbox.BUTTON.LEFT_CIRCLE_PUSH;
+        protected static final int climberArmToggle = FixedVars.Xbox.BUTTON.START;
     }
 
     /**
@@ -61,10 +66,11 @@ public class FixedMappings {
      */
     private static class RegularJoyStick {
 
-        protected static final int climberAxisNumber = -20;//TODO What is the climber axis number on the regular joy stick?
+        protected static final int climberAxisNumber = -20;
         protected static final int solenoidButtonNumber = FixedVars.RegularJoyStick.BUTTON.TOP_OF_JOYSTICK.TRIGGER;
         protected static final int shooterMotorSpeedUpButtonNumber = FixedVars.RegularJoyStick.BUTTON.TOP_OF_JOYSTICK.RIGHT;
         protected static final int shooterMotorSpeedDownButtonNumber = FixedVars.RegularJoyStick.BUTTON.TOP_OF_JOYSTICK.LEFT;
         protected static final int driveSpeedToggleButton = FixedVars.RegularJoyStick.BUTTON.TOP_OF_JOYSTICK.MIDDLE;
+        protected static final int climberArmToggle = FixedVars.RegularJoyStick.BUTTON.STAND_OF_JOYSTICK.LEFT_TOP;
     }
 }

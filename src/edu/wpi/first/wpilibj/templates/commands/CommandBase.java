@@ -20,7 +20,6 @@ public abstract class CommandBase extends Command {
     protected static ClimberLimitSwitch climberLimitSwitch;
     protected static ShooterSolenoid shooterSolenoid;
     protected static ShooterMotors shooterMotors;
-    protected static TestMotors testMotors;
     protected static ClimberArmSolenoids climberArmSolenoids = new ClimberArmSolenoids();
     /**
      * Commands.

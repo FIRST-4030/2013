@@ -76,5 +76,16 @@ public class RobotMain extends IterativeRobot {
 
     public void disabledInit() {
         RobotDebugger.clearMap();
+        for(int i = 0; i<list.length; i++){
+            list[i].disable();
+        }
+    }
+    private static DisableNotifable[] list = new DisableNotifable[0];
+
+    public static void addDisableNotifable(DisableNotifable d) {
+        DisableNotifable[] temp = new DisableNotifable[list.length + 1];
+        System.arraycopy(list, 0, temp, 0, list.length);
+        temp[list.length + 1] = d;
+        list = temp;
     }
 }

@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.templates.DisableNotifable;
+import edu.wpi.first.wpilibj.templates.RobotMain;
 import edu.wpi.first.wpilibj.templates.debugging.DebugInfo;
 import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
@@ -18,7 +20,7 @@ import edu.wpi.first.wpilibj.templates.vstj.VstJ;
  *
  * Same kind of drive as RunShooterMotors, but with different buttons.
  */
-public class RunClimber extends CommandBase implements Debuggable {
+public class RunClimber extends CommandBase implements Debuggable, DisableNotifable {
 
     private boolean isEnabled;
     private boolean limitSwitchEnabled = false;
@@ -32,6 +34,7 @@ public class RunClimber extends CommandBase implements Debuggable {
         requires(climber);
         requires(climberLimitSwitch);
         DashboardStore.initClimber();
+        RobotMain.addDisableNotifable(this);
     }
 
     protected void initialize() {
@@ -58,7 +61,7 @@ public class RunClimber extends CommandBase implements Debuggable {
                     if (speed - 0.1 > -1) {
                         speed -= 0.1;
                     } else {
-                        speed = 0;
+                        speed = -1;
                     }
                 }
                 retractButtonLastPressed = !retractButtonLastPressed;
@@ -72,7 +75,7 @@ public class RunClimber extends CommandBase implements Debuggable {
         } else {
             speed = 0;
         }
-        climber.runLadder(speed);
+        //climber.runLadder(speed);
         RobotDebugger.push(this);
         RobotDebugger.push(climber);
         RobotDebugger.push(climberLimitSwitch);
@@ -84,13 +87,16 @@ public class RunClimber extends CommandBase implements Debuggable {
 
     protected void end() {
         climber.stop();
+        speed = 0;
+        isEnabled = false;
+        RobotDebugger.push(this);
         RobotDebugger.push(climber);
+        RobotDebugger.push(climberLimitSwitch);
+
     }
 
     protected void interrupted() {
         this.end();
-        isEnabled = false;
-        RobotDebugger.push(this);
     }
 
     private void checkEnabled() {
@@ -113,5 +119,13 @@ public class RunClimber extends CommandBase implements Debuggable {
         infoList[1] = new DebugStatus("ClimberShouldBe", speed, DebugLevel.LOW);
         infoList[2] = new DebugStatus("ClimberLimitSwitchEnabled", limitSwitchEnabled, DebugLevel.LOW);
         return new DebugInfoGroup(infoList);
+    }
+
+    public void disable() {
+        speed = 0;
+        isEnabled = false;
+        RobotDebugger.push(this);
+        RobotDebugger.push(climber);
+        RobotDebugger.push(climberLimitSwitch);
     }
 }

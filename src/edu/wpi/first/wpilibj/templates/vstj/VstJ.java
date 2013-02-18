@@ -66,6 +66,10 @@ public class VstJ {
         return getJoystickButton(Mappings.driveControlReverseButtonJoystickNumber, Mappings.driveControlReverseButtonNumber);
     }
 
+    public static double getClimberWedgeSolenoidControlAxisValue() {
+        return getJoystickAxis(Mappings.climberWedgeSolenoidControlAxisJoystickNumber, Mappings.climberWedgeSolenoidControlNumber);
+    }
+
     private static boolean getJoystickButton(int joyStick, int buttonNumber) {
         return getJoystick(joyStick).getRawButton(buttonNumber);
     }
@@ -99,5 +103,8 @@ public class VstJ {
         //
         protected static final int driveControlReverseButtonJoystickNumber = FV.DRIVE_JOYSTICK;
         protected static final int driveControlReverseButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.BOTTOM;
+        //
+        protected static final int climberWedgeSolenoidControlAxisJoystickNumber = FV.DRIVE_JOYSTICK;
+        protected static final int climberWedgeSolenoidControlNumber = FV.AXIS.Y;
     }
 }

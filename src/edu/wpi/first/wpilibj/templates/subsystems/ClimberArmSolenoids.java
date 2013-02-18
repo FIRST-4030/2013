@@ -17,13 +17,11 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstM;
  */
 public final class ClimberArmSolenoids extends Subsystem implements Debuggable {
 
-    private Solenoid solenoid1Side1, solenoid1Side2, solenoid2Side1, solenoid2Side2;
+    private Solenoid side1, side2;
 
     public ClimberArmSolenoids() {
-        solenoid1Side1 = new Solenoid(VstM.Solenoids.CLIMBER_ARM_1_SIDE_1);
-        solenoid1Side2 = new Solenoid(VstM.Solenoids.CLIMBER_ARM_1_SIDE_2);
-        solenoid2Side1 = new Solenoid(VstM.Solenoids.CLIMBER_ARM_2_SIDE_1);
-        solenoid2Side2 = new Solenoid(VstM.Solenoids.CLIMBER_ARM_2_SIDE_2);
+        side1 = new Solenoid(VstM.Solenoids.CLIMBER_ARM_SIDE_1);
+        side2 = new Solenoid(VstM.Solenoids.CLIMBER_ARM_SIDE_2);
     }
 
     protected void initDefaultCommand() {
@@ -32,19 +30,15 @@ public final class ClimberArmSolenoids extends Subsystem implements Debuggable {
     private String state = "None Set";
 
     public void extend() {
-        solenoid1Side1.set(true);
-        solenoid1Side2.set(false);
-        solenoid2Side1.set(true);
-        solenoid2Side2.set(false);
-        state = "Extend Slow";
+        side1.set(true);
+        side2.set(false);
+        state = "Extend";
     }
 
     public void retract() {
-        solenoid1Side1.set(false);
-        solenoid1Side2.set(true);
-        solenoid2Side1.set(false);
-        solenoid2Side2.set(false);
-        state = "Retract Fast";
+        side1.set(false);
+        side2.set(true);
+        state = "Retract";
     }
 
     public DebugOutput getStatus() {

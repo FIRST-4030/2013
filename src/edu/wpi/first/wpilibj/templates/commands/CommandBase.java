@@ -20,7 +20,8 @@ public abstract class CommandBase extends Command {
     protected static ClimberLimitSwitch climberLimitSwitch;
     protected static ShooterSolenoid shooterSolenoid;
     protected static ShooterMotors shooterMotors;
-    protected static ClimberArmSolenoids climberArmSolenoids = new ClimberArmSolenoids();
+    protected static ClimberArmSolenoids climberArmSolenoids;
+    protected static ClimberWedgeSolenoid climberWedgeSolenoid;
 
     public static void init() {
         mainCamera = new Camera();
@@ -31,6 +32,8 @@ public abstract class CommandBase extends Command {
         shooterSolenoid = new ShooterSolenoid();
         shooterMotors = new ShooterMotors();
         groundDrive = new GroundDrive();
+        climberArmSolenoids = new ClimberArmSolenoids();
+        climberWedgeSolenoid = new ClimberWedgeSolenoid();
     }
 
     public CommandBase(String name) {

@@ -13,10 +13,10 @@ public class VstM {
         public final boolean shooterExtended = false;
         public static final int SHOOTER_SOLENOID_SIDE_1 = 1;
         public static final int SHOOTER_SOLENOID_SIDE_2 = 2;
-        public static final int CLIMBER_ARM_1_SIDE_1 = 3;
-        public static final int CLIMBER_ARM_1_SIDE_2 = 4;
-        public static final int CLIMBER_ARM_2_SIDE_1 = 5;
-        public static final int CLIMBER_ARM_2_SIDE_2 = 6;
+        public static final int CLIMBER_ARM_SIDE_1 = 3;
+        public static final int CLIMBER_ARM_SIDE_2 = 4;
+        public static final int CLIMBER_WEDGE_SOLENOID_SIDE_1 = 5;
+        public static final int CLIMBER_WEDGE_SOLENOID_SIDE_2 = 6;
         public static final int SHOOTER_DUMP_SOLENOID_SIDE_1 = 7;
         public static final int SHOOTER_DUMP_SOLENOID_SIDE_2 = 8;
     }

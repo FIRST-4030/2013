@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.templates.vstj.VstJ;
  */
 public class GroundDrive extends Subsystem implements Debuggable {
 
+    private boolean driveReversed = false;
     private static Jaguar leftMotor = new Jaguar(VstM.PWM.LEFT_MOTOR_PORT);
     private static Jaguar rightMotor = new Jaguar(VstM.PWM.RIGHT_MOTOR_PORT);
     private static RobotDrive roboDrive;
@@ -35,11 +36,12 @@ public class GroundDrive extends Subsystem implements Debuggable {
      * Sets a variable that will be multiplied by the input from whatever
      * joystick there is. Must be between 0 and 1.
      */
-    public void setSpeedMutliplier(double d) {
+    public void setSpeedMutliplier(double d, boolean reversed) {
+        driveReversed = reversed;
         if (d < 0 || d > 1) {
             throw new IllegalArgumentException();
         }
-        multiplier = d;
+        multiplier = d * (driveReversed ? -1 : 1);
     }
     private double multiplier;
 
@@ -66,10 +68,11 @@ public class GroundDrive extends Subsystem implements Debuggable {
      * Get Current Status Info.
      */
     public DebugOutput getStatus() {
-        DebugStatus[] infoList = new DebugStatus[3];
+        DebugStatus[] infoList = new DebugStatus[4];
         infoList[0] = new DebugStatus("GroundDrive:LeftMotor:Speed", leftMotor.get(), DebugLevel.MID);
         infoList[1] = new DebugStatus("GroundDrive:RightMotor:Speed", rightMotor.get(), DebugLevel.MID);
-        infoList[2] = new DebugStatus("GroundDrive:SpeedMultiplier", multiplier, DebugLevel.HIGHEST);
+        infoList[2] = new DebugStatus("GroundDrive:Reversed", driveReversed, DebugLevel.HIGHEST);
+        infoList[3] = new DebugStatus("GroundDrive:SpeedMultiplier", multiplier, DebugLevel.HIGHEST);
         return new DebugInfoGroup(infoList);
     }
 

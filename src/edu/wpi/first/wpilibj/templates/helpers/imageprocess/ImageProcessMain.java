@@ -19,12 +19,13 @@ public class ImageProcessMain {
 
     private static ColorImage currentImage;
     private static BinaryImage currentBImage;
-    private static ParticleAnalysisReport[] particleAnalysisReportList;
+    static ParticleAnalysisReport[] particleAnalysisReportList;
     private static Camera mainCamera;
 
     public static void runReport(Camera mC) {
         mainCamera = mC;
         LinearDistanceReport ldp = calculateLinear();
+        LinearDistanceCalculator.targetToNetwork(particleAnalysisReportList);
         DebugStatus[] infoList = new DebugStatus[5];
         infoList[0] = new DebugStatus("LinearDistanceCalculate:Error:IsError", ldp.getError().isError() ? "yes" : "no", DebugLevel.ALWAYS);
         infoList[1] = new DebugStatus("LinearDistanceCalculator:Error:Owner", ldp.getError().getCreator(), DebugLevel.ALWAYS);

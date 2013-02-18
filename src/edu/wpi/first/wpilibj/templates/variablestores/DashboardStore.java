@@ -12,6 +12,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class DashboardStore {
 
+    public static void reInit() {
+        isClimberEnabledInit = false;
+        isClimberAutoInit = false;
+        isClimberAuto = null;
+        isClimberEnabled = null;
+        initIsClimberEnabled();
+        initIsClimberAuto();
+    }
     private static boolean isClimberEnabledInit = false;
     private static SendableChooser isClimberEnabled;
 
@@ -38,6 +46,7 @@ public class DashboardStore {
             isClimberAuto = new SendableChooser();
             isClimberAuto.addDefault("Climber Mode: Manual", Boolean.FALSE);
             isClimberAuto.addObject("Climber Mode: Auto", Boolean.TRUE);
+            SmartDashboard.putData("ClimberAuto", isClimberAuto);
         }
     }
 

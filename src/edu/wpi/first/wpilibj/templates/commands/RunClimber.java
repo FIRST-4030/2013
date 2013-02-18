@@ -47,7 +47,7 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
     }
 
     protected void execute() {
-        checkLimitSwitch();
+        checkLimitSwitches();
         runClimber();
         RobotDebugger.push(this);
         RobotDebugger.push(climber);
@@ -65,37 +65,45 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
                 autoLast = !autoLast;
             }
             if (climberAuto) {
-                if (upperPressed) {
-                    if (lastAutoState) {
-                        timeOfLastAutoChange = System.currentTimeMillis();
-                    }
-                    lastAutoState = false;
-                } else if (lowerPressed) {
-                    if (!lastAutoState) {
-                        timeOfLastAutoChange = System.currentTimeMillis();
-                    }
-                    lastAutoState = true;
-                }
-                double autoSpeed;
-                if (timeOfLastAutoChange + 2000 > System.currentTimeMillis()) {
-                    autoSpeed = 0.8;
-                } else {
-                    autoSpeed = 0.4;
-                }
-                speed = lastAutoState ? autoSpeed : -autoSpeed;
+                setSpeedAuto();
             } else {
-                speed = VstJ.getLadderControlAxisValue();
-                if (upperPressed && speed > 0) {
-                    speed = 0;
-                }
-                if (lowerPressed && speed < 0) {
-                    speed = 0;
-                }
+                setSpeedMan();
             }
         } else {
             speed = 0;
         }
         climber.runLadder(speed);
+    }
+
+    private void setSpeedAuto() {
+        if (upperPressed) {
+            if (lastAutoState) {
+                timeOfLastAutoChange = System.currentTimeMillis();
+            }
+            lastAutoState = false;
+        } else if (lowerPressed) {
+            if (!lastAutoState) {
+                timeOfLastAutoChange = System.currentTimeMillis();
+            }
+            lastAutoState = true;
+        }
+        double autoSpeed;
+        if (timeOfLastAutoChange + 2000 > System.currentTimeMillis()) {
+            autoSpeed = 0.8;
+        } else {
+            autoSpeed = 0.4;
+        }
+        speed = lastAutoState ? autoSpeed : -autoSpeed;
+    }
+
+    private void setSpeedMan() {
+        speed = VstJ.getLadderControlAxisValue();
+        if (upperPressed && speed > 0) {
+            speed = 0;
+        }
+        if (lowerPressed && speed < 0) {
+            speed = 0;
+        }
     }
 
     protected boolean isFinished() {
@@ -115,13 +123,15 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
         this.end();
     }
 
-    private void checkLimitSwitch() {
+    private void checkLimitSwitches() {
         if (limitSwitchEnabled) {
             upperPressed = climberLimitSwitch.readUpper();
             lowerPressed = climberLimitSwitch.readLower();
+            deployPressed = climberLimitSwitch.readDeploy();
         } else {
             upperPressed = false;
             lowerPressed = false;
+            deployPressed = false;
         }
     }
 

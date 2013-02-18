@@ -30,6 +30,8 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
      * False is going down, true is going up.
      */
     private boolean lastAutoState = false;
+    private long timeOfLastAutoChange;
+    private boolean autoLast = false;
 
     public RunClimber() {
         requires(climber);
@@ -53,13 +55,32 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
 
     private void runClimber() {
         if (DashboardStore.getIsClimberEnabled()) {
-            if (DashboardStore.getIsClimberAuto()) {
+            boolean climberAuto = DashboardStore.getIsClimberAuto();
+            if (climberAuto != autoLast) {
+                if (!autoLast) {
+                    lastAutoState = false;
+                    timeOfLastAutoChange = System.currentTimeMillis();
+                }
+            }
+            if (climberAuto) {
                 if (upperPressed) {
+                    if (lastAutoState) {
+                        timeOfLastAutoChange = System.currentTimeMillis();
+                    }
                     lastAutoState = false;
                 } else if (lowerPressed) {
+                    if (!lastAutoState) {
+                        timeOfLastAutoChange = System.currentTimeMillis();
+                    }
                     lastAutoState = true;
                 }
-                speed = lastAutoState ? 0.8 : -0.8;
+                double autoSpeed;
+                if (timeOfLastAutoChange + 2000 > System.currentTimeMillis()) {
+                    autoSpeed = 0.8;
+                } else {
+                    autoSpeed = 0.4;
+                }
+                speed = lastAutoState ? autoSpeed : -autoSpeed;
             } else {
                 speed = VstJ.getLadderControlAxisValue() - 0.2;
                 if (upperPressed && speed > 0) {

@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.templates.DisableNotifable;
+import edu.wpi.first.wpilibj.templates.RobotMain;
 import edu.wpi.first.wpilibj.templates.debugging.DebugInfo;
 import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
@@ -18,64 +20,80 @@ import edu.wpi.first.wpilibj.templates.vstj.VstJ;
  *
  * Same kind of drive as RunShooterMotors, but with different buttons.
  */
-public class RunClimber extends CommandBase implements Debuggable {
+public class RunClimber extends CommandBase implements Debuggable, DisableNotifable {
 
-    private boolean isEnabled;
     private boolean limitSwitchEnabled = false;
     private double speed = 0;
-    private boolean extendButtonLastPressed = false;
-    private boolean retractButtonLastPressed = false;
     private boolean lowerPressed;
     private boolean upperPressed;
+    /**
+     * False is going down, true is going up.
+     */
+    private boolean lastAutoState = false;
+    private long timeOfLastAutoChange;
+    private boolean autoLast = false;
 
     public RunClimber() {
         requires(climber);
         requires(climberLimitSwitch);
-        DashboardStore.initClimber();
+        DashboardStore.initIsClimberEnabled();
+        DashboardStore.initIsClimberAuto();
     }
 
     protected void initialize() {
+        RobotMain.addDisableNotifable(this);
         climber.stop();
-
     }
 
     protected void execute() {
-        checkEnabled();
         checkLimitSwitch();
-        if (isEnabled) {
-            if (VstJ.getClimberExtendButtonValue() != extendButtonLastPressed) {
-                if (!extendButtonLastPressed) {
-                    if (speed + 0.1 < 1) {
-                        speed += 0.1;
-                    } else {
-                        speed = 1;
-                    }
-                    extendButtonLastPressed = !extendButtonLastPressed;
+        runClimber();
+        RobotDebugger.push(this);
+        RobotDebugger.push(climber);
+        RobotDebugger.push(climberLimitSwitch);
+    }
+
+    private void runClimber() {
+        if (DashboardStore.getIsClimberEnabled()) {
+            boolean climberAuto = DashboardStore.getIsClimberAuto();
+            if (climberAuto != autoLast) {
+                if (!autoLast) {
+                    lastAutoState = false;
+                    timeOfLastAutoChange = System.currentTimeMillis();
                 }
             }
-            if (VstJ.getClimberRetractButtonValue() != retractButtonLastPressed) {
-                if (!retractButtonLastPressed) {
-                    if (speed - 0.1 > -1) {
-                        speed -= 0.1;
-                    } else {
-                        speed = 0;
+            if (climberAuto) {
+                if (upperPressed) {
+                    if (lastAutoState) {
+                        timeOfLastAutoChange = System.currentTimeMillis();
                     }
+                    lastAutoState = false;
+                } else if (lowerPressed) {
+                    if (!lastAutoState) {
+                        timeOfLastAutoChange = System.currentTimeMillis();
+                    }
+                    lastAutoState = true;
                 }
-                retractButtonLastPressed = !retractButtonLastPressed;
-            }
-            if (upperPressed && speed > 0) {
-                speed = 0;
-            }
-            if (lowerPressed && speed < 0) {
-                speed = 0;
+                double autoSpeed;
+                if (timeOfLastAutoChange + 2000 > System.currentTimeMillis()) {
+                    autoSpeed = 0.8;
+                } else {
+                    autoSpeed = 0.4;
+                }
+                speed = lastAutoState ? autoSpeed : -autoSpeed;
+            } else {
+                speed = VstJ.getLadderControlAxisValue() - 0.2;
+                if (upperPressed && speed > 0) {
+                    speed = 0;
+                }
+                if (lowerPressed && speed < 0) {
+                    speed = 0;
+                }
             }
         } else {
             speed = 0;
         }
         climber.runLadder(speed);
-        RobotDebugger.push(this);
-        RobotDebugger.push(climber);
-        RobotDebugger.push(climberLimitSwitch);
     }
 
     protected boolean isFinished() {
@@ -84,17 +102,15 @@ public class RunClimber extends CommandBase implements Debuggable {
 
     protected void end() {
         climber.stop();
+        speed = 0;
+        RobotDebugger.push(this);
         RobotDebugger.push(climber);
+        RobotDebugger.push(climberLimitSwitch);
+
     }
 
     protected void interrupted() {
         this.end();
-        isEnabled = false;
-        RobotDebugger.push(this);
-    }
-
-    private void checkEnabled() {
-        isEnabled = DashboardStore.getClimberEnabled();
     }
 
     private void checkLimitSwitch() {
@@ -109,9 +125,17 @@ public class RunClimber extends CommandBase implements Debuggable {
 
     public DebugOutput getStatus() {
         DebugInfo[] infoList = new DebugInfo[3];
-        infoList[0] = new InfoState("Climber", isEnabled ? "Enabled" : "Disabled", DebugLevel.HIGHEST);
-        infoList[1] = new DebugStatus("ClimberShouldBe", speed, DebugLevel.LOW);
-        infoList[2] = new DebugStatus("ClimberLimitSwitchEnabled", limitSwitchEnabled, DebugLevel.LOW);
+        infoList[0] = new InfoState("Climber:Enabled", DashboardStore.getIsClimberEnabled() ? "Yes" : "No", DebugLevel.HIGHEST);
+        infoList[0] = new InfoState("Climber:Mode", DashboardStore.getIsClimberAuto() ? "Auto" : "Manual", DebugLevel.HIGHEST);
+        infoList[1] = new DebugStatus("Climber:SetSpeed", speed, DebugLevel.LOW);
+        infoList[2] = new DebugStatus("ClimberLimitSwitch:Enabled", limitSwitchEnabled, DebugLevel.LOW);
         return new DebugInfoGroup(infoList);
+    }
+
+    public void disable() {
+        speed = 0;
+        RobotDebugger.push(this);
+        RobotDebugger.push(climber);
+        RobotDebugger.push(climberLimitSwitch);
     }
 }

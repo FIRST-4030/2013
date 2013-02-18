@@ -1,7 +1,5 @@
 package edu.wpi.first.wpilibj.templates.variablestores;
 
-import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
-
 /**
  * This is the main variable store. It holds a lot of things.
  */
@@ -78,6 +76,7 @@ public class VstM {
         public static final int COMPRESSOR = 1;
         public final static int CLIMBER_LOWER_LIMIT_SWITCH = 2;
         public final static int CLIMBER_UPPER_LIMIT_SWITCH = 3;
+        public final static int CLIMBER_DEPLOY_LIMIT_SWITCH = 4;
     }
 
     /**

@@ -44,7 +44,7 @@ public class GroundDrive extends Subsystem implements Debuggable {
     private double multiplier;
 
     public void driveWithDefaultController() {
-        driveWithController(VstJ.getDefaultJoystick());
+        driveWithController(VstJ.getDriveJoystick());
     }
     private Joystick lastController;
 

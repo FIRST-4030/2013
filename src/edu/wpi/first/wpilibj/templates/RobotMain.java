@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.Message;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.subsystems.GroundDrive;
+import edu.wpi.first.wpilibj.templates.variablestores.DashboardStore;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
 /**
@@ -75,6 +76,23 @@ public class RobotMain extends IterativeRobot {
     }
 
     public void disabledInit() {
+        DashboardStore.reInit();
         RobotDebugger.clearMap();
+        for (int i = 0; i < list.length; i++) {
+            list[i].disable();
+        }
+    }
+    private static DisableNotifable[] list = new DisableNotifable[0];
+
+    public static void addDisableNotifable(DisableNotifable d) {
+        for (int i = 0; i < list.length; i++) {
+            if (list[i] == d) {
+                return;
+            }
+        }
+        DisableNotifable[] temp = new DisableNotifable[list.length + 1];
+        System.arraycopy(list, 0, temp, 0, list.length);
+        temp[list.length] = d;
+        list = temp;
     }
 }

@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.templates.DisableNotifable;
+import edu.wpi.first.wpilibj.templates.RobotMain;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
@@ -17,10 +19,11 @@ import edu.wpi.first.wpilibj.templates.vstj.VstJ;
  *
  * NOTE: When I say "Pressed", I mean released and then pressed.
  */
-public class RunShooterMotors extends CommandBase implements Debuggable {
+public class RunShooterMotors extends CommandBase implements Debuggable, DisableNotifable {
 
     public RunShooterMotors() {
         requires(shooterMotors);
+        RobotMain.addDisableNotifable(this);
     }
 
     protected void initialize() {
@@ -79,5 +82,13 @@ public class RunShooterMotors extends CommandBase implements Debuggable {
 
     public DebugOutput getStatus() {
         return new DebugStatus("ShooterMotors:ShouldBeSpeed", motorSpeed, DebugLevel.LOW);
+    }
+
+    public void disable() {
+        motorSpeed = 0;
+        buttonPressedLastDown = false;
+        buttonPressedLastUp = false;
+        RobotDebugger.push(this);
+        RobotDebugger.push(shooterMotors);
     }
 }

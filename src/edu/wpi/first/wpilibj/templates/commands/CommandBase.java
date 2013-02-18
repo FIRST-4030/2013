@@ -21,16 +21,8 @@ public abstract class CommandBase extends Command {
     protected static ShooterSolenoid shooterSolenoid;
     protected static ShooterMotors shooterMotors;
     protected static ClimberArmSolenoids climberArmSolenoids = new ClimberArmSolenoids();
-    /**
-     * Commands.
-     */
-    public static SmartdashboardJoystick controllerUpdate;
 
     public static void init() {
-        //Commands:
-        controllerUpdate = new SmartdashboardJoystick();
-        controllerUpdate.start();
-        //SubSystems:
         mainCamera = new Camera();
         pressureSwitch = new PressureSwitch();
         compressor = new Compressor();

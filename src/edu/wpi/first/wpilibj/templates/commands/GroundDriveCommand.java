@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 public class GroundDriveCommand extends CommandBase implements Debuggable {
 
     private boolean highSpeed = false;
+    private boolean reversed = false;
     private boolean isDone = false;
 
     public GroundDriveCommand() {
@@ -26,14 +27,17 @@ public class GroundDriveCommand extends CommandBase implements Debuggable {
     protected void initialize() {
         groundDrive.stop();
         RobotDebugger.push(groundDrive);
+        RobotDebugger.push(this);
     }
 
     // Called repeatedly when this Command is scheduled to run.
     protected void execute() {
         updateHighSpeed();
-        groundDrive.setSpeedMutliplier(highSpeed ? 1 : 0.5);
+        updateReversed();
+        groundDrive.setSpeedMutliplier(highSpeed ? 1 : 0.7, reversed);
         groundDrive.driveWithDefaultController();
         RobotDebugger.push(groundDrive);
+        RobotDebugger.push(this);
     }
 
     // Make this return true when this Command no longer needs to run execute().
@@ -52,16 +56,26 @@ public class GroundDriveCommand extends CommandBase implements Debuggable {
     }
 
     public DebugOutput getStatus() {
-        return new InfoState("GroundDrive:Speed", highSpeed ? "High" : "Low", DebugLevel.MID);
+        return new InfoState("GroundDrive:Speed", highSpeed ? "High" : "Low", DebugLevel.LOW);
     }
-    private boolean lastPressed;
+    private boolean highSpeedLastPressed = false;
+    private boolean reversedLastPressed = false;
 
     private void updateHighSpeed() {
-        if (VstJ.getDriveSpeedToggleButtonValue() != lastPressed) {
-            if (lastPressed) {
+        if (VstJ.getDriveSpeedToggleButtonValue() != highSpeedLastPressed) {
+            if (!highSpeedLastPressed) {
                 highSpeed = !highSpeed;
             }
-            lastPressed = !lastPressed;
+            highSpeedLastPressed = !highSpeedLastPressed;
+        }
+    }
+
+    private void updateReversed() {
+        if (VstJ.getDriveControlReverseButtonValue() != reversedLastPressed) {
+            if (!reversedLastPressed) {
+                reversed = !reversed;
+            }
+            reversedLastPressed = !reversedLastPressed;
         }
     }
 }

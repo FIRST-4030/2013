@@ -14,14 +14,17 @@ public class VstJ {
     private static Joystick[] joySticks;
 
     protected static void joyStickInit() {
-        joySticks = new Joystick[2];
-        for (int i = 0; i < joySticks.length; i++) {
+        joySticks = new Joystick[3];
+        for (int i = 1; i < joySticks.length; i++) {
             joySticks[i] = new Joystick(i);
         }
     }
 
     private static Joystick getJoystick(int number) {
-        if (number < 0 || number > 2) {
+        if (joySticks == null) {
+            joyStickInit();
+        }
+        if (number < 1 || number > 2) {
             throw new IllegalArgumentException("To High/Low number for getJoystick()");
         }
         return joySticks[number];
@@ -30,7 +33,8 @@ public class VstJ {
     public static Joystick getDriveJoystick() {
         return getJoystick(FV.DRIVE_JOYSTICK);
     }
-    public static Joystick getShooterJoystick(){
+
+    public static Joystick getShooterJoystick() {
         return getJoystick(FV.SHOOTER_JOYSTICK);
     }
 
@@ -39,7 +43,7 @@ public class VstJ {
     }
 
     public static boolean getShooterSolenoidPushButtonValue() {
-        return getJoystickButton(Mappings.shooterSolenoidButtonJoystickNumber, Mappings.shooterMotorSpeedDownButtonNumber);
+        return getJoystickButton(Mappings.shooterSolenoidButtonJoystickNumber, Mappings.shooterSolenoidButtonNumber);
     }
 
     public static boolean getShooterMotorSpeedUpButtonValue() {
@@ -58,6 +62,10 @@ public class VstJ {
         return getJoystickButton(Mappings.climberArmSolenoidStartButtonJoystickNumber, Mappings.climberArmSolenoidStartButtonNumber);
     }
 
+    public static boolean getDriveControlReverseButtonValue() {
+        return getJoystickButton(Mappings.driveControlReverseButtonJoystickNumber, Mappings.driveControlReverseButtonNumber);
+    }
+
     private static boolean getJoystickButton(int joyStick, int buttonNumber) {
         return getJoystick(joyStick).getRawButton(buttonNumber);
     }
@@ -70,7 +78,6 @@ public class VstJ {
      * Mappings for joysticks.
      */
     private static class Mappings {
-        //
 
         protected static final int climberArmSolenoidStartButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
         protected static final int climberArmSolenoidStartButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.BOTTOM_LEFT;
@@ -89,5 +96,8 @@ public class VstJ {
         //
         protected static final int ladderControlAxisJoystickNumber = FV.SHOOTER_JOYSTICK;
         protected static final int ladderControlAxisNumber = FV.AXIS.X;
+        //
+        protected static final int driveControlReverseButtonJoystickNumber = FV.DRIVE_JOYSTICK;
+        protected static final int driveControlReverseButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.BOTTOM;
     }
 }

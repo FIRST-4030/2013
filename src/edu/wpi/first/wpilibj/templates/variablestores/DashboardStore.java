@@ -46,6 +46,7 @@ public class DashboardStore {
             isClimberAuto = new SendableChooser();
             isClimberAuto.addDefault("Climber Mode: Manual", Boolean.FALSE);
             isClimberAuto.addObject("Climber Mode: Auto", Boolean.TRUE);
+            SmartDashboard.putData("ClimberAuto",isClimberAuto);
         }
     }
 

@@ -81,7 +81,7 @@ public class RunShooterMotors extends CommandBase implements Debuggable, Disable
     }
 
     public DebugOutput getStatus() {
-        return new DebugStatus("ShooterMotors:ShouldBeSpeed", motorSpeed, DebugLevel.LOW);
+        return new DebugStatus("ShooterSpeed", motorSpeed, DebugLevel.HIGHEST);
     }
 
     public void disable() {

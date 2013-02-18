@@ -45,5 +45,5 @@ public class DebugLevel {
     /**
      *
      */
-    public static int CURRENT = LOWEST;
+    public static int CURRENT = HIGH;
 }

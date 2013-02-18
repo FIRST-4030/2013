@@ -11,6 +11,7 @@ public final class DashboardStore {
 
     private static BooleanDashObject isClimberEnabledObject;
     private static BooleanDashObject isClimberAutoObject;
+    private static IntegerDashObject debugLevelChanger;
 
     public static void reInit() {
         initIsClimberEnabled();
@@ -39,5 +40,11 @@ public final class DashboardStore {
     public static boolean getIsClimberAuto() {
         initIsClimberAuto();
         return isClimberAutoObject.getValue();
+    }
+
+    public static void initDebugLevelChanger() {
+        if (debugLevelChanger == null) {
+            debugLevelChanger = new IntegerDashObject("-DebugLevelChanger", new String[]{"Least Output"}, 5);
+        }
     }
 }

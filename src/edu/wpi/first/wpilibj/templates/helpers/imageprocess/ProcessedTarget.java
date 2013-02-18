@@ -48,9 +48,7 @@ public class ProcessedTarget {
      * created.
      */
     public VisionTarget getVisionTarget(RobotPositionReport rpp) {
-        RobotPositionReport copy = rpp.copy();
-        copy.setY(copy.getY() + VstC.HEIGHT_OF_AXIS_CAMERA);
-        return DistanceCompare.getTargetFromRobot(this, copy);
+        return null;
     }
 
     public int getHeight() {

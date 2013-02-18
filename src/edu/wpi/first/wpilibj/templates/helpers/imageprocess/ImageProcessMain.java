@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
 import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
+import edu.wpi.first.wpilibj.templates.debugging.PossiblyErroredReport;
 import edu.wpi.first.wpilibj.templates.helpers.ProcessError;
 import edu.wpi.first.wpilibj.templates.subsystems.Camera;
 import edu.wpi.first.wpilibj.templates.variablestores.VstC;
@@ -26,14 +27,11 @@ public class ImageProcessMain {
         mainCamera = mC;
         LinearDistanceReport ldp = calculateLinear();
         LinearDistanceCalculator.targetToNetwork(particleAnalysisReportList);
-        DebugStatus[] infoList = new DebugStatus[5];
-        infoList[0] = new DebugStatus("LinearDistanceCalculate:Error:IsError", ldp.getError().isError() ? "yes" : "no", DebugLevel.ALWAYS);
-        infoList[1] = new DebugStatus("LinearDistanceCalculator:Error:Owner", ldp.getError().getCreator(), DebugLevel.ALWAYS);
-        infoList[2] = new DebugStatus("LinearDistanceCalculator:Error:Error", ldp.getError().getMessage(), DebugLevel.ALWAYS);
-        infoList[3] = new DebugStatus("LinearDistanceCalculate:Distance", ldp.getDistance(), DebugLevel.ALWAYS);
-        infoList[4] = new DebugStatus("LinearDistanceCalculate:NumTargets", ldp.getNumberOfTargets(), DebugLevel.ALWAYS);
-        DebugInfoGroup infoGroup = new DebugInfoGroup(infoList);
-        RobotDebugger.push(infoGroup);
+        DebugStatus[] infoList = new DebugStatus[2];
+        infoList[0] = new DebugStatus("LinearDistanceCalculate:Distance", ldp.getDistance(), DebugLevel.ALWAYS);
+        infoList[1] = new DebugStatus("LinearDistanceCalculate:NumTargets", ldp.getNumberOfTargets(), DebugLevel.ALWAYS);
+        PossiblyErroredReport report = new PossiblyErroredReport("LinearDistanceCalculate", null, infoList, DebugLevel.ALWAYS);
+        RobotDebugger.push(report);
         freeColorImage();
         freeBImage();
     }

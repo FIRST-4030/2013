@@ -36,4 +36,8 @@ public final class IntegerDashObject {
             SmartDashboard.putData(name, sendable);
         }
     }
+
+    public int getValue() {
+        return ((Integer) sendable.getSelected()).intValue();
+    }
 }

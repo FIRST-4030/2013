@@ -78,6 +78,7 @@ public class VstM {
         public static final int COMPRESSOR = 1;
         public final static int CLIMBER_LOWER_LIMIT_SWITCH = 2;
         public final static int CLIMBER_UPPER_LIMIT_SWITCH = 3;
+        public final static int CLIMBER_DEPLOY_LIMIT_SWITCH = 4;
     }
 
     /**

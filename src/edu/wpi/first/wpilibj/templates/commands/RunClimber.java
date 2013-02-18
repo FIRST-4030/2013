@@ -61,7 +61,7 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
                 }
                 speed = lastAutoState ? 0.8 : -0.8;
             } else {
-                speed = VstJ.getLadderControlAxisValue() - 0.1;
+                speed = VstJ.getLadderControlAxisValue() - 0.2;
                 if (upperPressed && speed > 0) {
                     speed = 0;
                 }

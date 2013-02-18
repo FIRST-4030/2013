@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.templates.dashboardrelations;
 
+import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
+
 /**
  * This is a variable store that stores values that are on the SmartDashboard.
  * Each time you ask for one it will check the SmartDashboard and return you the
@@ -16,8 +18,10 @@ public final class DashboardStore {
     public static void reInit() {
         initIsClimberEnabled();
         initIsClimberAuto();
+        initDebugLevelChanger();
         isClimberEnabledObject.reCreate();
         isClimberAutoObject.reCreate();
+        debugLevelChanger.reCreate();
     }
 
     public static void initIsClimberEnabled() {
@@ -44,7 +48,18 @@ public final class DashboardStore {
 
     public static void initDebugLevelChanger() {
         if (debugLevelChanger == null) {
-            debugLevelChanger = new IntegerDashObject("-DebugLevelChanger", new String[]{"Least Output"}, 5);
+            debugLevelChanger = new IntegerDashObject("-DebugLevelChanger", new String[]{"All", "Highest", "High", "Mid", "Low", "Lowest",}, 5);
+        }
+    }
+
+    private static int getDebugLevelChanger() {
+        return debugLevelChanger.getValue();
+    }
+
+    public static void checkDebugLevelChanger() {
+        int debugLevelChange = getDebugLevelChanger();
+        if (debugLevelChange < DebugLevel.CURRENT) {
+            DebugLevel.CURRENT = debugLevelChange;
         }
     }
 }

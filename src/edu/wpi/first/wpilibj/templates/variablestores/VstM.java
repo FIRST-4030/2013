@@ -1,7 +1,5 @@
 package edu.wpi.first.wpilibj.templates.variablestores;
 
-import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
-
 /**
  * This is the main variable store. It holds a lot of things.
  */

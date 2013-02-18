@@ -3,7 +3,6 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 import edu.wpi.first.wpilibj.camera.AxisCamera;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.image.*;
-import edu.wpi.first.wpilibj.templates.commands.ImageProcess;
 
 /**
  * This is the CAMERA Sub System. Basically only allows you to get the current
@@ -11,8 +10,8 @@ import edu.wpi.first.wpilibj.templates.commands.ImageProcess;
  */
 public class Camera extends Subsystem {
 
-    private boolean cameraEnabled = false;
-    private AxisCamera camera = null;
+    public static final boolean cameraEnabled = false;
+    private static AxisCamera camera = null;
 
     /**
      * Default constructor for Camera. Will get the current camera instance.
@@ -23,14 +22,13 @@ public class Camera extends Subsystem {
     }
 
     public void initDefaultCommand() {
-        setDefaultCommand(new ImageProcess());
     }
 
     /**
      * This sets the Instance Variable camera to AxisCamera.getInstance().
      */
     private void setCameraInstance() {
-        if (this.camera != null || !cameraEnabled) {
+        if (camera != null || !cameraEnabled) {
             return;
         }
         AxisCamera axis;
@@ -39,9 +37,7 @@ public class Camera extends Subsystem {
         } catch (Throwable t) {
             axis = null;
         }
-        if (axis == null) {
-            cameraEnabled = false;
-        } else {
+        if (axis != null) {
             camera = axis;
         }
     }
@@ -50,6 +46,10 @@ public class Camera extends Subsystem {
      * This gets the current IMAGE from the CAMERA.
      */
     public ColorImage takePicture() {
+        if (!cameraEnabled) {
+            System.out.println("CAMERA: Tried to get picture when camera was disabled!!!!! Change this in Camera.java");
+            return null;
+        }
         setCameraInstance();
         ColorImage image = null;
         try {

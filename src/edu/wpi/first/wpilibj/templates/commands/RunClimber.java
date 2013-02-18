@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
-import edu.wpi.first.wpilibj.templates.variablestores.DashboardStore;
+import edu.wpi.first.wpilibj.templates.dashboardrelations.DashboardStore;
 import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
@@ -26,6 +26,7 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
     private double speed = 0;
     private boolean lowerPressed;
     private boolean upperPressed;
+    private boolean deployPressed;
     /**
      * False is going down, true is going up.
      */
@@ -61,6 +62,7 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
                     lastAutoState = false;
                     timeOfLastAutoChange = System.currentTimeMillis();
                 }
+                autoLast = !autoLast;
             }
             if (climberAuto) {
                 if (upperPressed) {
@@ -82,7 +84,7 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
                 }
                 speed = lastAutoState ? autoSpeed : -autoSpeed;
             } else {
-                speed = VstJ.getLadderControlAxisValue() - 0.2;
+                speed = VstJ.getLadderControlAxisValue();
                 if (upperPressed && speed > 0) {
                     speed = 0;
                 }

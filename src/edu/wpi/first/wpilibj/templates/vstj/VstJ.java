@@ -95,7 +95,7 @@ public class VstJ {
         protected static final int driveSpeedToggleButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.MIDDLE;
         //
         protected static final int ladderControlAxisJoystickNumber = FV.SHOOTER_JOYSTICK;
-        protected static final int ladderControlAxisNumber = FV.AXIS.X;
+        protected static final int ladderControlAxisNumber = FV.AXIS.Y;
         //
         protected static final int driveControlReverseButtonJoystickNumber = FV.DRIVE_JOYSTICK;
         protected static final int driveControlReverseButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.BOTTOM;

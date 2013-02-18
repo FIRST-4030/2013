@@ -20,6 +20,7 @@ public class ClimberLimitSwitch extends Subsystem implements Debuggable {
 
     private DigitalInput lowerLimit = new DigitalInput(VstM.Relays.CLIMBER_LOWER_LIMIT_SWITCH);
     private DigitalInput upperLimit = new DigitalInput(VstM.Relays.CLIMBER_UPPER_LIMIT_SWITCH);
+    private DigitalInput deploySwitch = new DigitalInput(VstM.Relays.CLIMBER_DEPLOY_LIMIT_SWITCH);
 
     public void initDefaultCommand() {
     }
@@ -31,11 +32,15 @@ public class ClimberLimitSwitch extends Subsystem implements Debuggable {
     public boolean readLower() {
         return lowerLimit.get();
     }
+    public boolean readDeploy(){
+        return deploySwitch.get();
+    }
 
     public DebugOutput getStatus() {
-        DebugStatus[] infoList = new DebugStatus[2];
+        DebugStatus[] infoList = new DebugStatus[3];
         infoList[0] = new DebugStatus("ClimberLimitSwitch:UpperLimit:Triggered", upperLimit.get(), DebugLevel.MID);
         infoList[1] = new DebugStatus("ClimberLimitSwitch:LowerLimit:Triggered", lowerLimit.get(), DebugLevel.MID);
+        infoList[2] = new DebugStatus("ClimberLimitSwitch:DeploySwitch:Triggered", lowerLimit.get(), DebugLevel.MID);
         DebugInfoGroup infoGroup = new DebugInfoGroup(infoList);
         return infoGroup;
     }

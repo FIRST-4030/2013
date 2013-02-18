@@ -50,7 +50,7 @@ public class LinearDistanceCalculator {
         return possibleError.isError() ? new LinearDistanceReport(possibleError) : internalCalculate(pt, pars.length);
     }
 
-    public static void targetToNetwork(ParticleAnalysisReport[] para){
+    public static void targetToNetwork(ParticleAnalysisReport[] para) {
         //========================================
         //Robot Code
         // declare object
@@ -63,9 +63,9 @@ public class LinearDistanceCalculator {
         // get data element from the table
         // default values returned if no data has been provided from another source yet
 
-        ProcessedTarget t =findMiddleTarget(para);
-        
-        int a[] = {t.getX(),t.getY(),t.getWidth(),t.getHeight()};
+        ProcessedTarget t = findMiddleTarget(para);
+
+        int a[] = {t.getX(), t.getY(), t.getWidth(), t.getHeight()};
         cameraTable.putValue("middleTarget", a);
     }
 
@@ -150,7 +150,7 @@ public class LinearDistanceCalculator {
         }
         return new ProcessedTarget(pars[biggestTarget]);
     }
-    
+
     private static ProcessedTarget findMiddleTarget(ProcessedTarget[] pts) {
         if (pts.length < 1) {
             return null;
@@ -171,11 +171,11 @@ public class LinearDistanceCalculator {
             }
         }
         int width;
-        int middleTarget=0;
-        for(int i=0; i<pts.length; i++){
+        int middleTarget = 0;
+        for (int i = 0; i < pts.length; i++) {
             width = pts[i].getWidth();
-            if(width > biggestWidth*.8){
-                if(width/pts[i].getHeight() > 2.5){
+            if (width > biggestWidth * .8) {
+                if (width / pts[i].getHeight() > 2.5) {
                     middleTarget = i;
                     break;
                 }
@@ -183,7 +183,7 @@ public class LinearDistanceCalculator {
         }
         return pts[biggestTarget];
     }
-    
+
     private static ProcessedTarget findMiddleTarget(ParticleAnalysisReport[] pars) {
         if (pars.length < 1) {
             return null;
@@ -204,11 +204,11 @@ public class LinearDistanceCalculator {
             }
         }
         int width;
-        int middleTarget=0;
-        for(int i=0; i<pars.length; i++){
+        int middleTarget = 0;
+        for (int i = 0; i < pars.length; i++) {
             width = pars[i].boundingRectWidth;
-            if(width > biggestWidth*.8){
-                if(width/pars[i].boundingRectHeight > 2.5){
+            if (width > biggestWidth * .8) {
+                if (width / pars[i].boundingRectHeight > 2.5) {
                     middleTarget = i;
                     break;
                 }

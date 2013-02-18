@@ -32,7 +32,8 @@ public class ClimberLimitSwitch extends Subsystem implements Debuggable {
     public boolean readLower() {
         return lowerLimit.get();
     }
-    public boolean readDeploy(){
+
+    public boolean readDeploy() {
         return deploySwitch.get();
     }
 

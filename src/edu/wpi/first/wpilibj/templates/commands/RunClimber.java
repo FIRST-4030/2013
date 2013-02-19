@@ -31,14 +31,14 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
      * False is going down, true is going up.
      */
     private boolean lastAutoState = false;
-    private long timeOfLastAutoChange;
-    private boolean autoLast = false;
+    //private long timeOfLastAutoChange;
+    //private boolean autoLast = false;
 
     public RunClimber() {
         requires(climber);
         requires(climberLimitSwitch);
         DashboardStore.initIsClimberEnabled();
-        DashboardStore.initIsClimberAuto();
+        //DashboardStore.initIsClimberAuto();
     }
 
     protected void initialize() {
@@ -56,46 +56,47 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
 
     private void runClimber() {
         if (DashboardStore.getIsClimberEnabled()) {
-            boolean climberAuto = DashboardStore.getIsClimberAuto();
-            if (climberAuto != autoLast) {
-                if (!autoLast) {
-                    lastAutoState = false;
-                    timeOfLastAutoChange = System.currentTimeMillis();
-                }
-                autoLast = !autoLast;
-            }
-            if (climberAuto) {
-                setSpeedAuto();
-            } else {
-                setSpeedMan();
-            }
+            /*boolean climberAuto = DashboardStore.getIsClimberAuto();
+             if (climberAuto != autoLast) {
+             if (!autoLast) {
+             lastAutoState = false;
+             timeOfLastAutoChange = System.currentTimeMillis();
+             }
+             autoLast = !autoLast;
+             }
+             if (climberAuto) {
+             setSpeedAuto();
+             } else {
+             setSpeedMan();
+             }*/
+            setSpeedMan();
         } else {
             speed = 0;
         }
         climber.runLadder(speed);
     }
 
-    private void setSpeedAuto() {
-        if (upperPressed) {
-            if (lastAutoState) {
-                timeOfLastAutoChange = System.currentTimeMillis();
-            }
-            lastAutoState = false;
-        } else if (lowerPressed) {
-            if (!lastAutoState) {
-                timeOfLastAutoChange = System.currentTimeMillis();
-            }
-            lastAutoState = true;
-        }
-        double autoSpeed;
-        if (timeOfLastAutoChange + 2000 > System.currentTimeMillis()) {
-            autoSpeed = 0.8;
-        } else {
-            autoSpeed = 0.4;
-        }
-        speed = lastAutoState ? autoSpeed : -autoSpeed;
-    }
-
+    /* private void setSpeedAuto() {
+     if (upperPressed) {
+     if (lastAutoState) {
+     timeOfLastAutoChange = System.currentTimeMillis();
+     }
+     lastAutoState = false;
+     } else if (lowerPressed) {
+     if (!lastAutoState) {
+     timeOfLastAutoChange = System.currentTimeMillis();
+     }
+     lastAutoState = true;
+     }
+     double autoSpeed;
+     if (timeOfLastAutoChange + 2000 > System.currentTimeMillis()) {
+     autoSpeed = 0.8;
+     } else {
+     autoSpeed = 0.4;
+     }
+     speed = lastAutoState ? autoSpeed : -autoSpeed;
+     }
+     */
     private void setSpeedMan() {
         speed = VstJ.getLadderControlAxisValue();
         if (upperPressed && speed > 0) {
@@ -138,7 +139,7 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
     public DebugOutput getStatus() {
         DebugInfo[] infoList = new DebugInfo[3];
         infoList[0] = new InfoState("Climber:Enabled", DashboardStore.getIsClimberEnabled() ? "Yes" : "No", DebugLevel.HIGHEST);
-        infoList[0] = new InfoState("Climber:Mode", DashboardStore.getIsClimberAuto() ? "Auto" : "Manual", DebugLevel.HIGHEST);
+        //infoList[0] = new InfoState("Climber:Mode", DashboardStore.getIsClimberAuto() ? "Auto" : "Manual", DebugLevel.HIGHEST);
         infoList[1] = new DebugStatus("Climber:SetSpeed", speed, DebugLevel.LOW);
         infoList[2] = new DebugStatus("ClimberLimitSwitch:Enabled", limitSwitchEnabled, DebugLevel.LOW);
         return new DebugInfoGroup(infoList);

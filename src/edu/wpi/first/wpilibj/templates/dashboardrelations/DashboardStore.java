@@ -12,15 +12,15 @@ import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 public final class DashboardStore {
 
     private static BooleanDashObject isClimberEnabledObject;
-    private static BooleanDashObject isClimberAutoObject;
+    //private static BooleanDashObject isClimberAutoObject;
     private static IntegerDashObject debugLevelChanger;
 
     public static void reInit() {
         initIsClimberEnabled();
-        initIsClimberAuto();
+        //initIsClimberAuto();
         initDebugLevelChanger();
         isClimberEnabledObject.reCreate();
-        isClimberAutoObject.reCreate();
+        //isClimberAutoObject.reCreate();
         debugLevelChanger.reCreate();
     }
 
@@ -35,17 +35,16 @@ public final class DashboardStore {
         return isClimberEnabledObject.getValue();
     }
 
-    public static void initIsClimberAuto() {
-        if (isClimberAutoObject == null) {
-            isClimberAutoObject = new BooleanDashObject("-IsClimberAuto", "Climber Mode: Auto", "Climber Mode: Manual", false);
-        }
-    }
+    /*public static void initIsClimberAuto() {
+     if (isClimberAutoObject == null) {
+     isClimberAutoObject = new BooleanDashObject("-IsClimberAuto", "Climber Mode: Auto", "Climber Mode: Manual", false);
+     }
+     }
 
-    public static boolean getIsClimberAuto() {
-        initIsClimberAuto();
-        return isClimberAutoObject.getValue();
-    }
-
+     public static boolean getIsClimberAuto() {
+     initIsClimberAuto();
+     return isClimberAutoObject.getValue();
+     }*/
     public static void initDebugLevelChanger() {
         if (debugLevelChanger == null) {
             debugLevelChanger = new IntegerDashObject("-DebugLevelChanger", new String[]{"All", "Highest", "High", "Mid", "Low", "Lowest",}, 5);

@@ -23,23 +23,7 @@ public class RobotMain extends IterativeRobot {
      */
     public void robotInit() {
         CommandBase.init();
-        pushPorts();
-    }
-
-    private void pushPorts() {
-        //Tell the person on the Console what ports things should be.
-        String info = "Port Info: ";
-        info += ("LeftMotor:" + VstM.PWM.LEFT_MOTOR_PORT + " - ");
-        info += ("RightMotor:" + VstM.PWM.RIGHT_MOTOR_PORT + " - ");
-        info += ("ClimberMotor:" + VstM.PWM.CLIMBER_MOTOR_PORT + " - ");
-        info += ("FirstShooterMotor:" + VstM.PWM.FIRST_SHOOTER_MOTOR_PORT + " - ");
-        info += ("SecondShooterMotor:" + VstM.PWM.SECOND_SHOOTER_MOTOR_PORT + " - ");
-        info += ("ClimberBottomSwitch:" + VstM.Relays.CLIMBER_LOWER_LIMIT_SWITCH + " - ");
-        info += ("ClimberTopSwitch:" + VstM.Relays.CLIMBER_UPPER_LIMIT_SWITCH + " - ");
-        info += ("ShooterSoenoid1:" + VstM.Solenoids.SHOOTER_SOLENOID_SIDE_1 + " - ");
-        info += ("ShooterSoenoid2:" + VstM.Solenoids.SHOOTER_SOLENOID_SIDE_2 + " - ");
-        DebugInfo debugInfo = new Message(info, DebugLevel.LOWEST);
-        RobotDebugger.push(debugInfo);
+        System.out.println("Robot Ready!");
     }
 
     public void autonomousInit() {

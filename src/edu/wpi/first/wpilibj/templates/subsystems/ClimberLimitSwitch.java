@@ -18,9 +18,9 @@ public class ClimberLimitSwitch extends Subsystem implements Debuggable {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
-    private DigitalInput lowerLimit = new DigitalInput(VstM.Relays.CLIMBER_LOWER_LIMIT_SWITCH);
-    private DigitalInput upperLimit = new DigitalInput(VstM.Relays.CLIMBER_UPPER_LIMIT_SWITCH);
-    private DigitalInput deploySwitch = new DigitalInput(VstM.Relays.CLIMBER_DEPLOY_LIMIT_SWITCH);
+    private DigitalInput lowerLimit = new DigitalInput(VstM.DIGITAL_IO.CLIMBER_LOWER_LIMIT_SWITCH);
+    private DigitalInput upperLimit = new DigitalInput(VstM.DIGITAL_IO.CLIMBER_UPPER_LIMIT_SWITCH);
+    private DigitalInput deploySwitch = new DigitalInput(VstM.DIGITAL_IO.CLIMBER_DEPLOY_LIMIT_SWITCH);
 
     public void initDefaultCommand() {
     }

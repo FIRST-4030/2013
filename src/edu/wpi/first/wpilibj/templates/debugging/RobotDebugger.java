@@ -1,7 +1,6 @@
 package edu.wpi.first.wpilibj.templates.debugging;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 import java.util.Hashtable;
 
 /**
@@ -19,14 +18,14 @@ public class RobotDebugger {
         if (key == null || message == null) {
             throw new IllegalArgumentException("No Null Arguments");
         }
-        if (VstM.Debug.DEBUG && (debugLevel >= DebugLevel.CURRENT)) {
+        if (debugLevel >= DebugLevel.CURRENT) {
             if (!message.equals((String) table.get(key))) {
                 table.put(key, message);
-                if (VstM.Debug.CONSOLE && isConsole) {
+                if (isConsole) {
                     System.out.println("DebugChange: " + key + ": " + message);
                 }
 
-                if (VstM.Debug.DASHBOARD & isDashboard) {
+                if (isDashboard) {
                     SmartDashboard.putString(key, message);
                 }
             }

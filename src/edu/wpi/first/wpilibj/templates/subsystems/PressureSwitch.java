@@ -21,7 +21,7 @@ public class PressureSwitch extends Subsystem implements Debuggable {
     /**
      * This is a Digital Pressure Switch.
      */
-    DigitalInput pSwitch = new DigitalInput(VstM.Digital.PRESSURE_SWITCH);
+    DigitalInput pSwitch = new DigitalInput(VstM.DIGITAL_IO.PRESSURE_SWITCH);
 
     public void initDefaultCommand() {
         setDefaultCommand(new ReadPressureSwitch());

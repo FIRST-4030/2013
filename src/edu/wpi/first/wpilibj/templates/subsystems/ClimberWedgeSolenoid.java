@@ -20,8 +20,8 @@ public class ClimberWedgeSolenoid extends Subsystem implements Debuggable {
     private String status = "Not Set";
     
     public ClimberWedgeSolenoid() {
-        solenoid1 = new Solenoid(VstM.Solenoids.CLIMBER_WEDGE_SOLENOID_SIDE_1);
-        solenoid2 = new Solenoid(VstM.Solenoids.CLIMBER_WEDGE_SOLENOID_SIDE_2);
+        solenoid1 = new Solenoid(VstM.SOLENOID.CLIMBER_WEDGE_SIDE_1);
+        solenoid2 = new Solenoid(VstM.SOLENOID.CLIMBER_WEDGE_SIDE_2);
     }
     
     protected void initDefaultCommand() {

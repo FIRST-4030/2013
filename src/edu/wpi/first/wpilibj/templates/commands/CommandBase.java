@@ -23,14 +23,17 @@ public abstract class CommandBase extends Command {
     protected static ClimberArmSolenoids climberArmSolenoids;
     protected static ClimberWedgeSolenoid climberWedgeSolenoid;
     protected static FrisbeeDumperSolenoid frisbeeDumperSolenoid;
+    protected static CameraServo cameraServo;
     /**
      * Commands.
      */
     protected static DashboardValueRefresh dashboardValueRefresh;
 
     public static void init() {
+        //Commands
         dashboardValueRefresh = new DashboardValueRefresh();
         dashboardValueRefresh.start();
+        //SubSystems
         mainCamera = new Camera();
         pressureSwitch = new PressureSwitch();
         compressor = new Compressor();
@@ -41,6 +44,7 @@ public abstract class CommandBase extends Command {
         groundDrive = new GroundDrive();
         climberArmSolenoids = new ClimberArmSolenoids();
         climberWedgeSolenoid = new ClimberWedgeSolenoid();
+        cameraServo = new CameraServo();
     }
 
     public CommandBase(String name) {

@@ -10,8 +10,6 @@ import edu.wpi.first.wpilibj.templates.dashboardrelations.DashboardStore;
 public class DashboardValueRefresh extends CommandBase {
 
     public DashboardValueRefresh() {
-        DashboardStore.reInit();
-        DashboardStore.checkDebugLevelChanger();
     }
 
     protected void initialize() {

@@ -56,7 +56,6 @@ public class RobotMain extends IterativeRobot {
     }
 
     public void disabledInit() {
-        DashboardStore.reInit();
         RobotDebugger.clearMap();
         for (int i = 0; i < list.length; i++) {
             list[i].disable();

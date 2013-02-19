@@ -14,31 +14,24 @@ import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 public final class DashboardStore {
 
     private static BooleanDashObject isClimberEnabledObject;
+    private static BooleanDashObject cameraPosition;//False is left, true is right.
     private static IntegerDashObject debugLevelChanger;
 
-    public static void reInit() {
-        initDebugLevelChanger();
-        debugLevelChanger.reCreate();
-        RobotDebugger.push(new InfoState("Debug To Show:", DebugLevel.getNameOf(DebugLevel.CURRENT) + " Or Higher", DebugLevel.ALWAYS));
-        initIsClimberEnabled();
-        isClimberEnabledObject.reCreate();
-    }
-
-    public static void initIsClimberEnabled() {
-        if (isClimberEnabledObject == null) {
-            isClimberEnabledObject = new BooleanDashObject("-IsClimberEnabled", "Enable Climber", "Disable Climber", false);
-        }
+    static {
+        isClimberEnabledObject = new BooleanDashObject("-IsClimberEnabled", "Enable Climber", "Disable Climber", false);
+        debugLevelChanger = new IntegerDashObject("-DebugLevelChanger", new String[]{"All Messages", "Lowest or Higher", "Low or Higher", "Mid or Higher", "High or Higher", "Highest or Higher", "Only \"Always\" messages"}, 6);
+        cameraPosition = new BooleanDashObject("-CameraPosition", "Camera Left", "Camera Right", true);
     }
 
     public static boolean getIsClimberEnabled() {
-        initIsClimberEnabled();
         return isClimberEnabledObject.getValue();
     }
 
-    public static void initDebugLevelChanger() {
-        if (debugLevelChanger == null) {
-            debugLevelChanger = new IntegerDashObject("-DebugLevelChanger", new String[]{"All Messages", "Lowest or Higher", "Low or Higher", "Mid or Higher", "High or Higher", "Highest or Higher", "Only \"Always\" messages"}, 6);
-        }
+    /**
+     * True for left, False for right.
+     */
+    public static boolean getCameraPosition() {
+        return cameraPosition.getValue();
     }
 
     private static int getDebugLevelChanger() {

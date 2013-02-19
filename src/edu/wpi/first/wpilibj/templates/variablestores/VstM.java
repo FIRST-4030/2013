@@ -19,10 +19,9 @@ public final class VstM {
     public static final class DIGITAL_IO {
 
         public static final int PRESSURE_SWITCH = 1;
-        public final static int CLIMBER_LOWER_LIMIT_SWITCH = 2;
-        public final static int CLIMBER_UPPER_LIMIT_SWITCH = 3;
-        public final static int CLIMBER_DEPLOY_LIMIT_SWITCH = 4;
-        public static final int CAMERA_SERVO = 5;
+        public static final int CLIMBER_LOWER_LIMIT_SWITCH = 2;
+        public static final int CLIMBER_UPPER_LIMIT_SWITCH = 3;
+        public static final int CLIMBER_DEPLOY_LIMIT_SWITCH = 4;
     }
 
     public static final class PWM {
@@ -31,6 +30,7 @@ public final class VstM {
         public static final int RIGHT_MOTOR_PORT = 2;
         public static final int FIRST_SHOOTER_MOTOR_PORT = 4;
         public static final int SECOND_SHOOTER_MOTOR_PORT = 5;
+        public static final int CAMERA_SERVO = 6;
         public static final int CLIMBER_MOTOR_PORT = 10;
     }
 

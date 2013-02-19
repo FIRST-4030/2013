@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  * @author daboross
  */
-public class CameraTurnMotor extends Subsystem {
+public class CameraServo extends Subsystem {
 
     protected void initDefaultCommand() {
     }

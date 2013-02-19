@@ -11,7 +11,6 @@ import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.dashboardrelations.DashboardStore;
-import edu.wpi.first.wpilibj.templates.variablestores.ClimberStore;
 import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
@@ -38,13 +37,11 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
     public RunClimber() {
         requires(climber);
         requires(climberLimitSwitch);
-        //DashboardStore.initIsClimberAuto();
     }
 
     protected void initialize() {
         RobotMain.addDisableNotifable(this);
         climber.stop();
-        ClimberStore.climberFirstDown = false;
     }
 
     protected void execute() {
@@ -59,7 +56,6 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
         if (DashboardStore.getIsClimberEnabled()) {
             setSpeedMan();
         } else {
-            ClimberStore.climberFirstDown = false;
             speed = 0;
         }
         climber.runLadder(speed);
@@ -101,9 +97,6 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
             upperPressed = false;
             lowerPressed = false;
             deployPressed = false;
-        }
-        if (lowerPressed) {
-            ClimberStore.climberFirstDown = true;
         }
     }
 

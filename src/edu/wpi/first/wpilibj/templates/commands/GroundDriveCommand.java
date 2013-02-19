@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
-import edu.wpi.first.wpilibj.templates.variablestores.ClimberStore;
 import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
@@ -35,11 +34,7 @@ public class GroundDriveCommand extends CommandBase implements Debuggable {
     // Called repeatedly when this Command is scheduled to run.
     protected void execute() {
         if (DashboardStore.getIsClimberEnabled()) {
-            if (ClimberStore.climberFirstDown) {
-                groundDrive.driveWithRaw(-0.5, 0);
-            } else {
-                groundDrive.stop();
-            }
+            groundDrive.driveWithRaw(-0.5, 0);
         } else {
             updateHighSpeed();
             updateReversed();

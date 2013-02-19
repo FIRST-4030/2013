@@ -1,5 +1,8 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.templates.dashboardrelations.DashboardStore;
+import edu.wpi.first.wpilibj.templates.vstj.VstJ;
+
 /**
  *
  * @author daboross
@@ -16,7 +19,10 @@ public class RunFrisbeeDumperSolenoid extends CommandBase {
     }
 
     protected void execute() {
-        
+        if (VstJ.getFrisbeeDumpButtonValue() && DashboardStore.getIsClimberEnabled()) {
+            frisbeeDumperSolenoid.startExpand();
+            done = true;
+        }
     }
 
     protected boolean isFinished() {

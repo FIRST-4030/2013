@@ -1,7 +1,6 @@
 package edu.wpi.first.wpilibj.templates.helpers.imageprocess;
 
 import edu.wpi.first.wpilibj.image.ParticleAnalysisReport;
-import edu.wpi.first.wpilibj.templates.variablestores.VstC;
 
 /**
  * Processed Target.

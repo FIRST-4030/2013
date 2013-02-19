@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.dashboardrelations.DashboardStore;
+import edu.wpi.first.wpilibj.templates.variablestores.ClimberStore;
 import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
@@ -22,7 +23,7 @@ import edu.wpi.first.wpilibj.templates.vstj.VstJ;
  */
 public class RunClimber extends CommandBase implements Debuggable, DisableNotifable {
 
-    private boolean limitSwitchEnabled = false;
+    private boolean limitSwitchEnabled = true;
     private double speed = 0;
     private boolean lowerPressed;
     private boolean upperPressed;
@@ -43,6 +44,7 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
     protected void initialize() {
         RobotMain.addDisableNotifable(this);
         climber.stop();
+        ClimberStore.climberFirstDown = false;
     }
 
     protected void execute() {
@@ -55,47 +57,14 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
 
     private void runClimber() {
         if (DashboardStore.getIsClimberEnabled()) {
-            /*boolean climberAuto = DashboardStore.getIsClimberAuto();
-             if (climberAuto != autoLast) {
-             if (!autoLast) {
-             lastAutoState = false;
-             timeOfLastAutoChange = System.currentTimeMillis();
-             }
-             autoLast = !autoLast;
-             }
-             if (climberAuto) {
-             setSpeedAuto();
-             } else {
-             setSpeedMan();
-             }*/
             setSpeedMan();
         } else {
+            ClimberStore.climberFirstDown = false;
             speed = 0;
         }
         climber.runLadder(speed);
     }
 
-    /* private void setSpeedAuto() {
-     if (upperPressed) {
-     if (lastAutoState) {
-     timeOfLastAutoChange = System.currentTimeMillis();
-     }
-     lastAutoState = false;
-     } else if (lowerPressed) {
-     if (!lastAutoState) {
-     timeOfLastAutoChange = System.currentTimeMillis();
-     }
-     lastAutoState = true;
-     }
-     double autoSpeed;
-     if (timeOfLastAutoChange + 2000 > System.currentTimeMillis()) {
-     autoSpeed = 0.8;
-     } else {
-     autoSpeed = 0.4;
-     }
-     speed = lastAutoState ? autoSpeed : -autoSpeed;
-     }
-     */
     private void setSpeedMan() {
         speed = VstJ.getLadderControlAxisValue();
         if (upperPressed && speed > 0) {
@@ -133,12 +102,14 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
             lowerPressed = false;
             deployPressed = false;
         }
+        if (lowerPressed) {
+            ClimberStore.climberFirstDown = true;
+        }
     }
 
     public DebugOutput getStatus() {
         DebugInfo[] infoList = new DebugInfo[3];
         infoList[0] = new InfoState("Climber:Enabled", DashboardStore.getIsClimberEnabled() ? "Yes" : "No", DebugLevel.HIGHEST);
-        //infoList[0] = new InfoState("Climber:Mode", DashboardStore.getIsClimberAuto() ? "Auto" : "Manual", DebugLevel.HIGHEST);
         infoList[1] = new DebugStatus("Climber:SetSpeed", speed, DebugLevel.LOW);
         infoList[2] = new DebugStatus("ClimberLimitSwitch:Enabled", limitSwitchEnabled, DebugLevel.LOW);
         return new DebugInfoGroup(infoList);

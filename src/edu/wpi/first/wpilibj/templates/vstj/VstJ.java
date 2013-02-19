@@ -70,6 +70,10 @@ public class VstJ {
         return getJoystickAxis(Mappings.climberWedgeSolenoidControlAxisJoystickNumber, Mappings.climberWedgeSolenoidControlNumber);
     }
 
+    public static boolean getFrisbeeDumpButtonValue() {
+        return getJoystickButton(Mappings.frisbeeDumpButtonJoystickNumber, Mappings.frisbeeDumpButtonJoystickNumber);
+    }
+
     private static boolean getJoystickButton(int joyStick, int buttonNumber) {
         return getJoystick(joyStick).getRawButton(buttonNumber);
     }
@@ -106,5 +110,8 @@ public class VstJ {
         //
         protected static final int climberWedgeSolenoidControlAxisJoystickNumber = FV.DRIVE_JOYSTICK;
         protected static final int climberWedgeSolenoidControlNumber = FV.AXIS.Y;
+        //
+        protected static final int frisbeeDumpButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+        protected static final int frisbeeDumpButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.RIGHT_TOP;
     }
 }

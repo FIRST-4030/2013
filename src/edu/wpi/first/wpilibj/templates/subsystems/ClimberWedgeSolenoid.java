@@ -15,15 +15,15 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstM;
  * @author daboross
  */
 public class ClimberWedgeSolenoid extends Subsystem implements Debuggable {
-
+    
     private Solenoid solenoid1, solenoid2;
     private String status = "Not Set";
-
+    
     public ClimberWedgeSolenoid() {
         solenoid1 = new Solenoid(VstM.Solenoids.CLIMBER_WEDGE_SOLENOID_SIDE_1);
         solenoid2 = new Solenoid(VstM.Solenoids.CLIMBER_WEDGE_SOLENOID_SIDE_2);
     }
-
+    
     protected void initDefaultCommand() {
         setDefaultCommand(new RunClimberWedgeSolenoid());
     }
@@ -64,7 +64,7 @@ public class ClimberWedgeSolenoid extends Subsystem implements Debuggable {
     public void stayPut() {
         setStaying(true);
     }
-
+    
     public void update() {
         if (staying) {
             if (lastUpdate + HM.HALF_SECOND_IN_MILISECONDS < System.currentTimeMillis()) {
@@ -77,16 +77,16 @@ public class ClimberWedgeSolenoid extends Subsystem implements Debuggable {
             }
         }
     }
-
+    
     private void setStaying(boolean state) {
         if (state) {
             lastUpdate = System.currentTimeMillis();
             stayingState = false;
         }
         staying = state;
-
+        
     }
-
+    
     public DebugOutput getStatus() {
         return new DebugStatus("ClimberWedgeSolenoid", status, DebugLevel.MID);
     }

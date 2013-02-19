@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.templates.dashboardrelations.DashboardStore;
+
 /**
  *
  * @author daboross
@@ -15,6 +17,8 @@ public class RunClimberWedgeSolenoid extends CommandBase {
     }
 
     protected void execute() {
+        if (DashboardStore.getIsClimberEnabled()) {
+        }
     }
 
     protected boolean isFinished() {

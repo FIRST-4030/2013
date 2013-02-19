@@ -22,6 +22,10 @@ public abstract class CommandBase extends Command {
     protected static ShooterMotors shooterMotors;
     protected static ClimberArmSolenoids climberArmSolenoids;
     protected static ClimberWedgeSolenoid climberWedgeSolenoid;
+    protected static FrisbeeDumperSolenoid frisbeeDumperSolenoid;
+    /**
+     * Commands.
+     */
     protected static DashboardValueRefresh dashboardValueRefresh;
 
     public static void init() {

@@ -1,5 +1,6 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.templates.dashboardrelations.DashboardStore;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
@@ -18,6 +19,7 @@ public class GroundDriveCommand extends CommandBase implements Debuggable {
     private boolean highSpeed = false;
     private boolean reversed = false;
     private boolean isDone = false;
+    public boolean driveAuto = true;
 
     public GroundDriveCommand() {
         requires(groundDrive);
@@ -32,10 +34,15 @@ public class GroundDriveCommand extends CommandBase implements Debuggable {
 
     // Called repeatedly when this Command is scheduled to run.
     protected void execute() {
-        updateHighSpeed();
-        updateReversed();
-        groundDrive.setSpeedMutliplier(highSpeed ? 1 : 0.7, reversed);
-        groundDrive.driveWithDefaultController();
+        if (DashboardStore.getIsClimberEnabled()) {
+            groundDrive.driveWithRaw(-0.5, 0);
+        } else {
+            driveAuto = true;
+            updateHighSpeed();
+            updateReversed();
+            groundDrive.setSpeedMutliplier(highSpeed ? 1 : 0.7, reversed);
+            groundDrive.driveWithDefaultController();
+        }
         RobotDebugger.push(groundDrive);
         RobotDebugger.push(this);
     }
@@ -47,6 +54,7 @@ public class GroundDriveCommand extends CommandBase implements Debuggable {
 
     // Called once after isFinished returns true
     protected void end() {
+        driveAuto = true;
         groundDrive.stop();
     }
 

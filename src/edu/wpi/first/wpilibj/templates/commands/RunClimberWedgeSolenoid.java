@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.InfoState;
+import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
@@ -36,10 +37,19 @@ public class RunClimberWedgeSolenoid extends CommandBase implements Debuggable {
             } else {
                 state = 0;
             }
+            if (state == 1) {
+                climberWedgeSolenoid.extend();
+            } else if (state == -1) {
+                climberWedgeSolenoid.retract();
+            } else {
+                climberWedgeSolenoid.stayPut();
+            }
         } else {
             climberWedgeSolenoid.stayPut();
         }
         climberWedgeSolenoid.update();
+        RobotDebugger.push(climberWedgeSolenoid);
+        RobotDebugger.push(this);
     }
 
     protected boolean isFinished() {

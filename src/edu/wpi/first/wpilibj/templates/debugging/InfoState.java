@@ -29,7 +29,7 @@ public class InfoState extends DebugInfo {
     }
 
     protected boolean isConsole() {
-        return false;
+        return true;
     }
 
     protected boolean isDashboard() {

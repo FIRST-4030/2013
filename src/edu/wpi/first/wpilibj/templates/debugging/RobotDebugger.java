@@ -19,15 +19,14 @@ public class RobotDebugger {
             throw new IllegalArgumentException("No Null Arguments");
         }
         if (debugLevel >= DebugLevel.CURRENT) {
-            if (!message.equals((String) table.get(key))) {
-                table.put(key, message);
-                if (isConsole) {
+            table.put(key, message);
+            if (isConsole) {
+                if (!message.equals((String) table.get(key))) {
                     System.out.println("DebugChange: " + key + ": " + message);
                 }
-
-                if (isDashboard) {
-                    SmartDashboard.putString(key, message);
-                }
+            }
+            if (isDashboard) {
+                SmartDashboard.putString(key, message);
             }
         }
     }

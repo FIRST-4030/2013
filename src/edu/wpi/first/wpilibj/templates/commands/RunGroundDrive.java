@@ -14,12 +14,12 @@ import edu.wpi.first.wpilibj.templates.vstj.VstJ;
  * input from a toggle button whether to go into high speed or low speed mode.
  * When in low speed mode the values retrieved from the controller are halved.
  */
-public class GroundDriveCommand extends CommandBase implements Debuggable {
+public class RunGroundDrive extends CommandBase implements Debuggable {
 
     private boolean highSpeed = false;
     private boolean reversed = false;
 
-    public GroundDriveCommand() {
+    public RunGroundDrive() {
         requires(groundDrive);
     }
 

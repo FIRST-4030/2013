@@ -16,7 +16,6 @@ import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 public class RunClimberArmSolenoids extends CommandBase implements Debuggable {
 
     public RunClimberArmSolenoids() {
-        DashboardStore.initIsClimberEnabled();
         requires(climberArmSolenoids);
     }
 

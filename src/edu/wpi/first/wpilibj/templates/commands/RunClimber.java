@@ -37,7 +37,6 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
     public RunClimber() {
         requires(climber);
         requires(climberLimitSwitch);
-        DashboardStore.initIsClimberEnabled();
         //DashboardStore.initIsClimberAuto();
     }
 

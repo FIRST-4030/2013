@@ -1,6 +1,8 @@
 package edu.wpi.first.wpilibj.templates.dashboardrelations;
 
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
+import edu.wpi.first.wpilibj.templates.debugging.InfoState;
+import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 
 /**
  * This is a variable store that stores values that are on the SmartDashboard.
@@ -12,16 +14,14 @@ import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 public final class DashboardStore {
 
     private static BooleanDashObject isClimberEnabledObject;
-    //private static BooleanDashObject isClimberAutoObject;
     private static IntegerDashObject debugLevelChanger;
 
     public static void reInit() {
-        initIsClimberEnabled();
-        //initIsClimberAuto();
         initDebugLevelChanger();
-        isClimberEnabledObject.reCreate();
-        //isClimberAutoObject.reCreate();
         debugLevelChanger.reCreate();
+        RobotDebugger.push(new InfoState("Debug To Show:", DebugLevel.getNameOf(DebugLevel.CURRENT) + " Or Higher", DebugLevel.ALWAYS));
+        initIsClimberEnabled();
+        isClimberEnabledObject.reCreate();
     }
 
     public static void initIsClimberEnabled() {
@@ -35,19 +35,9 @@ public final class DashboardStore {
         return isClimberEnabledObject.getValue();
     }
 
-    /*public static void initIsClimberAuto() {
-     if (isClimberAutoObject == null) {
-     isClimberAutoObject = new BooleanDashObject("-IsClimberAuto", "Climber Mode: Auto", "Climber Mode: Manual", false);
-     }
-     }
-
-     public static boolean getIsClimberAuto() {
-     initIsClimberAuto();
-     return isClimberAutoObject.getValue();
-     }*/
     public static void initDebugLevelChanger() {
         if (debugLevelChanger == null) {
-            debugLevelChanger = new IntegerDashObject("-DebugLevelChanger", new String[]{"All", "Highest", "High", "Mid", "Low", "Lowest",}, 5);
+            debugLevelChanger = new IntegerDashObject("-DebugLevelChanger", new String[]{"All Messages", "Lowest or Higher", "Low or Higher", "Mid or Higher", "High or Higher", "Highest or Higher", "Only \"Always\" messages"}, 6);
         }
     }
 
@@ -60,5 +50,6 @@ public final class DashboardStore {
         if (debugLevelChange < DebugLevel.CURRENT) {
             DebugLevel.CURRENT = debugLevelChange;
         }
+        RobotDebugger.push(new InfoState("Debug To Show:", DebugLevel.getNameOf(DebugLevel.CURRENT) + " Or Higher", DebugLevel.ALWAYS));
     }
 }

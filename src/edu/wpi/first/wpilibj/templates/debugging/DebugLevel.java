@@ -46,4 +46,32 @@ public class DebugLevel {
      *
      */
     public static int CURRENT = ALWAYS;
+
+    /**
+     *
+     */
+    public static String getNameOf(int level) {
+        if (level == ALWAYS) {
+            return "Always";
+        }
+        if (level == HIGHEST) {
+            return "Highest";
+        }
+        if (level == HIGH) {
+            return "High";
+        }
+        if (level == MID) {
+            return "Mid";
+        }
+        if (level == LOW) {
+            return "Low";
+        }
+        if (level == LOWEST) {
+            return "Lowest";
+        }
+        if (level == NEVER) {
+            return "Never";
+        }
+        return "Unkown";
+    }
 }

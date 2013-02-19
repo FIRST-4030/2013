@@ -22,8 +22,11 @@ public abstract class CommandBase extends Command {
     protected static ShooterMotors shooterMotors;
     protected static ClimberArmSolenoids climberArmSolenoids;
     protected static ClimberWedgeSolenoid climberWedgeSolenoid;
+    protected static DashboardValueRefresh dashboardValueRefresh;
 
     public static void init() {
+        dashboardValueRefresh = new DashboardValueRefresh();
+        dashboardValueRefresh.start();
         mainCamera = new Camera();
         pressureSwitch = new PressureSwitch();
         compressor = new Compressor();

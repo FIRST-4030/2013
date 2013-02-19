@@ -65,10 +65,6 @@ public class RunClimberArmSolenoids extends CommandBase implements Debuggable {
     protected void end() {
     }
 
-    protected void interrupted() {
-        end();
-    }
-
     public DebugOutput getStatus() {
         return new InfoState("RunClimberArmSolenoid", status, DebugLevel.MID);
     }

@@ -21,7 +21,8 @@ public class FrisbeeDumperSolenoid extends Subsystem {
     protected void initDefaultCommand() {
         setDefaultCommand(new RunClimberArmSolenoids());
     }
-    public void startExpand(){
+
+    public void startExpand() {
         solenoid.set(true);
     }
 }

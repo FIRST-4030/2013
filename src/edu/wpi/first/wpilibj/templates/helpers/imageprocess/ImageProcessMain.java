@@ -13,7 +13,8 @@ import edu.wpi.first.wpilibj.templates.subsystems.Camera;
 import edu.wpi.first.wpilibj.templates.variablestores.VstC;
 
 /**
- *
+ * Image Process Main. Always interface with this class, if you are not inside
+ * the image process process.
  */
 public class ImageProcessMain {
 

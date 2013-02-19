@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.templates.helpers.ProcessError;
 import edu.wpi.first.wpilibj.templates.variablestores.VstC;
 
 /**
- * Robot Distance Cal
+ * Robot Distance Calculator.
  */
 public class LinearDistanceCalculator {
 

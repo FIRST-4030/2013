@@ -2,7 +2,6 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.dashboardrelations.DashboardStore;
-import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 
 /**
  *
@@ -20,7 +19,7 @@ public class DashboardValueRefresh extends CommandBase {
 
     protected void execute() {
         DashboardStore.checkDebugLevelChanger();
-        SmartDashboard.putNumber("TimeUpdate", System.currentTimeMillis());
+        SmartDashboard.putString("TimeUpdate", String.valueOf(System.currentTimeMillis()));
     }
 
     protected boolean isFinished() {
@@ -28,9 +27,6 @@ public class DashboardValueRefresh extends CommandBase {
     }
 
     protected void end() {
-    }
-
-    protected void interrupted() {
-        end();
+        SmartDashboard.putString("TimeUpdate", "Disabled!!!");
     }
 }

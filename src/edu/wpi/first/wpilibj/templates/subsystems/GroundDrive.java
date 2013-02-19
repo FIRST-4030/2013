@@ -17,17 +17,17 @@ import edu.wpi.first.wpilibj.templates.vstj.VstJ;
  * Robot SubSystem GroundDrive. This is the main Driving SubSystem.
  */
 public class GroundDrive extends Subsystem implements Debuggable {
-    
+
     private boolean driveReversed = false;
     private static Jaguar leftMotor = new Jaguar(VstM.PWM.LEFT_MOTOR_PORT);
     private static Jaguar rightMotor = new Jaguar(VstM.PWM.RIGHT_MOTOR_PORT);
     private static RobotDrive roboDrive;
-    
+
     public GroundDrive() {
         roboDrive = new RobotDrive(leftMotor, rightMotor);
         roboDrive.stopMotor();
     }
-    
+
     public void initDefaultCommand() {
         setDefaultCommand(new GroundDriveCommand());
     }
@@ -44,7 +44,7 @@ public class GroundDrive extends Subsystem implements Debuggable {
         multiplier = d * (driveReversed ? -1 : 1);
     }
     private double multiplier;
-    
+
     public void driveWithDefaultController() {
         driveWithController(VstJ.getDriveJoystick());
     }
@@ -69,7 +69,7 @@ public class GroundDrive extends Subsystem implements Debuggable {
     public void driveWithRaw(double speed, double turn) {
         roboDrive.arcadeDrive(speed, turn);
     }
-    
+
     public void driveWithLast() {
         driveWithController(lastController);
     }
@@ -85,11 +85,11 @@ public class GroundDrive extends Subsystem implements Debuggable {
         infoList[3] = new DebugStatus("GroundDrive:SpeedMultiplier", multiplier, DebugLevel.HIGHEST);
         return new DebugInfoGroup(infoList);
     }
-    
+
     public void stop() {
         roboDrive.stopMotor();
     }
-    
+
     public static void disabled() {
         roboDrive.stopMotor();
     }

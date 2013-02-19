@@ -31,8 +31,4 @@ public class RunCompressor extends CommandBase {
     protected void end() {
         compressor.stop();
     }
-
-    protected void interrupted() {
-        this.end();
-    }
 }

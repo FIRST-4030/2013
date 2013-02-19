@@ -22,7 +22,9 @@ public final class Climber extends Subsystem implements Debuggable {
     }
 
     public void runLadder(double speed) {
-        //TODO Should we check if this value is between -1 and 1? Or what kind of input can the Jaguar take?
+        if (speed < -1 || speed > 1) {
+            throw new IllegalArgumentException("To High/Low a value passed in runLadder(double)");
+        }
         climber.set(speed);
     }
 

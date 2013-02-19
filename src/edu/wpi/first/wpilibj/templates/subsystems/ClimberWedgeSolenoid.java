@@ -2,7 +2,6 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.templates.HM;
 import edu.wpi.first.wpilibj.templates.commands.RunClimberWedgeSolenoid;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
@@ -68,6 +67,7 @@ public class ClimberWedgeSolenoid extends Subsystem implements Debuggable {
     public void update() {
         if (staying) {
             if (lastUpdate + 100 < System.currentTimeMillis()) {
+                System.out.println("ClimberWedgeSolenoid: Updated");
                 stayingState = !stayingState;
                 if (stayingState) {
                     retract();
@@ -89,7 +89,7 @@ public class ClimberWedgeSolenoid extends Subsystem implements Debuggable {
     }
 
     public DebugOutput getStatus() {
-        return new DebugStatus("ClimberWedgeSolenoid", status, DebugLevel.MID);
+        return new DebugStatus("ClimberWedgeSolenoid", status, DebugLevel.HIGH);
     }
     private boolean staying = false;
     private long lastUpdate;

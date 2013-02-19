@@ -26,13 +26,6 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
     private double speed = 0;
     private boolean lowerPressed;
     private boolean upperPressed;
-    private boolean deployPressed;
-    /**
-     * False is going down, true is going up.
-     */
-    private boolean lastAutoState = false;
-    //private long timeOfLastAutoChange;
-    //private boolean autoLast = false;
 
     public RunClimber() {
         requires(climber);
@@ -84,19 +77,13 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
 
     }
 
-    protected void interrupted() {
-        this.end();
-    }
-
     private void checkLimitSwitches() {
         if (limitSwitchEnabled) {
             upperPressed = climberLimitSwitch.readUpper();
             lowerPressed = climberLimitSwitch.readLower();
-            deployPressed = climberLimitSwitch.readDeploy();
         } else {
             upperPressed = false;
             lowerPressed = false;
-            deployPressed = false;
         }
     }
 

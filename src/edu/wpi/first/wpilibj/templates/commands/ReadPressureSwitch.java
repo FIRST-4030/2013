@@ -30,8 +30,4 @@ public class ReadPressureSwitch extends CommandBase {
     protected void end() {
         VstP.setAtPressure(true);
     }
-
-    protected void interrupted() {
-        this.end();
-    }
 }

@@ -33,8 +33,4 @@ public class RunShooterSolenoid extends CommandBase {
 
     protected void end() {
     }
-
-    protected void interrupted() {
-        end();
-    }
 }

@@ -32,7 +32,4 @@ public class ImageProcess extends CommandBase {
 
     protected void end() {
     }
-
-    protected void interrupted() {
-    }
 }

@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.templates.dashboardrelations.DashboardStore;
 import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
+ * Run Frisbee dumper (For top of pyramid).
  *
  * @author daboross
  */
@@ -30,8 +31,5 @@ public class RunFrisbeeDumperSolenoid extends CommandBase {
     }
 
     protected void end() {
-    }
-
-    protected void interrupted() {
     }
 }

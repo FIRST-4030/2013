@@ -1,7 +1,7 @@
 package edu.wpi.first.wpilibj.templates.vstj;
 
 /**
- * This class contains all protected static final int variables.
+ * This class contains all protected static final integer variables.
  *
  * It stores what buttons/axis on the XBox and Logitech Joysticks correspond to
  * what numbers in getRawButton or getRawAxis.

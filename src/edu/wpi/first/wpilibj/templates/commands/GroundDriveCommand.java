@@ -18,20 +18,17 @@ public class GroundDriveCommand extends CommandBase implements Debuggable {
 
     private boolean highSpeed = false;
     private boolean reversed = false;
-    private boolean isDone = false;
 
     public GroundDriveCommand() {
         requires(groundDrive);
     }
 
-    // Called just before this Command runs the first time.
     protected void initialize() {
         groundDrive.stop();
         RobotDebugger.push(groundDrive);
         RobotDebugger.push(this);
     }
 
-    // Called repeatedly when this Command is scheduled to run.
     protected void execute() {
         if (DashboardStore.getIsClimberEnabled()) {
             groundDrive.driveWithRaw(-0.5, 0);
@@ -45,19 +42,12 @@ public class GroundDriveCommand extends CommandBase implements Debuggable {
         RobotDebugger.push(this);
     }
 
-    // Make this return true when this Command no longer needs to run execute().
     protected boolean isFinished() {
-        return isDone;
+        return false;
     }
 
-    // Called once after isFinished returns true
     protected void end() {
         groundDrive.stop();
-    }
-
-    // Called when another command which requires one or more of the same subsystems is scheduled to run
-    protected void interrupted() {
-        end();
     }
 
     public DebugOutput getStatus() {

@@ -50,4 +50,8 @@ public abstract class CommandBase extends Command {
     public CommandBase() {
         super();
     }
+
+    protected final void interrupted() {
+        end();
+    }
 }

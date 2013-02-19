@@ -23,10 +23,10 @@ public class RunShooterMotors extends CommandBase implements Debuggable, Disable
 
     public RunShooterMotors() {
         requires(shooterMotors);
-        RobotMain.addDisableNotifable(this);
     }
 
     protected void initialize() {
+        RobotMain.addDisableNotifable(this);
         shooterMotors.setSpeed(0);
     }
     private double motorSpeed = 0;
@@ -74,10 +74,6 @@ public class RunShooterMotors extends CommandBase implements Debuggable, Disable
     protected void end() {
         motorSpeed = 0;
         shooterMotors.setSpeed(0);
-    }
-
-    protected void interrupted() {
-        end();
     }
 
     public DebugOutput getStatus() {

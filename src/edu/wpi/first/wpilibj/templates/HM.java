@@ -12,5 +12,4 @@ public class HM {
     public static double round(double value) {
         return round(100, value);
     }
-    public static final long HALF_SECOND_IN_MILISECONDS = 500;
 }

@@ -59,10 +59,6 @@ public class RunClimberWedgeSolenoid extends CommandBase implements Debuggable {
     protected void end() {
     }
 
-    protected void interrupted() {
-        end();
-    }
-
     public DebugOutput getStatus() {
         return new InfoState("RunClimberWedge", getStateMessage(), DebugLevel.HIGH);
     }

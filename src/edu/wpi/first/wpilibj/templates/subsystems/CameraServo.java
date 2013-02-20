@@ -37,9 +37,9 @@ public class CameraServo extends Subsystem implements Debuggable {
     }
 
     public DebugOutput getStatus() {
-        DebugInfo[] infoList = new DebugInfo[3];
-        infoList[1] = new DebugStatus("CameraServo:Get", cameraServo.get(), DebugLevel.MID);
-        infoList[2] = new DebugStatus("CameraServo:GetAngle", cameraServo.getAngle(), DebugLevel.MID);
+        DebugInfo[] infoList = new DebugInfo[2];
+        infoList[0] = new DebugStatus("CameraServo:Get", cameraServo.get(), DebugLevel.MID);
+        infoList[1] = new DebugStatus("CameraServo:GetAngle", cameraServo.getAngle(), DebugLevel.MID);
         return new DebugInfoGroup(infoList);
     }
 }

@@ -98,6 +98,7 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
         } else {
             speed = 0;
         }
+        ClimberStore.currentClimberCarriageSpeed = speed;
     }
 
     protected boolean isFinished() {

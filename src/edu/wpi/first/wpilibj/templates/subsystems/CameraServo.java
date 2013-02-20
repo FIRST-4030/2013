@@ -20,7 +20,7 @@ public class CameraServo extends Subsystem implements Debuggable {
     private Servo cameraServo;
 
     public CameraServo() {
-        System.out.println("CameraServo: Created");
+        System.out.println("SubSystem Created: CameraServo");
         cameraServo = new Servo(VstM.PWM.CAMERA_SERVO);
     }
 

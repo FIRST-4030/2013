@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 public class ClimberLimitSwitch extends Subsystem implements Debuggable {
 
     public ClimberLimitSwitch() {
-        System.out.println("Created: ClimberLimitSwitch");
+        System.out.println("SubSystem Created: ClimberLimitSwitch");
     }
     private DigitalInput lowerLimit = new DigitalInput(VstM.DIGITAL_IO.CLIMBER_LOWER_LIMIT_SWITCH);
     private DigitalInput upperLimit = new DigitalInput(VstM.DIGITAL_IO.CLIMBER_UPPER_LIMIT_SWITCH);

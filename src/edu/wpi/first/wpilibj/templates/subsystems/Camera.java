@@ -3,6 +3,7 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 import edu.wpi.first.wpilibj.camera.AxisCamera;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.image.*;
+import edu.wpi.first.wpilibj.templates.commands.ReadSetCamera;
 
 /**
  * This is the CAMERA Sub System. Basically only allows you to get the current
@@ -18,10 +19,10 @@ public class Camera extends Subsystem {
      */
     public Camera() {
         setCameraInstance();
-
     }
 
     public void initDefaultCommand() {
+        setDefaultCommand(new ReadSetCamera());
     }
 
     /**

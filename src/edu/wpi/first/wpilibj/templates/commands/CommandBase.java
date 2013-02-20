@@ -28,11 +28,14 @@ public abstract class CommandBase extends Command {
      * Commands.
      */
     protected static DashboardValueRefresh dashboardValueRefresh;
+    protected static ReadLimitSwitches readLimitSwitches;
 
     public static void init() {
         //Commands
         dashboardValueRefresh = new DashboardValueRefresh();
+        readLimitSwitches = new ReadLimitSwitches();
         dashboardValueRefresh.start();
+        readLimitSwitches.start();
         //SubSystems
         mainCamera = new Camera();
         pressureSwitch = new PressureSwitch();

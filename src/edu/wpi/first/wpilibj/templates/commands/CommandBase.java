@@ -33,9 +33,7 @@ public abstract class CommandBase extends Command {
     public static void init() {
         //Commands
         dashboardValueRefresh = new DashboardValueRefresh();
-        readLimitSwitches = new ReadLimitSwitches();
         dashboardValueRefresh.start();
-        readLimitSwitches.start();
         //SubSystems
         mainCamera = new Camera();
         pressureSwitch = new PressureSwitch();

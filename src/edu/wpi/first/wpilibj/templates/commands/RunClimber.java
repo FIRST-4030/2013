@@ -31,6 +31,20 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
      * 3 for enabled, and in correct position.
      */
     private int state = 0;
+
+    private String getStateName() {
+        if (state == 0) {
+            return "Disabled, Correct";
+        } else if (state == 1) {
+            return "Disabled, Moving";
+        } else if (state == 2) {
+            return "Enabled, Moving";
+        } else if (state == 3) {
+            return "Enabled, Correct";
+        } else {
+            return "Unknown(BAD)";
+        }
+    }
     private double speed = 0;
     private boolean lowerPressed;
     private boolean upperPressed;
@@ -113,6 +127,7 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
     public DebugOutput getStatus() {
         DebugInfo[] infoList = new DebugInfo[2];
         infoList[0] = new InfoState("Climber:Enabled", DashboardStore.getIsClimberEnabled() ? "Yes" : "No", DebugLevel.HIGHEST);
+        infoList[2] = new InfoState("Climber:AutoState", getStateName(), DebugLevel.HIGH);
         infoList[1] = new DebugStatus("Climber:SetSpeed", speed, DebugLevel.LOW);
         return new DebugInfoGroup(infoList);
     }

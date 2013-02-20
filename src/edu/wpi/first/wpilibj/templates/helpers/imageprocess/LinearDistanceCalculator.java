@@ -123,7 +123,7 @@ public class LinearDistanceCalculator {
                 }
             }
         }
-        return pts[biggestTarget];//what about middleTarget?
+        return pts[middleTarget];
     }
 
     private static ProcessedTarget findMiddleTarget(ParticleAnalysisReport[] pars) {

@@ -14,11 +14,7 @@ import edu.wpi.first.wpilibj.templates.dashboardrelations.DashboardStore;
 import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
- * This Command runs the climber motors (The ones powering the "cart" that goes
- * up/down the ladder) according to a set speed, that is increased/decreased
- * with buttons.
- *
- * Same kind of drive as RunShooterMotors, but with different buttons.
+ * This Command runs the climber motors with a joystick.
  */
 public class RunClimber extends CommandBase implements Debuggable, DisableNotifable {
 

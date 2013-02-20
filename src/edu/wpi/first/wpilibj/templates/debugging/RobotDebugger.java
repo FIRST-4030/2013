@@ -1,6 +1,7 @@
 package edu.wpi.first.wpilibj.templates.debugging;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import java.util.Enumeration;
 import java.util.Hashtable;
 
 /**
@@ -9,27 +10,15 @@ import java.util.Hashtable;
  */
 public class RobotDebugger {
 
-    private static Hashtable table = new Hashtable();
+    private static Hashtable consoleTable = new Hashtable();
+    private static Hashtable dashTable = new Hashtable();
 
-    /**
-     * This pushes this info to the SmartDashboard/Console.
-     */
-    private static void rawPush(String key, String message, boolean isConsole, boolean isDashboard, int debugLevel) {
-        if (key == null || message == null) {
-            System.out.println("ROBOT DEBUGGER ERROR: NULL KEY/MESSAGE");
-            return;
-        }
-        if (debugLevel >= DebugLevel.CURRENT) {
-            table.put(key, message);
-            if (isConsole) {
-                if (!message.equals((String) table.get(key))) {
-                    System.out.println("DebugChange: " + key + ": " + message);
-                }
-            }
-            if (isDashboard) {
-                SmartDashboard.putString(key, message);
-            }
-        }
+    private static void consolePush(String key, String value) {
+        System.out.println("[RD] " + key + ": " + value);
+    }
+
+    private static void dashboardPush(String key, String value) {
+        SmartDashboard.putString(key, value);
     }
 
     /**
@@ -38,7 +27,27 @@ public class RobotDebugger {
      * Debuggable, then you should push it.
      */
     protected static void pushInfo(DebugInfo di) {
-        rawPush(di.key(), di.message(), di.isConsole(), di.isDashboard(), di.debugLevel());
+        if (di == null || di.key() == null || di.message() == null) {
+            return;
+        }
+        String key = di.key();
+        String val = di.message();
+        int level = di.debugLevel();
+        if (di.isConsole()) {
+            String oldConVal = ((DebugInfo) consoleTable.get(key)).message();
+            if (oldConVal != null && !oldConVal.equals(val)) {
+                if (level > DebugLevel.CURRENT) {
+                    consolePush(key, val);
+                }
+            }
+            consoleTable.put(key, di);
+        }
+        if (di.isDashboard()) {
+            if (level > DebugLevel.CURRENT) {
+                dashboardPush(key, val);
+            }
+            dashTable.put(key, di);
+        }
     }
 
     /**
@@ -63,7 +72,16 @@ public class RobotDebugger {
      * won't push to Console/SmartDashboard unless that value has changed. This
      * method removes all stored key values.
      */
-    public static void clearMap() {
-        table = new Hashtable();
+    public static void reMap() {
+        Enumeration e = dashTable.elements();
+        while (e.hasMoreElements()) {
+            DebugInfo d = (DebugInfo) e.nextElement();
+            String key = d.key();
+            String val = d.message();
+            int level = d.debugLevel();
+            if (level > DebugLevel.CURRENT) {
+                dashboardPush(key, val);
+            }
+        }
     }
 }

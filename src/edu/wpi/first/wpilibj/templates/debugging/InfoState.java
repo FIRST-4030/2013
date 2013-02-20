@@ -18,6 +18,7 @@ public class InfoState extends DebugInfo {
     public InfoState(String owner, String state, int level) {
         this.key = owner + ":State";
         this.message = state;
+        this.level = level;
     }
 
     protected String key() {

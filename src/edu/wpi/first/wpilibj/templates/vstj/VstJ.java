@@ -1,6 +1,7 @@
 package edu.wpi.first.wpilibj.templates.vstj;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class holds variables about JoySticks.
@@ -38,44 +39,71 @@ public class VstJ {
         return getJoystick(FV.SHOOTER_JOYSTICK);
     }
 
-    public static double getLadderControlAxisValue() {
-        return getJoystickAxis(Mappings.ladderControlAxisJoystickNumber, Mappings.ladderControlAxisNumber);
-    }
-
-    public static boolean getShooterSolenoidPushButtonValue() {
-        return getJoystickButton(Mappings.shooterSolenoidButtonJoystickNumber, Mappings.shooterSolenoidButtonNumber);
-    }
-
-    public static boolean getShooterMotorSpeedUpButtonValue() {
-        return getJoystickButton(Mappings.shooterMotorSpeedUpButtonJoystickNumber, Mappings.shooterMotorSpeedUpButtonNumber);
-    }
-
-    public static boolean getShooterMotorSpeedDownButtonValue() {
-        return getJoystickButton(Mappings.shooterMotorSpeedDownButtonJoystickNumber, Mappings.shooterMotorSpeedDownButtonNumber);
-    }
-
-    public static boolean getDriveSpeedToggleButtonValue() {
-        return getJoystickButton(Mappings.driveSpeedToggleButtonJoystickNumber, Mappings.driveSpeedToggleButtonNumber);
-    }
-
-    public static boolean getClimberArmStartToggleButtonValue() {
-        return getJoystickButton(Mappings.climberArmSolenoidStartButtonJoystickNumber, Mappings.climberArmSolenoidStartButtonNumber);
-    }
-
-    public static boolean getDriveControlReverseButtonValue() {
-        return getJoystickButton(Mappings.driveControlReverseButtonJoystickNumber, Mappings.driveControlReverseButtonNumber);
-    }
-
     public static double getClimberWedgeSolenoidControlAxisValue() {
         return getJoystickAxis(Mappings.climberWedgeSolenoidControlAxisJoystickNumber, Mappings.climberWedgeSolenoidControlNumber);
     }
 
-    public static boolean getFrisbeeDumpButtonValue() {
-        return getJoystickButton(Mappings.frisbeeDumpButtonJoystickNumber, Mappings.frisbeeDumpButtonJoystickNumber);
+    public static double getLadderControlAxisValue() {
+        return getJoystickAxis(Mappings.ladderControlAxisJoystickNumber, Mappings.ladderControlAxisNumber);
     }
 
-    private static boolean getJoystickButton(int joyStick, int buttonNumber) {
-        return getJoystick(joyStick).getRawButton(buttonNumber);
+    public static JoystickButton getShooterSolenoidPushButton() {
+        return getJoystickButton(Mappings.shooterSolenoidButtonJoystickNumber, Mappings.shooterSolenoidButtonNumber);
+    }
+
+    public static boolean getShooterSolenoidPushButtonValue() {
+        return getShooterSolenoidPushButton().get();
+    }
+
+    public static JoystickButton getShooterMotorSpeedUpButton() {
+        return getJoystickButton(Mappings.shooterMotorSpeedUpButtonJoystickNumber, Mappings.shooterMotorSpeedUpButtonNumber);
+    }
+
+    public static boolean getShooterMotorSpeedUpButtonValue() {
+        return getShooterMotorSpeedUpButton().get();
+    }
+
+    public static JoystickButton getShooterMotorSpeedDownButton() {
+        return getJoystickButton(Mappings.shooterMotorSpeedDownButtonJoystickNumber, Mappings.shooterMotorSpeedDownButtonNumber);
+    }
+
+    public static boolean getShooterMotorSpeedDownButtonValue() {
+        return getShooterMotorSpeedDownButton().get();
+    }
+
+    public static JoystickButton getDriveSpeedToggleButton() {
+        return getJoystickButton(Mappings.driveSpeedToggleButtonJoystickNumber, Mappings.driveSpeedToggleButtonNumber);
+    }
+
+    public static boolean getDriveSpeedToggleButtonValue() {
+        return getDriveSpeedToggleButton().get();
+    }
+
+    public static JoystickButton getClimberArmStartToggleButton() {
+        return getJoystickButton(Mappings.climberArmSolenoidStartButtonJoystickNumber, Mappings.climberArmSolenoidStartButtonNumber);
+    }
+
+    public static boolean getClimberArmStartToggleButtonValue() {
+        return getClimberArmStartToggleButton().get();
+    }
+
+    public static JoystickButton getDriveControlReverseButton() {
+        return getJoystickButton(Mappings.driveControlReverseButtonJoystickNumber, Mappings.driveControlReverseButtonNumber);
+    }
+
+    public static boolean getDriveControlReverseButtonValue() {
+        return getDriveControlReverseButton().get();
+    }
+
+    public static JoystickButton getFrisbeeDumpButton() {
+        return getJoystickButton(Mappings.frisbeeDumpButtonJoystickNumber, Mappings.frisbeeDumpButtonJoystickNumber);
+    }
+    public static boolean getFrisbeeDumpButtonValue() {
+        return getFrisbeeDumpButton().get();
+    }
+
+    private static JoystickButton getJoystickButton(int joystickNumber, int buttonNumber) {
+        return new JoystickButton(getJoystick(joystickNumber), buttonNumber);
     }
 
     private static double getJoystickAxis(int joyStick, int axisNumber) {

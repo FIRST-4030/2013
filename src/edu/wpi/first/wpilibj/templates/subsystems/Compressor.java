@@ -17,6 +17,9 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstP;
  */
 public class Compressor extends Subsystem implements Debuggable {
 
+    public Compressor(){
+        System.out.println("Compressor: Created");
+    }
     Relay compressor = new Relay(VstM.RELAY.COMPRESSOR_SPIKE);
 
     public void initDefaultCommand() {

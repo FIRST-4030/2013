@@ -24,6 +24,7 @@ public class GroundDrive extends Subsystem implements Debuggable {
     private static RobotDrive roboDrive;
 
     public GroundDrive() {
+        System.out.println("GroundDrive: Created");
         roboDrive = new RobotDrive(leftMotor, rightMotor);
         roboDrive.stopMotor();
     }

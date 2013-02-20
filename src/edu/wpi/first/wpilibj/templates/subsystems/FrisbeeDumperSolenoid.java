@@ -14,6 +14,7 @@ public class FrisbeeDumperSolenoid extends Subsystem {
     private Solenoid solenoid;
 
     public FrisbeeDumperSolenoid() {
+        System.out.println("FrisbeeDumperSolenoid: Created");
         solenoid = new Solenoid(VstM.SOLENOID.FRISBEE_DUMP);
         solenoid.set(false);
     }

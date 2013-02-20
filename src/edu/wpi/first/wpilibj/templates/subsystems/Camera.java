@@ -17,8 +17,8 @@ public class Camera extends Subsystem {
      * Default constructor for Camera. Will get the current camera instance.
      */
     public Camera() {
+        System.out.println("Camera: Created");
         setCameraInstance();
-
     }
 
     public void initDefaultCommand() {

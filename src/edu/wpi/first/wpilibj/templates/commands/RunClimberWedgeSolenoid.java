@@ -47,7 +47,6 @@ public class RunClimberWedgeSolenoid extends CommandBase implements Debuggable {
         } else {
             climberWedgeSolenoid.stayPut();
         }
-        climberWedgeSolenoid.update();
         RobotDebugger.push(climberWedgeSolenoid);
         RobotDebugger.push(this);
     }

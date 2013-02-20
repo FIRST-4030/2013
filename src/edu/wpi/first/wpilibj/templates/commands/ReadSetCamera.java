@@ -1,10 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.camera.AxisCamera;
 
 /**
@@ -12,7 +7,7 @@ import edu.wpi.first.wpilibj.camera.AxisCamera;
  * @author profplump
  */
 public class ReadSetCamera extends CommandBase {
-    
+
     public ReadSetCamera() {
         requires(mainCamera);
     }

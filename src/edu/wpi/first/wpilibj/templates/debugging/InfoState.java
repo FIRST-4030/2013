@@ -16,8 +16,15 @@ public class InfoState extends DebugInfo {
     private int level;
 
     public InfoState(String owner, String state, int level) {
+        if (owner == null) {
+            throw new IllegalArgumentException("Owner Can't Be Null");
+        }
+        if (state == null) {
+            this.message = "Not Set";
+        } else {
+            this.message = state;
+        }
         this.key = owner + ":State";
-        this.message = state;
         this.level = level;
     }
 

@@ -20,6 +20,7 @@ public class RunClimberArmSolenoids extends CommandBase implements Debuggable {
     }
 
     protected void initialize() {
+        System.out.println("RunClimber: Init");
         climberArmSolenoids.retract();
     }
     private boolean extending = false;
@@ -37,11 +38,11 @@ public class RunClimberArmSolenoids extends CommandBase implements Debuggable {
          * about a setting in the SmartDashboard.
          */
         if (DashboardStore.getIsClimberEnabled()) {
-            if (VstJ.getClimberArmStartToggleButtonValue()) {
-                extending = true;
-            }
             if (!extending) {
                 status = "Just Started";
+            }
+            if (VstJ.getClimberArmStartToggleButtonValue()) {
+                extending = true;
             }
         } else {
             status = "Not Enabled";
@@ -51,7 +52,7 @@ public class RunClimberArmSolenoids extends CommandBase implements Debuggable {
             status = "Extending";
             climberArmSolenoids.extend();
         } else {
-            status += "-NotExtending";
+            status = "NotExtending";
             climberArmSolenoids.retract();
         }
         RobotDebugger.push(climberArmSolenoids);
@@ -59,7 +60,7 @@ public class RunClimberArmSolenoids extends CommandBase implements Debuggable {
     }
 
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     protected void end() {

@@ -16,7 +16,8 @@ public class RobotDebugger {
      */
     private static void rawPush(String key, String message, boolean isConsole, boolean isDashboard, int debugLevel) {
         if (key == null || message == null) {
-            throw new IllegalArgumentException("No Null Arguments");
+            System.out.println("ROBOT DEBUGGER ERROR: NULL KEY/MESSAGE");
+            return;
         }
         if (debugLevel >= DebugLevel.CURRENT) {
             table.put(key, message);

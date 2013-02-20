@@ -19,7 +19,7 @@ public class ClimberWedgeSolenoid extends Subsystem implements Debuggable {
     private String status = "Not Set";
 
     public ClimberWedgeSolenoid() {
-        System.out.println("Created: ClimberWedgeSolenoid");
+        System.out.println("SubSystem Created: ClimberWedgeSolenoid");
         solenoid1 = new Solenoid(VstM.SOLENOID.CLIMBER_WEDGE_SIDE_1);
         solenoid2 = new Solenoid(VstM.SOLENOID.CLIMBER_WEDGE_SIDE_2);
     }
@@ -35,7 +35,6 @@ public class ClimberWedgeSolenoid extends Subsystem implements Debuggable {
      */
     public void extend() {
         status = "Extending";
-        setStaying(false);
         solenoid1.set(true);
         solenoid2.set(false);
     }
@@ -47,55 +46,20 @@ public class ClimberWedgeSolenoid extends Subsystem implements Debuggable {
      */
     public void retract() {
         status = "Retracting";
-        setStaying(false);
         solenoid2.set(true);
         solenoid1.set(false);
     }
 
     /**
-     * This sets the ClimberWedgeSolenoid to "stay put" mode. This is a special
-     * mode which will make the solenoid switch quickly between extending and
-     * retracting.
-     *
-     * This will only work if the update() method is called frequently.
-     *
-     * To stop staying put, call retract() or extend().
+     * This sets the ClimberWedgeSolenoid to "stay put" mode.
      */
     public void stayPut() {
-        setStaying(true);
-    }
-
-    public void update() {
-        if (staying) {
-            if (lastUpdate + 100 < System.currentTimeMillis()) {
-                System.out.println("ClimberWedgeSolenoid: Updated");
-                stayingState = !stayingState;
-                if (stayingState) {
-                    retract();
-                } else {
-                    extend();
-                }
-                lastUpdate = System.currentTimeMillis();
-            }
-        }
-    }
-
-    private void setStaying(boolean state) {
-        if (state) {
-            lastUpdate = System.currentTimeMillis();
-            stayingState = false;
-        }
-        staying = state;
-
+        status = "Staying";
+        solenoid1.set(false);
+        solenoid2.set(false);
     }
 
     public DebugOutput getStatus() {
         return new DebugStatus("ClimberWedgeSolenoid", status, DebugLevel.HIGH);
     }
-    private boolean staying = false;
-    private long lastUpdate;
-    /**
-     * true is up, false is down.
-     */
-    private boolean stayingState;
 }

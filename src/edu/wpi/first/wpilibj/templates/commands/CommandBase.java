@@ -45,6 +45,7 @@ public abstract class CommandBase extends Command {
         climberArmSolenoids = new ClimberArmSolenoids();
         climberWedgeSolenoid = new ClimberWedgeSolenoid();
         cameraServo = new CameraServo();
+        frisbeeDumperSolenoid = new FrisbeeDumperSolenoid();
     }
 
     public CommandBase(String name) {

@@ -18,6 +18,9 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstP;
  */
 public class PressureSwitch extends Subsystem implements Debuggable {
 
+    public PressureSwitch(){
+        System.out.println("PressureSwitch: Created");
+    }
     /**
      * This is a Digital Pressure Switch.
      */

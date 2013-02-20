@@ -20,8 +20,15 @@ import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 public class RunClimber extends CommandBase implements Debuggable, DisableNotifable {
 
     /**
-     * 0 for not enabled. 1 for enabled, but not at correct position. 2 for
-     * enabled, and in correct position.
+     * Climber state.
+     *
+     * 0 for not enabled, and in correct position.
+     *
+     * 1 for not enabled, and in wrong position.
+     *
+     * 2 for enabled, but not at correct position.
+     *
+     * 3 for enabled, and in correct position.
      */
     private int state = 0;
     private double speed = 0;
@@ -42,27 +49,27 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
     protected void execute() {
         checkLimitSwitches();
         stateCheck();
-        runClimber();
+        driverSpeedChange();
+        runClimberWithManSpeed();
         RobotDebugger.push(this);
         RobotDebugger.push(climber);
         RobotDebugger.push(climberLimitSwitch);
     }
 
-    private void runClimber() {
-        if (ClimberStore.climberEnabled) {
-            setSpeedMan();
-        } else {
-            speed = 0;
-        }
+    private void runClimberWithManSpeed() {
         climber.runLadder(speed);
     }
 
-    private void setSpeedMan() {
-        speed = VstJ.getLadderControlAxisValue();
-        if (upperPressed && speed > 0) {
-            speed = 0;
-        }
-        if (lowerPressed && speed < 0) {
+    private void driverSpeedChange() {
+        if (ClimberStore.climberEnabled) {
+            speed = VstJ.getLadderControlAxisValue();
+            if (upperPressed && speed > 0) {
+                speed = 0;
+            }
+            if (lowerPressed && speed < 0) {
+                speed = 0;
+            }
+        } else {
             speed = 0;
         }
     }
@@ -89,6 +96,9 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
     private void stateCheck() {
         if (ClimberStore.climberEnabled) {
             if (state == 0) {
+                state = 2;
+            } else if (state == 1 && !deployPressed) {
+                state = 2;
             }
         }
     }

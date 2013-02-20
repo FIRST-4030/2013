@@ -13,7 +13,8 @@ public final class VstM {
         public static final int CLIMBER_ARM_SIDE_2 = 4;
         public static final int CLIMBER_WEDGE_SIDE_1 = 5;
         public static final int CLIMBER_WEDGE_SIDE_2 = 6;
-        public static final int FRISBEE_DUMP = 7;
+        public static final int FRISBEE_DUMP_1 = 7;
+        public static final int FRISBEE_DUMP_2 = 8;
     }
 
     public static final class DIGITAL_IO {

@@ -8,10 +8,8 @@ package edu.wpi.first.wpilibj.templates.vstj;
  */
 final class FV {
 
-    protected static final int JOYSTICK_1 = 1;
-    protected static final int JOYSTICK_2 = 2;
-    protected static final int DRIVE_JOYSTICK = JOYSTICK_2;
-    protected static final int SHOOTER_JOYSTICK = JOYSTICK_1;
+    protected static final int DRIVE_JOYSTICK = 2;
+    protected static final int SHOOTER_JOYSTICK = 1;
 
     protected static class AXIS {
 

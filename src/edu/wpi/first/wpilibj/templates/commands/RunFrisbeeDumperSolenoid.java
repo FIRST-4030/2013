@@ -15,31 +15,40 @@ import edu.wpi.first.wpilibj.templates.vstj.VstJ;
  */
 public class RunFrisbeeDumperSolenoid extends CommandBase implements Debuggable {
 
-    private boolean done;
+    private String state = "Not Set";
 
     public RunFrisbeeDumperSolenoid() {
         requires(frisbeeDumperSolenoid);
     }
 
     protected void initialize() {
+        frisbeeDumperSolenoid.startExpand();
+        RobotDebugger.push(this);
     }
 
     protected void execute() {
-        if (VstJ.getFrisbeeDumpButtonValue() && DashboardStore.getIsClimberEnabled()) {
-            frisbeeDumperSolenoid.startExpand();
-            done = true;
+        if (DashboardStore.getIsClimberEnabled()) {
+            if (VstJ.getFrisbeeDumpButtonValue()) {
+                frisbeeDumperSolenoid.startRetract();
+                state = "Retracting";
+            } else if (VstJ.getFrisbeeUnDumpButtonValue()) {
+                frisbeeDumperSolenoid.startExpand();
+                state = "Expanding";
+            }
+        } else {
+            state = "Disabled";
         }
         RobotDebugger.push(this);
     }
 
     protected boolean isFinished() {
-        return done;
+        return false;
     }
 
     protected void end() {
     }
 
     public DebugOutput getStatus() {
-        return new InfoState("RunFrisbeeDumper", done?"Extending":"Not Extending", DebugLevel.HIGH);
+        return new InfoState("RunFrisbeeDumper", state, DebugLevel.HIGH);
     }
 }

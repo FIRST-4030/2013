@@ -21,7 +21,7 @@ public final class ShooterMotors extends Subsystem implements Debuggable {
     private Jaguar secondMotor = new Jaguar(VstM.PWM.SECOND_SHOOTER_MOTOR_PORT);
 
     public ShooterMotors() {
-        System.out.println("ShooterMotors: Created");
+        System.out.println("SubSystem Created: ShooterMotors");
         setSpeed(0);
     }
 

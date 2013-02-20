@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.templates.vstj.VstJ;
  */
 public class RunFrisbeeDumperSolenoid extends CommandBase implements Debuggable {
 
-    private String state;
+    private String state = "Not Set";
 
     public RunFrisbeeDumperSolenoid() {
         requires(frisbeeDumperSolenoid);

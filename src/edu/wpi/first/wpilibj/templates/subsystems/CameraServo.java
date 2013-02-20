@@ -29,16 +29,12 @@ public class CameraServo extends Subsystem implements Debuggable {
     }
 
     public void turnLeft() {
-        cameraServo.setAngle(0);
-        cameraServo.set(0);
-        cameraServo.setAngle(0);
+        cameraServo.setAngle(45);
         setLast = 0;
     }
 
     public void turnRight() {
-        cameraServo.setAngle(90);
-        cameraServo.set(90);
-        cameraServo.setAngle(90);
+        cameraServo.setAngle(135);
         setLast = 90;
     }
 

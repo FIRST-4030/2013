@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.dashboardrelations.DashboardStore;
+import edu.wpi.first.wpilibj.templates.variablestores.ClimberStore;
 import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
@@ -18,10 +19,15 @@ import edu.wpi.first.wpilibj.templates.vstj.VstJ;
  */
 public class RunClimber extends CommandBase implements Debuggable, DisableNotifable {
 
-    private boolean limitSwitchEnabled = true;
+    /**
+     * 0 for not enabled. 1 for enabled, but not at correct position. 2 for
+     * enabled, and in correct position.
+     */
+    private int state = 0;
     private double speed = 0;
     private boolean lowerPressed;
     private boolean upperPressed;
+    private boolean deployPressed;
 
     public RunClimber() {
         requires(climber);
@@ -35,6 +41,7 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
 
     protected void execute() {
         checkLimitSwitches();
+        stateCheck();
         runClimber();
         RobotDebugger.push(this);
         RobotDebugger.push(climber);
@@ -42,7 +49,7 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
     }
 
     private void runClimber() {
-        if (DashboardStore.getIsClimberEnabled()) {
+        if (ClimberStore.climberEnabled) {
             setSpeedMan();
         } else {
             speed = 0;
@@ -74,21 +81,16 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
     }
 
     private void checkLimitSwitches() {
-        if (limitSwitchEnabled) {
-            upperPressed = climberLimitSwitch.readUpper();
-            lowerPressed = climberLimitSwitch.readLower();
-        } else {
-            upperPressed = false;
-            lowerPressed = false;
-        }
+        upperPressed = climberLimitSwitch.readUpper();
+        lowerPressed = climberLimitSwitch.readLower();
+        deployPressed = climberLimitSwitch.readDeploy();
     }
 
-    public DebugOutput getStatus() {
-        DebugInfo[] infoList = new DebugInfo[3];
-        infoList[0] = new InfoState("Climber:Enabled", DashboardStore.getIsClimberEnabled() ? "Yes" : "No", DebugLevel.HIGHEST);
-        infoList[1] = new DebugStatus("Climber:SetSpeed", speed, DebugLevel.LOW);
-        infoList[2] = new DebugStatus("ClimberLimitSwitch:Enabled", limitSwitchEnabled, DebugLevel.LOW);
-        return new DebugInfoGroup(infoList);
+    private void stateCheck() {
+        if (ClimberStore.climberEnabled) {
+            if (state == 0) {
+            }
+        }
     }
 
     public void disable() {
@@ -96,5 +98,12 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
         RobotDebugger.push(this);
         RobotDebugger.push(climber);
         RobotDebugger.push(climberLimitSwitch);
+    }
+
+    public DebugOutput getStatus() {
+        DebugInfo[] infoList = new DebugInfo[2];
+        infoList[0] = new InfoState("Climber:Enabled", DashboardStore.getIsClimberEnabled() ? "Yes" : "No", DebugLevel.HIGHEST);
+        infoList[1] = new DebugStatus("Climber:SetSpeed", speed, DebugLevel.LOW);
+        return new DebugInfoGroup(infoList);
     }
 }

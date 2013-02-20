@@ -31,6 +31,14 @@ public class VstJ {
         return joySticks[number];
     }
 
+    private static JoystickButton getJoystickButton(int joystickNumber, int buttonNumber) {
+        return new JoystickButton(getJoystick(joystickNumber), buttonNumber);
+    }
+
+    private static double getJoystickAxis(int joyStick, int axisNumber) {
+        return getJoystick(joyStick).getRawAxis(axisNumber);
+    }
+
     public static Joystick getDriveJoystick() {
         return getJoystick(FV.DRIVE_JOYSTICK);
     }
@@ -98,16 +106,9 @@ public class VstJ {
     public static JoystickButton getFrisbeeDumpButton() {
         return getJoystickButton(Mappings.frisbeeDumpButtonJoystickNumber, Mappings.frisbeeDumpButtonJoystickNumber);
     }
+
     public static boolean getFrisbeeDumpButtonValue() {
         return getFrisbeeDumpButton().get();
-    }
-
-    private static JoystickButton getJoystickButton(int joystickNumber, int buttonNumber) {
-        return new JoystickButton(getJoystick(joystickNumber), buttonNumber);
-    }
-
-    private static double getJoystickAxis(int joyStick, int axisNumber) {
-        return getJoystick(joyStick).getRawAxis(axisNumber);
     }
 
     /**

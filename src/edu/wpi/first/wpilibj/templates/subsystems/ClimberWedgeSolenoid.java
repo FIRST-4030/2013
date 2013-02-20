@@ -19,7 +19,7 @@ public class ClimberWedgeSolenoid extends Subsystem implements Debuggable {
     private String status = "Not Set";
 
     public ClimberWedgeSolenoid() {
-        System.out.println("ClimberWedgeSolenoid: Created");
+        System.out.println("Created: ClimberWedgeSolenoid");
         solenoid1 = new Solenoid(VstM.SOLENOID.CLIMBER_WEDGE_SIDE_1);
         solenoid2 = new Solenoid(VstM.SOLENOID.CLIMBER_WEDGE_SIDE_2);
     }

@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstM;
  */
 public final class Climber extends Subsystem implements Debuggable {
 
-    public Climber(){
+    public Climber() {
         System.out.println("Climber: Created");
     }
     private Jaguar climber = new Jaguar(VstM.PWM.CLIMBER_MOTOR_PORT);

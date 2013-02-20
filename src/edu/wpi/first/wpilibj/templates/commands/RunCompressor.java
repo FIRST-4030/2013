@@ -1,6 +1,6 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.templates.variablestores.VstP;
+import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstP;
 
 /**
  * This Command continously checks whether or not VstP.atPressure(), and sets
@@ -17,7 +17,7 @@ public class RunCompressor extends CommandBase {
     }
 
     protected void execute() {
-        if (VstP.atPressure()) {
+        if (DVstP.atPressure()) {
             compressor.stop();
         } else {
             compressor.start();

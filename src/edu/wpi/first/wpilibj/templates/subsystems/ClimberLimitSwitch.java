@@ -2,6 +2,7 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.templates.commands.ReadLimitSwitches;
 import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
 import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
@@ -16,14 +17,15 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstM;
  */
 public class ClimberLimitSwitch extends Subsystem implements Debuggable {
 
-    public ClimberLimitSwitch(){
-        System.out.println("ClimberLimitSwitch: Created");
+    public ClimberLimitSwitch() {
+        System.out.println("Created: ClimberLimitSwitch");
     }
     private DigitalInput lowerLimit = new DigitalInput(VstM.DIGITAL_IO.CLIMBER_LOWER_LIMIT_SWITCH);
     private DigitalInput upperLimit = new DigitalInput(VstM.DIGITAL_IO.CLIMBER_UPPER_LIMIT_SWITCH);
     private DigitalInput deploySwitch = new DigitalInput(VstM.DIGITAL_IO.CLIMBER_DEPLOY_LIMIT_SWITCH);
 
     public void initDefaultCommand() {
+        setDefaultCommand(new ReadLimitSwitches());
     }
 
     public boolean readUpper() {

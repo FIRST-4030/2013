@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
-import edu.wpi.first.wpilibj.templates.variablestores.VstP;
+import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstP;
 
 /**
  * SubSystem for reading the PressureSwitch and outputting to VstP.
@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstP;
  */
 public class PressureSwitch extends Subsystem implements Debuggable {
 
-    public PressureSwitch(){
+    public PressureSwitch() {
         System.out.println("PressureSwitch: Created");
     }
     /**
@@ -36,11 +36,11 @@ public class PressureSwitch extends Subsystem implements Debuggable {
      */
     public void checkPressure() {
         // Switch is normally closed, so invert the reading
-        VstP.setAtPressure(!pSwitch.get());
+        DVstP.setAtPressure(!pSwitch.get());
         RobotDebugger.push(this);
     }
 
     public DebugOutput getStatus() {
-        return new DebugStatus("PressureSwitch:AtPressure", VstP.atPressure() ? "yes" : "no", DebugLevel.HIGH);
+        return new DebugStatus("PressureSwitch:AtPressure", DVstP.atPressure() ? "yes" : "no", DebugLevel.HIGH);
     }
 }

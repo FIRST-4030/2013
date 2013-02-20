@@ -22,28 +22,40 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
     /**
      * Climber state.
      *
-     * 0 for not enabled, and in correct position.
+     * 0 for disabled, and in correct position.
      *
-     * 1 for not enabled, and in wrong position.
+     * 1 for disabled, and moving up.
      *
-     * 2 for enabled, but not at correct position.
+     * 2 for enabled, and moving down.
      *
-     * 3 for enabled, and in correct position.
+     * 3 for enabled, and moving up.
+     *
+     * 4 for enabled, and in correct position.
+     *
+     * 5 for solenoid extended.
      */
     private int state = 0;
 
     private String getStateName() {
         if (state == 0) {
-            return "Disabled, Correct";
+            return "Climber Disabled, Not Moving";
         } else if (state == 1) {
-            return "Disabled, Moving";
+            return "Climber Disabled, Auto-Moving Up";
         } else if (state == 2) {
-            return "Enabled, Moving";
+            return "Climber Enabled, Auto-Moving Down";
         } else if (state == 3) {
-            return "Enabled, Correct";
+            return "Climber Enabled, Auto-Moving Up";
+        } else if (state == 4) {
+            return "Climber Enabled, Not Auto-Moving";
+        } else if (state == 5) {
+            return "Solenoid Extended, Auto-Move Disabled";
         } else {
-            return "Unknown(BAD)";
+            return state + " Is Unknown (BAD)";
         }
+    }
+
+    private boolean isDisabledState() {
+        return state == 0 || state == 1;
     }
     private double speed = 0;
     private boolean lowerPressed;
@@ -108,11 +120,28 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
     }
 
     private void stateCheck() {
-        if (ClimberStore.climberEnabled) {
-            if (state == 0) {
-                state = 2;
-            } else if (state == 1 && !deployPressed) {
-                state = 2;
+        if (ClimberStore.climberArmExtending) {
+        } else {
+            if (ClimberStore.climberEnabled) {
+                if (isDisabledState()) {
+                    if (deployPressed || upperPressed) {
+                        state = 2;
+                    } else {
+                        state = 3;
+                    }
+                }
+                if (state == 2 && !deployPressed && !upperPressed) {
+                    state = 4;
+                }
+                if (lowerPressed) {
+                    state = 3;
+                }
+            } else {
+                if (upperPressed) {
+                    state = 0;
+                } else {
+                    state = 1;
+                }
             }
         }
     }
@@ -125,10 +154,10 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
     }
 
     public DebugOutput getStatus() {
-        DebugInfo[] infoList = new DebugInfo[2];
+        DebugInfo[] infoList = new DebugInfo[3];
         infoList[0] = new InfoState("Climber:Enabled", DashboardStore.getIsClimberEnabled() ? "Yes" : "No", DebugLevel.HIGHEST);
-        infoList[2] = new InfoState("Climber:AutoState", getStateName(), DebugLevel.HIGH);
-        infoList[1] = new DebugStatus("Climber:SetSpeed", speed, DebugLevel.LOW);
+        infoList[1] = new InfoState("Climber:AutoState", getStateName(), DebugLevel.HIGH);
+        infoList[2] = new DebugStatus("Climber:SetSpeed", speed, DebugLevel.LOW);
         return new DebugInfoGroup(infoList);
     }
 }

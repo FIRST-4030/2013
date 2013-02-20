@@ -104,7 +104,7 @@ public class VstJ {
     }
 
     public static JoystickButton getFrisbeeDumpButton() {
-        return getJoystickButton(Mappings.frisbeeDumpButtonJoystickNumber, Mappings.frisbeeDumpButtonJoystickNumber);
+        return getJoystickButton(Mappings.frisbeeDumpButtonJoystickNumber, Mappings.frisbeeDumpButtonNumber);
     }
 
     public static boolean getFrisbeeDumpButtonValue() {

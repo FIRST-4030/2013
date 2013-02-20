@@ -111,6 +111,13 @@ public class VstJ {
         return getFrisbeeDumpButton().get();
     }
 
+    public static JoystickButton getFrisbeeUnDumpButton() {
+        return getJoystickButton(Mappings.frisbeeUnDumpButtonJoystickNumber, Mappings.frisbeeUnDumpButtonNumber);
+    }
+    public static boolean getFrisbeeUnDumpButtonValue(){
+        return getFrisbeeUnDumpButton().get();
+    }
+
     /**
      * Mappings for joysticks.
      */
@@ -142,5 +149,8 @@ public class VstJ {
         //
         protected static final int frisbeeDumpButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
         protected static final int frisbeeDumpButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.RIGHT_TOP;
+        //
+        protected static final int frisbeeUnDumpButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+        protected static final int frisbeeUnDumpButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.RIGHT_BOTTOM;
     }
 }

@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.dashboardrelations.DashboardStore;
-import edu.wpi.first.wpilibj.templates.variablestores.ClimberStore;
+import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstC;
 import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
@@ -58,13 +58,9 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
         return state == 0 || state == 1;
     }
     private double speed = 0;
-    private boolean lowerPressed;
-    private boolean upperPressed;
-    private boolean deployPressed;
 
     public RunClimber() {
         requires(climber);
-        requires(climberLimitSwitch);
     }
 
     protected void initialize() {
@@ -73,7 +69,6 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
     }
 
     protected void execute() {
-        checkLimitSwitches();
         stateCheck();
         driverSpeedChange();
         runClimberWithManSpeed();
@@ -87,18 +82,17 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
     }
 
     private void driverSpeedChange() {
-        if (ClimberStore.climberEnabled) {
+        if (DVstC.climberEnabled()) {
             speed = VstJ.getLadderControlAxisValue();
-            if (upperPressed && speed > 0) {
+            if (DVstC.LimitSwitches.upper() && speed > 0) {
                 speed = 0;
             }
-            if (lowerPressed && speed < 0) {
+            if (DVstC.LimitSwitches.lower() && speed < 0) {
                 speed = 0;
             }
         } else {
             speed = 0;
         }
-        ClimberStore.currentClimberCarriageSpeed = speed;
     }
 
     protected boolean isFinished() {
@@ -114,31 +108,25 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
 
     }
 
-    private void checkLimitSwitches() {
-        upperPressed = climberLimitSwitch.readUpper();
-        lowerPressed = climberLimitSwitch.readLower();
-        deployPressed = climberLimitSwitch.readDeploy();
-    }
-
     private void stateCheck() {
-        if (ClimberStore.climberArmExtending) {
+        if (DVstC.climberArmExtending()) {
         } else {
-            if (ClimberStore.climberEnabled) {
+            if (DVstC.climberEnabled()) {
                 if (isDisabledState()) {
-                    if (deployPressed || upperPressed) {
+                    if (DVstC.LimitSwitches.deploy() || DVstC.LimitSwitches.upper()) {
                         state = 2;
                     } else {
                         state = 3;
                     }
                 }
-                if (state == 2 && !deployPressed && !upperPressed) {
+                if (state == 2 && !DVstC.LimitSwitches.deploy() && !DVstC.LimitSwitches.upper()) {
                     state = 4;
                 }
-                if (lowerPressed) {
+                if (DVstC.LimitSwitches.lower()) {
                     state = 3;
                 }
             } else {
-                if (upperPressed) {
+                if (DVstC.LimitSwitches.upper()) {
                     state = 0;
                 } else {
                     state = 1;

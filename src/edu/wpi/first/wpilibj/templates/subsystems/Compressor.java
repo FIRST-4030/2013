@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
-import edu.wpi.first.wpilibj.templates.variablestores.VstP;
+import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstP;
 
 /**
  * This is the subsystem to handle the Compressor. It will power depending on
@@ -17,8 +17,8 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstP;
  */
 public class Compressor extends Subsystem implements Debuggable {
 
-    public Compressor(){
-        System.out.println("Compressor: Created");
+    public Compressor() {
+        System.out.println("Created: Compressor");
     }
     Relay compressor = new Relay(VstM.RELAY.COMPRESSOR_SPIKE);
 
@@ -30,7 +30,7 @@ public class Compressor extends Subsystem implements Debuggable {
      * This function starts the Compressor.
      */
     public void start() {
-        VstP.setCompressorRunning(true);
+        DVstP.setCompressorRunning(true);
         compressor.set(Relay.Value.kOn);
         RobotDebugger.push(this);
     }
@@ -39,12 +39,12 @@ public class Compressor extends Subsystem implements Debuggable {
      * This function stops the Compressor.
      */
     public void stop() {
-        VstP.setCompressorRunning(false);
+        DVstP.setCompressorRunning(false);
         compressor.set(Relay.Value.kOff);
         RobotDebugger.push(this);
     }
 
     public DebugOutput getStatus() {
-        return new DebugStatus("Compressor:ShouldRun", VstP.compressorRunning(), DebugLevel.LOW);
+        return new DebugStatus("Compressor:ShouldRun", DVstP.compressorRunning(), DebugLevel.LOW);
     }
 }

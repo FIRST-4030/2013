@@ -1,10 +1,10 @@
-package edu.wpi.first.wpilibj.templates.variablestores;
+package edu.wpi.first.wpilibj.templates.variablestores.dynamic;
 
 /**
- * Pneumatics variable store. This stores whether the System is at pressure and
+ * Dynamic Pneumatics variable store. This stores whether the System is at pressure and
  * whether the compressor is running.
  */
-public class VstP {
+public class DVstP {
 
     private static boolean atPressure = false;
     private static boolean compressorRunning = false;

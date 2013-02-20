@@ -22,11 +22,13 @@ public class RunFrisbeeDumperSolenoid extends CommandBase implements Debuggable 
     }
 
     protected void initialize() {
+        frisbeeDumperSolenoid.startExpand();
+        RobotDebugger.push(this);
     }
 
     protected void execute() {
         if (VstJ.getFrisbeeDumpButtonValue() && DashboardStore.getIsClimberEnabled()) {
-            frisbeeDumperSolenoid.startExpand();
+            frisbeeDumperSolenoid.startRetract();
             done = true;
         }
         RobotDebugger.push(this);
@@ -40,6 +42,6 @@ public class RunFrisbeeDumperSolenoid extends CommandBase implements Debuggable 
     }
 
     public DebugOutput getStatus() {
-        return new InfoState("RunFrisbeeDumper", done ? "Extending" : "Not Extending", DebugLevel.HIGH);
+        return new InfoState("RunFrisbeeDumper", done ? "Retracting" : "Extending", DebugLevel.HIGH);
     }
 }

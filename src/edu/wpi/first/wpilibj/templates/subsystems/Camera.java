@@ -19,7 +19,6 @@ public class Camera extends Subsystem {
      */
     public Camera() {
         System.out.println("Camera: Created");
-        setCameraInstance();
     }
 
     public void initDefaultCommand() {

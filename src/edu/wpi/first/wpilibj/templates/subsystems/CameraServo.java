@@ -18,7 +18,6 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 public class CameraServo extends Subsystem implements Debuggable {
 
     private Servo cameraServo;
-    private int setLast = -50;
 
     public CameraServo() {
         System.out.println("CameraServo: Created");
@@ -30,22 +29,15 @@ public class CameraServo extends Subsystem implements Debuggable {
     }
 
     public void turnLeft() {
-        cameraServo.setAngle(0);
-        cameraServo.set(0);
-        cameraServo.setAngle(0);
-        setLast = 0;
+        cameraServo.setAngle(150);
     }
 
     public void turnRight() {
-        cameraServo.setAngle(90);
-        cameraServo.set(90);
-        cameraServo.setAngle(90);
-        setLast = 90;
+        cameraServo.setAngle(45);
     }
 
     public DebugOutput getStatus() {
         DebugInfo[] infoList = new DebugInfo[3];
-        infoList[0] = new DebugStatus("CameraServo:Should", setLast, DebugLevel.MID);
         infoList[1] = new DebugStatus("CameraServo:Get", cameraServo.get(), DebugLevel.MID);
         infoList[2] = new DebugStatus("CameraServo:GetAngle", cameraServo.getAngle(), DebugLevel.MID);
         return new DebugInfoGroup(infoList);

@@ -2,7 +2,7 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.templates.commands.RunClimberArmSolenoids;
+import edu.wpi.first.wpilibj.templates.commands.RunFrisbeeDumperSolenoid;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
 /**
@@ -20,7 +20,7 @@ public class FrisbeeDumperSolenoid extends Subsystem {
     }
 
     protected void initDefaultCommand() {
-        setDefaultCommand(new RunClimberArmSolenoids());
+        setDefaultCommand(new RunFrisbeeDumperSolenoid());
     }
 
     public void startExpand() {

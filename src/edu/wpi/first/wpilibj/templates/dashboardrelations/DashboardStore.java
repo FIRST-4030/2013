@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
  * @author daboross
  */
 public final class DashboardStore {
-    
+
     private static BooleanDashObject isClimberEnabledObject;
     private static BooleanDashObject cameraPosition;//False is left, true is right.
     private static IntegerDashObject debugLevelChanger;
@@ -27,11 +27,11 @@ public final class DashboardStore {
         cameraPosition = new BooleanDashObject("-CameraPosition", "Camera Left", "Camera Right", true);
         SmartDashboard.putNumber("Climber Speed Multiplier", 1.0);
     }
-    
+
     public static double getClimberSpeedMultiplier() {
         return SmartDashboard.getNumber("Climber Speed Multiplier");
     }
-    
+
     public static boolean getIsClimberEnabled() {
         return isClimberEnabledObject.getValue();
     }
@@ -42,16 +42,17 @@ public final class DashboardStore {
     public static boolean getCameraPosition() {
         return cameraPosition.getValue();
     }
-    
+
     private static int getDebugLevelChanger() {
         return debugLevelChanger.getValue();
     }
-    
+
     public static void checkDebugLevelChanger() {
         int debugLevelChange = getDebugLevelChanger();
         if (debugLevelChange < DebugLevel.CURRENT) {
             DebugLevel.CURRENT = debugLevelChange;
+            RobotDebugger.push(new InfoState("Debug To Show:", DebugLevel.getNameOf(DebugLevel.CURRENT) + " Or Higher", DebugLevel.ALWAYS));
+            RobotDebugger.reMap();
         }
-        RobotDebugger.push(new InfoState("Debug To Show:", DebugLevel.getNameOf(DebugLevel.CURRENT) + " Or Higher", DebugLevel.ALWAYS));
     }
 }

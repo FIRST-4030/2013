@@ -35,6 +35,7 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
      * 5 for solenoid extended.
      */
     private int state = 0;
+    private double speedMultiplier = 1;
 
     private String getStateName() {
         if (state == 0) {
@@ -82,8 +83,9 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
     }
 
     private void driverSpeedChange() {
+        speedMultiplier = DashboardStore.getClimberSpeedMultiplier();
         if (DVstC.climberEnabled()) {
-            speed = VstJ.getLadderControlAxisValue();
+            speed = VstJ.getLadderControlAxisValue() * speedMultiplier;
             if (DVstC.LimitSwitches.upper() && speed > 0) {
                 speed = 0;
             }
@@ -143,10 +145,11 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
     }
 
     public DebugOutput getStatus() {
-        DebugInfo[] infoList = new DebugInfo[3];
+        DebugInfo[] infoList = new DebugInfo[4];
         infoList[0] = new InfoState("Climber:Enabled", DashboardStore.getIsClimberEnabled() ? "Yes" : "No", DebugLevel.HIGHEST);
         infoList[1] = new InfoState("Climber:AutoState", getStateName(), DebugLevel.HIGH);
         infoList[2] = new DebugStatus("Climber:SetSpeed", speed, DebugLevel.LOW);
+        infoList[3] = new DebugStatus("Climber:Speed Multiplier", speedMultiplier, DebugLevel.HIGHEST);
         return new DebugInfoGroup(infoList);
     }
 }

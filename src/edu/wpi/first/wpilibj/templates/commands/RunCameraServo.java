@@ -8,14 +8,14 @@ import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
  * @author daboross
  */
 public class RunCameraServo extends CommandBase {
-    
+
     public RunCameraServo() {
         requires(cameraServo);
     }
-    
+
     protected void initialize() {
     }
-    
+
     protected void execute() {
         if (DashboardStore.getCameraPosition()) {
             cameraServo.turnLeft();
@@ -24,11 +24,11 @@ public class RunCameraServo extends CommandBase {
         }
         RobotDebugger.push(cameraServo);
     }
-    
+
     protected boolean isFinished() {
         return false;
     }
-    
+
     protected void end() {
     }
 }

@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
+import edu.wpi.first.wpilibj.templates.helpers.solenoid.SolenoidPair;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
 /**
@@ -15,31 +16,24 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstM;
  */
 public class ShooterSolenoid extends Subsystem implements Debuggable {
 
-    private boolean extendlast = false;
+    private SolenoidPair shooterSolenoids = new SolenoidPair(VstM.SOLENOID.SHOOTER_EXTENDING_SIDE, VstM.SOLENOID.SHOOTER_RETACTING_SIDE);
 
     public ShooterSolenoid() {
         System.out.println("SubSystem Created: ShooterSolenoid");
     }
-    private Solenoid extendingSolenoidSide1 = new Solenoid(VstM.SOLENOID.SHOOTER_EXTENDING_SIDE);
-    private Solenoid retractingSolenoidSide2 = new Solenoid(VstM.SOLENOID.SHOOTER_RETACTING_SIDE);
-
     public void initDefaultCommand() {
         setDefaultCommand(new RunShooterSolenoid());
     }
 
     public void extend() {
-        extendingSolenoidSide1.set(true);
-        retractingSolenoidSide2.set(false);
-        extendlast = true;
+        shooterSolenoids.extend();
     }
 
     public void retract() {
-        extendingSolenoidSide1.set(false);
-        retractingSolenoidSide2.set(true);
-        extendlast = false;
+        shooterSolenoids.retract();
     }
 
     public DebugOutput getStatus() {
-        return new DebugStatus("ShooterSolenoid:Extending", extendlast, DebugLevel.MID);
+        return new DebugStatus("ShooterSolenoid:Extending", shooterSolenoids.isExtending(), DebugLevel.MID);
     }
 }

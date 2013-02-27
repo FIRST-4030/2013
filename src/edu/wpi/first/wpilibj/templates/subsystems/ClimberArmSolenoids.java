@@ -1,48 +1,41 @@
 package edu.wpi.first.wpilibj.templates.subsystems;
 
-import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.commands.RunClimberArmSolenoids;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
+import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
-import edu.wpi.first.wpilibj.templates.debugging.InfoState;
+import edu.wpi.first.wpilibj.templates.helpers.solenoid.SolenoidPair;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
 /**
- * This is the subSystem for the Solenoid controlling the ? that pushes out the
- * climber "arm".
+ * This is the subSystem for controlling the Solenoids that push out/pull back
+ * the climber "arm".
  *
  * @author daboross
  */
 public final class ClimberArmSolenoids extends Subsystem implements Debuggable {
 
-    private Solenoid extendingSolenoid, retractingSolenoid;
+    private SolenoidPair climberArmSolenoids = new SolenoidPair(VstM.SOLENOID.CLIMBER_ARM_EXTENDING_SIDE, VstM.SOLENOID.CLIMBER_ARM_RETRACTING_SIDE);
 
     public ClimberArmSolenoids() {
         System.out.println("SubSystem Created: ClimberArmSolenoids");
-        extendingSolenoid = new Solenoid(VstM.SOLENOID.CLIMBER_ARM_EXTENDING_SIDE);
-        retractingSolenoid = new Solenoid(VstM.SOLENOID.CLIMBER_ARM_RETRACTING_SIDE);
     }
 
     protected void initDefaultCommand() {
         setDefaultCommand(new RunClimberArmSolenoids());
     }
-    private String state = "None Set";
 
     public void extend() {
-        extendingSolenoid.set(true);
-        retractingSolenoid.set(false);
-        state = "Extend";
+        climberArmSolenoids.extend();
     }
 
     public void retract() {
-        extendingSolenoid.set(false);
-        retractingSolenoid.set(true);
-        state = "Retract";
+        climberArmSolenoids.retract();
     }
 
     public DebugOutput getStatus() {
-        return new InfoState("ClimberArmSolenoids", state, DebugLevel.LOW);
+        return new DebugStatus("ClimberArmSolenoids:Extending", climberArmSolenoids.isExtending(), DebugLevel.LOW);
     }
 }

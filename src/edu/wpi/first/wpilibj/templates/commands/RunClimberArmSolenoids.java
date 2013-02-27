@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.dashboardrelations.DashboardStore;
+import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstClimber;
 import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
@@ -37,7 +38,7 @@ public class RunClimberArmSolenoids extends CommandBase implements Debuggable {
          * NOTE: When I say Climber Enabled or Climber Disabled, I am talking
          * about a setting in the SmartDashboard.
          */
-        if (DashboardStore.getIsClimberEnabled()) {
+        if (DVstClimber.climberEnabled()) {
             if (!extending) {
                 status = "Just Started";
             }

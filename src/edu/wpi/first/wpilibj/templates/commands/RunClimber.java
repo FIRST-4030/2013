@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.dashboardrelations.DashboardStore;
-import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstC;
+import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstClimber;
 import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
@@ -84,12 +84,12 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
 
     private void driverSpeedChange() {
         speedMultiplier = DashboardStore.getClimberSpeedMultiplier();
-        if (DVstC.climberEnabled()) {
+        if (DVstClimber.climberEnabled()) {
             speed = VstJ.getLadderControlAxisValue() * speedMultiplier;
-            if (DVstC.LimitSwitches.upper() && speed > 0) {
+            if (DVstClimber.LimitSwitches.upper() && speed > 0) {
                 speed = 0;
             }
-            if (DVstC.LimitSwitches.lower() && speed < 0) {
+            if (DVstClimber.LimitSwitches.lower() && speed < 0) {
                 speed = 0;
             }
         } else {
@@ -111,24 +111,24 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
     }
 
     private void stateCheck() {
-        if (DVstC.climberArmExtending()) {
+        if (DVstClimber.climberArmExtending()) {
         } else {
-            if (DVstC.climberEnabled()) {
+            if (DVstClimber.climberEnabled()) {
                 if (isDisabledState()) {
-                    if (DVstC.LimitSwitches.deploy() || DVstC.LimitSwitches.upper()) {
+                    if (DVstClimber.LimitSwitches.deploy() || DVstClimber.LimitSwitches.upper()) {
                         state = 2;
                     } else {
                         state = 3;
                     }
                 }
-                if (state == 2 && !DVstC.LimitSwitches.deploy() && !DVstC.LimitSwitches.upper()) {
+                if (state == 2 && !DVstClimber.LimitSwitches.deploy() && !DVstClimber.LimitSwitches.upper()) {
                     state = 4;
                 }
-                if (DVstC.LimitSwitches.lower()) {
+                if (DVstClimber.LimitSwitches.lower()) {
                     state = 3;
                 }
             } else {
-                if (DVstC.LimitSwitches.upper()) {
+                if (DVstClimber.LimitSwitches.upper()) {
                     state = 0;
                 } else {
                     state = 1;
@@ -145,11 +145,10 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
     }
 
     public DebugOutput getStatus() {
-        DebugInfo[] infoList = new DebugInfo[4];
-        infoList[0] = new InfoState("Climber:Enabled", DashboardStore.getIsClimberEnabled() ? "Yes" : "No", DebugLevel.HIGHEST);
-        infoList[1] = new InfoState("Climber:AutoState", getStateName(), DebugLevel.LOW);
-        infoList[2] = new DebugStatus("Climber:SetSpeed", speed, DebugLevel.LOW);
-        infoList[3] = new DebugStatus("Climber:Speed Multiplier", speedMultiplier, DebugLevel.HIGHEST);
+        DebugInfo[] infoList = new DebugInfo[3];
+        infoList[0] = new InfoState("Climber:AutoState", getStateName(), DebugLevel.LOW);
+        infoList[1] = new DebugStatus("Climber:SetSpeed", speed, DebugLevel.LOW);
+        infoList[2] = new DebugStatus("Climber:Speed Multiplier", speedMultiplier, DebugLevel.HIGHEST);
         return new DebugInfoGroup(infoList);
     }
 }

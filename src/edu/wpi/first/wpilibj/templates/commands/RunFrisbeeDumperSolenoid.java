@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
+import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstClimber;
 import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
@@ -27,7 +28,7 @@ public class RunFrisbeeDumperSolenoid extends CommandBase implements Debuggable 
     }
 
     protected void execute() {
-        if (DashboardStore.getIsClimberEnabled()) {
+        if (DVstClimber.climberEnabled()) {
             if (VstJ.getFrisbeeDumpButtonValue()) {
                 frisbeeDumperSolenoids.startRetract();
                 state = "Retracting";

@@ -12,9 +12,9 @@ public class SolenoidPair {
     private Solenoid retractingSolenoid;
     private boolean extending = false;
 
-    public SolenoidPair(int retractingSolenoidPort, int extendingSolenoidPort) {
-        retractingSolenoid = new Solenoid(retractingSolenoidPort);
+    public SolenoidPair(int extendingSolenoidPort, int retractingSolenoidPort) {
         extendingSolenoid = new Solenoid(extendingSolenoidPort);
+        retractingSolenoid = new Solenoid(retractingSolenoidPort);
     }
 
     public void extend() {

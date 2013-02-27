@@ -24,7 +24,6 @@ public class RunClimberWedgeSolenoid extends CommandBase implements Debuggable {
     }
 
     protected void initialize() {
-        climberWedgeSolenoid.stayPut();
     }
 
     protected void execute() {
@@ -41,11 +40,9 @@ public class RunClimberWedgeSolenoid extends CommandBase implements Debuggable {
                 climberWedgeSolenoid.extend();
             } else if (state == -1) {
                 climberWedgeSolenoid.retract();
-            } else {
-                climberWedgeSolenoid.stayPut();
             }
         } else {
-            climberWedgeSolenoid.stayPut();
+            climberWedgeSolenoid.retract();
         }
         RobotDebugger.push(climberWedgeSolenoid);
         RobotDebugger.push(this);

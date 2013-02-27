@@ -9,16 +9,14 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstM;
  *
  * @author daboross
  */
-public class FrisbeeDumperSolenoid extends Subsystem {
+public final class FrisbeeDumperSolenoid extends Subsystem {
 
-    private Solenoid solenoid1, solenoid2;
+    private Solenoid extendingSolenoid, retractingSolenoid;
 
     public FrisbeeDumperSolenoid() {
         System.out.println("SubSystem Created: FrisbeeDumperSolenoid");
-        solenoid1 = new Solenoid(VstM.SOLENOID.FRISBEE_DUMP_1);
-        solenoid1.set(false);
-        solenoid2 = new Solenoid(VstM.SOLENOID.FRISBEE_DUMP_2);
-        solenoid2.set(false);
+        extendingSolenoid = new Solenoid(VstM.SOLENOID.FRISBEE_DUMP_EXTENDING_SIDE);
+        retractingSolenoid = new Solenoid(VstM.SOLENOID.FRISBEE_DUMP_RETRACTING_SIDE);
     }
 
     protected void initDefaultCommand() {
@@ -26,11 +24,12 @@ public class FrisbeeDumperSolenoid extends Subsystem {
     }
 
     public void startExpand() {
-        solenoid1.set(true);
-        solenoid1.set(false);
+        extendingSolenoid.set(true);
+        retractingSolenoid.set(false);
     }
-    public void startRetract(){
-        solenoid2.set(true);
-        solenoid1.set(false);
+
+    public void startRetract() {
+        extendingSolenoid.set(true);
+        retractingSolenoid.set(false);
     }
 }

@@ -15,13 +15,13 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstM;
  */
 public class ClimberWedgeSolenoid extends Subsystem implements Debuggable {
 
-    private Solenoid solenoid1, solenoid2;
+    private Solenoid extendingSolenoid, retractingSolenoid;
     private String status = "Not Set";
 
     public ClimberWedgeSolenoid() {
         System.out.println("SubSystem Created: ClimberWedgeSolenoid");
-        solenoid1 = new Solenoid(VstM.SOLENOID.CLIMBER_WEDGE_SIDE_1);
-        solenoid2 = new Solenoid(VstM.SOLENOID.CLIMBER_WEDGE_SIDE_2);
+        extendingSolenoid = new Solenoid(VstM.SOLENOID.CLIMBER_WEDGE_EXTENDING_SIDE);
+        retractingSolenoid = new Solenoid(VstM.SOLENOID.CLIMBER_WEDGE_RETRACTING_SIDE);
     }
 
     protected void initDefaultCommand() {
@@ -35,8 +35,8 @@ public class ClimberWedgeSolenoid extends Subsystem implements Debuggable {
      */
     public void extend() {
         status = "Extending";
-        solenoid1.set(true);
-        solenoid2.set(false);
+        extendingSolenoid.set(true);
+        retractingSolenoid.set(false);
     }
 
     /**
@@ -46,8 +46,8 @@ public class ClimberWedgeSolenoid extends Subsystem implements Debuggable {
      */
     public void retract() {
         status = "Retracting";
-        solenoid2.set(true);
-        solenoid1.set(false);
+        retractingSolenoid.set(true);
+        extendingSolenoid.set(false);
     }
 
     /**
@@ -55,8 +55,8 @@ public class ClimberWedgeSolenoid extends Subsystem implements Debuggable {
      */
     public void stayPut() {
         status = "Staying";
-        solenoid1.set(false);
-        solenoid2.set(false);
+        extendingSolenoid.set(false);
+        retractingSolenoid.set(false);
     }
 
     public DebugOutput getStatus() {

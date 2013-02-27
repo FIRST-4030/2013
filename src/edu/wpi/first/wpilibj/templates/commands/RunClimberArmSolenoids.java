@@ -15,6 +15,8 @@ import edu.wpi.first.wpilibj.templates.vstj.VstJ;
  */
 public class RunClimberArmSolenoids extends CommandBase implements Debuggable {
 
+    private boolean extending = false;
+    private String status = "No Status Set";
     public RunClimberArmSolenoids() {
         requires(climberArmSolenoids);
     }
@@ -23,8 +25,6 @@ public class RunClimberArmSolenoids extends CommandBase implements Debuggable {
         System.out.println("RunClimber: Init");
         climberArmSolenoids.retract();
     }
-    private boolean extending = false;
-    private String status = "No Status Set";
 
     protected void execute() {
         /**
@@ -45,14 +45,14 @@ public class RunClimberArmSolenoids extends CommandBase implements Debuggable {
                 extending = true;
             }
         } else {
-            status = "Not Enabled";
+            status = "Disabled";
             extending = false;
         }
         if (extending) {
             status = "Extending";
             climberArmSolenoids.extend();
         } else {
-            status = "NotExtending";
+            status = "Not Extending";
             climberArmSolenoids.retract();
         }
         RobotDebugger.push(climberArmSolenoids);
@@ -67,6 +67,6 @@ public class RunClimberArmSolenoids extends CommandBase implements Debuggable {
     }
 
     public DebugOutput getStatus() {
-        return new InfoState("RunClimberArmSolenoid", status, DebugLevel.MID);
+        return new InfoState("RunClimberArmSolenoid", status, DebugLevel.HIGH);
     }
 }

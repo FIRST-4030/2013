@@ -1,6 +1,8 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.dashboardrelations.DashboardStore;
+import edu.wpi.first.wpilibj.templates.debugging.DebugInfo;
+import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
@@ -16,6 +18,8 @@ import edu.wpi.first.wpilibj.templates.vstj.VstJ;
  */
 public class RunGroundDrive extends CommandBase implements Debuggable {
 
+    private boolean highSpeedLastPressed = false;
+    private boolean reversedLastPressed = false;
     private boolean highSpeed = false;
     private boolean reversed = false;
 
@@ -50,12 +54,6 @@ public class RunGroundDrive extends CommandBase implements Debuggable {
         groundDrive.stop();
     }
 
-    public DebugOutput getStatus() {
-        return new InfoState("GroundDrive:Speed", highSpeed ? "High" : "Low", DebugLevel.LOW);
-    }
-    private boolean highSpeedLastPressed = false;
-    private boolean reversedLastPressed = false;
-
     private void updateHighSpeed() {
         if (VstJ.getDriveSpeedToggleButtonValue() != highSpeedLastPressed) {
             if (!highSpeedLastPressed) {
@@ -72,5 +70,13 @@ public class RunGroundDrive extends CommandBase implements Debuggable {
             }
             reversedLastPressed = !reversedLastPressed;
         }
+    }
+
+    public DebugOutput getStatus() {
+        return new DebugInfoGroup(new DebugInfo[]{
+            new InfoState("GroundDrive:Command:Speed", highSpeed ? "High" : "Low", DebugLevel.HIGHEST),
+            new InfoState("GroundDrive:Command:Reversed", reversed ? "Yes" : "No", DebugLevel.HIGHEST)
+        });
+
     }
 }

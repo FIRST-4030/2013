@@ -49,6 +49,6 @@ public class RunFrisbeeDumperSolenoid extends CommandBase implements Debuggable 
     }
 
     public DebugOutput getStatus() {
-        return new InfoState("RunFrisbeeDumper", state, DebugLevel.HIGH);
+        return new InfoState("FrisbeeDumperSolenoids:Should", state, DebugLevel.LOW);
     }
 }

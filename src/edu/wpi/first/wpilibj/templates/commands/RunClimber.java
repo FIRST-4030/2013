@@ -147,7 +147,7 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
     public DebugOutput getStatus() {
         DebugInfo[] infoList = new DebugInfo[4];
         infoList[0] = new InfoState("Climber:Enabled", DashboardStore.getIsClimberEnabled() ? "Yes" : "No", DebugLevel.HIGHEST);
-        infoList[1] = new InfoState("Climber:AutoState", getStateName(), DebugLevel.HIGH);
+        infoList[1] = new InfoState("Climber:AutoState", getStateName(), DebugLevel.LOW);
         infoList[2] = new DebugStatus("Climber:SetSpeed", speed, DebugLevel.LOW);
         infoList[3] = new DebugStatus("Climber:Speed Multiplier", speedMultiplier, DebugLevel.HIGHEST);
         return new DebugInfoGroup(infoList);

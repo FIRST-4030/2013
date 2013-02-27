@@ -18,9 +18,6 @@ public final class DashboardStore {
     private static BooleanDashObject cameraPosition;//False is left, true is right.
     private static IntegerDashObject debugLevelChanger;
 
-    /**
-     * Carriage
-     */
     static {
         isClimberEnabledObject = new BooleanDashObject("-IsClimberEnabled", "Enable Climber", "Disable Climber", false);
         debugLevelChanger = new IntegerDashObject("-DebugLevelChanger", new String[]{"All Messages", "Lowest or Higher", "Low or Higher", "Mid or Higher", "High or Higher", "Highest or Higher", "Only \"Always\" messages"}, 6);

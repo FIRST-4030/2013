@@ -47,8 +47,8 @@ public final class ShooterMotors extends Subsystem implements Debuggable {
 
     public DebugOutput getStatus() {
         DebugStatus[] infoList = new DebugStatus[2];
-        infoList[0] = new DebugStatus("ShooterMotors:FirstMotorSpeed", firstMotor.get(), DebugLevel.MID);
-        infoList[1] = new DebugStatus("ShooterMotors:SecondMotorSpeed", secondMotor.get(), DebugLevel.MID);
+        infoList[0] = new DebugStatus("ShooterMotors:FirstMotor:Speed", firstMotor.get(), DebugLevel.MID);
+        infoList[1] = new DebugStatus("ShooterMotors:SecondMotor:Speed", secondMotor.get(), DebugLevel.MID);
         return new DebugInfoGroup(infoList);
     }
 }

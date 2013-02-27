@@ -36,6 +36,6 @@ public final class FrisbeeDumperSolenoids extends Subsystem implements Debuggabl
 
     public DebugOutput getStatus() {
 
-        return new InfoState("FrisbeeDumperSolenoids", frisbeeDumperSolenoids.getState(), DebugLevel.LOW);
+        return new InfoState("FrisbeeDumperSolenoids", frisbeeDumperSolenoids.getState(), DebugLevel.MID);
     }
 }

@@ -33,6 +33,6 @@ public class ShooterSolenoids extends Subsystem implements Debuggable {
     }
 
     public DebugOutput getStatus() {
-        return new InfoState("ShooterSolenoids", shooterSolenoids.getState(), DebugLevel.LOW);
+        return new InfoState("ShooterSolenoids", shooterSolenoids.getState(), DebugLevel.MID);
     }
 }

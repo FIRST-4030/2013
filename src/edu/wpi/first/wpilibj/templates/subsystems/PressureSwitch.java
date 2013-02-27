@@ -41,6 +41,6 @@ public class PressureSwitch extends Subsystem implements Debuggable {
     }
 
     public DebugOutput getStatus() {
-        return new DebugStatus("PressureSwitch:AtPressure", DVstP.atPressure() ? "yes" : "no", DebugLevel.HIGH);
+        return new DebugStatus("PressureSwitch:AtPressure", DVstP.atPressure(), DebugLevel.MID);
     }
 }

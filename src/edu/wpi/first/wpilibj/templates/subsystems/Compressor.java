@@ -45,6 +45,6 @@ public class Compressor extends Subsystem implements Debuggable {
     }
 
     public DebugOutput getStatus() {
-        return new DebugStatus("Compressor:ShouldRun", DVstP.compressorRunning(), DebugLevel.LOW);
+        return new DebugStatus("Compressor:Running", DVstP.compressorRunning(), DebugLevel.MID);
     }
 }

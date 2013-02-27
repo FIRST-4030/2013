@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
+import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.helpers.solenoid.SolenoidPair;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
@@ -44,6 +45,6 @@ public class ClimberWedgeSolenoids extends Subsystem implements Debuggable {
     }
 
     public DebugOutput getStatus() {
-        return new DebugStatus("ClimberWedgeSolenoids:Extending", climberWedgeSolenoids.isExtending(), DebugLevel.HIGH);
+        return new InfoState("ClimberWedgeSolenoids", climberWedgeSolenoids.getState(), DebugLevel.LOW);
     }
 }

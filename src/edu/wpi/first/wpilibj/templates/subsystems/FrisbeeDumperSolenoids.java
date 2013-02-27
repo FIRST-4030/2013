@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
+import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.helpers.solenoid.SolenoidPair;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
@@ -35,6 +36,6 @@ public final class FrisbeeDumperSolenoids extends Subsystem implements Debuggabl
 
     public DebugOutput getStatus() {
 
-        return new DebugStatus("FrisbeeDumperSolenoids:Extending", frisbeeDumperSolenoids.isExtending(), DebugLevel.MID);
+        return new InfoState("FrisbeeDumperSolenoids", frisbeeDumperSolenoids.getState(), DebugLevel.LOW);
     }
 }

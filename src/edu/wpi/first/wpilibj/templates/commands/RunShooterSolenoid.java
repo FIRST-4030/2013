@@ -10,21 +10,21 @@ import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 public class RunShooterSolenoid extends CommandBase {
 
     public RunShooterSolenoid() {
-        requires(shooterSolenoid);
+        requires(shooterSolenoids);
     }
 
     protected void initialize() {
-        shooterSolenoid.retract();
+        shooterSolenoids.retract();
     }
 
     protected void execute() {
         //If button pressed, retract, otherwise, extend.
         if (VstJ.getShooterSolenoidPushButtonValue()) {
-            shooterSolenoid.retract();
+            shooterSolenoids.retract();
         } else {
-            shooterSolenoid.extend();
+            shooterSolenoids.extend();
         }
-        RobotDebugger.push(shooterSolenoid);
+        RobotDebugger.push(shooterSolenoids);
     }
 
     protected boolean isFinished() {

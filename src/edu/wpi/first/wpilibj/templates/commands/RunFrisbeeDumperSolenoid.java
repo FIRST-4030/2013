@@ -18,21 +18,21 @@ public class RunFrisbeeDumperSolenoid extends CommandBase implements Debuggable 
     private String state = "Not Set";
 
     public RunFrisbeeDumperSolenoid() {
-        requires(frisbeeDumperSolenoid);
+        requires(frisbeeDumperSolenoids);
     }
 
     protected void initialize() {
-        frisbeeDumperSolenoid.startExpand();
+        frisbeeDumperSolenoids.startExpand();
         RobotDebugger.push(this);
     }
 
     protected void execute() {
         if (DashboardStore.getIsClimberEnabled()) {
             if (VstJ.getFrisbeeDumpButtonValue()) {
-                frisbeeDumperSolenoid.startRetract();
+                frisbeeDumperSolenoids.startRetract();
                 state = "Retracting";
             } else if (VstJ.getFrisbeeUnDumpButtonValue()) {
-                frisbeeDumperSolenoid.startExpand();
+                frisbeeDumperSolenoids.startExpand();
                 state = "Expanding";
             }
         } else {

@@ -20,7 +20,7 @@ public class RunClimberWedgeSolenoid extends CommandBase implements Debuggable {
     private int state;
 
     public RunClimberWedgeSolenoid() {
-        requires(climberWedgeSolenoid);
+        requires(climberWedgeSolenoids);
     }
 
     protected void initialize() {
@@ -37,14 +37,14 @@ public class RunClimberWedgeSolenoid extends CommandBase implements Debuggable {
                 state = 0;
             }
             if (state == 1) {
-                climberWedgeSolenoid.extend();
+                climberWedgeSolenoids.extend();
             } else if (state == -1) {
-                climberWedgeSolenoid.retract();
+                climberWedgeSolenoids.retract();
             }
         } else {
-            climberWedgeSolenoid.retract();
+            climberWedgeSolenoids.retract();
         }
-        RobotDebugger.push(climberWedgeSolenoid);
+        RobotDebugger.push(climberWedgeSolenoids);
         RobotDebugger.push(this);
     }
 

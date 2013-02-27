@@ -13,12 +13,12 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstM;
  *
  * @author daboross
  */
-public class ClimberWedgeSolenoid extends Subsystem implements Debuggable {
+public class ClimberWedgeSolenoids extends Subsystem implements Debuggable {
 
     private SolenoidPair climberWedgeSolenoids = new SolenoidPair(VstM.SOLENOID.CLIMBER_WEDGE_EXTENDING_SIDE, VstM.SOLENOID.CLIMBER_WEDGE_RETRACTING_SIDE);
 
-    public ClimberWedgeSolenoid() {
-        System.out.println("SubSystem Created: ClimberWedgeSolenoid");
+    public ClimberWedgeSolenoids() {
+        System.out.println("SubSystem Created: ClimberWedgeSolenoids");
     }
 
     protected void initDefaultCommand() {
@@ -44,6 +44,6 @@ public class ClimberWedgeSolenoid extends Subsystem implements Debuggable {
     }
 
     public DebugOutput getStatus() {
-        return new DebugStatus("ClimberWedgeSolenoid:Extending", climberWedgeSolenoids.isExtending(), DebugLevel.HIGH);
+        return new DebugStatus("ClimberWedgeSolenoids:Extending", climberWedgeSolenoids.isExtending(), DebugLevel.HIGH);
     }
 }

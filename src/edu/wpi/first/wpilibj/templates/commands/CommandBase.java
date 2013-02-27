@@ -18,11 +18,11 @@ public abstract class CommandBase extends Command {
     protected static PressureSwitch pressureSwitch;
     protected static GroundDrive groundDrive;
     protected static ClimberLimitSwitch climberLimitSwitch;
-    protected static ShooterSolenoid shooterSolenoid;
+    protected static ShooterSolenoids shooterSolenoids;
     protected static ShooterMotors shooterMotors;
     protected static ClimberArmSolenoids climberArmSolenoids;
-    protected static ClimberWedgeSolenoid climberWedgeSolenoid;
-    protected static FrisbeeDumperSolenoid frisbeeDumperSolenoid;
+    protected static ClimberWedgeSolenoids climberWedgeSolenoids;
+    protected static FrisbeeDumperSolenoids frisbeeDumperSolenoids;
     protected static CameraServo cameraServo;
     /**
      * Commands.
@@ -34,19 +34,23 @@ public abstract class CommandBase extends Command {
         //Commands
         dashboardValueRefresh = new DashboardValueRefresh();
         dashboardValueRefresh.start();
-        //SubSystems
-        mainCamera = new Camera();
-        pressureSwitch = new PressureSwitch();
+        //SubSystems:CompressorThings:
         compressor = new Compressor();
-        climberLimitSwitch = new ClimberLimitSwitch();
-        climber = new Climber();
-        shooterSolenoid = new ShooterSolenoid();
-        shooterMotors = new ShooterMotors();
-        groundDrive = new GroundDrive();
+        pressureSwitch = new PressureSwitch();
+        //SubSystems:Solenoids:
+        shooterSolenoids = new ShooterSolenoids();
         climberArmSolenoids = new ClimberArmSolenoids();
-        climberWedgeSolenoid = new ClimberWedgeSolenoid();
+        climberWedgeSolenoids = new ClimberWedgeSolenoids();
+        frisbeeDumperSolenoids = new FrisbeeDumperSolenoids();
+        //SubSystems:Switches:
+        climberLimitSwitch = new ClimberLimitSwitch();
+        //SubSystems:Motors:
+        climber = new Climber();
+        groundDrive = new GroundDrive();
         cameraServo = new CameraServo();
-        frisbeeDumperSolenoid = new FrisbeeDumperSolenoid();
+        shooterMotors = new ShooterMotors();
+        //SubSystems:OtherThings:
+        mainCamera = new Camera();
     }
 
     public CommandBase(String name) {

@@ -34,8 +34,12 @@ public class RobotDebugger {
         String val = di.message();
         int level = di.debugLevel();
         if (di.isConsole()) {
-            String oldConVal = ((DebugInfo) consoleTable.get(key)).message();
-            if (oldConVal != null && !oldConVal.equals(val)) {
+            DebugInfo dInfo = (DebugInfo) consoleTable.get(key);
+            String oldConVal = null;
+            if (dInfo != null) {
+                oldConVal = dInfo.message();
+            }
+            if (oldConVal == null || !oldConVal.equals(val)) {
                 if (level > DebugLevel.CURRENT) {
                     consolePush(key, val);
                 }

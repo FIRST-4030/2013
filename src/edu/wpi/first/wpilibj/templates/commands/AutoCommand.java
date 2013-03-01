@@ -38,11 +38,6 @@ public class AutoCommand extends CommandBase implements Debuggable {
     private static final int maxShots = 3;
     private boolean isFinished = false;
     /**
-     * This should be set to false after the shooter shoots. The time between
-     * shots is ignored if this is true.
-     */
-    private boolean isFirstShot = true;
-    /**
      * 0 is just started.
      *
      * 1 is shooter charged.
@@ -87,7 +82,7 @@ public class AutoCommand extends CommandBase implements Debuggable {
         } else if (state == 0) {
             return (startTime + timeFromStartupToShoot) - System.currentTimeMillis();
         } else if (state == 1) {
-            if (isFirstShot) {
+            if (shotsShot == 0) {
                 return 0;
             } else {
                 return (lastShootTime + timeBetweenShots) - System.currentTimeMillis();

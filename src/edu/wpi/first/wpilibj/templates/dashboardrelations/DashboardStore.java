@@ -22,13 +22,13 @@ public final class DashboardStore {
     private static IntegerDashObject debugLevelChanger;
 
     static {
-        debugLevelChanger = new IntegerDashObject("-DebugLevelChanger", new String[]{"All Messages", "Lowest or Higher", "Low or Higher", "Mid or Higher", "High or Higher", "Highest or Higher", "Only \"Always\" Messages"}, 6);
+        debugLevelChanger = new IntegerDashObject("aDebugLevelChanger", new String[]{"All Messages", "Lowest or Higher", "Low or Higher", "Mid or Higher", "High or Higher", "Highest or Higher", "Only \"Always\" Messages"}, 6);
         checkDebugLevelChanger();
 
-        isClimberEnabledObject = new BooleanDashObject("-IsClimberEnabled", "Enable Climber", "Disable Climber", false);
+        isClimberEnabledObject = new BooleanDashObject("aIsClimberEnabled", "Enable Climber", "Disable Climber", false);
         RobotDebugger.push(new InfoState("Climber:Enabled", "No", DebugLevel.ALWAYS));
 
-        cameraPosition = new BooleanDashObject("-CameraPosition", "Camera Left", "Camera Right", true);
+        cameraPosition = new BooleanDashObject("aCameraPosition", "Camera Left", "Camera Right", true);
         RobotDebugger.push(new InfoState("Camera:Position", "Camera Left", DebugLevel.ALWAYS));
 
         SmartDashboard.putNumber("Climber Speed Multiplier", 1.0);

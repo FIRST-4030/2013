@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.templates.subsystems.GroundDrive;
  */
 public class RobotMain extends IterativeRobot {
 
+    AutoCommand auto;
+
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -22,8 +24,8 @@ public class RobotMain extends IterativeRobot {
     }
 
     public void autonomousInit() {
-        ImageProcess ip = new ImageProcess();
-        ip.start();
+        auto = new AutoCommand();
+        auto.start();
     }
 
     /**

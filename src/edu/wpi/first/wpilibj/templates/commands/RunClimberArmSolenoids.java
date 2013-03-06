@@ -17,6 +17,7 @@ public class RunClimberArmSolenoids extends CommandBase implements Debuggable {
 
     private boolean extending = false;
     private String status = "No Status Set";
+
     public RunClimberArmSolenoids() {
         requires(climberArmSolenoids);
     }

@@ -20,6 +20,7 @@ public class ShooterSolenoids extends Subsystem implements Debuggable {
     public ShooterSolenoids() {
         System.out.println("SubSystem Created: ShooterSolenoids");
     }
+
     public void initDefaultCommand() {
         setDefaultCommand(new RunShooterSolenoid());
     }

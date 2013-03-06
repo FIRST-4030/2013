@@ -20,11 +20,11 @@ public class RobotMain extends IterativeRobot {
      */
     public void robotInit() {
         CommandBase.init();
+        auto = new AutoCommand();
         System.out.println("Robot Ready!");
     }
 
     public void autonomousInit() {
-        auto = new AutoCommand();
         auto.start();
     }
 
@@ -36,6 +36,7 @@ public class RobotMain extends IterativeRobot {
     }
 
     public void teleopInit() {
+        auto.cancel();
     }
 
     /**

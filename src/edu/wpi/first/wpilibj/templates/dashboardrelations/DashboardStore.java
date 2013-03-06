@@ -66,4 +66,9 @@ public final class DashboardStore {
             RobotDebugger.reMap();
         }
     }
+
+    public static void reCreate() {
+        debugLevelChanger.reCreate();
+        cameraPosition.reCreate();
+    }
 }

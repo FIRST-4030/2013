@@ -27,7 +27,7 @@ public class AutoCommand extends CommandBase implements Debuggable {
      * shooting again (in milliseconds). This should be at least twice as big as
      * timeForSolenoidToExtend.
      */
-    private static final long timeBetweenShots = 500;
+    private static final long timeBetweenShots = 1000;
     private boolean isFinished = false;
     /**
      * 0 is just started.
@@ -37,10 +37,6 @@ public class AutoCommand extends CommandBase implements Debuggable {
      * 2 is shooting/solenoid extending.
      */
     private int state = -1;
-    /**
-     * This is when the command start (in milliseconds since robot booted up).
-     */
-    private long startTime;
     /**
      * This is the start time when the robot last shot.
      */
@@ -59,9 +55,13 @@ public class AutoCommand extends CommandBase implements Debuggable {
             return "\"" + state + "\"";
         }
     }
+    private int numberOfTimesDVstPAtPressure;
 
     private boolean readyToShoot() {
-        return DVstP.atPressure();
+        if (DVstP.atPressure()) {
+            numberOfTimesDVstPAtPressure++;
+        }
+        return numberOfTimesDVstPAtPressure > 20;
     }
 
     private long getTimeTillNextAction() {
@@ -89,6 +89,7 @@ public class AutoCommand extends CommandBase implements Debuggable {
 
     protected void initialize() {
         setState(0);
+        numberOfTimesDVstPAtPressure = 0;
         groundDrive.stop();
         shooterSolenoids.extend();
         shooterMotors.setSpeed(1.0);
@@ -125,17 +126,16 @@ public class AutoCommand extends CommandBase implements Debuggable {
      * if(state==2)shotsShot++; if(state==3)shooterSolenoids.retract();
      */
     private void setState(int state) {
-        if (state < 0 || state > 3) {
+        if (state < 0 || state > 2) {
             throw new IllegalArgumentException("Invalid State");
         }
-        if (state == 0) {
-            startTime = System.currentTimeMillis();
-        } else if (state == 1) {
+        if (state == 1) {
             lastShootTime = System.currentTimeMillis();
         } else if (state == 2) {
             lastShootTime = System.currentTimeMillis();
         } else {
             System.out.println("INVALID STATE IN AUTO COMMAND!");
+            return;
         }
         this.state = state;
     }

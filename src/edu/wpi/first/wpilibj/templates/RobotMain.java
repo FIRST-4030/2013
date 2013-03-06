@@ -4,8 +4,8 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.templates.commands.*;
+import edu.wpi.first.wpilibj.templates.dashboardrelations.DashboardStore;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
-import edu.wpi.first.wpilibj.templates.subsystems.GroundDrive;
 
 /**
  * Main Robot Class. This is the main Robot Class.
@@ -54,7 +54,6 @@ public class RobotMain extends IterativeRobot {
     }
 
     public void disabledPeriodic() {
-        GroundDrive.disabled();
     }
 
     public void disabledInit() {
@@ -62,6 +61,7 @@ public class RobotMain extends IterativeRobot {
         for (int i = 0; i < list.length; i++) {
             list[i].disable();
         }
+        DashboardStore.reCreate();
     }
     private static DisableNotifable[] list = new DisableNotifable[0];
 

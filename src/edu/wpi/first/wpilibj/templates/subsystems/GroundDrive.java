@@ -42,7 +42,7 @@ public class GroundDrive extends Subsystem implements Debuggable {
         if (d < 0 || d > 1) {
             throw new IllegalArgumentException();
         }
-        multiplier = d * (driveReversed ? -1 : 1);
+        multiplier = d;
     }
     private double multiplier;
 
@@ -60,7 +60,7 @@ public class GroundDrive extends Subsystem implements Debuggable {
         }
         lastController = js;
         double turn = multiplier * js.getX();
-        double speed = multiplier * js.getY();
+        double speed = multiplier * js.getY() * (driveReversed ? -1 : 1);
         roboDrive.arcadeDrive(speed, turn);
     }
 

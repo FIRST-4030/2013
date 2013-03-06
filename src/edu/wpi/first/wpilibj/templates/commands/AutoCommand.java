@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
+import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstP;
 
 /**
  * Autonomous Command.
@@ -17,34 +18,23 @@ import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 public class AutoCommand extends CommandBase implements Debuggable {
 
     /**
-     * This is how long the robot will wait from start of command before first
-     * shoot.
-     */
-    private static final long timeFromStartupToShoot = 500;
-    /**
      * This is how long the shooter is retracting the solenoid before it extends
      * it again.
      */
-    private static final long timeForSolenoidToExtend = 50;
+    private static final long timeForSolenoidToExtend = 500;
     /**
      * This is how long the robot should wait after shooting once before
      * shooting again (in milliseconds). This should be at least twice as big as
      * timeForSolenoidToExtend.
      */
-    private static final long timeBetweenShots = 50;
-    /**
-     * This is how many shots before the robot stops shooting.
-     */
-    private static final int maxShots = 3;
+    private static final long timeBetweenShots = 500;
     private boolean isFinished = false;
     /**
      * 0 is just started.
      *
      * 1 is shooter charged.
      *
-     * 2 is shooting.
-     *
-     * 3 is done shooting.
+     * 2 is shooting/solenoid extending.
      */
     private int state = -1;
     /**
@@ -55,10 +45,6 @@ public class AutoCommand extends CommandBase implements Debuggable {
      * This is the start time when the robot last shot.
      */
     private long lastShootTime;
-    /**
-     * This is how many times the robot has shot.
-     */
-    private int shotsShot = 0;
 
     private String getReadableState() {
         if (state == -1) {
@@ -68,31 +54,27 @@ public class AutoCommand extends CommandBase implements Debuggable {
         } else if (state == 1) {
             return "Shooter Charged";
         } else if (state == 2) {
-            return "Shooting";
-        } else if (state == 3) {
-            return "Done";
+            return "Solenoid Extending";
         } else {
             return "\"" + state + "\"";
         }
+    }
+
+    private boolean readyToShoot() {
+        return DVstP.atPressure();
     }
 
     private long getTimeTillNextAction() {
         if (state == -1) {
             return -1;
         } else if (state == 0) {
-            return (startTime + timeFromStartupToShoot) - System.currentTimeMillis();
+            return readyToShoot() ? 0 : 42;
         } else if (state == 1) {
-            if (shotsShot == 0) {
-                return 0;
-            } else {
-                return (lastShootTime + timeBetweenShots) - System.currentTimeMillis();
-            }
+            return (lastShootTime + timeBetweenShots) - System.currentTimeMillis();
         } else if (state == 2) {
             return (lastShootTime + timeForSolenoidToExtend) - System.currentTimeMillis();
-        } else if (state == 3) {
-            return -1;
         }
-        return 0;
+        return -1;
     }
 
     private boolean readyForNextAction() {
@@ -120,23 +102,17 @@ public class AutoCommand extends CommandBase implements Debuggable {
                 setState(1);
             }
         } else if (state == 1) {
-            shooterSolenoids.retract();
             if (readyForNextAction()) {
                 setState(2);
+            } else {
+                shooterSolenoids.retract();
             }
         } else if (state == 2) {
             if (readyForNextAction()) {
-                if (shotsShot >= maxShots) {
-                    setState(3);
-                } else {
-                    setState(1);
-                }
+                setState(1);
             } else {
                 shooterSolenoids.extend();
             }
-        } else if (state == 3) {
-            shooterSolenoids.retract();
-            isFinished = true;
         }
         RobotDebugger.push(this);
     }
@@ -157,9 +133,9 @@ public class AutoCommand extends CommandBase implements Debuggable {
         } else if (state == 1) {
             lastShootTime = System.currentTimeMillis();
         } else if (state == 2) {
-            shotsShot++;
-        } else if (state == 3) {
-            shooterSolenoids.retract();
+            lastShootTime = System.currentTimeMillis();
+        } else {
+            System.out.println("INVALID STATE IN AUTO COMMAND!");
         }
         this.state = state;
     }

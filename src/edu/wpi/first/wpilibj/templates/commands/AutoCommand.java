@@ -28,6 +28,8 @@ public class AutoCommand extends CommandBase implements Debuggable {
      * timeForSolenoidToExtend.
      */
     private static final long timeBetweenShots = 1000;
+    private static final long timeTillFirst = 5000;
+    private static final long maxWaitTime = 10000;
     private boolean isFinished = false;
     /**
      * 0 is just started.
@@ -36,11 +38,12 @@ public class AutoCommand extends CommandBase implements Debuggable {
      *
      * 2 is shooting/solenoid extending.
      */
-    private int state = -1;
+    private int state = 0;
     /**
      * This is the start time when the robot last shot.
      */
     private long lastShootTime;
+    private long startTime;
 
     private String getReadableState() {
         if (state == -1) {
@@ -61,7 +64,8 @@ public class AutoCommand extends CommandBase implements Debuggable {
         if (DVstP.atPressure()) {
             numberOfTimesDVstPAtPressure++;
         }
-        return numberOfTimesDVstPAtPressure > 20;
+        long now = System.currentTimeMillis();
+        return (now > startTime + maxWaitTime) ? true : ((now < startTime + timeTillFirst) ? false : (numberOfTimesDVstPAtPressure > 2));
     }
 
     private long getTimeTillNextAction() {
@@ -87,7 +91,12 @@ public class AutoCommand extends CommandBase implements Debuggable {
         requires(shooterSolenoids);
     }
 
+    public void newValues() {
+        initialize();
+    }
+
     protected void initialize() {
+        startTime = System.currentTimeMillis();
         setState(0);
         numberOfTimesDVstPAtPressure = 0;
         groundDrive.stop();
@@ -120,16 +129,16 @@ public class AutoCommand extends CommandBase implements Debuggable {
 
     /**
      * Sets the state variable, as well as does some changes to other variables
-     * according to which state. if(state==0)
-     * startTime=System.currentTimeMillis();
+     * according to which state.
      * if(state==1)lastShootTime=System.currentTimeMillis();
-     * if(state==2)shotsShot++; if(state==3)shooterSolenoids.retract();
+     * if(state==2)shotsShot++;
      */
     private void setState(int state) {
         if (state < 0 || state > 2) {
             throw new IllegalArgumentException("Invalid State");
         }
-        if (state == 1) {
+        if (state == 0) {
+        } else if (state == 1) {
             lastShootTime = System.currentTimeMillis();
         } else if (state == 2) {
             lastShootTime = System.currentTimeMillis();

@@ -25,6 +25,7 @@ public class RobotMain extends IterativeRobot {
     }
 
     public void autonomousInit() {
+        auto.newValues();
         auto.start();
     }
 

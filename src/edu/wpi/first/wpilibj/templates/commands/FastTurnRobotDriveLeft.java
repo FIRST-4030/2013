@@ -20,6 +20,8 @@ public class FastTurnRobotDriveLeft extends CommandBase {
      * 1 for at max speed.
      *
      * 2 for slowing down.
+     *
+     * 3 is reverse blip.
      */
     private int state;
     /**

@@ -1,11 +1,11 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.templates.dashboardrelations.DashboardStore;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
+import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstClimber;
 import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
@@ -18,21 +18,21 @@ public class RunFrisbeeDumperSolenoid extends CommandBase implements Debuggable 
     private String state = "Not Set";
 
     public RunFrisbeeDumperSolenoid() {
-        requires(frisbeeDumperSolenoid);
+        requires(frisbeeDumperSolenoids);
     }
 
     protected void initialize() {
-        frisbeeDumperSolenoid.startExpand();
+        frisbeeDumperSolenoids.startExpand();
         RobotDebugger.push(this);
     }
 
     protected void execute() {
-        if (DashboardStore.getIsClimberEnabled()) {
+        if (DVstClimber.climberEnabled()) {
             if (VstJ.getFrisbeeDumpButtonValue()) {
-                frisbeeDumperSolenoid.startRetract();
+                frisbeeDumperSolenoids.startRetract();
                 state = "Retracting";
             } else if (VstJ.getFrisbeeUnDumpButtonValue()) {
-                frisbeeDumperSolenoid.startExpand();
+                frisbeeDumperSolenoids.startExpand();
                 state = "Expanding";
             }
         } else {
@@ -49,6 +49,6 @@ public class RunFrisbeeDumperSolenoid extends CommandBase implements Debuggable 
     }
 
     public DebugOutput getStatus() {
-        return new InfoState("RunFrisbeeDumper", state, DebugLevel.HIGH);
+        return new InfoState("FrisbeeDumperSolenoids:Should", state, DebugLevel.LOW);
     }
 }

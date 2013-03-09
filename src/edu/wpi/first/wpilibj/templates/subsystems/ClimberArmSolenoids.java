@@ -1,48 +1,41 @@
 package edu.wpi.first.wpilibj.templates.subsystems;
 
-import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.commands.RunClimberArmSolenoids;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.InfoState;
+import edu.wpi.first.wpilibj.templates.helpers.solenoid.SolenoidPair;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
 /**
- * This is the subSystem for the Solenoid controlling the (I can't remember what
- * this word is?) that pushes out the climber "arm".
+ * This is the subSystem for controlling the Solenoids that push out/pull back
+ * the climber "arm".
  *
  * @author daboross
  */
 public final class ClimberArmSolenoids extends Subsystem implements Debuggable {
 
-    private Solenoid side1, side2;
+    private SolenoidPair climberArmSolenoids = new SolenoidPair(VstM.SOLENOID.CLIMBER_ARM_EXTENDING_SIDE, VstM.SOLENOID.CLIMBER_ARM_RETRACTING_SIDE);
 
     public ClimberArmSolenoids() {
         System.out.println("SubSystem Created: ClimberArmSolenoids");
-        side1 = new Solenoid(VstM.SOLENOID.CLIMBER_ARM_SIDE_1);
-        side2 = new Solenoid(VstM.SOLENOID.CLIMBER_ARM_SIDE_2);
     }
 
     protected void initDefaultCommand() {
         setDefaultCommand(new RunClimberArmSolenoids());
     }
-    private String state = "None Set";
 
     public void extend() {
-        side1.set(true);
-        side2.set(false);
-        state = "Extend";
+        climberArmSolenoids.extend();
     }
 
     public void retract() {
-        side1.set(false);
-        side2.set(true);
-        state = "Retract";
+        climberArmSolenoids.retract();
     }
 
     public DebugOutput getStatus() {
-        return new InfoState("ClimberArmSolenoids", state, DebugLevel.LOW);
+        return new InfoState("ClimberArmSolenoids", climberArmSolenoids.getState(), DebugLevel.MID);
     }
 }

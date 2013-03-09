@@ -7,14 +7,38 @@ public final class VstM {
 
     public static final class SOLENOID {
 
-        public static final int SHOOTER_SIDE_1 = 1;
-        public static final int SHOOTER_SIDE_2 = 2;
-        public static final int CLIMBER_ARM_SIDE_1 = 3;
-        public static final int CLIMBER_ARM_SIDE_2 = 4;
-        public static final int CLIMBER_WEDGE_SIDE_1 = 5;
-        public static final int CLIMBER_WEDGE_SIDE_2 = 6;
-        public static final int FRISBEE_DUMP_1 = 7;
-        public static final int FRISBEE_DUMP_2 = 8;
+        /**
+         * SHOOTER_SIDE_1
+         */
+        public static final int SHOOTER_EXTENDING_SIDE = 1;
+        /**
+         * SHOOTER_SIDE_2
+         */
+        public static final int SHOOTER_RETACTING_SIDE = 2;
+        /**
+         * CLIMBER_ARM_SIDE_1
+         */
+        public static final int CLIMBER_ARM_EXTENDING_SIDE = 3;
+        /**
+         * CLIMBER_ARM_SIDE_2
+         */
+        public static final int CLIMBER_ARM_RETRACTING_SIDE = 4;
+        /**
+         * CLIMBER_WEDGE_SIDE_1
+         */
+        public static final int CLIMBER_WEDGE_EXTENDING_SIDE = 5;
+        /**
+         * CLIMBER_WEDGE_SIDE_2
+         */
+        public static final int CLIMBER_WEDGE_RETRACTING_SIDE = 6;
+        /**
+         * FRISBEE_DUMP_1
+         */
+        public static final int FRISBEE_DUMP_EXTENDING_SIDE = 7;
+        /**
+         * FRISBEE_DUMP_2
+         */
+        public static final int FRISBEE_DUMP_RETRACTING_SIDE = 8;
     }
 
     public static final class DIGITAL_IO {

@@ -76,15 +76,15 @@ public class RunShooterMotors extends CommandBase implements Debuggable, Disable
         shooterMotors.setSpeed(0);
     }
 
-    public DebugOutput getStatus() {
-        return new DebugStatus("ShooterSpeed", motorSpeed, DebugLevel.HIGHEST);
-    }
-
     public void disable() {
         motorSpeed = 0;
         buttonPressedLastDown = false;
         buttonPressedLastUp = false;
         RobotDebugger.push(this);
         RobotDebugger.push(shooterMotors);
+    }
+
+    public DebugOutput getStatus() {
+        return new DebugStatus("ShooterMotors:Speed", "%" + ((int) (motorSpeed * 100)), DebugLevel.HIGHEST);
     }
 }

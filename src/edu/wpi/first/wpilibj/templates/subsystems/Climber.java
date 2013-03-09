@@ -36,6 +36,6 @@ public final class Climber extends Subsystem implements Debuggable {
     }
 
     public DebugOutput getStatus() {
-        return new DebugStatus("Climber:Speed", climber.get(), DebugLevel.HIGHEST);
+        return new DebugStatus("Climber:Speed", climber.get(), DebugLevel.MID);
     }
 }

@@ -30,8 +30,7 @@ public final class ShooterMotors extends Subsystem implements Debuggable {
     }
 
     /**
-     * Sets the speed of the second motor to this speed, and the first motor to
-     * .75 times this speed.
+     * Sets the speed of the shooter motors to this speed.
      *
      * @param speed the speed of the second motor.
      * @throws IllegalArgumentException If the given double is less then 0 or
@@ -41,14 +40,14 @@ public final class ShooterMotors extends Subsystem implements Debuggable {
         if (speed > 1 || speed < 0) {
             throw new IllegalArgumentException();
         }
-        firstMotor.set(speed * 0.75);
+        firstMotor.set(speed);
         secondMotor.set(speed);
     }
 
     public DebugOutput getStatus() {
         DebugStatus[] infoList = new DebugStatus[2];
-        infoList[0] = new DebugStatus("ShooterMotors:FirstMotorSpeed", firstMotor.get(), DebugLevel.MID);
-        infoList[1] = new DebugStatus("ShooterMotors:SecondMotorSpeed", secondMotor.get(), DebugLevel.MID);
+        infoList[0] = new DebugStatus("ShooterMotors:FirstMotor:Speed", firstMotor.get(), DebugLevel.MID);
+        infoList[1] = new DebugStatus("ShooterMotors:SecondMotor:Speed", secondMotor.get(), DebugLevel.MID);
         return new DebugInfoGroup(infoList);
     }
 }

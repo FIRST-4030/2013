@@ -13,45 +13,62 @@ import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
  * @author daboross
  */
 public final class DashboardStore {
-    
+
     private static BooleanDashObject isClimberEnabledObject;
-    private static BooleanDashObject cameraPosition;//False is left, true is right.
+    /**
+     * False is left, true is right.
+     */
+    private static BooleanDashObject cameraPosition;
     private static IntegerDashObject debugLevelChanger;
 
-    /**
-     * Carriage
-     */
     static {
-        isClimberEnabledObject = new BooleanDashObject("-IsClimberEnabled", "Enable Climber", "Disable Climber", false);
-        debugLevelChanger = new IntegerDashObject("-DebugLevelChanger", new String[]{"All Messages", "Lowest or Higher", "Low or Higher", "Mid or Higher", "High or Higher", "Highest or Higher", "Only \"Always\" messages"}, 6);
-        cameraPosition = new BooleanDashObject("-CameraPosition", "Camera Left", "Camera Right", true);
+        debugLevelChanger = new IntegerDashObject("aDebugLevelChanger", new String[]{"All Messages", "Lowest or Higher", "Low or Higher", "Mid or Higher", "High or Higher", "Highest or Higher", "Only \"Always\" Messages"}, 6);
+        checkDebugLevelChanger();
+
+        isClimberEnabledObject = new BooleanDashObject("aIsClimberEnabled", "Enable Climber", "Disable Climber", false);
+        RobotDebugger.push(new InfoState("Climber:Enabled", "No", DebugLevel.ALWAYS));
+
+        cameraPosition = new BooleanDashObject("aCameraPosition", "Camera Left", "Camera Right", true);
+        RobotDebugger.push(new InfoState("Camera:Position", "Camera Left", DebugLevel.ALWAYS));
+
         SmartDashboard.putNumber("Climber Speed Multiplier", 1.0);
     }
-    
+
     public static double getClimberSpeedMultiplier() {
         return SmartDashboard.getNumber("Climber Speed Multiplier");
+
     }
-    
+
     public static boolean getIsClimberEnabled() {
-        return isClimberEnabledObject.getValue();
+        final boolean enabledGet = isClimberEnabledObject.getValue();
+        RobotDebugger.push(new InfoState("Climber:Enabled", enabledGet ? "Yes" : "No", DebugLevel.ALWAYS));
+        return enabledGet;
     }
 
     /**
      * True for left, False for right.
      */
     public static boolean getCameraPosition() {
-        return cameraPosition.getValue();
+        final boolean enabledGet = cameraPosition.getValue();
+        RobotDebugger.push(new InfoState("Camera:Position", enabledGet ? "Camera Left" : "Camera Right", DebugLevel.ALWAYS));
+        return enabledGet;
     }
-    
+
     private static int getDebugLevelChanger() {
         return debugLevelChanger.getValue();
     }
-    
+
     public static void checkDebugLevelChanger() {
         int debugLevelChange = getDebugLevelChanger();
         if (debugLevelChange < DebugLevel.CURRENT) {
             DebugLevel.CURRENT = debugLevelChange;
+            RobotDebugger.push(new InfoState("Debug To Show:", DebugLevel.getNameOf(DebugLevel.CURRENT) + " Or Higher", DebugLevel.ALWAYS));
+            RobotDebugger.reMap();
         }
-        RobotDebugger.push(new InfoState("Debug To Show:", DebugLevel.getNameOf(DebugLevel.CURRENT) + " Or Higher", DebugLevel.ALWAYS));
+    }
+
+    public static void reCreate() {
+        debugLevelChanger.reCreate();
+        cameraPosition.reCreate();
     }
 }

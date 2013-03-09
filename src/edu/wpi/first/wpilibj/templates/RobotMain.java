@@ -4,13 +4,15 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.templates.commands.*;
+import edu.wpi.first.wpilibj.templates.dashboardrelations.DashboardStore;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
-import edu.wpi.first.wpilibj.templates.subsystems.GroundDrive;
 
 /**
  * Main Robot Class. This is the main Robot Class.
  */
 public class RobotMain extends IterativeRobot {
+
+    AutoCommand auto;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -18,12 +20,13 @@ public class RobotMain extends IterativeRobot {
      */
     public void robotInit() {
         CommandBase.init();
+        auto = new AutoCommand();
         System.out.println("Robot Ready!");
     }
 
     public void autonomousInit() {
-        ImageProcess ip = new ImageProcess();
-        ip.start();
+        auto.newValues();
+        auto.start();
     }
 
     /**
@@ -34,6 +37,7 @@ public class RobotMain extends IterativeRobot {
     }
 
     public void teleopInit() {
+        auto.cancel();
     }
 
     /**
@@ -51,14 +55,14 @@ public class RobotMain extends IterativeRobot {
     }
 
     public void disabledPeriodic() {
-        GroundDrive.disabled();
     }
 
     public void disabledInit() {
-        RobotDebugger.clearMap();
+        RobotDebugger.reMap();
         for (int i = 0; i < list.length; i++) {
             list[i].disable();
         }
+        DashboardStore.reCreate();
     }
     private static DisableNotifable[] list = new DisableNotifable[0];
 

@@ -5,7 +5,7 @@ package edu.wpi.first.wpilibj.templates.variablestores.dynamic;
  *
  * @author daboross
  */
-public final class DVstC {
+public final class DVstClimber {
 
     private static boolean climberArmExtending;
     private static boolean climberReadyToExtend;

@@ -1,11 +1,11 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.templates.dashboardrelations.DashboardStore;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
+import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstClimber;
 import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
@@ -14,40 +14,35 @@ import edu.wpi.first.wpilibj.templates.vstj.VstJ;
  */
 public class RunClimberWedgeSolenoid extends CommandBase implements Debuggable {
 
-    /**
-     * -1 for retract, 0 for stay, 1 for extend.
-     */
-    private int state;
+    private boolean extending;
 
     public RunClimberWedgeSolenoid() {
-        requires(climberWedgeSolenoid);
+        requires(climberWedgeSolenoids);
     }
 
     protected void initialize() {
-        climberWedgeSolenoid.stayPut();
     }
 
     protected void execute() {
-        if (DashboardStore.getIsClimberEnabled()) {
+        if (DVstClimber.climberEnabled()) {
             double controlValue = VstJ.getClimberWedgeSolenoidControlAxisValue();
             if (controlValue < -0.5) {
-                state = -1;
+                extending = true;
             } else if (controlValue > 0.5) {
-                state = 1;
+                extending = false;
             } else {
-                state = 0;
             }
-            if (state == 1) {
-                climberWedgeSolenoid.extend();
-            } else if (state == -1) {
-                climberWedgeSolenoid.retract();
+            if (extending) {
+                climberWedgeSolenoids.extend();
             } else {
-                climberWedgeSolenoid.stayPut();
+
+                climberWedgeSolenoids.retract();
             }
         } else {
-            climberWedgeSolenoid.stayPut();
+            extending = false;
+            climberWedgeSolenoids.retract();
         }
-        RobotDebugger.push(climberWedgeSolenoid);
+        RobotDebugger.push(climberWedgeSolenoids);
         RobotDebugger.push(this);
     }
 
@@ -63,12 +58,6 @@ public class RunClimberWedgeSolenoid extends CommandBase implements Debuggable {
     }
 
     private String getStateMessage() {
-        if (state == -1) {
-            return "Retract";
-        } else if (state == 1) {
-            return "Extend";
-        } else {
-            return "Stay Put";
-        }
+        return extending ? "Extending" : "Retracting";
     }
 }

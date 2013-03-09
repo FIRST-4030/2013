@@ -52,6 +52,7 @@ public class GroundDrive extends Subsystem implements Debuggable {
     }
     private Joystick lastController;
     private double lastForwardMotion;
+    private double lastSpinMotion;
 
     /**
      * The values will be changed by the speed multiplier and turn.
@@ -61,7 +62,7 @@ public class GroundDrive extends Subsystem implements Debuggable {
             return;
         }
         lastController = js;
-        double turn = multiplier * js.getX();
+        double turn = (lastSpinMotion = multiplier * js.getX());
         double speed = (lastForwardMotion = multiplier * js.getY() * (driveReversed ? -1 : 1));
         roboDrive.arcadeDrive(speed, turn);
     }
@@ -87,6 +88,10 @@ public class GroundDrive extends Subsystem implements Debuggable {
 
     public double getLastForwardMotion() {
         return lastForwardMotion;
+    }
+
+    public double getLastSpinMotion() {
+        return lastSpinMotion;
     }
 
     /**

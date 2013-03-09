@@ -12,11 +12,9 @@ public class ReadSetCamera extends CommandBase {
         requires(mainCamera);
     }
 
-    // Called just before this Command runs the first time
     protected void initialize() {
     }
 
-    // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         AxisCamera camera = mainCamera.getCamera();
         System.err.println("Brightness: " + camera.getBrightness());
@@ -30,13 +28,11 @@ public class ReadSetCamera extends CommandBase {
         System.err.println("WhiteBalance: " + camera.getWhiteBalance());
     }
 
-    // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         this.execute();
         return true;
     }
 
-    // Called once after isFinished returns true
     protected void end() {
     }
 }

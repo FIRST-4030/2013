@@ -2,6 +2,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.templates.subsystems.*;
+import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -51,6 +52,9 @@ public abstract class CommandBase extends Command {
         shooterMotors = new ShooterMotors();
         //SubSystems:OtherThings:
         mainCamera = new Camera();
+        //Attaching Commands
+        VstJ.getGroundDriveFastTurnLeftButton().whenPressed(new FastTurnRobotDriveLeft());
+        VstJ.getGroundDriveFastTurnRightButton().whenPressed(new FastTurnRobotDriveRight());
     }
 
     public CommandBase(String name) {

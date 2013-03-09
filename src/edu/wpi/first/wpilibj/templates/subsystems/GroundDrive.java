@@ -26,6 +26,7 @@ public class GroundDrive extends Subsystem implements Debuggable {
     public GroundDrive() {
         System.out.println("SubSystem Created: GroundDrive");
         roboDrive = new RobotDrive(leftMotor, rightMotor);
+        roboDrive.setSafetyEnabled(false);
         roboDrive.stopMotor();
     }
 
@@ -50,6 +51,7 @@ public class GroundDrive extends Subsystem implements Debuggable {
         driveWithController(VstJ.getDriveJoystick());
     }
     private Joystick lastController;
+    private double lastForwardMotion;
 
     /**
      * The values will be changed by the speed multiplier and turn.
@@ -60,7 +62,7 @@ public class GroundDrive extends Subsystem implements Debuggable {
         }
         lastController = js;
         double turn = multiplier * js.getX();
-        double speed = multiplier * js.getY() * (driveReversed ? -1 : 1);
+        double speed = (lastForwardMotion = multiplier * js.getY() * (driveReversed ? -1 : 1));
         roboDrive.arcadeDrive(speed, turn);
     }
 
@@ -81,6 +83,10 @@ public class GroundDrive extends Subsystem implements Debuggable {
 
     public static void disabled() {
         roboDrive.stopMotor();
+    }
+
+    public double getLastForwardMotion() {
+        return lastForwardMotion;
     }
 
     /**

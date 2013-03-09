@@ -119,6 +119,14 @@ public class VstJ {
         return getFrisbeeUnDumpButton().get();
     }
 
+    public static JoystickButton getGroundDriveFastTurnLeftButton() {
+        return getJoystickButton(Mappings.groundDriveFastTurnLeftButtonJoystickNumber, Mappings.groundDriveFastTurnLeftButtonNumber);
+    }
+
+    public static JoystickButton getGroundDriveFastTurnRightButton() {
+        return getJoystickButton(Mappings.groundDriveFastTurnRightButtonJoystickNumber, Mappings.groundDriveFastTurnRightButtonNumber);
+    }
+
     /**
      * Mappings for joysticks.
      */
@@ -153,5 +161,11 @@ public class VstJ {
         //
         protected static final int frisbeeUnDumpButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
         protected static final int frisbeeUnDumpButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.RIGHT_BOTTOM;
+        //
+        protected static final int groundDriveFastTurnLeftButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.LEFT;
+        protected static final int groundDriveFastTurnLeftButtonJoystickNumber = FV.DRIVE_JOYSTICK;
+        //
+        protected static final int groundDriveFastTurnRightButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.RIGHT;
+        protected static final int groundDriveFastTurnRightButtonJoystickNumber = FV.DRIVE_JOYSTICK;
     }
 }

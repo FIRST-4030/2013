@@ -8,7 +8,7 @@ public class FastTurnRobotDriveLeft extends CommandBase {
 
     private static final double speedDif = -0.1;
     private static final double reverseSpeedDif = -0.3;
-    private static final long timeOn = 100;
+    private static final long timeOn = 125;
     private static final long timeReversed = 1;
     private boolean finished;
     private double speed;

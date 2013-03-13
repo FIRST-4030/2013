@@ -11,8 +11,7 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
 /**
  * This is a SubSystem for the Shooter Motors, This should be controlled by
- * RunShooterMotors. The First motor will always by .75 times the speed of the
- * second motor.
+ * RunShooterMotors.
  */
 public final class ShooterMotors extends Subsystem implements Debuggable {
 

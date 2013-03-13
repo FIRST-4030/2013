@@ -52,9 +52,10 @@ public abstract class CommandBase extends Command {
         shooterMotors = new ShooterMotors();
         //SubSystems:OtherThings:
         mainCamera = new Camera();
-        //Attaching Commands
+        //Button Commands
         VstJ.getGroundDriveFastTurnLeftButton().whenPressed(new FastTurnRobotDriveLeft());
         VstJ.getGroundDriveFastTurnRightButton().whenPressed(new FastTurnRobotDriveRight());
+        VstJ.getShooterSolenoidPushButton().whenPressed(new RunShooterSolenoid());
     }
 
     public CommandBase(String name) {

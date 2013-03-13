@@ -1,50 +1,39 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.templates.DisableNotifable;
-import edu.wpi.first.wpilibj.templates.RobotMain;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
-import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
  * This Command runs the shooter push solenoid according to the input received
  * from VstJ.getShooterSolenoidPushButtonValue().
  */
-public class RunShooterSolenoid extends CommandBase implements DisableNotifable {
+public class RunShooterSolenoid extends CommandBase {
 
-    private boolean pressedSinceEnabled = false;
+    private static final long timeTillDone = 500;
+    private long startTime;
+    private boolean isFinished;
 
     public RunShooterSolenoid() {
-        RobotMain.addDisableNotifable(this);
         requires(shooterSolenoids);
     }
 
     protected void initialize() {
         shooterSolenoids.retract();
+        RobotDebugger.push(shooterSolenoids);
+        startTime = System.currentTimeMillis();
     }
 
     protected void execute() {
-        //If button pressed, retract, otherwise, extend.
-        if (VstJ.getShooterSolenoidPushButtonValue()) {
-            pressedSinceEnabled = true;
-            shooterSolenoids.retract();
-        } else {
-            if (pressedSinceEnabled) {
-                shooterSolenoids.extend();
-            } else {
-                shooterSolenoids.retract();
-            }
+        long diff = System.currentTimeMillis() - startTime;
+        if (diff > timeTillDone) {
+            isFinished = true;
         }
-        RobotDebugger.push(shooterSolenoids);
     }
 
     protected boolean isFinished() {
-        return false;
+        return isFinished;
     }
 
     protected void end() {
-    }
-
-    public void disable() {
-        pressedSinceEnabled = false;
+        shooterSolenoids.extend();
     }
 }

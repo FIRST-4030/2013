@@ -1,7 +1,7 @@
 package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.templates.commands.RunFrisbeeDumperSolenoid;
+import edu.wpi.first.wpilibj.templates.commands.OldRunFrisbeeDumperSolenoid;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
@@ -22,19 +22,18 @@ public final class FrisbeeDumperSolenoids extends Subsystem implements Debuggabl
     }
 
     protected void initDefaultCommand() {
-        setDefaultCommand(new RunFrisbeeDumperSolenoid());
+        //setDefaultCommand(new OldRunFrisbeeDumperSolenoid());
     }
 
-    public void startExpand() {
+    public void expand() {
         frisbeeDumperSolenoids.extend();
     }
 
-    public void startRetract() {
+    public void retract() {
         frisbeeDumperSolenoids.retract();
     }
 
     public DebugOutput getStatus() {
-
         return new InfoState("FrisbeeDumperSolenoids", frisbeeDumperSolenoids.getState(), DebugLevel.MID);
     }
 }

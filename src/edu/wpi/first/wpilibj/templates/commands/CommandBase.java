@@ -30,7 +30,7 @@ public abstract class CommandBase extends Command {
      */
     protected static DashboardValueRefresh dashboardValueRefresh;
     protected static ReadLimitSwitches readLimitSwitches;
-
+    
     public static void init() {
         //Commands
         dashboardValueRefresh = new DashboardValueRefresh();
@@ -58,16 +58,18 @@ public abstract class CommandBase extends Command {
         VstJ.getShooterSolenoidPushButton().whenPressed(new RunShooterSolenoids());
         VstJ.getShooterMotorSpeedDownButton().whenPressed(new ShooterMotorSpeedDown());
         VstJ.getShooterMotorSpeedUpButton().whenPressed(new ShooterMotorSpeedUp());
+        VstJ.getFrisbeeDumpButton().whenPressed(new FrisbeeDumperSolenoidRetract());
+        VstJ.getFrisbeeUnDumpButton().whenPressed(new FrisbeeDumperSolenoidExtend());
     }
-
+    
     public CommandBase(String name) {
         super(name);
     }
-
+    
     public CommandBase() {
         super();
     }
-
+    
     protected final void interrupted() {
         end();
     }

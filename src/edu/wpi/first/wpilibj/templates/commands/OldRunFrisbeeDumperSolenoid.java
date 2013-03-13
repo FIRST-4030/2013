@@ -13,26 +13,26 @@ import edu.wpi.first.wpilibj.templates.vstj.VstJ;
  *
  * @author daboross
  */
-public class RunFrisbeeDumperSolenoid extends CommandBase implements Debuggable {
+public class OldRunFrisbeeDumperSolenoid extends CommandBase implements Debuggable {
 
     private String state = "Not Set";
 
-    public RunFrisbeeDumperSolenoid() {
+    public OldRunFrisbeeDumperSolenoid() {
         requires(frisbeeDumperSolenoids);
     }
 
     protected void initialize() {
-        frisbeeDumperSolenoids.startExpand();
+        frisbeeDumperSolenoids.expand();
         RobotDebugger.push(this);
     }
 
     protected void execute() {
         if (DVstClimber.climberEnabled()) {
             if (VstJ.getFrisbeeDumpButtonValue()) {
-                frisbeeDumperSolenoids.startRetract();
+                frisbeeDumperSolenoids.retract();
                 state = "Retracting";
             } else if (VstJ.getFrisbeeUnDumpButtonValue()) {
-                frisbeeDumperSolenoids.startExpand();
+                frisbeeDumperSolenoids.expand();
                 state = "Expanding";
             }
         } else {

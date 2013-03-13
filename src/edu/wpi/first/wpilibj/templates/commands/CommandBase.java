@@ -55,7 +55,7 @@ public abstract class CommandBase extends Command {
         //Button Commands
         VstJ.getGroundDriveFastTurnLeftButton().whenPressed(new FastTurnRobotDriveLeft());
         VstJ.getGroundDriveFastTurnRightButton().whenPressed(new FastTurnRobotDriveRight());
-        VstJ.getShooterSolenoidPushButton().whenPressed(new RunShooterSolenoid());
+        VstJ.getShooterSolenoidPushButton().whenPressed(new RunShooterSolenoids());
     }
 
     public CommandBase(String name) {

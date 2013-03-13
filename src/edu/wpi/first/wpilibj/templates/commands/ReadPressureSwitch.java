@@ -19,7 +19,6 @@ public class ReadPressureSwitch extends CommandBase {
     }
 
     protected void execute() {
-        // Tell pressureSwitch to check pressure.
         pressureSwitch.checkPressure();
     }
 

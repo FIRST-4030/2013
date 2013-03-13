@@ -46,14 +46,6 @@ public class RunGroundDrive extends CommandBase implements Debuggable {
         RobotDebugger.push(this);
     }
 
-    protected boolean isFinished() {
-        return false;
-    }
-
-    protected void end() {
-        groundDrive.stop();
-    }
-
     private void updateHighSpeed() {
         if (VstJ.getDriveSpeedToggleButtonValue() != highSpeedLastPressed) {
             if (!highSpeedLastPressed) {
@@ -70,6 +62,14 @@ public class RunGroundDrive extends CommandBase implements Debuggable {
             }
             reversedLastPressed = !reversedLastPressed;
         }
+    }
+
+    protected boolean isFinished() {
+        return false;
+    }
+
+    protected void end() {
+        groundDrive.stop();
     }
 
     public DebugOutput getStatus() {

@@ -65,6 +65,8 @@ public class RunClimberArmSolenoids extends CommandBase implements Debuggable {
     }
 
     protected void end() {
+        status = "Ended";
+        RobotDebugger.push(this);
     }
 
     public DebugOutput getStatus() {

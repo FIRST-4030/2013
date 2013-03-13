@@ -1,7 +1,6 @@
 package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.templates.commands.RunShooterSolenoid;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
@@ -22,7 +21,6 @@ public class ShooterSolenoids extends Subsystem implements Debuggable {
     }
 
     public void initDefaultCommand() {
-        setDefaultCommand(new RunShooterSolenoid());
     }
 
     public void extend() {
@@ -34,6 +32,6 @@ public class ShooterSolenoids extends Subsystem implements Debuggable {
     }
 
     public DebugOutput getStatus() {
-        return new InfoState("ShooterSolenoids", shooterSolenoids.getState(), DebugLevel.MID);
+        return new InfoState("ShooterSolenoids", shooterSolenoids.getState(), DebugLevel.HIGH);
     }
 }

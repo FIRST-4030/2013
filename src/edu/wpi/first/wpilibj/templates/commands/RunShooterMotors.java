@@ -21,6 +21,10 @@ import edu.wpi.first.wpilibj.templates.vstj.VstJ;
  */
 public class RunShooterMotors extends CommandBase implements Debuggable, DisableNotifable {
 
+    private double motorSpeed = 0;
+    private boolean buttonPressedLastUp = false;
+    private boolean buttonPressedLastDown = false;
+
     public RunShooterMotors() {
         requires(shooterMotors);
     }
@@ -29,9 +33,6 @@ public class RunShooterMotors extends CommandBase implements Debuggable, Disable
         RobotMain.addDisableNotifable(this);
         shooterMotors.setSpeed(0);
     }
-    private double motorSpeed = 0;
-    private boolean buttonPressedLastUp = false;
-    private boolean buttonPressedLastDown = false;
 
     protected void execute() {
         setSpeed();

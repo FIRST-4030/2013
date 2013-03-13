@@ -23,55 +23,29 @@ public class DebugLevel {
      */
     public static final int HIGHEST = 5;
     /**
-     *
+     * Messages with this level will normally always be displayed.
      */
     public static final int HIGH = 4;
     /**
-     *
+     * Messages with this level won't normally be displayed. But they will be
+     * displayed before anything lower.
      */
     public static final int MID = 3;
     /**
-     *
+     * Messages with this level won't normally be displayed, they will be
+     * displayed in a high debug.
      */
     public static final int LOW = 2;
     /**
-     *
+     * Messages with this level almost never will be displayed.
      */
     public static final int LOWEST = 1;
     /**
-     *
+     * Messages with this level will never be displayed.
      */
     public static final int NEVER = 0;
     /**
-     *
+     * Current Debugging Level.
      */
-    public static int CURRENT = ALWAYS;
-
-    /**
-     *
-     */
-    public static String getNameOf(int level) {
-        if (level == ALWAYS) {
-            return "Always";
-        }
-        if (level == HIGHEST) {
-            return "Highest";
-        }
-        if (level == HIGH) {
-            return "High";
-        }
-        if (level == MID) {
-            return "Mid";
-        }
-        if (level == LOW) {
-            return "Low";
-        }
-        if (level == LOWEST) {
-            return "Lowest";
-        }
-        if (level == NEVER) {
-            return "Never";
-        }
-        return "Unkown";
-    }
+    public static final int CURRENT = HIGH;
 }

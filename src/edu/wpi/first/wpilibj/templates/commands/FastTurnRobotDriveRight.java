@@ -8,7 +8,7 @@ public class FastTurnRobotDriveRight extends CommandBase {
 
     private static final double speedDif = 0.1;
     private static final double reverseSpeedDif = 0.3;
-    private static final long timeOn = 100;
+    private static final long timeOn = 125;
     private static final long timeReversed = 1;
     private boolean finished;
     private double speed;
@@ -38,7 +38,7 @@ public class FastTurnRobotDriveRight extends CommandBase {
     }
 
     protected void initialize() {
-        System.out.println("[FastTurnRight] Starting");
+        System.out.println("[FastTurnRight] Started");
         state = 0;
         finished = false;
         speed = groundDrive.getLastSpinMotion();

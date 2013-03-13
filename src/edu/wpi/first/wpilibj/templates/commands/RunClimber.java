@@ -36,6 +36,7 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
      */
     private int state = 0;
     private double speedMultiplier = 1;
+    private double speed = 0;
 
     private String getStateName() {
         if (state == 0) {
@@ -58,7 +59,6 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
     private boolean isDisabledState() {
         return state == 0 || state == 1;
     }
-    private double speed = 0;
 
     public RunClimber() {
         requires(climber);
@@ -97,19 +97,6 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
         }
     }
 
-    protected boolean isFinished() {
-        return false;
-    }
-
-    protected void end() {
-        climber.stop();
-        speed = 0;
-        RobotDebugger.push(this);
-        RobotDebugger.push(climber);
-        RobotDebugger.push(climberLimitSwitch);
-
-    }
-
     private void stateCheck() {
         if (DVstClimber.climberArmExtending()) {
         } else {
@@ -135,6 +122,19 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
                 }
             }
         }
+    }
+
+    protected boolean isFinished() {
+        return false;
+    }
+
+    protected void end() {
+        climber.stop();
+        speed = 0;
+        RobotDebugger.push(this);
+        RobotDebugger.push(climber);
+        RobotDebugger.push(climberLimitSwitch);
+
     }
 
     public void disable() {

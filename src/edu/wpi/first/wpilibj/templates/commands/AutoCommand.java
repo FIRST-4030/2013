@@ -44,6 +44,7 @@ public class AutoCommand extends CommandBase implements Debuggable {
      */
     private long lastShootTime;
     private long startTime;
+    private int numberOfTimesDVstPAtPressure;
 
     private String getReadableState() {
         if (state == -1) {
@@ -58,7 +59,6 @@ public class AutoCommand extends CommandBase implements Debuggable {
             return "\"" + state + "\"";
         }
     }
-    private int numberOfTimesDVstPAtPressure;
 
     private boolean readyToShoot() {
         if (DVstP.atPressure()) {

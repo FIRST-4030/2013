@@ -2,7 +2,6 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.templates.commands.RunShooterMotors;
 import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
 import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
@@ -12,8 +11,7 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
 /**
  * This is a SubSystem for the Shooter Motors, This should be controlled by
- * RunShooterMotors. The First motor will always by .75 times the speed of the
- * second motor.
+ * RunShooterMotors.
  */
 public final class ShooterMotors extends Subsystem implements Debuggable {
 
@@ -26,7 +24,6 @@ public final class ShooterMotors extends Subsystem implements Debuggable {
     }
 
     protected void initDefaultCommand() {
-        setDefaultCommand(new RunShooterMotors());
     }
 
     /**

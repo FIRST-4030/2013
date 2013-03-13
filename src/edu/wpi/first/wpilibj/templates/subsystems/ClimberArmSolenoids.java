@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstM;
  */
 public final class ClimberArmSolenoids extends Subsystem implements Debuggable {
 
-    private SolenoidPair climberArmSolenoids = new SolenoidPair(VstM.SOLENOID.CLIMBER_ARM_EXTENDING_SIDE, VstM.SOLENOID.CLIMBER_ARM_RETRACTING_SIDE);
+    private SolenoidPair climberArmSolenoids = new SolenoidPair(VstM.SOLENOID.CLIMBER_ARM_EXTENDING_SIDE, VstM.SOLENOID.CLIMBER_ARM_RETRACTING_SIDE, false);
 
     public ClimberArmSolenoids() {
         System.out.println("SubSystem Created: ClimberArmSolenoids");
@@ -36,6 +36,6 @@ public final class ClimberArmSolenoids extends Subsystem implements Debuggable {
     }
 
     public DebugOutput getStatus() {
-        return new InfoState("ClimberArmSolenoids", climberArmSolenoids.getState(), DebugLevel.MID);
+        return new InfoState("ClimberArmSolenoids", climberArmSolenoids.getState(), DebugLevel.HIGH);
     }
 }

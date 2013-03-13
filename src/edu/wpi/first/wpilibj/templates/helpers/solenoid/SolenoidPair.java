@@ -11,25 +11,25 @@ public class SolenoidPair {
     private Solenoid extendingSolenoid;
     private Solenoid retractingSolenoid;
     private boolean extending = false;
-    private boolean isStateSet = false;
 
-    public SolenoidPair(int extendingSolenoidPort, int retractingSolenoidPort) {
+    public SolenoidPair(int extendingSolenoidPort, int retractingSolenoidPort, boolean extendingFirst) {
         extendingSolenoid = new Solenoid(extendingSolenoidPort);
         retractingSolenoid = new Solenoid(retractingSolenoidPort);
+        extendingSolenoid.set(extendingFirst);
+        retractingSolenoid.set(!extendingFirst);
+        extending = extendingFirst;
     }
 
     public void extend() {
         retractingSolenoid.set(false);
         extendingSolenoid.set(true);
         extending = true;
-        isStateSet = true;
     }
 
     public void retract() {
         extendingSolenoid.set(false);
         retractingSolenoid.set(true);
         extending = false;
-        isStateSet = true;
     }
 
     public boolean isExtending() {
@@ -37,10 +37,6 @@ public class SolenoidPair {
     }
 
     public String getState() {
-        if (isStateSet) {
-            return extending ? "Extending" : "Retracting";
-        } else {
-            return "Not Set";
-        }
+        return extending ? "Extending" : "Retracting";
     }
 }

@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstM;
  */
 public class ClimberWedgeSolenoids extends Subsystem implements Debuggable {
 
-    private SolenoidPair climberWedgeSolenoids = new SolenoidPair(VstM.SOLENOID.CLIMBER_WEDGE_EXTENDING_SIDE, VstM.SOLENOID.CLIMBER_WEDGE_RETRACTING_SIDE);
+    private SolenoidPair climberWedgeSolenoids = new SolenoidPair(VstM.SOLENOID.CLIMBER_WEDGE_EXTENDING_SIDE, VstM.SOLENOID.CLIMBER_WEDGE_RETRACTING_SIDE, false);
 
     public ClimberWedgeSolenoids() {
         System.out.println("SubSystem Created: ClimberWedgeSolenoids");

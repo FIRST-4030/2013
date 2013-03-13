@@ -14,7 +14,7 @@ public class RobotDebugger {
     private static Hashtable dashTable = new Hashtable();
 
     private static void consolePush(String key, String value) {
-        System.out.println("[RD] " + key + ": " + value);
+        System.out.println("[Debugger] " + key + ": " + value);
     }
 
     private static void dashboardPush(String key, String value) {

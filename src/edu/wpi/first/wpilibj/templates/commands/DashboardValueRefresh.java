@@ -18,7 +18,6 @@ public class DashboardValueRefresh extends CommandBase {
     }
 
     protected void execute() {
-        DashboardStore.checkDebugLevelChanger();
         SmartDashboard.putString("TimeUpdate", String.valueOf(System.currentTimeMillis()));
         DVstCamera.setCameraPosition(DashboardStore.getCameraPosition());
         DVstClimber.setClimberEnabled(DashboardStore.getIsClimberEnabled());

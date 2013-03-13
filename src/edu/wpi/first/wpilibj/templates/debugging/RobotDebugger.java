@@ -13,11 +13,11 @@ public class RobotDebugger {
     private static Hashtable consoleTable = new Hashtable();
     private static Hashtable dashTable = new Hashtable();
 
-    private static void consolePush(String key, String value) {
+    private static void cRawPush(String key, String value) {
         System.out.println("[Debugger] " + key + ": " + value);
     }
 
-    private static void dashboardPush(String key, String value) {
+    private static void dRawPush(String key, String value) {
         SmartDashboard.putString(key, value);
     }
 
@@ -40,15 +40,15 @@ public class RobotDebugger {
                 oldConVal = dInfo.message();
             }
             if (oldConVal == null || !oldConVal.equals(val)) {
-                if (level > DebugLevel.CURRENT) {
-                    consolePush(key, val);
+                if (level >= DebugLevel.CURRENT) {
+                    cRawPush(key, val);
                 }
             }
             consoleTable.put(key, di);
         }
         if (di.isDashboard()) {
-            if (level > DebugLevel.CURRENT) {
-                dashboardPush(key, val);
+            if (level >= DebugLevel.CURRENT) {
+                dRawPush(key, val);
             }
             dashTable.put(key, di);
         }
@@ -84,7 +84,7 @@ public class RobotDebugger {
             String val = d.message();
             int level = d.debugLevel();
             if (level > DebugLevel.CURRENT) {
-                dashboardPush(key, val);
+                dRawPush(key, val);
             }
         }
     }

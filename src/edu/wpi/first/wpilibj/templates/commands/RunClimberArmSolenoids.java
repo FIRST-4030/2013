@@ -1,9 +1,5 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
-import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
-import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
-import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstClimber;
 import edu.wpi.first.wpilibj.templates.vstj.VstJ;
@@ -13,10 +9,7 @@ import edu.wpi.first.wpilibj.templates.vstj.VstJ;
  * VstJ.getClimberArmSolenoidToggleButtonValue(), as well as
  * DashboardStore.getClimberEnabled().
  */
-public class RunClimberArmSolenoids extends CommandBase implements Debuggable {
-
-    private boolean extending = false;
-    private String status = "No Status Set";
+public class RunClimberArmSolenoids extends CommandBase {
 
     public RunClimberArmSolenoids() {
         requires(climberArmSolenoids);
@@ -39,25 +32,14 @@ public class RunClimberArmSolenoids extends CommandBase implements Debuggable {
          * about a setting in the SmartDashboard.
          */
         if (DVstClimber.climberEnabled()) {
-            if (!extending) {
-                status = "Just Started";
-            }
             if (VstJ.getClimberArmStartToggleButtonValue()) {
-                extending = true;
+                climberArmSolenoids.extend();
+                RobotDebugger.push(climberArmSolenoids);
             }
         } else {
-            status = "Disabled";
-            extending = false;
-        }
-        if (extending) {
-            status = "Extending";
-            climberArmSolenoids.extend();
-        } else {
-            status = "Not Extending";
             climberArmSolenoids.retract();
+            RobotDebugger.push(climberArmSolenoids);
         }
-        RobotDebugger.push(climberArmSolenoids);
-        RobotDebugger.push(this);
     }
 
     protected boolean isFinished() {
@@ -65,11 +47,7 @@ public class RunClimberArmSolenoids extends CommandBase implements Debuggable {
     }
 
     protected void end() {
-        status = "Ended";
-        RobotDebugger.push(this);
-    }
-
-    public DebugOutput getStatus() {
-        return new InfoState("RunClimberArmSolenoid", status, DebugLevel.HIGH);
+        climberArmSolenoids.retract();
+        RobotDebugger.push(climberArmSolenoids);
     }
 }

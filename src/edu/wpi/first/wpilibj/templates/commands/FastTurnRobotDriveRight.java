@@ -38,7 +38,7 @@ public class FastTurnRobotDriveRight extends CommandBase {
     }
 
     protected void initialize() {
-        System.out.println("[FastTurnRight] Starting");
+        System.out.println("[FastTurnRight] Started");
         state = 0;
         finished = false;
         speed = groundDrive.getLastSpinMotion();

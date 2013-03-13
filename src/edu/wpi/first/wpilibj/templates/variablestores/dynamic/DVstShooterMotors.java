@@ -32,7 +32,7 @@ public class DVstShooterMotors {
 
     public static void addPercentage(int percentage, ShooterMotors shooterMotor) {
         if (percentage != 0) {
-            if (percentage != MAX_SPEED) {
+            if (percentage > 0) {
                 if (speedPercentage != MAX_SPEED) {
                     if (speedPercentage + percentage > MAX_SPEED) {
                         speedPercentage = MAX_SPEED;
@@ -43,7 +43,7 @@ public class DVstShooterMotors {
                     pushState();
                 }
             } else {
-                if (percentage != 0) {
+                if (speedPercentage != 0) {
                     if (speedPercentage + percentage < 0) {
                         speedPercentage = 0;
                     } else {

@@ -25,13 +25,10 @@ public class RobotMain extends IterativeRobot {
     }
 
     public void autonomousInit() {
-        auto.newValues();
+        auto.reInitValues();
         auto.start();
     }
 
-    /**
-     * This function is called periodically during autonomous
-     */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
     }
@@ -40,16 +37,10 @@ public class RobotMain extends IterativeRobot {
         auto.cancel();
     }
 
-    /**
-     * This function is called periodically during operator control.
-     */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
     }
 
-    /**
-     * This function is called periodically during test mode.
-     */
     public void testPeriodic() {
         LiveWindow.run();
     }
@@ -58,14 +49,20 @@ public class RobotMain extends IterativeRobot {
     }
 
     public void disabledInit() {
-        RobotDebugger.reMap();
+        auto.cancel();
         for (int i = 0; i < list.length; i++) {
             list[i].disable();
         }
+        RobotDebugger.reMap();
         DashboardStore.reCreate();
     }
     private static DisableNotifable[] list = new DisableNotifable[0];
 
+    /**
+     * Add a DisableNotifable to be notified when the robot is disabled. When
+     * the robot is disabled RobotMain will go through these classes and run
+     * each of their disable() methods.
+     */
     public static void addDisableNotifable(DisableNotifable d) {
         for (int i = 0; i < list.length; i++) {
             if (list[i] == d) {

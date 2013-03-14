@@ -1,10 +1,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.templates.debugging.DebugInfo;
-import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
-import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
@@ -18,71 +15,74 @@ import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstP;
 public class AutoCommand extends CommandBase implements Debuggable {
 
     /**
-     * This is how long the shooter is retracting the solenoid before it extends
-     * it again.
+     * This is how long the robot should keep the solenoid extended before
+     * retracting it again (In milliseconds).
      */
-    private static final long timeForSolenoidToExtend = 500;
+    private static final long timeSolenoidExtendedMillis = 500;
     /**
-     * This is how long the robot should wait after shooting once before
-     * shooting again (in milliseconds). This should be at least twice as big as
-     * timeForSolenoidToExtend.
+     * This is how long the robot should keep the solenoid retracted before
+     * extending it again (In milliseconds).
      */
-    private static final long timeBetweenShots = 1000;
-    private static final long timeTillFirst = 5000;
-    private static final long maxWaitTime = 10000;
-    private boolean isFinished = false;
+    private static final long timeSolenoidRetractedMillis = 1000;
+    /**
+     * This is the minimum amount of time the robot will wait before shooting
+     * first time (In milliseconds).
+     */
+    private static final long timeTillFirstMillis = 5000;
+    /**
+     * This is the maximum amount of time the robot will wait before shooting
+     * first time (In milliseconds).
+     */
+    private static final long maxWaitTimeMillis = 10000;
     /**
      * 0 is just started.
      *
-     * 1 is shooter charged.
+     * 1 is solenoid retracted.
      *
-     * 2 is shooting/solenoid extending.
+     * 2 is solenoid extended.
      */
     private int state = 0;
     /**
-     * This is the start time when the robot last shot.
+     * This is the start time when the robot last changed state (Extended or
+     * Retracted the solenoid).
      */
-    private long lastShootTime;
+    private long lastStateChangeTime;
     private long startTime;
-    private int numberOfTimesDVstPAtPressure;
 
     private String getReadableState() {
-        if (state == -1) {
-            return "Not Run Yet";
-        } else if (state == 0) {
+        if (state == 0) {
             return "Speeding Up";
         } else if (state == 1) {
-            return "Shooter Charged";
+            return "Solenoid Retracting";
         } else if (state == 2) {
             return "Solenoid Extending";
         } else {
-            return "\"" + state + "\"";
+            return "?\"" + state + "\"?";
         }
     }
 
-    private boolean readyToShoot() {
-        if (DVstP.atPressure()) {
-            numberOfTimesDVstPAtPressure++;
-        }
-        long now = System.currentTimeMillis();
-        return (now > startTime + maxWaitTime) ? true : ((now < startTime + timeTillFirst) ? false : (numberOfTimesDVstPAtPressure > 2));
-    }
-
-    private long getTimeTillNextAction() {
-        if (state == -1) {
-            return -1;
-        } else if (state == 0) {
-            return readyToShoot() ? 0 : 42;
-        } else if (state == 1) {
-            return (lastShootTime + timeBetweenShots) - System.currentTimeMillis();
-        } else if (state == 2) {
-            return (lastShootTime + timeForSolenoidToExtend) - System.currentTimeMillis();
-        }
-        return -1;
+    /**
+     * First check if the minimum time before shooting has passed. If it hasn't,
+     * then return false. Otherwise, if the maximum time has passed, return
+     * true. Otherwise, if the time is at least minimum and not yet maximum
+     * waiting time, return whether or not the compression system is at
+     * pressure.
+     */
+    private boolean isReadyToShoot() {
+        long timeSinceStart = System.currentTimeMillis() - startTime;
+        return (timeSinceStart < timeTillFirstMillis) ? false : ((timeSinceStart > maxWaitTimeMillis) ? true : DVstP.atPressure());
     }
 
     private boolean readyForNextAction() {
-        return getTimeTillNextAction() <= 0;
+        if (state == 0) {
+            return isReadyToShoot();
+        } else if (state == 1) {
+            return System.currentTimeMillis() - lastStateChangeTime <= timeSolenoidRetractedMillis;
+        } else if (state == 2) {
+            return System.currentTimeMillis() - lastStateChangeTime <= timeSolenoidExtendedMillis;
+        }
+        System.out.println("[AutoCommand] readyForNextAction() called while state is " + state);
+        return true;
     }
 
     public AutoCommand() {
@@ -91,74 +91,65 @@ public class AutoCommand extends CommandBase implements Debuggable {
         requires(shooterSolenoids);
     }
 
-    public void newValues() {
+    public void reInitValues() {
         initialize();
     }
 
     protected void initialize() {
-        startTime = System.currentTimeMillis();
         setState(0);
-        numberOfTimesDVstPAtPressure = 0;
         groundDrive.stop();
         shooterSolenoids.extend();
         shooterMotors.setSpeed(1.0);
     }
 
     protected void execute() {
-        if (state == -1) {
-            throw new Error("STATE IS -1");
-        } else if (state == 0) {
+        if (state == 0) {
             if (readyForNextAction()) {
                 setState(1);
             }
         } else if (state == 1) {
             if (readyForNextAction()) {
                 setState(2);
-            } else {
-                shooterSolenoids.retract();
             }
         } else if (state == 2) {
             if (readyForNextAction()) {
                 setState(1);
-            } else {
-                shooterSolenoids.extend();
             }
         }
-        RobotDebugger.push(this);
     }
 
     /**
      * Sets the state variable, as well as does some changes to other variables
-     * according to which state.
-     * if(state==1)lastShootTime=System.currentTimeMillis();
-     * if(state==2)shotsShot++;
+     * according to which state. This calls shooterSolenoids.retract() if
+     * setState is 1, and shooterSolenoids.extend() if setState is 2. This also
+     * calls RobotDebugger.push(this).
      */
-    private void setState(int state) {
-        if (state < 0 || state > 2) {
+    private void setState(int setState) {
+        if (setState == 0) {
+            startTime = System.currentTimeMillis();
+        } else if (setState == 1) {
+            lastStateChangeTime = System.currentTimeMillis();
+            shooterSolenoids.retract();
+        } else if (setState == 2) {
+            lastStateChangeTime = System.currentTimeMillis();
+            shooterSolenoids.extend();
+        } else {
             throw new IllegalArgumentException("Invalid State");
         }
-        if (state == 0) {
-        } else if (state == 1) {
-            lastShootTime = System.currentTimeMillis();
-        } else if (state == 2) {
-            lastShootTime = System.currentTimeMillis();
-        } else {
-            System.out.println("INVALID STATE IN AUTO COMMAND!");
-            return;
-        }
-        this.state = state;
+        this.state = setState;
+        RobotDebugger.push(this);
     }
 
     protected boolean isFinished() {
-        return isFinished;
+        return false;
     }
 
     protected void end() {
+        shooterMotors.setSpeed(0);
+        setState(0);
     }
 
     public DebugOutput getStatus() {
-        return new DebugInfoGroup(new DebugInfo[]{
-            new InfoState("AutoCommand", getReadableState(), DebugLevel.ALWAYS),
-            new DebugStatus("AutoCommand:TimeTillNextAction", getTimeTillNextAction(), DebugLevel.ALWAYS)});
+        return new InfoState("AutoCommand", getReadableState(), DebugLevel.HIGH);
     }
 }

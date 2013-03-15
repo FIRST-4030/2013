@@ -10,32 +10,33 @@ import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
 /**
- * This is the Climber Motor SubSystem. It moves the "cart" up and down the
+ * This is the ClimberMotors SubSystem. It moves the "cart" up and down the
  * ladder on the robot.
  */
-public final class Climber extends Subsystem implements Debuggable {
+public final class ClimberMotors extends Subsystem implements Debuggable {
 
-    public Climber() {
+    private Jaguar climberMotors = new Jaguar(VstM.PWM.CLIMBER_MOTOR_PORT);
+
+    public ClimberMotors() {
         System.out.println("SubSystem Created: Climber");
     }
-    private Jaguar climber = new Jaguar(VstM.PWM.CLIMBER_MOTOR_PORT);
 
     public void initDefaultCommand() {
         setDefaultCommand(new RunClimber());
     }
 
-    public void runLadder(double speed) {
+    public void runLadder(final double speed) {
         if (speed < -1 || speed > 1) {
             throw new IllegalArgumentException("To High/Low a value passed in runLadder(double)");
         }
-        climber.set(speed);
+        climberMotors.set(speed);
     }
 
     public void stop() {
-        climber.stopMotor();
+        climberMotors.stopMotor();
     }
 
     public DebugOutput getStatus() {
-        return new DebugStatus("Climber:Speed", climber.get(), DebugLevel.MID);
+        return new DebugStatus("ClimberMotors:Speed", climberMotors.get(), DebugLevel.MID);
     }
 }

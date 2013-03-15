@@ -1,4 +1,4 @@
-package edu.wpi.first.wpilibj.templates.variablestores;
+package edu.wpi.first.wpilibj.templates.unused;
 
 /**
  * This is the variable store for Field information.

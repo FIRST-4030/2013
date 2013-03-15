@@ -24,7 +24,7 @@ public final class FrisbeeDumperSolenoids extends Subsystem implements Debuggabl
         //setDefaultCommand(new OldRunFrisbeeDumperSolenoid());
     }
 
-    public void expand() {
+    public void extend() {
         frisbeeDumperSolenoids.extend();
     }
 
@@ -33,6 +33,6 @@ public final class FrisbeeDumperSolenoids extends Subsystem implements Debuggabl
     }
 
     public DebugOutput getStatus() {
-        return new InfoState("FrisbeeDumperSolenoids", frisbeeDumperSolenoids.getState(), DebugLevel.MID);
+        return new InfoState("FrisbeeDumperSolenoids:Retracted", frisbeeDumperSolenoids.getState(), DebugLevel.MID);
     }
 }

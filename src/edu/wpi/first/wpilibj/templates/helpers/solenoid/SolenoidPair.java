@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.Solenoid;
  */
 public class SolenoidPair {
 
-    private Solenoid extendingSolenoid;
-    private Solenoid retractingSolenoid;
-    private boolean extending = false;
+    private final Solenoid extendingSolenoid;
+    private final Solenoid retractingSolenoid;
+    private boolean extending;
 
     public SolenoidPair(int extendingSolenoidPort, int retractingSolenoidPort, boolean extendingFirst) {
         extendingSolenoid = new Solenoid(extendingSolenoidPort);

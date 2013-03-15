@@ -1,6 +1,7 @@
 package edu.wpi.first.wpilibj.templates.variablestores.dynamic;
 
 /**
+ * Dynamic Camera (Motor) Variable Store.
  *
  * @author daboross
  */
@@ -11,10 +12,16 @@ public class DVstCamera {
      */
     private static boolean cameraPosition;
 
-    public static void setCameraPosition(final boolean cameraPositionV) {
-        cameraPosition = cameraPositionV;
+    /**
+     * False is left, true is right.
+     */
+    public static void setCameraPosition(final boolean cameraPositionSet) {
+        cameraPosition = cameraPositionSet;
     }
 
+    /**
+     * False is left, true is right.
+     */
     public static boolean cameraPosition() {
         return cameraPosition;
     }

@@ -1,5 +1,6 @@
-package edu.wpi.first.wpilibj.templates.commands;
+package edu.wpi.first.wpilibj.templates.unused;
 
+import edu.wpi.first.wpilibj.templates.commands.CommandBase;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
@@ -22,17 +23,17 @@ public class OldRunFrisbeeDumperSolenoid extends CommandBase implements Debuggab
     }
 
     protected void initialize() {
-        frisbeeDumperSolenoids.expand();
+        frisbeeDumperSolenoids.extend();
         RobotDebugger.push(this);
     }
 
     protected void execute() {
         if (DVstClimber.climberEnabled()) {
-            if (VstJ.getFrisbeeDumpButtonValue()) {
+            if (VstJ.getFrisbeeDumpButton().get()) {
                 frisbeeDumperSolenoids.retract();
                 state = "Retracting";
-            } else if (VstJ.getFrisbeeUnDumpButtonValue()) {
-                frisbeeDumperSolenoids.expand();
+            } else if (VstJ.getFrisbeeUnDumpButton().get()) {
+                frisbeeDumperSolenoids.extend();
                 state = "Expanding";
             }
         } else {

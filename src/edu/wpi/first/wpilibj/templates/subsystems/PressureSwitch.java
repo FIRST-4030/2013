@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
-import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstP;
+import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstPressure;
 
 /**
  * SubSystem for reading the PressureSwitch and outputting to VstP.
@@ -18,13 +18,14 @@ import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstP;
  */
 public class PressureSwitch extends Subsystem implements Debuggable {
 
-    public PressureSwitch() {
-        System.out.println("SubSystem Created: PressureSwitch");
-    }
     /**
      * This is a Digital Pressure Switch.
      */
-    DigitalInput pSwitch = new DigitalInput(VstM.DIGITAL_IO.PRESSURE_SWITCH);
+    private final DigitalInput pSwitch = new DigitalInput(VstM.DIGITAL_IO.PRESSURE_SWITCH);
+
+    public PressureSwitch() {
+        System.out.println("SubSystem Created: PressureSwitch");
+    }
 
     public void initDefaultCommand() {
         setDefaultCommand(new ReadPressureSwitch());
@@ -32,15 +33,15 @@ public class PressureSwitch extends Subsystem implements Debuggable {
 
     /**
      * This function checks with the Pressure Switch configured in VstM.Digital,
-     * and sets VstP.atPressure().
+     * and sets VstP.atPressure(). This Does auto-push the class.
      */
     public void checkPressure() {
         // Switch is normally closed, so invert the reading
-        DVstP.setAtPressure(!pSwitch.get());
+        DVstPressure.setAtPressure(!pSwitch.get());
         RobotDebugger.push(this);
     }
 
     public DebugOutput getStatus() {
-        return new DebugStatus("PressureSwitch:AtPressure", DVstP.atPressure(), DebugLevel.MID);
+        return new DebugStatus("PressureSwitch:AtPressure", DVstPressure.atPressure(), DebugLevel.MID);
     }
 }

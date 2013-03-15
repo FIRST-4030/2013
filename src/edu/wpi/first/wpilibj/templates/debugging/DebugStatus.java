@@ -26,7 +26,7 @@ public class DebugStatus extends DebugInfo {
         if (key == null || message == null) {
             throw new IllegalArgumentException("No Null Arguments");
         }
-        this.key = key + ":Status";
+        this.key = key;
         this.message = message;
         this.level = level;
     }
@@ -38,7 +38,7 @@ public class DebugStatus extends DebugInfo {
         if (key == null) {
             throw new IllegalArgumentException("No Null Arguments");
         }
-        this.key = key + ":Status";
+        this.key = key;
         this.message = String.valueOf(HM.round(100, value));
         this.level = level;
     }
@@ -50,7 +50,7 @@ public class DebugStatus extends DebugInfo {
         if (key == null) {
             throw new IllegalArgumentException("No Null Arguments");
         }
-        this.key = key + ":Status";
+        this.key = key;
         this.message = String.valueOf(value);
         this.level = level;
     }
@@ -62,7 +62,7 @@ public class DebugStatus extends DebugInfo {
         if (key == null) {
             throw new IllegalArgumentException("No Null Arguments");
         }
-        this.key = key + ":Status";
+        this.key = key;
         this.message = value ? "Yes" : "No";
         this.level = level;
     }

@@ -1,5 +1,6 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstClimber;
 
 /**
@@ -19,6 +20,7 @@ public class ReadLimitSwitches extends CommandBase {
         DVstClimber.LimitSwitches.setDeploy(climberLimitSwitch.readDeploy());
         DVstClimber.LimitSwitches.setUpper(climberLimitSwitch.readUpper());
         DVstClimber.LimitSwitches.setLower(climberLimitSwitch.readLower());
+        RobotDebugger.push(climberLimitSwitch);
     }
 
     protected boolean isFinished() {
@@ -26,6 +28,6 @@ public class ReadLimitSwitches extends CommandBase {
     }
 
     protected void end() {
-        System.out.println("WARNING: ReadLimitSwitches Ended!");
+        System.out.println("[WARNING] ReadLimitSwitches Ended!");
     }
 }

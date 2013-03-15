@@ -1,10 +1,10 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstP;
+import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstPressure;
 
 /**
- * This Command continously checks whether or not DVstP.atPressure(), and sets
- * the Compressor state accordingly.
+ * This Command continously checks whether or not DVstPressure.atPressure(), and
+ * sets the Compressor state accordingly.
  */
 public class RunCompressor extends CommandBase {
 
@@ -17,7 +17,7 @@ public class RunCompressor extends CommandBase {
     }
 
     protected void execute() {
-        if (DVstP.atPressure()) {
+        if (DVstPressure.atPressure()) {
             compressor.stop();
         } else {
             compressor.start();

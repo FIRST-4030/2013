@@ -15,7 +15,7 @@ public abstract class CommandBase extends Command {
      */
     protected static Compressor compressor;
     protected static Camera mainCamera;
-    protected static Climber climber;
+    protected static ClimberMotors climber;
     protected static PressureSwitch pressureSwitch;
     protected static GroundDrive groundDrive;
     protected static ClimberLimitSwitch climberLimitSwitch;
@@ -29,7 +29,6 @@ public abstract class CommandBase extends Command {
      * Commands.
      */
     protected static DashboardValueRefresh dashboardValueRefresh;
-    protected static ReadLimitSwitches readLimitSwitches;
 
     public static void init() {
         //Commands
@@ -46,7 +45,7 @@ public abstract class CommandBase extends Command {
         //SubSystems:Switches:
         climberLimitSwitch = new ClimberLimitSwitch();
         //SubSystems:Motors:
-        climber = new Climber();
+        climber = new ClimberMotors();
         groundDrive = new GroundDrive();
         cameraServo = new CameraServo();
         shooterMotors = new ShooterMotors();

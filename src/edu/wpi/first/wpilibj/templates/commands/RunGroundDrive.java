@@ -47,7 +47,7 @@ public class RunGroundDrive extends CommandBase implements Debuggable {
     }
 
     private void updateHighSpeed() {
-        if (VstJ.getDriveSpeedToggleButtonValue() != highSpeedLastPressed) {
+        if (VstJ.getDriveSpeedToggleButton().get() != highSpeedLastPressed) {
             if (!highSpeedLastPressed) {
                 highSpeed = !highSpeed;
             }
@@ -56,7 +56,7 @@ public class RunGroundDrive extends CommandBase implements Debuggable {
     }
 
     private void updateReversed() {
-        if (VstJ.getDriveControlReverseButtonValue() != reversedLastPressed) {
+        if (VstJ.getDriveControlReverseButton().get() != reversedLastPressed) {
             if (!reversedLastPressed) {
                 reversed = !reversed;
             }
@@ -77,6 +77,5 @@ public class RunGroundDrive extends CommandBase implements Debuggable {
             new InfoState("GroundDrive:Command:Speed", highSpeed ? "High" : "Low", DebugLevel.HIGHEST),
             new InfoState("GroundDrive:Command:Reversed", reversed ? "Yes" : "No", DebugLevel.HIGHEST)
         });
-
     }
 }

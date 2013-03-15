@@ -19,7 +19,7 @@ public class FrisbeeDumperSolenoidExtend extends CommandBase {
     }
 
     protected void execute() {
-        frisbeeDumperSolenoids.expand();
+        frisbeeDumperSolenoids.extend();
         RobotDebugger.push(frisbeeDumperSolenoids);
         isFinished = true;
     }

@@ -11,40 +11,48 @@ import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
 /**
- * This is a sub system that reads 2 different Digital Inputs which are the top
- * and bottom limit of the climber. These Digital Inputs are currently not on
- * the Robot.
+ * This is a sub system that reads 3 different Digital limit switch Inputs which
+ * are the top, bottom and middle of the climber.
  */
 public class ClimberLimitSwitch extends Subsystem implements Debuggable {
 
     public ClimberLimitSwitch() {
         System.out.println("SubSystem Created: ClimberLimitSwitch");
     }
-    private DigitalInput lowerLimit = new DigitalInput(VstM.DIGITAL_IO.CLIMBER_LOWER_LIMIT_SWITCH);
-    private DigitalInput upperLimit = new DigitalInput(VstM.DIGITAL_IO.CLIMBER_UPPER_LIMIT_SWITCH);
-    private DigitalInput deploySwitch = new DigitalInput(VstM.DIGITAL_IO.CLIMBER_DEPLOY_LIMIT_SWITCH);
+    private final DigitalInput lowerSwitch = new DigitalInput(VstM.DIGITAL_IO.CLIMBER_LOWER_LIMIT_SWITCH);
+    private final DigitalInput upperSwitch = new DigitalInput(VstM.DIGITAL_IO.CLIMBER_UPPER_LIMIT_SWITCH);
+    private final DigitalInput deploySwitch = new DigitalInput(VstM.DIGITAL_IO.CLIMBER_DEPLOY_LIMIT_SWITCH);
+    private boolean upperLast;
+    private boolean lowerLast;
+    private boolean deployLast;
 
     public void initDefaultCommand() {
         setDefaultCommand(new ReadLimitSwitches());
     }
 
     public boolean readUpper() {
-        return upperLimit.get();
+        final boolean value = upperSwitch.get();
+        upperLast = value;
+        return value;
     }
 
     public boolean readLower() {
-        return lowerLimit.get();
+        final boolean value = lowerSwitch.get();
+        lowerLast = value;
+        return value;
     }
 
     public boolean readDeploy() {
-        return deploySwitch.get();
+        final boolean value = deploySwitch.get();
+        deployLast = value;
+        return value;
     }
 
     public DebugOutput getStatus() {
         DebugStatus[] infoList = new DebugStatus[3];
-        infoList[0] = new DebugStatus("ClimberLimitSwitch:UpperLimit:Triggered", upperLimit.get(), DebugLevel.MID);
-        infoList[1] = new DebugStatus("ClimberLimitSwitch:LowerLimit:Triggered", lowerLimit.get(), DebugLevel.MID);
-        infoList[2] = new DebugStatus("ClimberLimitSwitch:DeploySwitch:Triggered", lowerLimit.get(), DebugLevel.MID);
+        infoList[0] = new DebugStatus("ClimberLimitSwitch:UpperSwitch", upperLast, DebugLevel.HIGH);
+        infoList[1] = new DebugStatus("ClimberLimitSwitch:LowerSwitch", lowerLast, DebugLevel.HIGH);
+        infoList[2] = new DebugStatus("ClimberLimitSwitch:DeploySwitch", deployLast, DebugLevel.HIGH);
         DebugInfoGroup infoGroup = new DebugInfoGroup(infoList);
         return infoGroup;
     }

@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
-import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstP;
+import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstPressure;
 
 /**
  * Autonomous Command.
@@ -70,7 +70,7 @@ public class AutoCommand extends CommandBase implements Debuggable {
      */
     private boolean isReadyToShoot() {
         long timeSinceStart = System.currentTimeMillis() - startTime;
-        return (timeSinceStart < timeTillFirstMillis) ? false : ((timeSinceStart > maxWaitTimeMillis) ? true : DVstP.atPressure());
+        return (timeSinceStart < timeTillFirstMillis) ? false : ((timeSinceStart > maxWaitTimeMillis) ? true : DVstPressure.atPressure());
     }
 
     private boolean readyForNextAction() {

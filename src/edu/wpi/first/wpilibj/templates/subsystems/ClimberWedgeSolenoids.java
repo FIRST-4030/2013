@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.templates.helpers.solenoid.SolenoidPair;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
 /**
+ * Solenoids for Climber 'Wedgies'.
  *
  * @author daboross
  */

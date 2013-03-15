@@ -14,24 +14,20 @@ import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
  */
 public final class DashboardStore {
 
-    private static BooleanDashObject isClimberEnabledObject;
+    private static final BooleanDashObject isClimberEnabledObject;
     /**
      * False is left, true is right.
      */
-    private static BooleanDashObject cameraPosition;
+    private static final BooleanDashObject cameraPosition;
 
     static {
         isClimberEnabledObject = new BooleanDashObject("aIsClimberEnabled", "Enable Climber", "Disable Climber", false);
-        RobotDebugger.push(new InfoState("Climber:Enabled", "No", DebugLevel.ALWAYS));
-
         cameraPosition = new BooleanDashObject("aCameraPosition", "Camera Left", "Camera Right", true);
-        RobotDebugger.push(new InfoState("Camera:Position", "Camera Left", DebugLevel.ALWAYS));
-
-        SmartDashboard.putNumber("Climber Speed Multiplier", 1.0);
+        SmartDashboard.putNumber("Climber Speed Multiplier Setter", 1.0);
     }
 
     public static double getClimberSpeedMultiplier() {
-        return SmartDashboard.getNumber("Climber Speed Multiplier");
+        return SmartDashboard.getNumber("Climber Speed Multiplier Setter");
 
     }
 
@@ -52,5 +48,6 @@ public final class DashboardStore {
 
     public static void reCreate() {
         cameraPosition.reCreate();
+        isClimberEnabledObject.reCreate();
     }
 }

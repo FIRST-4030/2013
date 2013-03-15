@@ -6,12 +6,14 @@ import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstCamera;
 import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstClimber;
 
 /**
+ * Command to refresh values on and from the SmartDashboard.
  *
  * @author daboross
  */
 public class DashboardValueRefresh extends CommandBase {
 
     public DashboardValueRefresh() {
+        SmartDashboard.putString("TimeUpdate", "-42");
     }
 
     protected void initialize() {
@@ -28,6 +30,6 @@ public class DashboardValueRefresh extends CommandBase {
     }
 
     protected void end() {
-        SmartDashboard.putString("TimeUpdate", "Disabled!!!");
+        SmartDashboard.putString("TimeUpdate", "-42?");
     }
 }

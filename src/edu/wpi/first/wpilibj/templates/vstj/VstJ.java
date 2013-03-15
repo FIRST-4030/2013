@@ -12,7 +12,7 @@ public class VstJ {
 
     protected static void joyStickInit() {
         joySticks = new Joystick[2];
-        for (int i = 1; i < joySticks.length; i++) {
+        for (int i = 0; i < joySticks.length; i++) {
             joySticks[i] = new Joystick(i + 1);
         }
     }

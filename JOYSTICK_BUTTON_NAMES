@@ -1,0 +1,15 @@
+BUTTON:
+    TOP_OF_JOYSTICK:
+         TRIGGER = 1;
+         BOTTOM = 2;
+         MIDDLE = 3;
+         LEFT = 4;
+         RIGHT = 5;
+     
+    STAND_OF_JOYSTICK:
+         LEFT_TOP = 6;
+         LEFT_BOTTOM = 7;
+         BOTTOM_LEFT = 8;
+         BOTTOM_RIGHT = 9;
+         RIGHT_BOTTOM = 10;
+         RIGHT_TOP = 11;

@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.ShooterMotors;
 public class DVstShooterMotors {
 
     private static final int REGULAR_CHANGE = 5;
-    private static final int MAX_SPEED = 60;
+    private static final int MAX_SPEED = 100;
 
     static {
         Notif n = new Notif();

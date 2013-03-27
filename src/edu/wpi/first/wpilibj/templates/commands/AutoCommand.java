@@ -77,9 +77,9 @@ public class AutoCommand extends CommandBase implements Debuggable {
         if (state == 0) {
             return isReadyToShoot();
         } else if (state == 1) {
-            return System.currentTimeMillis() - lastStateChangeTime <= timeSolenoidRetractedMillis;
+            return System.currentTimeMillis() - lastStateChangeTime >= timeSolenoidRetractedMillis;
         } else if (state == 2) {
-            return System.currentTimeMillis() - lastStateChangeTime <= timeSolenoidExtendedMillis;
+            return System.currentTimeMillis() - lastStateChangeTime >= timeSolenoidExtendedMillis;
         }
         System.out.println("[AutoCommand] readyForNextAction() called while state is " + state);
         return true;

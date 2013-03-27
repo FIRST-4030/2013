@@ -43,10 +43,6 @@ public class VstJ {
         return getJoystick(FV.SHOOTER_JOYSTICK);
     }
 
-    public static double getClimberWedgeSolenoidControlAxisValue() {
-        return getJoystickAxis(Mappings.climberWedgeSolenoidControlAxisJoystickNumber, Mappings.climberWedgeSolenoidControlAxisNumber);
-    }
-
     public static double getLadderControlAxisValue() {
         return getJoystickAxis(Mappings.ladderControlAxisJoystickNumber, Mappings.ladderControlAxisNumber);
     }
@@ -91,6 +87,14 @@ public class VstJ {
         return getJoystickButton(Mappings.groundDriveFastTurnRightButtonJoystickNumber, Mappings.groundDriveFastTurnRightButtonNumber);
     }
 
+    public static JoystickButton getClimberWedgeSolenoidsOnButton() {
+        return getJoystickButton(Mappings.climberWedgeSolenoidsOnButtonJoystickNumber, Mappings.climberWedgeSolenoidsOnButtonNumber);
+    }
+
+    public static JoystickButton getClimberWedgeSolenoidsOffButton() {
+        return getJoystickButton(Mappings.climberWedgeSolenoidsOffButtonJoystickNumber, Mappings.climberWedgeSolenoidsOffButtonNumber);
+    }
+
     /**
      * Mappings for joysticks.
      */
@@ -117,9 +121,6 @@ public class VstJ {
         private static final int driveControlReverseButtonJoystickNumber = FV.DRIVE_JOYSTICK;
         private static final int driveControlReverseButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.BOTTOM;
         //
-        private static final int climberWedgeSolenoidControlAxisJoystickNumber = FV.DRIVE_JOYSTICK;
-        private static final int climberWedgeSolenoidControlAxisNumber = FV.AXIS.Y;
-        //
         private static final int frisbeeDumpButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
         private static final int frisbeeDumpButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.RIGHT_TOP;
         //
@@ -131,5 +132,11 @@ public class VstJ {
         //
         private static final int groundDriveFastTurnRightButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.RIGHT;
         private static final int groundDriveFastTurnRightButtonJoystickNumber = FV.DRIVE_JOYSTICK;
+        //
+        private static final int climberWedgeSolenoidsOnButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.RIGHT_TOP;
+        private static final int climberWedgeSolenoidsOnButtonJoystickNumber = FV.DRIVE_JOYSTICK;
+        //
+        private static final int climberWedgeSolenoidsOffButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.RIGHT_BOTTOM;
+        private static final int climberWedgeSolenoidsOffButtonJoystickNumber = FV.DRIVE_JOYSTICK;
     }
 }

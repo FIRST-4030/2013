@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
-import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstClimber;
 import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
@@ -34,14 +33,10 @@ public class RunGroundDrive extends CommandBase implements Debuggable {
     }
 
     protected void execute() {
-        if (DVstClimber.climberEnabled()) {
-            groundDrive.driveWithRaw(-0.5, 0);
-        } else {
-            updateHighSpeed();
-            updateReversed();
-            groundDrive.setSpeedMutliplier(highSpeed ? 1 : 0.7, reversed);
-            groundDrive.driveWithDefaultController();
-        }
+        updateHighSpeed();
+        updateReversed();
+        groundDrive.setSpeedMutliplier(highSpeed ? 1 : 0.7, reversed);
+        groundDrive.driveWithDefaultController();
         RobotDebugger.push(groundDrive);
         RobotDebugger.push(this);
     }

@@ -2,6 +2,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.templates.subsystems.*;
+import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstShooterMotors;
 import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
@@ -29,6 +30,10 @@ public abstract class CommandBase extends Command {
      * Commands.
      */
     protected static DashboardValueRefresh dashboardValueRefresh;
+    /**
+     * Shooter Motor Handler.
+     */
+    protected static DVstShooterMotors dVstShooterMotors;
 
     public static void init() {
         //Commands
@@ -55,10 +60,12 @@ public abstract class CommandBase extends Command {
         VstJ.getGroundDriveFastTurnLeftButton().whenPressed(new FastTurnRobotDriveLeft());
         VstJ.getGroundDriveFastTurnRightButton().whenPressed(new FastTurnRobotDriveRight());
         VstJ.getShooterSolenoidPushButton().whenPressed(new RunShooterSolenoids());
-        VstJ.getShooterMotorSpeedDownButton().whenPressed(new ShooterMotorSpeedDown());
-        VstJ.getShooterMotorSpeedUpButton().whenPressed(new ShooterMotorSpeedUp());
+        VstJ.getShooterMotorOffButton().whenPressed(new ShooterMotorSpeedOff());
+        VstJ.getShooterMotorOnButton().whenPressed(new ShooterMotorSpeedOn());
         VstJ.getFrisbeeDumpButton().whenPressed(new FrisbeeDumperSolenoidRetract());
         VstJ.getFrisbeeUnDumpButton().whenPressed(new FrisbeeDumperSolenoidExtend());
+        //Shooter Motor Handler
+        dVstShooterMotors = new DVstShooterMotors(shooterMotors);
     }
 
     public CommandBase(String name) {

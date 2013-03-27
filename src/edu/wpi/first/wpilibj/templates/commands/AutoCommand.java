@@ -17,7 +17,7 @@ public class AutoCommand extends CommandBase implements Debuggable {
     /**
      * This speed of the shooter motors.
      */
-    private final double SHOOTER_SPEED = .6;
+    private final double SHOOTER_SPEED = 0.4;
     /**
      * This is how long the robot should keep the solenoid extended before
      * retracting it again (In milliseconds).

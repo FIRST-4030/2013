@@ -1,16 +1,14 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstShooterMotors;
-
 /**
  *
  * @author daboross
  */
-public class ShooterMotorSpeedUp extends CommandBase {
+public class ShooterMotorSpeedOn extends CommandBase {
 
     private boolean isFinished;
 
-    public ShooterMotorSpeedUp() {
+    public ShooterMotorSpeedOn() {
         requires(shooterMotors);
     }
 
@@ -19,7 +17,7 @@ public class ShooterMotorSpeedUp extends CommandBase {
     }
 
     protected void execute() {
-        DVstShooterMotors.addRegularAmount(shooterMotors);
+        dVstShooterMotors.turnOn();
         isFinished = true;
     }
 

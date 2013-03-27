@@ -3,7 +3,9 @@ package edu.wpi.first.wpilibj.templates.variablestores.dynamic;
 import edu.wpi.first.wpilibj.templates.DisableNotifable;
 import edu.wpi.first.wpilibj.templates.RobotMain;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
+import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
+import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.subsystems.ShooterMotors;
 
@@ -11,64 +13,45 @@ import edu.wpi.first.wpilibj.templates.subsystems.ShooterMotors;
  *
  * @author daboross
  */
-public class DVstShooterMotors {
+public class DVstShooterMotors implements Debuggable {
 
-    private static final int REGULAR_CHANGE = 5;
-    private static final int MAX_SPEED = 60;
+    private static final double ON_SPEED = 0.4;
+    private boolean on;
+    private final ShooterMotors shooterMotors;
 
-    static {
+    public DVstShooterMotors(ShooterMotors shooterMotors) {
         Notif n = new Notif();
         RobotMain.addDisableNotifable(n);
-    }
-    private static int speedPercentage;
-
-    public static void addRegularAmount(ShooterMotors shooterMotor) {
-        addPercentage(REGULAR_CHANGE, shooterMotor);
+        this.shooterMotors = shooterMotors;
     }
 
-    public static void subtractRegularAmount(ShooterMotors shooterMotor) {
-        addPercentage(-REGULAR_CHANGE, shooterMotor);
+    public void turnOff() {
+        shooterMotors.setSpeed(0);
+        on = false;
+        pushMe();
     }
 
-    public static void addPercentage(int percentage, ShooterMotors shooterMotor) {
-        if (percentage != 0) {
-            if (percentage > 0) {
-                if (speedPercentage != MAX_SPEED) {
-                    if (speedPercentage + percentage > MAX_SPEED) {
-                        speedPercentage = MAX_SPEED;
-                    } else {
-                        speedPercentage += percentage;
-                    }
-                    shooterMotor.setSpeed(speedPercentage / 100d);
-                    pushState();
-                }
-            } else {
-                if (speedPercentage != 0) {
-                    if (speedPercentage + percentage < 0) {
-                        speedPercentage = 0;
-                    } else {
-                        speedPercentage += percentage;
-                    }
-                    shooterMotor.setSpeed(speedPercentage / 100d);
-                    pushState();
-                }
-            }
-        }
+    public void turnOn() {
+        shooterMotors.setSpeed(ON_SPEED);
+        on = true;
+        pushMe();
     }
 
-    private static void pushState() {
-        RobotDebugger.push(new DebugStatus("ShooterMotors:Speed", "%" + speedPercentage, DebugLevel.HIGHEST));
-
+    private void pushMe() {
+        RobotDebugger.push(this);
     }
 
-    public static class Notif implements DisableNotifable {
+    public DebugOutput getStatus() {
+        return new DebugStatus("ShooterMotors:Running", on, DebugLevel.HIGHEST);
+    }
+
+    public class Notif implements DisableNotifable {
 
         private Notif() {
         }
 
         public void disable() {
-            speedPercentage = 0;
-            pushState();
+            turnOff();
         }
     }
 }

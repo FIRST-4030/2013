@@ -55,12 +55,12 @@ public class VstJ {
         return getJoystickButton(Mappings.shooterSolenoidPushButtonJoystickNumber, Mappings.shooterSolenoidPushButtonNumber);
     }
 
-    public static JoystickButton getShooterMotorSpeedUpButton() {
-        return getJoystickButton(Mappings.shooterMotorSpeedUpButtonJoystickNumber, Mappings.shooterMotorSpeedUpButtonNumber);
+    public static JoystickButton getShooterMotorOnButton() {
+        return getJoystickButton(Mappings.shooterMotorOnButtonJoystickNumber, Mappings.shooterMotorOnButtonNumber);
     }
 
-    public static JoystickButton getShooterMotorSpeedDownButton() {
-        return getJoystickButton(Mappings.shooterMotorSpeedDownButtonJoystickNumber, Mappings.shooterMotorSpeedDownButtonNumber);
+    public static JoystickButton getShooterMotorOffButton() {
+        return getJoystickButton(Mappings.shooterMotorOffButtonJoystickNumber, Mappings.shooterMotorOffButtonNumber);
     }
 
     public static JoystickButton getDriveSpeedToggleButton() {
@@ -102,11 +102,11 @@ public class VstJ {
         private static final int shooterSolenoidPushButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
         private static final int shooterSolenoidPushButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.TRIGGER;
         //
-        private static final int shooterMotorSpeedUpButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
-        private static final int shooterMotorSpeedUpButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.RIGHT;
+        private static final int shooterMotorOnButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+        private static final int shooterMotorOnButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.RIGHT;
         //
-        private static final int shooterMotorSpeedDownButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
-        private static final int shooterMotorSpeedDownButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.LEFT;
+        private static final int shooterMotorOffButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+        private static final int shooterMotorOffButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.LEFT;
         //
         private static final int driveSpeedToggleButtonJoystickNumber = FV.DRIVE_JOYSTICK;
         private static final int driveSpeedToggleButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.MIDDLE;

@@ -15,6 +15,10 @@ import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstPressure;
 public class AutoCommand extends CommandBase implements Debuggable {
 
     /**
+     * This speed of the shooter motors.
+     */
+    private final double SHOOTER_SPEED = .6;
+    /**
      * This is how long the robot should keep the solenoid extended before
      * retracting it again (In milliseconds).
      */
@@ -99,7 +103,7 @@ public class AutoCommand extends CommandBase implements Debuggable {
         setState(0);
         groundDrive.stop();
         shooterSolenoids.extend();
-        shooterMotors.setSpeed(1.0);
+        shooterMotors.setSpeed(SHOOTER_SPEED);
     }
 
     protected void execute() {

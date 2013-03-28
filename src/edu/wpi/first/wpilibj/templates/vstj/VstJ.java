@@ -22,7 +22,7 @@ public class VstJ {
             joyStickInit();
         }
         if (number < 1 || number > 2) {
-            throw new IllegalArgumentException("[VstJ] To High/Low number for getJoystick()");
+            throw new IllegalArgumentException("[VstJ] To High/Low number for " + VstJ.class.getName() + ".getJoystick(int)");
         }
         return joySticks[number - 1];
     }
@@ -100,42 +100,45 @@ public class VstJ {
      */
     private static class Mappings {
 
-        private static final int climberArmSolenoidStartExtendButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+        ////Shooter Joystick:
+        //climberArmSolenoidStartExtendButton
         private static final int climberArmSolenoidStartExtendButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.BOTTOM_LEFT;
-        //
-        private static final int shooterSolenoidPushButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+        private static final int climberArmSolenoidStartExtendButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+        //shooterSolenoidPushButton
         private static final int shooterSolenoidPushButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.TRIGGER;
-        //
-        private static final int shooterMotorOnButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+        private static final int shooterSolenoidPushButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+        //shooterMotorOnButton
         private static final int shooterMotorOnButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.RIGHT;
-        //
-        private static final int shooterMotorOffButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+        private static final int shooterMotorOnButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+        //shooterMotorOffButton
         private static final int shooterMotorOffButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.LEFT;
-        //
-        private static final int driveSpeedToggleButtonJoystickNumber = FV.DRIVE_JOYSTICK;
-        private static final int driveSpeedToggleButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.MIDDLE;
-        //
-        private static final int ladderControlAxisJoystickNumber = FV.SHOOTER_JOYSTICK;
+        private static final int shooterMotorOffButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+        //ladderControlAxis
         private static final int ladderControlAxisNumber = FV.AXIS.Y;
-        //
-        private static final int driveControlReverseButtonJoystickNumber = FV.DRIVE_JOYSTICK;
-        private static final int driveControlReverseButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.BOTTOM;
-        //
-        private static final int frisbeeDumpButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+        private static final int ladderControlAxisJoystickNumber = FV.SHOOTER_JOYSTICK;
+        //frisbeeDumpButton
         private static final int frisbeeDumpButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.RIGHT_TOP;
-        //
-        private static final int frisbeeUnDumpButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+        private static final int frisbeeDumpButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+        //frisbeeUnDumpButton
         private static final int frisbeeUnDumpButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.RIGHT_BOTTOM;
-        //
+        private static final int frisbeeUnDumpButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+        ////Drive Joystick:
+        //driveSpeedToggleButton
+        private static final int driveSpeedToggleButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.MIDDLE;
+        private static final int driveSpeedToggleButtonJoystickNumber = FV.DRIVE_JOYSTICK;
+        //driveControlReverseButton
+        private static final int driveControlReverseButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.BOTTOM;
+        private static final int driveControlReverseButtonJoystickNumber = FV.DRIVE_JOYSTICK;
+        //groundDriveFastTurnLeftButton
         private static final int groundDriveFastTurnLeftButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.LEFT;
         private static final int groundDriveFastTurnLeftButtonJoystickNumber = FV.DRIVE_JOYSTICK;
-        //
+        //groundDriveFastTurnRightButton
         private static final int groundDriveFastTurnRightButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.RIGHT;
         private static final int groundDriveFastTurnRightButtonJoystickNumber = FV.DRIVE_JOYSTICK;
-        //
+        //climberWedgeSolenoidsOnButton
         private static final int climberWedgeSolenoidsOnButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.RIGHT_TOP;
         private static final int climberWedgeSolenoidsOnButtonJoystickNumber = FV.DRIVE_JOYSTICK;
-        //
+        //climberWedgeSolenoidsOffButton
         private static final int climberWedgeSolenoidsOffButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.RIGHT_BOTTOM;
         private static final int climberWedgeSolenoidsOffButtonJoystickNumber = FV.DRIVE_JOYSTICK;
     }

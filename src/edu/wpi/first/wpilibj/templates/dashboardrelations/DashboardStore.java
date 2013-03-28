@@ -24,11 +24,15 @@ public final class DashboardStore {
         isClimberEnabledObject = new BooleanDashObject("aIsClimberEnabled", "Enable Climber", "Disable Climber", false);
         cameraPosition = new BooleanDashObject("aCameraPosition", "Camera Left", "Camera Right", true);
         SmartDashboard.putNumber("Climber Speed Multiplier Setter", 1.0);
+        SmartDashboard.putNumber("Shooter Motor Speed Multiplier Setter", 0.4);
     }
 
     public static double getClimberSpeedMultiplier() {
         return SmartDashboard.getNumber("Climber Speed Multiplier Setter");
+    }
 
+    public static double getShooterMotorSpeedMultiplier() {
+        return SmartDashboard.getNumber("Shooter Motor Speed Multiplier Setter");
     }
 
     public static boolean getIsClimberEnabled() {

@@ -17,9 +17,13 @@ import edu.wpi.first.wpilibj.templates.subsystems.ShooterMotors;
  */
 public class DVstShooterMotors implements Debuggable {
 
-    private static final double ON_SPEED = 0.4;
+    private double onSpeed = 0.4;
     private boolean on;
     private final ShooterMotors shooterMotors;
+
+    public void setOnSpeed(final double onSpeedSet) {
+        this.onSpeed = onSpeedSet;
+    }
 
     public DVstShooterMotors(ShooterMotors shooterMotors) {
         Notif n = new Notif();
@@ -34,7 +38,7 @@ public class DVstShooterMotors implements Debuggable {
     }
 
     public void turnOn() {
-        shooterMotors.setSpeed(ON_SPEED);
+        shooterMotors.setSpeed(onSpeed);
         on = true;
         pushMe();
     }
@@ -45,7 +49,7 @@ public class DVstShooterMotors implements Debuggable {
 
     public DebugOutput getStatus() {
         return new DebugInfoGroup(new DebugInfo[]{new DebugStatus("ShooterMotors:Running", on, DebugLevel.HIGHEST),
-            new DebugStatus("ShooterMotors:SpeedWhenOn", "%" + ((int) (ON_SPEED * 100)), DebugLevel.HIGHEST)
+            new DebugStatus("ShooterMotors:SpeedWhenOn", "%" + ((int) (onSpeed * 100)), DebugLevel.HIGHEST)
         });
     }
 

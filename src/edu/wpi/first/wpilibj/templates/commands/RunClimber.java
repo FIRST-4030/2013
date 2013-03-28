@@ -28,8 +28,8 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
     }
 
     protected void execute() {
-        speedMultiplier = DashboardStore.getClimberSpeedMultiplier();
         if (DVstClimber.climberEnabled()) {
+            speedMultiplier = DashboardStore.getClimberSpeedMultiplier();
             climber.runLadder(VstJ.getLadderControlAxisValue() * speedMultiplier);
         } else {
             climber.runLadder(0);

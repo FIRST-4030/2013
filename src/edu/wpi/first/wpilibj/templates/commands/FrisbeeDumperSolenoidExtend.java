@@ -1,6 +1,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
+import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstClimber;
 
 /**
  *
@@ -19,8 +20,10 @@ public class FrisbeeDumperSolenoidExtend extends CommandBase {
     }
 
     protected void execute() {
-        frisbeeDumperSolenoids.extend();
-        RobotDebugger.push(frisbeeDumperSolenoids);
+        if (DVstClimber.climberEnabled()) {
+            frisbeeDumperSolenoids.extend();
+            RobotDebugger.push(frisbeeDumperSolenoids);
+        }
         isFinished = true;
     }
 

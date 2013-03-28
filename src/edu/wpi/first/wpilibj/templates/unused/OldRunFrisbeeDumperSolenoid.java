@@ -1,10 +1,6 @@
 package edu.wpi.first.wpilibj.templates.unused;
 
 import edu.wpi.first.wpilibj.templates.commands.CommandBase;
-import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
-import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
-import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
-import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstClimber;
 import edu.wpi.first.wpilibj.templates.vstj.VstJ;
@@ -14,9 +10,7 @@ import edu.wpi.first.wpilibj.templates.vstj.VstJ;
  *
  * @author daboross
  */
-public class OldRunFrisbeeDumperSolenoid extends CommandBase implements Debuggable {
-
-    private String state = "Not Set";
+public class OldRunFrisbeeDumperSolenoid extends CommandBase {
 
     public OldRunFrisbeeDumperSolenoid() {
         requires(frisbeeDumperSolenoids);
@@ -24,22 +18,18 @@ public class OldRunFrisbeeDumperSolenoid extends CommandBase implements Debuggab
 
     protected void initialize() {
         frisbeeDumperSolenoids.extend();
-        RobotDebugger.push(this);
+        RobotDebugger.push(frisbeeDumperSolenoids);
     }
 
     protected void execute() {
         if (DVstClimber.climberEnabled()) {
             if (VstJ.getFrisbeeDumpButton().get()) {
                 frisbeeDumperSolenoids.retract();
-                state = "Retracting";
             } else if (VstJ.getFrisbeeUnDumpButton().get()) {
                 frisbeeDumperSolenoids.extend();
-                state = "Expanding";
             }
-        } else {
-            state = "Disabled";
         }
-        RobotDebugger.push(this);
+        RobotDebugger.push(frisbeeDumperSolenoids);
     }
 
     protected boolean isFinished() {
@@ -47,9 +37,5 @@ public class OldRunFrisbeeDumperSolenoid extends CommandBase implements Debuggab
     }
 
     protected void end() {
-    }
-
-    public DebugOutput getStatus() {
-        return new InfoState("FrisbeeDumperSolenoids:Should", state, DebugLevel.LOW);
     }
 }

@@ -36,7 +36,7 @@ public final class ShooterMotors extends Subsystem implements Debuggable {
         if (speed > 1 || speed < 0) {
             throw new IllegalArgumentException();
         }
-        firstMotor.set(speed);
+        firstMotor.set(speed * 0.8);
         secondMotor.set(speed);
     }
 

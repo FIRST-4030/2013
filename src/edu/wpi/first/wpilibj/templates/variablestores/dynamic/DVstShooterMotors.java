@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.ShooterMotors;
  */
 public class DVstShooterMotors implements Debuggable {
 
-    private double onSpeed = 0.4;
+    private double onSpeed = 0.5;
     private boolean on;
     private final ShooterMotors shooterMotors;
 

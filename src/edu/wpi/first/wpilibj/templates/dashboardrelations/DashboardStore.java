@@ -1,6 +1,7 @@
 package edu.wpi.first.wpilibj.templates.dashboardrelations;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.tables.TableKeyNotDefinedException;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
@@ -23,8 +24,28 @@ public final class DashboardStore {
     static {
         isClimberEnabledObject = new BooleanDashObject("aIsClimberEnabled", "Enable Climber", "Disable Climber", false);
         cameraPosition = new BooleanDashObject("aCameraPosition", "Camera Left", "Camera Right", true);
-        SmartDashboard.putNumber("Climber Speed Multiplier Setter", 1.0);
-        SmartDashboard.putNumber("Shooter Motor Speed Multiplier Setter", 0.4);
+        double climberSpeed;
+        try {
+            climberSpeed = SmartDashboard.getNumber("Climber Speed Multiplier Setter");
+        } catch (TableKeyNotDefinedException ex) {
+            climberSpeed = 0;
+        }
+        if (climberSpeed == 0) {
+            SmartDashboard.putNumber("Climber Speed Multiplier Setter", 1.0);
+        } else {
+            SmartDashboard.putNumber("Climber Speed Multiplier Setter", climberSpeed);
+        }
+        double shooterSpeed;
+        try {
+            shooterSpeed = SmartDashboard.getNumber("Shooter Motor Speed Multiplier Setter");
+        } catch (TableKeyNotDefinedException ex) {
+            shooterSpeed = 0;
+        }
+        if (shooterSpeed == 0) {
+            SmartDashboard.putNumber("Shooter Motor Speed Multiplier Setter", 0.4);
+        } else {
+            SmartDashboard.putNumber("Shooter Motor Speed Multiplier Setter", shooterSpeed);
+        }
     }
 
     public static double getClimberSpeedMultiplier() {

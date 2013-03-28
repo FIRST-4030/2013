@@ -43,6 +43,6 @@ public class ClimberWedgeSolenoids extends Subsystem implements Debuggable {
     }
 
     public DebugOutput getStatus() {
-        return new InfoState("ClimberWedgeSolenoids", climberWedgeSolenoids.getState(), DebugLevel.HIGH);
+        return new InfoState("ClimberWedgeSolenoids", climberWedgeSolenoids.getState(), DebugLevel.HIGHEST);
     }
 }

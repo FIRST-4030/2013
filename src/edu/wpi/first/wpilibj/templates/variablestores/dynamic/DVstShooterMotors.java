@@ -2,6 +2,8 @@ package edu.wpi.first.wpilibj.templates.variablestores.dynamic;
 
 import edu.wpi.first.wpilibj.templates.DisableNotifable;
 import edu.wpi.first.wpilibj.templates.RobotMain;
+import edu.wpi.first.wpilibj.templates.debugging.DebugInfo;
+import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
@@ -42,7 +44,9 @@ public class DVstShooterMotors implements Debuggable {
     }
 
     public DebugOutput getStatus() {
-        return new DebugStatus("ShooterMotors:Running", on, DebugLevel.HIGHEST);
+        return new DebugInfoGroup(new DebugInfo[]{new DebugStatus("ShooterMotors:Running", on, DebugLevel.HIGHEST),
+            new DebugStatus("ShooterMotors:SpeedWhenOn", "%" + ((int) (ON_SPEED * 100)), DebugLevel.HIGHEST)
+        });
     }
 
     public class Notif implements DisableNotifable {

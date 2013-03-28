@@ -34,7 +34,7 @@ public abstract class CommandBase extends Command {
      * Shooter Motor Handler.
      */
     protected static DVstShooterMotors dVstShooterMotors;
-    
+
     public static void init() {
         //Commands
         dashboardValueRefresh = new DashboardValueRefresh();
@@ -69,15 +69,15 @@ public abstract class CommandBase extends Command {
         //Shooter Motor Handler
         dVstShooterMotors = new DVstShooterMotors(shooterMotors);
     }
-    
+
     public CommandBase(String name) {
         super(name);
     }
-    
+
     public CommandBase() {
         super();
     }
-    
+
     protected final void interrupted() {
         end();
     }

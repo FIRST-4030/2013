@@ -34,7 +34,7 @@ public abstract class CommandBase extends Command {
      * Shooter Motor Handler.
      */
     protected static DVstShooterMotors dVstShooterMotors;
-
+    
     public static void init() {
         //Commands
         dashboardValueRefresh = new DashboardValueRefresh();
@@ -66,18 +66,19 @@ public abstract class CommandBase extends Command {
         VstJ.getFrisbeeUnDumpButton().whenPressed(new FrisbeeDumperSolenoidExtend());
         VstJ.getClimberWedgeSolenoidsOnButton().whenPressed(new ClimberWedgeSolenoidsOn());
         VstJ.getClimberWedgeSolenoidsOffButton().whenPressed(new ClimberWedgeSolenoidsOff());
+        VstJ.getClimberArmSolenoidStartExtendButton().whenPressed(new ExtendClimberArmSolenoids());
         //Shooter Motor Handler
         dVstShooterMotors = new DVstShooterMotors(shooterMotors);
     }
-
+    
     public CommandBase(String name) {
         super(name);
     }
-
+    
     public CommandBase() {
         super();
     }
-
+    
     protected final void interrupted() {
         end();
     }

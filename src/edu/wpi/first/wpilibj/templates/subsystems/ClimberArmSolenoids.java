@@ -1,7 +1,7 @@
 package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.templates.commands.RunClimberArmSolenoids;
+import edu.wpi.first.wpilibj.templates.commands.ExtendClimberArmSolenoids;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
@@ -24,7 +24,6 @@ public final class ClimberArmSolenoids extends Subsystem implements Debuggable {
     }
 
     protected void initDefaultCommand() {
-        setDefaultCommand(new RunClimberArmSolenoids());
     }
 
     public void extend() {

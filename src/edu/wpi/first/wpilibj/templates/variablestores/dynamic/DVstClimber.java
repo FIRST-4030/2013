@@ -1,5 +1,7 @@
 package edu.wpi.first.wpilibj.templates.variablestores.dynamic;
 
+import edu.wpi.first.wpilibj.templates.commands.ClimberEnabledAndDisabledActions;
+
 /**
  * Dynamic Climber Variable Store.
  *
@@ -14,7 +16,22 @@ public final class DVstClimber {
     }
 
     public static void setClimberEnabled(final boolean climberEnabledSet) {
+        if (climberEnabledSet != climberEnabled) {
+            if (climberEnabledSet) {
+                climberEnabledActions();
+            } else {
+                climberDisabledActions();
+            }
+        }
         climberEnabled = climberEnabledSet;
+    }
+
+    private static void climberEnabledActions() {
+        ClimberEnabledAndDisabledActions.climberEnabledActions();
+    }
+
+    private static void climberDisabledActions() {
+        ClimberEnabledAndDisabledActions.climberDisabledActions();
     }
 
     public static final class LimitSwitches {

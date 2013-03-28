@@ -2,20 +2,23 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstClimber;
-import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
  * This Command runs the Climber out-pushing solenoid from input received from
  * VstJ.getClimberArmSolenoidToggleButtonValue(), as well as
  * DashboardStore.getClimberEnabled().
  */
-public class RunClimberArmSolenoids extends CommandBase {
+public class ExtendClimberArmSolenoids extends CommandBase {
 
-    public RunClimberArmSolenoids() {
+    private boolean isFinished;
+
+    public ExtendClimberArmSolenoids() {
         requires(climberArmSolenoids);
+        RobotDebugger.push(climberArmSolenoids);
     }
 
     protected void initialize() {
+        isFinished = false;
     }
 
     /**
@@ -30,17 +33,14 @@ public class RunClimberArmSolenoids extends CommandBase {
      */
     protected void execute() {
         if (DVstClimber.climberEnabled()) {
-            if (VstJ.getClimberArmSolenoidStartExtendButton().get()) {
-                climberArmSolenoids.extend();
-            }
-        } else {
-            climberArmSolenoids.retract();
+            climberArmSolenoids.extend();
+            RobotDebugger.push(climberArmSolenoids);
         }
-        RobotDebugger.push(climberArmSolenoids);
+        isFinished = true;
     }
 
     protected boolean isFinished() {
-        return false;
+        return isFinished;
     }
 
     protected void end() {

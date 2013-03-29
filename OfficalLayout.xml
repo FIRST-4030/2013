@@ -1,7 +1,18 @@
 <xml version="1.0">
 <dashboard>
+	<widget field="aCameraPosition" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
+		<location x="12" y="30"/>
+	</widget>
+	<widget field="aIsClimberEnabled" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
+		<location x="404" y="84"/>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.camera.WPICameraExtension">
+		<location x="612" y="2"/>
+		<width>682</width>
+		<height>510</height>
+	</static-widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
-		<location x="516" y="135"/>
+		<location x="518" y="122"/>
 		<width>85</width>
 		<property name="Text" value="Climbing"/>
 	</static-widget>
@@ -24,23 +35,12 @@
 		<width>80</width>
 		<property name="Text" value="Settings"/>
 	</static-widget>
-	<widget field="aIsClimberEnabled" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
-		<location x="0" y="40"/>
-	</widget>
-	<widget field="aCameraPosition" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
-		<location x="400" y="50"/>
-	</widget>
 	<widget field="ClimberWedgeSolenoids|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="376" y="250"/>
 	</widget>
 	<widget field="FrisbeeDumperSolenoids|DumperState|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="307" y="274"/>
 	</widget>
-	<static-widget class="edu.wpi.first.smartdashboard.camera.WPICameraExtension">
-		<location x="620" y="0"/>
-		<width>677</width>
-		<height>510</height>
-	</static-widget>
 	<widget field="Climber|Speed-Multiplier" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="404" y="205"/>
 		<height>20</height>
@@ -88,29 +88,14 @@
 		<location x="410" y="156"/>
 	</widget>
 	<widget field="Camera|Position|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="407" y="13"/>
+		<location x="15" y="10"/>
 	</widget>
 	<widget field="AutoCommand|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="12" y="12"/>
+		<location x="401" y="10"/>
 	</widget>
 	<widget field="TimeUpdate" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="233" y="13"/>
+		<location x="232" y="10"/>
 	</widget>
-	<static-widget class="edu.wpi.first.smartdashboard.camera.WPICameraExtension">
-		<location x="620" y="0"/>
-		<width>677</width>
-		<height>510</height>
-	</static-widget>
-	<static-widget class="edu.wpi.first.smartdashboard.camera.WPICameraExtension">
-		<location x="620" y="0"/>
-		<width>677</width>
-		<height>510</height>
-	</static-widget>
-	<static-widget class="edu.wpi.first.smartdashboard.camera.WPICameraExtension">
-		<location x="620" y="0"/>
-		<width>677</width>
-		<height>510</height>
-	</static-widget>
 </dashboard>
 <live-window>
 </live-window>

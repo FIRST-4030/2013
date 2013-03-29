@@ -19,7 +19,7 @@ public final class ShooterMotors extends Subsystem implements Debuggable {
 
     public ShooterMotors() {
         System.out.println("SubSystem Created: ShooterMotors");
-        setSpeed(0);
+        setSpeed(0, 0);
     }
 
     protected void initDefaultCommand() {
@@ -32,12 +32,12 @@ public final class ShooterMotors extends Subsystem implements Debuggable {
      * @throws IllegalArgumentException If the given double is less then 0 or
      * more then 1.
      */
-    public void setSpeed(double speed) {
-        if (speed > 1 || speed < 0) {
+    public void setSpeed(double speed1, double speed2) {
+        if (speed1 > 1 || speed1 < 0 || speed2 > 1 || speed2 < 0) {
             throw new IllegalArgumentException();
         }
-        firstMotor.set(speed * 0.8);
-        secondMotor.set(speed);
+        firstMotor.set(speed1);
+        secondMotor.set(speed2);
     }
 
     public DebugOutput getStatus() {

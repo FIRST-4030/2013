@@ -11,25 +11,25 @@ import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstClimber;
  * @author daboross
  */
 public class DashboardValueRefresh extends CommandBase {
-    
+
     public DashboardValueRefresh() {
         SmartDashboard.putString("TimeUpdate", "-42");
     }
-    
+
     protected void initialize() {
     }
-    
+
     protected void execute() {
         SmartDashboard.putString("TimeUpdate", String.valueOf(System.currentTimeMillis()));
         DVstCamera.setCameraPosition(DashboardStore.getCameraPosition());
         DVstClimber.setClimberEnabled(DashboardStore.getIsClimberEnabled());
-        dVstShooterMotors.setOnSpeed(DashboardStore.getShooterMotorSpeedMultiplier());
+        dVstShooterMotors.setOnSpeed(DashboardStore.getShooterMotor1SpeedMultiplier(), DashboardStore.getShooterMotor2SpeedMultiplier());
     }
-    
+
     protected boolean isFinished() {
         return false;
     }
-    
+
     protected void end() {
         SmartDashboard.putString("TimeUpdate", "-42?");
     }

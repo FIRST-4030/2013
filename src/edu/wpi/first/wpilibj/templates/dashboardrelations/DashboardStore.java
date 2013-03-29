@@ -35,16 +35,27 @@ public final class DashboardStore {
         } else {
             SmartDashboard.putNumber("Climber Speed Multiplier Setter", climberSpeed);
         }
-        double shooterSpeed;
+        double shooterSpeed1;
         try {
-            shooterSpeed = SmartDashboard.getNumber("Shooter Motor Speed Multiplier Setter");
+            shooterSpeed1 = SmartDashboard.getNumber("Shooter Motor Speed 1 Multiplier Setter");
         } catch (TableKeyNotDefinedException ex) {
-            shooterSpeed = 0;
+            shooterSpeed1 = 0;
         }
-        if (shooterSpeed == 0) {
-            SmartDashboard.putNumber("Shooter Motor Speed Multiplier Setter", 0.4);
+        if (shooterSpeed1 == 0) {
+            SmartDashboard.putNumber("Shooter Motor Speed 1 Multiplier Setter", 0.7);
         } else {
-            SmartDashboard.putNumber("Shooter Motor Speed Multiplier Setter", shooterSpeed);
+            SmartDashboard.putNumber("Shooter Motor Speed 1 Multiplier Setter", shooterSpeed1);
+        }
+        double shooterSpeed2;
+        try {
+            shooterSpeed2 = SmartDashboard.getNumber("Shooter Motor Speed 2 Multiplier Setter");
+        } catch (TableKeyNotDefinedException ex) {
+            shooterSpeed2 = 0;
+        }
+        if (shooterSpeed2 == 0) {
+            SmartDashboard.putNumber("Shooter Motor Speed 2 Multiplier Setter", 0.4);
+        } else {
+            SmartDashboard.putNumber("Shooter Motor Speed 2 Multiplier Setter", shooterSpeed2);
         }
     }
 
@@ -52,8 +63,12 @@ public final class DashboardStore {
         return SmartDashboard.getNumber("Climber Speed Multiplier Setter");
     }
 
-    public static double getShooterMotorSpeedMultiplier() {
-        return SmartDashboard.getNumber("Shooter Motor Speed Multiplier Setter");
+    public static double getShooterMotor1SpeedMultiplier() {
+        return SmartDashboard.getNumber("Shooter Motor Speed 1 Multiplier Setter");
+    }
+
+    public static double getShooterMotor2SpeedMultiplier() {
+        return SmartDashboard.getNumber("Shooter Motor Speed 2 Multiplier Setter");
     }
 
     public static boolean getIsClimberEnabled() {

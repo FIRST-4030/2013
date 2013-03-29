@@ -17,12 +17,14 @@ import edu.wpi.first.wpilibj.templates.subsystems.ShooterMotors;
  */
 public class DVstShooterMotors implements Debuggable {
 
-    private double onSpeed = 0.5;
+    private double onSpeed1 = 0.4;
+    private double onSpeed2 = 0.7;
     private boolean on;
     private final ShooterMotors shooterMotors;
 
-    public void setOnSpeed(final double onSpeedSet) {
-        this.onSpeed = onSpeedSet;
+    public void setOnSpeed(final double onSpeedSet1, final double onSpeedSet2) {
+        this.onSpeed1 = onSpeedSet1;
+        this.onSpeed2 = onSpeedSet2;
     }
 
     public DVstShooterMotors(ShooterMotors shooterMotors) {
@@ -32,13 +34,13 @@ public class DVstShooterMotors implements Debuggable {
     }
 
     public void turnOff() {
-        shooterMotors.setSpeed(0);
+        shooterMotors.setSpeed(0, 0);
         on = false;
         pushMe();
     }
 
     public void turnOn() {
-        shooterMotors.setSpeed(onSpeed);
+        shooterMotors.setSpeed(onSpeed1, onSpeed2);
         on = true;
         pushMe();
     }
@@ -49,8 +51,9 @@ public class DVstShooterMotors implements Debuggable {
 
     public DebugOutput getStatus() {
         return new DebugInfoGroup(new DebugInfo[]{new DebugStatus("ShooterMotors:Running", on, DebugLevel.HIGHEST),
-            new DebugStatus("ShooterMotors:SpeedWhenOn", "%" + ((int) (onSpeed * 100)), DebugLevel.HIGHEST)
-        });
+                    new DebugStatus("ShooterMotors:SpeedWhenOn1", "%" + ((int) (onSpeed1 * 100)), DebugLevel.HIGHEST),
+                    new DebugStatus("ShooterMotors:SpeedWhenOn2", "%" + ((int) (onSpeed2 * 100)), DebugLevel.HIGHEST)
+                });
     }
 
     public class Notif implements DisableNotifable {

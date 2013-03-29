@@ -1,0 +1,117 @@
+<xml version="1.0">
+<dashboard>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="516" y="135"/>
+		<width>85</width>
+		<property name="Text" value="Climbing"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="512" y="316"/>
+		<width>98</width>
+		<property name="Text" value="Climber - Untested"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="210" y="232"/>
+		<width>59</width>
+		<property name="Text" value="Driving"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="216" y="135"/>
+		<property name="Text" value="Shooting"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="199" y="317"/>
+		<width>80</width>
+		<property name="Text" value="Settings"/>
+	</static-widget>
+	<widget field="aIsClimberEnabled" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
+		<location x="0" y="40"/>
+	</widget>
+	<widget field="aCameraPosition" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
+		<location x="400" y="50"/>
+	</widget>
+	<widget field="ClimberWedgeSolenoids|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="376" y="250"/>
+	</widget>
+	<widget field="FrisbeeDumperSolenoids|DumperState|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="307" y="274"/>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.camera.WPICameraExtension">
+		<location x="620" y="0"/>
+		<width>677</width>
+		<height>510</height>
+	</static-widget>
+	<widget field="Climber|Speed-Multiplier" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="404" y="205"/>
+		<height>20</height>
+	</widget>
+	<widget field="Climber Speed Multiplier Setter" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="51" y="380"/>
+		<height>20</height>
+	</widget>
+	<widget field="ShooterMotors|SpeedWhenOn" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="51" y="178"/>
+	</widget>
+	<widget field="Shooter Motor Speed Multiplier Setter" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="17" y="337"/>
+	</widget>
+	<widget field="ShooterMotors|Running" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="84" y="154"/>
+		<height>20</height>
+	</widget>
+	<widget field="GroundDrive|Command|Reversed|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="8" y="250"/>
+	</widget>
+	<widget field="GroundDrive|Command|Speed|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="23" y="274"/>
+		<height>20</height>
+	</widget>
+	<widget field="Ladder Drop State?|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="395" y="181"/>
+		<height>20</height>
+	</widget>
+	<widget field="ClimberLimitSwitch|DeploySwitch" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="369" y="381"/>
+		<height>20</height>
+	</widget>
+	<widget field="ClimberLimitSwitch|LowerSwitch" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="373" y="358"/>
+	</widget>
+	<widget field="ClimberLimitSwitch|UpperSwitch" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="373" y="335"/>
+		<height>20</height>
+	</widget>
+	<widget field="PressureSwitch|AtPressure" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="68" y="202"/>
+	</widget>
+	<widget field="Climber|Enabled|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="410" y="156"/>
+	</widget>
+	<widget field="Camera|Position|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="407" y="13"/>
+	</widget>
+	<widget field="AutoCommand|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="12" y="12"/>
+	</widget>
+	<widget field="TimeUpdate" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="233" y="13"/>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.camera.WPICameraExtension">
+		<location x="620" y="0"/>
+		<width>677</width>
+		<height>510</height>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.camera.WPICameraExtension">
+		<location x="620" y="0"/>
+		<width>677</width>
+		<height>510</height>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.camera.WPICameraExtension">
+		<location x="620" y="0"/>
+		<width>677</width>
+		<height>510</height>
+	</static-widget>
+</dashboard>
+<live-window>
+</live-window>
+</xml>

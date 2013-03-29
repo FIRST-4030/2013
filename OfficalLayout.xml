@@ -18,11 +18,6 @@
 	<widget field="aIsClimberEnabled" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
 		<location x="404" y="84"/>
 	</widget>
-	<static-widget class="edu.wpi.first.smartdashboard.camera.WPICameraExtension">
-		<location x="612" y="2"/>
-		<width>682</width>
-		<height>510</height>
-	</static-widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
 		<location x="518" y="122"/>
 		<width>85</width>
@@ -108,11 +103,6 @@
 	<widget field="Auto Command Max Wait Time Setter" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="10" y="431"/>
 	</widget>
-	<static-widget class="edu.wpi.first.smartdashboard.camera.WPICameraExtension">
-		<location x="612" y="2"/>
-		<width>682</width>
-		<height>510</height>
-	</static-widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
 		<location x="518" y="122"/>
 		<width>85</width>

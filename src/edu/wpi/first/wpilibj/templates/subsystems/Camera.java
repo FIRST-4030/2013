@@ -47,7 +47,7 @@ public class Camera extends Subsystem {
      */
     public ColorImage takePicture() {
         if (!cameraEnabled) {
-            System.out.println("CAMERA: Tried to get picture when camera was disabled!!!!! Change this in Camera.java");
+            System.out.println("[CAMERA] Tried to get picture when camera was disabled!!!!! Change this in Camera.java");
             return null;
         }
         setCameraInstance();

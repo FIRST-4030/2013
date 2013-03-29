@@ -13,18 +13,16 @@ public class RobotDebugger {
     private static Hashtable consoleTable = new Hashtable();
     private static Hashtable dashTable = new Hashtable();
 
-    private static void cRawPush(String key, String value) {
+    private static void consoleRawPush(String key, String value) {
         System.out.println("[Debugger] " + key + ": " + value);
     }
 
-    private static void dRawPush(String key, String value) {
-        SmartDashboard.putString(key, value);
+    private static void dashboardRawPush(String key, String value) {
+        SmartDashboard.putString(key.replace(':', '|'), value);
     }
 
     /**
-     * Push this raw info. This should not be used for status of SubSystems,
-     * only for other places. If you have a subsystem it should inherent
-     * Debuggable, then you should push it.
+     * Push this raw info.
      */
     protected static void pushInfo(DebugInfo di) {
         if (di == null || di.key() == null || di.message() == null) {
@@ -41,14 +39,14 @@ public class RobotDebugger {
             }
             if (oldConVal == null || !oldConVal.equals(val)) {
                 if (level >= DebugLevel.CURRENT) {
-                    cRawPush(key, val);
+                    consoleRawPush(key, val);
                 }
             }
             consoleTable.put(key, di);
         }
         if (di.isDashboard()) {
             if (level >= DebugLevel.CURRENT) {
-                dRawPush(key, val);
+                dashboardRawPush(key, val);
             }
             dashTable.put(key, di);
         }
@@ -84,7 +82,7 @@ public class RobotDebugger {
             String val = d.message();
             int level = d.debugLevel();
             if (level > DebugLevel.CURRENT) {
-                dRawPush(key, val);
+                dashboardRawPush(key, val);
             }
         }
     }

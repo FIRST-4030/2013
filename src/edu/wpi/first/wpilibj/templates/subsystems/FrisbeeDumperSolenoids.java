@@ -1,7 +1,6 @@
 package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.templates.commands.RunFrisbeeDumperSolenoid;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
@@ -15,26 +14,25 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstM;
  */
 public final class FrisbeeDumperSolenoids extends Subsystem implements Debuggable {
 
-    private SolenoidPair frisbeeDumperSolenoids = new SolenoidPair(VstM.SOLENOID.FRISBEE_DUMP_EXTENDING_SIDE, VstM.SOLENOID.FRISBEE_DUMP_RETRACTING_SIDE);
+    private SolenoidPair frisbeeDumperSolenoids = new SolenoidPair(VstM.SOLENOID.FRISBEE_DUMP_EXTENDING_SIDE, VstM.SOLENOID.FRISBEE_DUMP_RETRACTING_SIDE, true);
 
     public FrisbeeDumperSolenoids() {
         System.out.println("SubSystem Created: FrisbeeDumperSolenoids");
     }
 
     protected void initDefaultCommand() {
-        setDefaultCommand(new RunFrisbeeDumperSolenoid());
+        //setDefaultCommand(new OldRunFrisbeeDumperSolenoid());
     }
 
-    public void startExpand() {
+    public void extend() {
         frisbeeDumperSolenoids.extend();
     }
 
-    public void startRetract() {
+    public void retract() {
         frisbeeDumperSolenoids.retract();
     }
 
     public DebugOutput getStatus() {
-
-        return new InfoState("FrisbeeDumperSolenoids", frisbeeDumperSolenoids.getState(), DebugLevel.MID);
+        return new InfoState("FrisbeeDumperSolenoids:DumperState", frisbeeDumperSolenoids.getState(), DebugLevel.HIGHEST);
     }
 }

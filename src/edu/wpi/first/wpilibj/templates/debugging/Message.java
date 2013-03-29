@@ -9,9 +9,9 @@ package edu.wpi.first.wpilibj.templates.debugging;
 public class Message extends DebugInfo {
 
     private static int number = 0;
-    private String message;
-    private String key;
-    private int level;
+    private final String message;
+    private final String key;
+    private final int level;
 
     public Message(String message, int level) {
         if (level < DebugLevel.NEVER || level > DebugLevel.ALWAYS) {
@@ -22,7 +22,7 @@ public class Message extends DebugInfo {
         }
         number++;
         this.message = message;
-        key = "Message:" + number;
+        key = "[Message]" + number;
         this.level = level;
     }
 

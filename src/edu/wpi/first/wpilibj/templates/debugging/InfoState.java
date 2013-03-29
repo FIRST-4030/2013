@@ -11,9 +11,9 @@ package edu.wpi.first.wpilibj.templates.debugging;
  */
 public class InfoState extends DebugInfo {
 
-    private String key;
-    private String message;
-    private int level;
+    private final String key;
+    private final String message;
+    private final int level;
 
     public InfoState(String owner, String state, int level) {
         if (owner == null) {

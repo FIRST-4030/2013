@@ -1,7 +1,6 @@
 package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.templates.commands.RunClimberArmSolenoids;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
@@ -17,14 +16,13 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstM;
  */
 public final class ClimberArmSolenoids extends Subsystem implements Debuggable {
 
-    private SolenoidPair climberArmSolenoids = new SolenoidPair(VstM.SOLENOID.CLIMBER_ARM_EXTENDING_SIDE, VstM.SOLENOID.CLIMBER_ARM_RETRACTING_SIDE);
+    private SolenoidPair climberArmSolenoids = new SolenoidPair(VstM.SOLENOID.CLIMBER_ARM_EXTENDING_SIDE, VstM.SOLENOID.CLIMBER_ARM_RETRACTING_SIDE, false);
 
     public ClimberArmSolenoids() {
         System.out.println("SubSystem Created: ClimberArmSolenoids");
     }
 
     protected void initDefaultCommand() {
-        setDefaultCommand(new RunClimberArmSolenoids());
     }
 
     public void extend() {
@@ -36,6 +34,6 @@ public final class ClimberArmSolenoids extends Subsystem implements Debuggable {
     }
 
     public DebugOutput getStatus() {
-        return new InfoState("ClimberArmSolenoids", climberArmSolenoids.getState(), DebugLevel.MID);
+        return new InfoState("Ladder Drop State?", climberArmSolenoids.getState(), DebugLevel.HIGH);
     }
 }

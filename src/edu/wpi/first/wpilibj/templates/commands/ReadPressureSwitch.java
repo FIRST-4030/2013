@@ -1,6 +1,6 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstP;
+import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstPressure;
 
 /**
  * This Command Constantly Updates The Pressure Switch, and sets variables in
@@ -27,6 +27,6 @@ public class ReadPressureSwitch extends CommandBase {
     }
 
     protected void end() {
-        DVstP.setAtPressure(true);
+        DVstPressure.setAtPressure(true);
     }
 }

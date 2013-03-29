@@ -10,8 +10,7 @@ import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
 /**
- * This is a SubSystem for the Shooter Motors, This should be controlled by
- * RunShooterMotors.
+ * This is a SubSystem for the Shooter Motors.
  */
 public final class ShooterMotors extends Subsystem implements Debuggable {
 
@@ -37,7 +36,7 @@ public final class ShooterMotors extends Subsystem implements Debuggable {
         if (speed > 1 || speed < 0) {
             throw new IllegalArgumentException();
         }
-        firstMotor.set(speed);
+        firstMotor.set(speed * 0.8);
         secondMotor.set(speed);
     }
 

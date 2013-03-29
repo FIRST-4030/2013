@@ -1,0 +1,35 @@
+climberArmSolenoidStartExtendButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+climberArmSolenoidStartExtendButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.BOTTOM_LEFT;
+
+shooterSolenoidPushButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+shooterSolenoidPushButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.TRIGGER;
+
+shooterMotorSpeedUpButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+shooterMotorSpeedUpButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.RIGHT;
+
+shooterMotorSpeedDownButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+shooterMotorSpeedDownButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.LEFT;
+
+driveSpeedToggleButtonJoystickNumber = FV.DRIVE_JOYSTICK;
+driveSpeedToggleButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.MIDDLE;
+
+ladderControlAxisJoystickNumber = FV.SHOOTER_JOYSTICK;
+ladderControlAxisNumber = FV.AXIS.Y;
+
+driveControlReverseButtonJoystickNumber = FV.DRIVE_JOYSTICK;
+driveControlReverseButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.BOTTOM;
+
+climberWedgeSolenoidControlAxisJoystickNumber = FV.DRIVE_JOYSTICK;
+climberWedgeSolenoidControlAxisNumber = FV.AXIS.Y;
+
+frisbeeDumpButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+frisbeeDumpButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.RIGHT_TOP;
+
+frisbeeUnDumpButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+frisbeeUnDumpButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.RIGHT_BOTTOM;
+
+groundDriveFastTurnLeftButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.LEFT;
+groundDriveFastTurnLeftButtonJoystickNumber = FV.DRIVE_JOYSTICK;
+
+groundDriveFastTurnRightButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.RIGHT;
+groundDriveFastTurnRightButtonJoystickNumber = FV.DRIVE_JOYSTICK;

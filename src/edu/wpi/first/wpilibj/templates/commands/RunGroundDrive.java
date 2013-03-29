@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
-import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstClimber;
 import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
@@ -34,20 +33,16 @@ public class RunGroundDrive extends CommandBase implements Debuggable {
     }
 
     protected void execute() {
-        if (DVstClimber.climberEnabled()) {
-            groundDrive.driveWithRaw(-0.5, 0);
-        } else {
-            updateHighSpeed();
-            updateReversed();
-            groundDrive.setSpeedMutliplier(highSpeed ? 1 : 0.7, reversed);
-            groundDrive.driveWithDefaultController();
-        }
+        updateHighSpeed();
+        updateReversed();
+        groundDrive.setSpeedMutliplier(highSpeed ? 1 : 0.7, reversed);
+        groundDrive.driveWithDefaultController();
         RobotDebugger.push(groundDrive);
         RobotDebugger.push(this);
     }
 
     private void updateHighSpeed() {
-        if (VstJ.getDriveSpeedToggleButtonValue() != highSpeedLastPressed) {
+        if (VstJ.getDriveSpeedToggleButton().get() != highSpeedLastPressed) {
             if (!highSpeedLastPressed) {
                 highSpeed = !highSpeed;
             }
@@ -56,7 +51,7 @@ public class RunGroundDrive extends CommandBase implements Debuggable {
     }
 
     private void updateReversed() {
-        if (VstJ.getDriveControlReverseButtonValue() != reversedLastPressed) {
+        if (VstJ.getDriveControlReverseButton().get() != reversedLastPressed) {
             if (!reversedLastPressed) {
                 reversed = !reversed;
             }
@@ -77,6 +72,5 @@ public class RunGroundDrive extends CommandBase implements Debuggable {
             new InfoState("GroundDrive:Command:Speed", highSpeed ? "High" : "Low", DebugLevel.HIGHEST),
             new InfoState("GroundDrive:Command:Reversed", reversed ? "Yes" : "No", DebugLevel.HIGHEST)
         });
-
     }
 }

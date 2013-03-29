@@ -2,6 +2,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.templates.subsystems.*;
+import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstShooterMotors;
 import edu.wpi.first.wpilibj.templates.vstj.VstJ;
 
 /**
@@ -15,7 +16,7 @@ public abstract class CommandBase extends Command {
      */
     protected static Compressor compressor;
     protected static Camera mainCamera;
-    protected static Climber climber;
+    protected static ClimberMotors climber;
     protected static PressureSwitch pressureSwitch;
     protected static GroundDrive groundDrive;
     protected static ClimberLimitSwitch climberLimitSwitch;
@@ -29,7 +30,10 @@ public abstract class CommandBase extends Command {
      * Commands.
      */
     protected static DashboardValueRefresh dashboardValueRefresh;
-    protected static ReadLimitSwitches readLimitSwitches;
+    /**
+     * Shooter Motor Handler.
+     */
+    protected static DVstShooterMotors dVstShooterMotors;
 
     public static void init() {
         //Commands
@@ -46,7 +50,7 @@ public abstract class CommandBase extends Command {
         //SubSystems:Switches:
         climberLimitSwitch = new ClimberLimitSwitch();
         //SubSystems:Motors:
-        climber = new Climber();
+        climber = new ClimberMotors();
         groundDrive = new GroundDrive();
         cameraServo = new CameraServo();
         shooterMotors = new ShooterMotors();
@@ -56,8 +60,15 @@ public abstract class CommandBase extends Command {
         VstJ.getGroundDriveFastTurnLeftButton().whenPressed(new FastTurnRobotDriveLeft());
         VstJ.getGroundDriveFastTurnRightButton().whenPressed(new FastTurnRobotDriveRight());
         VstJ.getShooterSolenoidPushButton().whenPressed(new RunShooterSolenoids());
-        VstJ.getShooterMotorSpeedDownButton().whenPressed(new ShooterMotorSpeedDown());
-        VstJ.getShooterMotorSpeedUpButton().whenPressed(new ShooterMotorSpeedUp());
+        VstJ.getShooterMotorOffButton().whenPressed(new ShooterMotorSpeedOff());
+        VstJ.getShooterMotorOnButton().whenPressed(new ShooterMotorSpeedOn());
+        VstJ.getFrisbeeDumpButton().whenPressed(new FrisbeeDumperSolenoidRetract());
+        VstJ.getFrisbeeUnDumpButton().whenPressed(new FrisbeeDumperSolenoidExtend());
+        VstJ.getClimberWedgeSolenoidsOnButton().whenPressed(new ClimberWedgeSolenoidsOn());
+        VstJ.getClimberWedgeSolenoidsOffButton().whenPressed(new ClimberWedgeSolenoidsOff());
+        VstJ.getClimberArmSolenoidStartExtendButton().whenPressed(new ExtendClimberArmSolenoids());
+        //Shooter Motor Handler
+        dVstShooterMotors = new DVstShooterMotors(shooterMotors);
     }
 
     public CommandBase(String name) {

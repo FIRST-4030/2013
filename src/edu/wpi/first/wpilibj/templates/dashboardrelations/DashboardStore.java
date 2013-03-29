@@ -1,6 +1,7 @@
 package edu.wpi.first.wpilibj.templates.dashboardrelations;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.tables.TableKeyNotDefinedException;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
@@ -14,25 +15,45 @@ import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
  */
 public final class DashboardStore {
 
-    private static BooleanDashObject isClimberEnabledObject;
+    private static final BooleanDashObject isClimberEnabledObject;
     /**
      * False is left, true is right.
      */
-    private static BooleanDashObject cameraPosition;
+    private static final BooleanDashObject cameraPosition;
 
     static {
         isClimberEnabledObject = new BooleanDashObject("aIsClimberEnabled", "Enable Climber", "Disable Climber", false);
-        RobotDebugger.push(new InfoState("Climber:Enabled", "No", DebugLevel.ALWAYS));
-
         cameraPosition = new BooleanDashObject("aCameraPosition", "Camera Left", "Camera Right", true);
-        RobotDebugger.push(new InfoState("Camera:Position", "Camera Left", DebugLevel.ALWAYS));
-
-        SmartDashboard.putNumber("Climber Speed Multiplier", 1.0);
+        double climberSpeed;
+        try {
+            climberSpeed = SmartDashboard.getNumber("Climber Speed Multiplier Setter");
+        } catch (TableKeyNotDefinedException ex) {
+            climberSpeed = 0;
+        }
+        if (climberSpeed == 0) {
+            SmartDashboard.putNumber("Climber Speed Multiplier Setter", 1.0);
+        } else {
+            SmartDashboard.putNumber("Climber Speed Multiplier Setter", climberSpeed);
+        }
+        double shooterSpeed;
+        try {
+            shooterSpeed = SmartDashboard.getNumber("Shooter Motor Speed Multiplier Setter");
+        } catch (TableKeyNotDefinedException ex) {
+            shooterSpeed = 0;
+        }
+        if (shooterSpeed == 0) {
+            SmartDashboard.putNumber("Shooter Motor Speed Multiplier Setter", 0.4);
+        } else {
+            SmartDashboard.putNumber("Shooter Motor Speed Multiplier Setter", shooterSpeed);
+        }
     }
 
     public static double getClimberSpeedMultiplier() {
-        return SmartDashboard.getNumber("Climber Speed Multiplier");
+        return SmartDashboard.getNumber("Climber Speed Multiplier Setter");
+    }
 
+    public static double getShooterMotorSpeedMultiplier() {
+        return SmartDashboard.getNumber("Shooter Motor Speed Multiplier Setter");
     }
 
     public static boolean getIsClimberEnabled() {
@@ -52,5 +73,6 @@ public final class DashboardStore {
 
     public static void reCreate() {
         cameraPosition.reCreate();
+        isClimberEnabledObject.reCreate();
     }
 }

@@ -15,11 +15,10 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstM;
  */
 public class CameraServo extends Subsystem implements Debuggable {
 
-    private Servo cameraServo;
+    private final Servo cameraServo = new Servo(VstM.PWM.CAMERA_SERVO);
 
     public CameraServo() {
         System.out.println("SubSystem Created: CameraServo");
-        cameraServo = new Servo(VstM.PWM.CAMERA_SERVO);
     }
 
     protected void initDefaultCommand() {

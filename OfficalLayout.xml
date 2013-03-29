@@ -102,9 +102,42 @@
 	<widget field="TimeUpdate" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="232" y="10"/>
 	</widget>
+	<widget field="Auto Command Max Wait Time" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="355" y="33"/>
+	</widget>
+	<widget field="Auto Command Max Wait Time Setter" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="10" y="431"/>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.camera.WPICameraExtension">
+		<location x="612" y="2"/>
+		<width>682</width>
+		<height>510</height>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="518" y="122"/>
+		<width>85</width>
+		<property name="Text" value="Climbing"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="512" y="316"/>
+		<width>98</width>
+		<property name="Text" value="Climber - Untested"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="210" y="240"/>
+		<width>59</width>
+		<property name="Text" value="Driving"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="216" y="135"/>
+		<property name="Text" value="Shooting"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="194" y="336"/>
+		<width>80</width>
+		<property name="Text" value="Settings"/>
+	</static-widget>
 </dashboard>
 <live-window>
 </live-window>
-	<hidden field="ShooterMotors|SpeedWhenOn"/>
-	<hidden field="Shooter Motor Speed Multiplier Setter"/>
 </xml>

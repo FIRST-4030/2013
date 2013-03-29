@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.networktables2.TableKeyExistsWithDifferentTypeExcep
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.tables.TableKeyNotDefinedException;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
+import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
 import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 
@@ -19,7 +20,7 @@ public final class DashboardStore {
     private static final double defaultClimberSpeedMultiplier = 1.0;
     private static final double defaultShooterMotor1SpeedMultiplier = 0.7;
     private static final double defaultShooterMotor2SpeedMultiplier = 0.4;
-    private static final int defaulAutoCommandTime = 7;
+    private static final int defaultAutoCommandTime = 7;
     private static final BooleanDashObject isClimberEnabledObject;
     /**
      * False is left, true is right.
@@ -89,10 +90,10 @@ public final class DashboardStore {
             val = 0;
         }
         if (val == 0) {
-            return defaulAutoCommandTime;
-        } else {
-            return val;
+            val = defaultAutoCommandTime * 1000;
         }
+        RobotDebugger.push(new DebugStatus("Auto Command Max Wait Time", val, DebugLevel.HIGHEST));
+        return val;
     }
 
     public static boolean getIsClimberEnabled() {

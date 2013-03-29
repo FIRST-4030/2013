@@ -1,14 +1,11 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.templates.dashboardrelations.DashboardStore;
-import edu.wpi.first.wpilibj.templates.debugging.DebugInfo;
-import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
-import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
+import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstAutoCommand;
 import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstPressure;
 
 /**
@@ -37,7 +34,7 @@ public class AutoCommand extends CommandBase implements Debuggable {
      * This is the maximum amount of time the robot will wait before shooting
      * first time (In milliseconds).
      */
-    private long maxWaitTimeMillis = DashboardStore.getAutoCommandTimeout();
+    private long maxWaitTimeMillis = DVstAutoCommand.getAutoCommandWaitTime();
     /**
      * 0 is just started.
      *
@@ -107,7 +104,7 @@ public class AutoCommand extends CommandBase implements Debuggable {
     }
 
     protected void execute() {
-        maxWaitTimeMillis = DashboardStore.getAutoCommandTimeout();
+        maxWaitTimeMillis = DVstAutoCommand.getAutoCommandWaitTime();
         if (state == 0) {
             if (readyForNextAction()) {
                 setState(1);
@@ -155,6 +152,6 @@ public class AutoCommand extends CommandBase implements Debuggable {
     }
 
     public DebugOutput getStatus() {
-        return new DebugInfoGroup(new DebugInfo[]{new DebugStatus("Auto Command Max Wait Time", maxWaitTimeMillis, DebugLevel.HIGHEST), new InfoState("AutoCommand", getReadableState(), DebugLevel.HIGH)});
+        return new InfoState("AutoCommand", getReadableState(), DebugLevel.HIGH);
     }
 }

@@ -18,7 +18,6 @@ public class RunCameraServo extends CommandBase {
     protected void execute() {
         if (DVstCamera.cameraPosition()) {
             cameraServo.turnLeft();
-
         } else {
             cameraServo.turnRight();
         }

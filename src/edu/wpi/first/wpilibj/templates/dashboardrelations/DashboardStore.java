@@ -1,5 +1,6 @@
 package edu.wpi.first.wpilibj.templates.dashboardrelations;
 
+import edu.wpi.first.wpilibj.networktables2.TableKeyExistsWithDifferentTypeException;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.tables.TableKeyNotDefinedException;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
@@ -15,6 +16,10 @@ import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
  */
 public final class DashboardStore {
 
+    private static final double defaultClimberSpeedMultiplier = 1.0;
+    private static final double defaultShooterMotor1SpeedMultiplier = 0.7;
+    private static final double defaultShooterMotor2SpeedMultiplier = 0.4;
+    private static final int defaulAutoCommandTime = 7;
     private static final BooleanDashObject isClimberEnabledObject;
     /**
      * False is left, true is right.
@@ -27,19 +32,67 @@ public final class DashboardStore {
     }
 
     public static double getClimberSpeedMultiplier() {
-        return SmartDashboard.getNumber("Climber Speed Multiplier Setter");
+        double val;
+        try {
+            val = SmartDashboard.getNumber("Climber Speed Multiplier Setter");
+        } catch (TableKeyNotDefinedException tknde) {
+            val = 0;
+        } catch (TableKeyExistsWithDifferentTypeException tkewdte) {
+            val = 0;
+        }
+        if (val == 0) {
+            return defaultClimberSpeedMultiplier;
+        } else {
+            return val;
+        }
     }
 
     public static double getShooterMotor1SpeedMultiplier() {
-        return SmartDashboard.getNumber("Shooter Motor Speed 1 Multiplier Setter");
+        double val;
+        try {
+            val = SmartDashboard.getNumber("Shooter Motor Speed 1 Multiplier Setter");
+        } catch (TableKeyNotDefinedException tknde) {
+            val = 0;
+        } catch (TableKeyExistsWithDifferentTypeException tkewdte) {
+            val = 0;
+        }
+        if (val == 0) {
+            return defaultShooterMotor1SpeedMultiplier;
+        } else {
+            return val;
+        }
     }
 
     public static double getShooterMotor2SpeedMultiplier() {
-        return SmartDashboard.getNumber("Shooter Motor Speed 2 Multiplier Setter");
+        double val;
+        try {
+            val = SmartDashboard.getNumber("Shooter Motor Speed 2 Multiplier Setter");
+        } catch (TableKeyNotDefinedException tknde) {
+            val = 0;
+        } catch (TableKeyExistsWithDifferentTypeException tkewdte) {
+            val = 0;
+        }
+        if (val == 0) {
+            return defaultShooterMotor2SpeedMultiplier;
+        } else {
+            return val;
+        }
     }
 
     public static int getAutoCommandTimeout() {
-        return (int) (SmartDashboard.getNumber("Auto Command Max Wait Time Setter") * 1000);
+        int val;
+        try {
+            val = (int) (SmartDashboard.getNumber("Auto Command Max Wait Time Setter") * 1000);
+        } catch (TableKeyNotDefinedException tknde) {
+            val = 0;
+        } catch (TableKeyExistsWithDifferentTypeException tkewdte) {
+            val = 0;
+        }
+        if (val == 0) {
+            return defaulAutoCommandTime;
+        } else {
+            return val;
+        }
     }
 
     public static boolean getIsClimberEnabled() {

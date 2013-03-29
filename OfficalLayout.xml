@@ -1,5 +1,23 @@
 <xml version="1.0">
 <dashboard>
+	<widget field="ShooterMotors|SpeedWhenOn" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="277" y="484"/>
+	</widget>
+	<widget field="Shooter Motor Speed Multiplier Setter" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="162" y="436"/>
+	</widget>
+	<widget field="Shooter Motor Speed 2 Multiplier Setter" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="383"/>
+	</widget>
+	<widget field="Shooter Motor Speed 1 Multiplier Setter" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="358"/>
+	</widget>
+	<widget field="ShooterMotors|SpeedWhenOn1" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="45" y="175"/>
+	</widget>
+	<widget field="ShooterMotors|SpeedWhenOn2" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="45" y="197"/>
+	</widget>
 	<widget field="aCameraPosition" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
 		<location x="12" y="30"/>
 	</widget>
@@ -22,7 +40,7 @@
 		<property name="Text" value="Climber - Untested"/>
 	</static-widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
-		<location x="210" y="232"/>
+		<location x="210" y="240"/>
 		<width>59</width>
 		<property name="Text" value="Driving"/>
 	</static-widget>
@@ -42,32 +60,26 @@
 		<location x="307" y="274"/>
 	</widget>
 	<widget field="Climber|Speed-Multiplier" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="404" y="205"/>
+		<location x="402" y="201"/>
 		<height>20</height>
 	</widget>
 	<widget field="Climber Speed Multiplier Setter" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="51" y="380"/>
+		<location x="43" y="410"/>
 		<height>20</height>
-	</widget>
-	<widget field="ShooterMotors|SpeedWhenOn" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="51" y="178"/>
-	</widget>
-	<widget field="Shooter Motor Speed Multiplier Setter" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="17" y="337"/>
 	</widget>
 	<widget field="ShooterMotors|Running" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="84" y="154"/>
 		<height>20</height>
 	</widget>
 	<widget field="GroundDrive|Command|Reversed|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="8" y="250"/>
+		<location x="8" y="259"/>
 	</widget>
 	<widget field="GroundDrive|Command|Speed|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="23" y="274"/>
+		<location x="23" y="283"/>
 		<height>20</height>
 	</widget>
 	<widget field="Ladder Drop State?|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="395" y="181"/>
+		<location x="394" y="179"/>
 		<height>20</height>
 	</widget>
 	<widget field="ClimberLimitSwitch|DeploySwitch" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
@@ -82,7 +94,7 @@
 		<height>20</height>
 	</widget>
 	<widget field="PressureSwitch|AtPressure" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="68" y="202"/>
+		<location x="68" y="218"/>
 	</widget>
 	<widget field="Climber|Enabled|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="410" y="156"/>

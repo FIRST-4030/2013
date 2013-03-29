@@ -1,6 +1,7 @@
 package edu.wpi.first.wpilibj.templates.dashboardrelations;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.tables.TableKeyNotDefinedException;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
@@ -13,45 +14,65 @@ import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
  * @author daboross
  */
 public final class DashboardStore {
-    
-    private static BooleanDashObject isClimberEnabledObject;
-    private static BooleanDashObject cameraPosition;//False is left, true is right.
-    private static IntegerDashObject debugLevelChanger;
 
+    private static final BooleanDashObject isClimberEnabledObject;
     /**
-     * Carriage
+     * False is left, true is right.
      */
+    private static final BooleanDashObject cameraPosition;
+
     static {
-        isClimberEnabledObject = new BooleanDashObject("-IsClimberEnabled", "Enable Climber", "Disable Climber", false);
-        debugLevelChanger = new IntegerDashObject("-DebugLevelChanger", new String[]{"All Messages", "Lowest or Higher", "Low or Higher", "Mid or Higher", "High or Higher", "Highest or Higher", "Only \"Always\" messages"}, 6);
-        cameraPosition = new BooleanDashObject("-CameraPosition", "Camera Left", "Camera Right", true);
-        SmartDashboard.putNumber("Climber Speed Multiplier", 1.0);
+        isClimberEnabledObject = new BooleanDashObject("aIsClimberEnabled", "Enable Climber", "Disable Climber", false);
+        cameraPosition = new BooleanDashObject("aCameraPosition", "Camera Left", "Camera Right", true);
+        double climberSpeed;
+        try {
+            climberSpeed = SmartDashboard.getNumber("Climber Speed Multiplier Setter");
+        } catch (TableKeyNotDefinedException ex) {
+            climberSpeed = 0;
+        }
+        if (climberSpeed == 0) {
+            SmartDashboard.putNumber("Climber Speed Multiplier Setter", 1.0);
+        } else {
+            SmartDashboard.putNumber("Climber Speed Multiplier Setter", climberSpeed);
+        }
+        double shooterSpeed;
+        try {
+            shooterSpeed = SmartDashboard.getNumber("Shooter Motor Speed Multiplier Setter");
+        } catch (TableKeyNotDefinedException ex) {
+            shooterSpeed = 0;
+        }
+        if (shooterSpeed == 0) {
+            SmartDashboard.putNumber("Shooter Motor Speed Multiplier Setter", 0.4);
+        } else {
+            SmartDashboard.putNumber("Shooter Motor Speed Multiplier Setter", shooterSpeed);
+        }
     }
-    
+
     public static double getClimberSpeedMultiplier() {
-        return SmartDashboard.getNumber("Climber Speed Multiplier");
+        return SmartDashboard.getNumber("Climber Speed Multiplier Setter");
     }
-    
+
+    public static double getShooterMotorSpeedMultiplier() {
+        return SmartDashboard.getNumber("Shooter Motor Speed Multiplier Setter");
+    }
+
     public static boolean getIsClimberEnabled() {
-        return isClimberEnabledObject.getValue();
+        final boolean enabledGet = isClimberEnabledObject.getValue();
+        RobotDebugger.push(new InfoState("Climber:Enabled", enabledGet ? "Yes" : "No", DebugLevel.HIGHEST));
+        return enabledGet;
     }
 
     /**
      * True for left, False for right.
      */
     public static boolean getCameraPosition() {
-        return cameraPosition.getValue();
+        final boolean enabledGet = cameraPosition.getValue();
+        RobotDebugger.push(new InfoState("Camera:Position", enabledGet ? "Camera Left" : "Camera Right", DebugLevel.HIGHEST));
+        return enabledGet;
     }
-    
-    private static int getDebugLevelChanger() {
-        return debugLevelChanger.getValue();
-    }
-    
-    public static void checkDebugLevelChanger() {
-        int debugLevelChange = getDebugLevelChanger();
-        if (debugLevelChange < DebugLevel.CURRENT) {
-            DebugLevel.CURRENT = debugLevelChange;
-        }
-        RobotDebugger.push(new InfoState("Debug To Show:", DebugLevel.getNameOf(DebugLevel.CURRENT) + " Or Higher", DebugLevel.ALWAYS));
+
+    public static void reCreate() {
+        cameraPosition.reCreate();
+        isClimberEnabledObject.reCreate();
     }
 }

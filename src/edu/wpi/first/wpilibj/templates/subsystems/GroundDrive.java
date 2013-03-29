@@ -26,6 +26,7 @@ public class GroundDrive extends Subsystem implements Debuggable {
     public GroundDrive() {
         System.out.println("SubSystem Created: GroundDrive");
         roboDrive = new RobotDrive(leftMotor, rightMotor);
+        roboDrive.setSafetyEnabled(false);
         roboDrive.stopMotor();
     }
 
@@ -42,7 +43,7 @@ public class GroundDrive extends Subsystem implements Debuggable {
         if (d < 0 || d > 1) {
             throw new IllegalArgumentException();
         }
-        multiplier = d * (driveReversed ? -1 : 1);
+        multiplier = d;
     }
     private double multiplier;
 
@@ -50,6 +51,8 @@ public class GroundDrive extends Subsystem implements Debuggable {
         driveWithController(VstJ.getDriveJoystick());
     }
     private Joystick lastController;
+    private double lastForwardMotion;
+    private double lastSpinMotion;
 
     /**
      * The values will be changed by the speed multiplier and turn.
@@ -59,8 +62,8 @@ public class GroundDrive extends Subsystem implements Debuggable {
             return;
         }
         lastController = js;
-        double turn = multiplier * js.getX();
-        double speed = multiplier * js.getY();
+        double turn = (lastSpinMotion = multiplier * js.getX());
+        double speed = (lastForwardMotion = multiplier * js.getY() * (driveReversed ? -1 : 1));
         roboDrive.arcadeDrive(speed, turn);
     }
 
@@ -75,6 +78,22 @@ public class GroundDrive extends Subsystem implements Debuggable {
         driveWithController(lastController);
     }
 
+    public void stop() {
+        roboDrive.stopMotor();
+    }
+
+    public static void disabled() {
+        roboDrive.stopMotor();
+    }
+
+    public double getLastForwardMotion() {
+        return lastForwardMotion;
+    }
+
+    public double getLastSpinMotion() {
+        return lastSpinMotion;
+    }
+
     /**
      * Get Current Status Info.
      */
@@ -82,16 +101,8 @@ public class GroundDrive extends Subsystem implements Debuggable {
         DebugStatus[] infoList = new DebugStatus[4];
         infoList[0] = new DebugStatus("GroundDrive:LeftMotor:Speed", leftMotor.get(), DebugLevel.MID);
         infoList[1] = new DebugStatus("GroundDrive:RightMotor:Speed", rightMotor.get(), DebugLevel.MID);
-        infoList[2] = new DebugStatus("GroundDrive:Reversed", driveReversed, DebugLevel.HIGHEST);
-        infoList[3] = new DebugStatus("GroundDrive:SpeedMultiplier", multiplier, DebugLevel.HIGHEST);
+        infoList[2] = new DebugStatus("GroundDrive:Reversed", driveReversed, DebugLevel.MID);
+        infoList[3] = new DebugStatus("GroundDrive:SpeedMultiplier", multiplier, DebugLevel.MID);
         return new DebugInfoGroup(infoList);
-    }
-
-    public void stop() {
-        roboDrive.stopMotor();
-    }
-
-    public static void disabled() {
-        roboDrive.stopMotor();
     }
 }

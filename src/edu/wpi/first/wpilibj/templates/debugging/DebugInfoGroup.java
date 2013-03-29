@@ -6,9 +6,9 @@ package edu.wpi.first.wpilibj.templates.debugging;
  */
 public class DebugInfoGroup extends DebugOutput {
 
-    private DebugInfo[] infos;
+    private final DebugInfo[] infos;
 
-    public DebugInfoGroup(DebugInfo[] listOfInfo) {
+    public DebugInfoGroup(final DebugInfo[] listOfInfo) {
         infos = listOfInfo;
     }
 

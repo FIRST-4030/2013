@@ -4,13 +4,15 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.templates.commands.*;
+import edu.wpi.first.wpilibj.templates.dashboardrelations.DashboardStore;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
-import edu.wpi.first.wpilibj.templates.subsystems.GroundDrive;
 
 /**
  * Main Robot Class. This is the main Robot Class.
  */
 public class RobotMain extends IterativeRobot {
+
+    AutoCommand auto;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -18,50 +20,49 @@ public class RobotMain extends IterativeRobot {
      */
     public void robotInit() {
         CommandBase.init();
+        auto = new AutoCommand();
         System.out.println("Robot Ready!");
     }
 
     public void autonomousInit() {
-        ImageProcess ip = new ImageProcess();
-        ip.start();
+        auto.reInitValues();
+        auto.start();
     }
 
-    /**
-     * This function is called periodically during autonomous
-     */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
     }
 
     public void teleopInit() {
+        auto.cancel();
     }
 
-    /**
-     * This function is called periodically during operator control.
-     */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
     }
 
-    /**
-     * This function is called periodically during test mode.
-     */
     public void testPeriodic() {
         LiveWindow.run();
     }
 
     public void disabledPeriodic() {
-        GroundDrive.disabled();
     }
 
     public void disabledInit() {
-        RobotDebugger.clearMap();
+        auto.cancel();
         for (int i = 0; i < list.length; i++) {
             list[i].disable();
         }
+        RobotDebugger.reMap();
+        DashboardStore.reCreate();
     }
     private static DisableNotifable[] list = new DisableNotifable[0];
 
+    /**
+     * Add a DisableNotifable to be notified when the robot is disabled. When
+     * the robot is disabled RobotMain will go through these classes and run
+     * each of their disable() methods.
+     */
     public static void addDisableNotifable(DisableNotifable d) {
         for (int i = 0; i < list.length; i++) {
             if (list[i] == d) {

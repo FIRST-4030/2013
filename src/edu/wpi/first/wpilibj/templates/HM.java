@@ -5,10 +5,23 @@ package edu.wpi.first.wpilibj.templates;
  */
 public class HM {
 
+    /**
+     * This multiplies the value by the place, then rounds the value to the
+     * nearest whole number, then divides the value by the place.
+     *
+     * @param place The number of decimal places.
+     * @param value The value to round.
+     * @return The value rounded to place decimal places.
+     */
     public static double round(int place, double value) {
-        return ((double) ((int) (value * place))) / (place);
+        return ((int) (value * place)) / ((double) place);
     }
 
+    /**
+     * This calls round(100, value).
+     *
+     * @return round(100, value)
+     */
     public static double round(double value) {
         return round(100, value);
     }

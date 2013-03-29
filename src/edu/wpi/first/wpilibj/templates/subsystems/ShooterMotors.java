@@ -2,7 +2,6 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.templates.commands.RunShooterMotors;
 import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
 import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
@@ -11,9 +10,7 @@ import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
 /**
- * This is a SubSystem for the Shooter Motors, This should be controlled by
- * RunShooterMotors. The First motor will always by .75 times the speed of the
- * second motor.
+ * This is a SubSystem for the Shooter Motors.
  */
 public final class ShooterMotors extends Subsystem implements Debuggable {
 
@@ -26,12 +23,10 @@ public final class ShooterMotors extends Subsystem implements Debuggable {
     }
 
     protected void initDefaultCommand() {
-        setDefaultCommand(new RunShooterMotors());
     }
 
     /**
-     * Sets the speed of the second motor to this speed, and the first motor to
-     * .75 times this speed.
+     * Sets the speed of the shooter motors to this speed.
      *
      * @param speed the speed of the second motor.
      * @throws IllegalArgumentException If the given double is less then 0 or
@@ -41,14 +36,14 @@ public final class ShooterMotors extends Subsystem implements Debuggable {
         if (speed > 1 || speed < 0) {
             throw new IllegalArgumentException();
         }
-        firstMotor.set(speed * 0.75);
+        firstMotor.set(speed * 0.8);
         secondMotor.set(speed);
     }
 
     public DebugOutput getStatus() {
         DebugStatus[] infoList = new DebugStatus[2];
-        infoList[0] = new DebugStatus("ShooterMotors:FirstMotorSpeed", firstMotor.get(), DebugLevel.MID);
-        infoList[1] = new DebugStatus("ShooterMotors:SecondMotorSpeed", secondMotor.get(), DebugLevel.MID);
+        infoList[0] = new DebugStatus("ShooterMotors:FirstMotor:Speed", firstMotor.get(), DebugLevel.MID);
+        infoList[1] = new DebugStatus("ShooterMotors:SecondMotor:Speed", secondMotor.get(), DebugLevel.MID);
         return new DebugInfoGroup(infoList);
     }
 }

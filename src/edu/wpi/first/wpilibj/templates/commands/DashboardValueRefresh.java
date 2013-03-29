@@ -2,31 +2,35 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.dashboardrelations.DashboardStore;
-import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstC;
+import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstCamera;
+import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstClimber;
 
 /**
+ * Command to refresh values on and from the SmartDashboard.
  *
  * @author daboross
  */
 public class DashboardValueRefresh extends CommandBase {
-
+    
     public DashboardValueRefresh() {
+        SmartDashboard.putString("TimeUpdate", "-42");
     }
-
+    
     protected void initialize() {
     }
-
+    
     protected void execute() {
-        DashboardStore.checkDebugLevelChanger();
         SmartDashboard.putString("TimeUpdate", String.valueOf(System.currentTimeMillis()));
-        DVstC.setClimberEnabled(DashboardStore.getIsClimberEnabled());
+        DVstCamera.setCameraPosition(DashboardStore.getCameraPosition());
+        DVstClimber.setClimberEnabled(DashboardStore.getIsClimberEnabled());
+        dVstShooterMotors.setOnSpeed(DashboardStore.getShooterMotorSpeedMultiplier());
     }
-
+    
     protected boolean isFinished() {
         return false;
     }
-
+    
     protected void end() {
-        SmartDashboard.putString("TimeUpdate", "Disabled!!!");
+        SmartDashboard.putString("TimeUpdate", "-42?");
     }
 }

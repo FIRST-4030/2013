@@ -9,31 +9,30 @@ import edu.wpi.first.wpilibj.templates.helpers.solenoid.SolenoidPair;
 import edu.wpi.first.wpilibj.templates.variablestores.VstM;
 
 /**
- * This is the subSystem for controlling the Solenoids that push out/pull back
- * the climber "arm".
  *
  * @author daboross
  */
-public final class ClimberArmSolenoids extends Subsystem implements Debuggable {
+public final class FrisbeeDumperSolenoids extends Subsystem implements Debuggable {
 
-    private SolenoidPair climberArmSolenoids = new SolenoidPair(VstM.SOLENOID.CLIMBER_ARM_EXTENDING_SIDE, VstM.SOLENOID.CLIMBER_ARM_RETRACTING_SIDE, false);
+    private SolenoidPair frisbeeDumperSolenoids = new SolenoidPair(VstM.SOLENOID.FRISBEE_DUMP_EXTENDING_SIDE, VstM.SOLENOID.FRISBEE_DUMP_RETRACTING_SIDE, true);
 
-    public ClimberArmSolenoids() {
-        System.out.println("SubSystem Created: ClimberArmSolenoids");
+    public FrisbeeDumperSolenoids() {
+        System.out.println("SubSystem Created: FrisbeeDumperSolenoids");
     }
 
     protected void initDefaultCommand() {
+        //setDefaultCommand(new OldRunFrisbeeDumperSolenoid());
     }
 
     public void extend() {
-        climberArmSolenoids.extend();
+        frisbeeDumperSolenoids.extend();
     }
 
     public void retract() {
-        climberArmSolenoids.retract();
+        frisbeeDumperSolenoids.retract();
     }
 
     public DebugOutput getStatus() {
-        return new InfoState("Ladder Drop State?", climberArmSolenoids.getState(), DebugLevel.HIGH);
+        return new InfoState("FrisbeeDumperSolenoids:DumperState", frisbeeDumperSolenoids.getState(), DebugLevel.HIGHEST);
     }
 }

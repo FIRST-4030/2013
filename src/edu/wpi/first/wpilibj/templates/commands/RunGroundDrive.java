@@ -1,6 +1,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.templates.dashboardrelations.DashboardStore;
+import edu.wpi.first.wpilibj.templates.debugging.DebugInfo;
+import edu.wpi.first.wpilibj.templates.debugging.DebugInfoGroup;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
@@ -16,6 +17,8 @@ import edu.wpi.first.wpilibj.templates.vstj.VstJ;
  */
 public class RunGroundDrive extends CommandBase implements Debuggable {
 
+    private boolean highSpeedLastPressed = false;
+    private boolean reversedLastPressed = false;
     private boolean highSpeed = false;
     private boolean reversed = false;
 
@@ -30,16 +33,30 @@ public class RunGroundDrive extends CommandBase implements Debuggable {
     }
 
     protected void execute() {
-        if (DashboardStore.getIsClimberEnabled()) {
-            groundDrive.driveWithRaw(-0.5, 0);
-        } else {
-            updateHighSpeed();
-            updateReversed();
-            groundDrive.setSpeedMutliplier(highSpeed ? 1 : 0.7, reversed);
-            groundDrive.driveWithDefaultController();
-        }
+        updateHighSpeed();
+        updateReversed();
+        groundDrive.setSpeedMutliplier(highSpeed ? 1 : 0.7, reversed);
+        groundDrive.driveWithDefaultController();
         RobotDebugger.push(groundDrive);
         RobotDebugger.push(this);
+    }
+
+    private void updateHighSpeed() {
+        if (VstJ.getDriveSpeedToggleButton().get() != highSpeedLastPressed) {
+            if (!highSpeedLastPressed) {
+                highSpeed = !highSpeed;
+            }
+            highSpeedLastPressed = !highSpeedLastPressed;
+        }
+    }
+
+    private void updateReversed() {
+        if (VstJ.getDriveControlReverseButton().get() != reversedLastPressed) {
+            if (!reversedLastPressed) {
+                reversed = !reversed;
+            }
+            reversedLastPressed = !reversedLastPressed;
+        }
     }
 
     protected boolean isFinished() {
@@ -51,26 +68,9 @@ public class RunGroundDrive extends CommandBase implements Debuggable {
     }
 
     public DebugOutput getStatus() {
-        return new InfoState("GroundDrive:Speed", highSpeed ? "High" : "Low", DebugLevel.LOW);
-    }
-    private boolean highSpeedLastPressed = false;
-    private boolean reversedLastPressed = false;
-
-    private void updateHighSpeed() {
-        if (VstJ.getDriveSpeedToggleButtonValue() != highSpeedLastPressed) {
-            if (!highSpeedLastPressed) {
-                highSpeed = !highSpeed;
-            }
-            highSpeedLastPressed = !highSpeedLastPressed;
-        }
-    }
-
-    private void updateReversed() {
-        if (VstJ.getDriveControlReverseButtonValue() != reversedLastPressed) {
-            if (!reversedLastPressed) {
-                reversed = !reversed;
-            }
-            reversedLastPressed = !reversedLastPressed;
-        }
+        return new DebugInfoGroup(new DebugInfo[]{
+            new InfoState("GroundDrive:Command:Speed", highSpeed ? "High" : "Low", DebugLevel.HIGHEST),
+            new InfoState("GroundDrive:Command:Reversed", reversed ? "Yes" : "No", DebugLevel.HIGHEST)
+        });
     }
 }

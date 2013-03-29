@@ -18,13 +18,14 @@ import edu.wpi.first.wpilibj.templates.subsystems.ShooterMotors;
 public class DVstShooterMotors implements Debuggable {
 
     private double onSpeed1 = 0.4;
-    private double onSpeed2 = 0.7;
+    private double onSpeed2 = 0.4;
     private boolean on;
     private final ShooterMotors shooterMotors;
 
     public void setOnSpeed(final double onSpeedSet1, final double onSpeedSet2) {
         this.onSpeed1 = onSpeedSet1;
         this.onSpeed2 = onSpeedSet2;
+        pushMe();
     }
 
     public DVstShooterMotors(ShooterMotors shooterMotors) {

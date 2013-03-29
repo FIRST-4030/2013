@@ -24,39 +24,6 @@ public final class DashboardStore {
     static {
         isClimberEnabledObject = new BooleanDashObject("aIsClimberEnabled", "Enable Climber", "Disable Climber", false);
         cameraPosition = new BooleanDashObject("aCameraPosition", "Camera Left", "Camera Right", true);
-        double climberSpeed;
-        try {
-            climberSpeed = SmartDashboard.getNumber("Climber Speed Multiplier Setter");
-        } catch (TableKeyNotDefinedException ex) {
-            climberSpeed = 0;
-        }
-        if (climberSpeed == 0) {
-            SmartDashboard.putNumber("Climber Speed Multiplier Setter", 1.0);
-        } else {
-            SmartDashboard.putNumber("Climber Speed Multiplier Setter", climberSpeed);
-        }
-        double shooterSpeed1;
-        try {
-            shooterSpeed1 = SmartDashboard.getNumber("Shooter Motor Speed 1 Multiplier Setter");
-        } catch (TableKeyNotDefinedException ex) {
-            shooterSpeed1 = 0;
-        }
-        if (shooterSpeed1 == 0) {
-            SmartDashboard.putNumber("Shooter Motor Speed 1 Multiplier Setter", 0.7);
-        } else {
-            SmartDashboard.putNumber("Shooter Motor Speed 1 Multiplier Setter", shooterSpeed1);
-        }
-        double shooterSpeed2;
-        try {
-            shooterSpeed2 = SmartDashboard.getNumber("Shooter Motor Speed 2 Multiplier Setter");
-        } catch (TableKeyNotDefinedException ex) {
-            shooterSpeed2 = 0;
-        }
-        if (shooterSpeed2 == 0) {
-            SmartDashboard.putNumber("Shooter Motor Speed 2 Multiplier Setter", 0.4);
-        } else {
-            SmartDashboard.putNumber("Shooter Motor Speed 2 Multiplier Setter", shooterSpeed2);
-        }
     }
 
     public static double getClimberSpeedMultiplier() {
@@ -69,6 +36,10 @@ public final class DashboardStore {
 
     public static double getShooterMotor2SpeedMultiplier() {
         return SmartDashboard.getNumber("Shooter Motor Speed 2 Multiplier Setter");
+    }
+
+    public static int getAutoCommandTimeout() {
+        return (int) (SmartDashboard.getNumber("Auto Command Max Wait Time Setter") * 1000);
     }
 
     public static boolean getIsClimberEnabled() {
@@ -89,5 +60,14 @@ public final class DashboardStore {
     public static void reCreate() {
         cameraPosition.reCreate();
         isClimberEnabledObject.reCreate();
+        double autoSpeed;
+        try {
+            autoSpeed = SmartDashboard.getNumber("Auto Command Max Wait Time Setter");
+        } catch (TableKeyNotDefinedException tknde) {
+            autoSpeed = 0;
+        }
+        if (autoSpeed == 0) {
+            SmartDashboard.putNumber("Auto Command Max Wait Time Setter", autoSpeed);
+        }
     }
 }

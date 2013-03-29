@@ -1,5 +1,6 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.templates.dashboardrelations.DashboardStore;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
@@ -33,7 +34,7 @@ public class AutoCommand extends CommandBase implements Debuggable {
      * This is the maximum amount of time the robot will wait before shooting
      * first time (In milliseconds).
      */
-    private static final long maxWaitTimeMillis = 10000;
+    private final long maxWaitTimeMillis = DashboardStore.getAutoCommandTimeout();
     /**
      * 0 is just started.
      *

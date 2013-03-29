@@ -1,11 +1,5 @@
 <xml version="1.0">
 <dashboard>
-	<widget field="ShooterMotors|SpeedWhenOn" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="277" y="484"/>
-	</widget>
-	<widget field="Shooter Motor Speed Multiplier Setter" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="162" y="436"/>
-	</widget>
 	<widget field="Shooter Motor Speed 2 Multiplier Setter" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="0" y="383"/>
 	</widget>
@@ -49,7 +43,7 @@
 		<property name="Text" value="Shooting"/>
 	</static-widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
-		<location x="199" y="317"/>
+		<location x="194" y="336"/>
 		<width>80</width>
 		<property name="Text" value="Settings"/>
 	</static-widget>
@@ -64,7 +58,7 @@
 		<height>20</height>
 	</widget>
 	<widget field="Climber Speed Multiplier Setter" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="43" y="410"/>
+		<location x="43" y="407"/>
 		<height>20</height>
 	</widget>
 	<widget field="ShooterMotors|Running" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
@@ -111,4 +105,6 @@
 </dashboard>
 <live-window>
 </live-window>
+	<hidden field="ShooterMotors|SpeedWhenOn"/>
+	<hidden field="Shooter Motor Speed Multiplier Setter"/>
 </xml>

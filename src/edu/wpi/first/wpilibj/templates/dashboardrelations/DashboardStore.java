@@ -113,14 +113,5 @@ public final class DashboardStore {
     public static void reCreate() {
         cameraPosition.reCreate();
         isClimberEnabledObject.reCreate();
-        double autoSpeed;
-        try {
-            autoSpeed = SmartDashboard.getNumber("Auto Command Max Wait Time Setter");
-        } catch (TableKeyNotDefinedException tknde) {
-            autoSpeed = 0;
-        }
-        if (autoSpeed == 0) {
-            SmartDashboard.putNumber("Auto Command Max Wait Time Setter", autoSpeed);
-        }
     }
 }

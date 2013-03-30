@@ -52,9 +52,9 @@ public class DVstShooterMotors implements Debuggable {
 
     public DebugOutput getStatus() {
         return new DebugInfoGroup(new DebugInfo[]{new DebugStatus("ShooterMotors:Running", on, DebugLevel.HIGHEST),
-                    new DebugStatus("ShooterMotors:SpeedWhenOn1", "%" + ((int) (onSpeed1 * 100)), DebugLevel.HIGHEST),
-                    new DebugStatus("ShooterMotors:SpeedWhenOn2", "%" + ((int) (onSpeed2 * 100)), DebugLevel.HIGHEST)
-                });
+            new DebugStatus("ShooterMotors:SpeedWhenOn1", "%" + ((int) (onSpeed1 * 100)), DebugLevel.HIGHEST),
+            new DebugStatus("ShooterMotors:SpeedWhenOn2", "%" + ((int) (onSpeed2 * 100)), DebugLevel.HIGHEST)
+        });
     }
 
     public class Notif implements DisableNotifable {

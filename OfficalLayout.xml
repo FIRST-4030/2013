@@ -20,9 +20,6 @@
 	<widget field="aCameraPosition" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
 		<location x="13" y="30"/>
 	</widget>
-	<widget field="aIsClimberEnabled" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
-		<location x="404" y="84"/>
-	</widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
 		<location x="518" y="122"/>
 		<width>85</width>
@@ -183,4 +180,5 @@
 </dashboard>
 <live-window>
 </live-window>
+	<hidden field="aIsClimberEnabled"/>
 </xml>

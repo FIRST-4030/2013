@@ -1,7 +1,6 @@
 package edu.wpi.first.wpilibj.templates.variablestores.dynamic;
 
-import edu.wpi.first.wpilibj.templates.commands.ClimberEnabledAndDisabledActions;
-
+//import edu.wpi.first.wpilibj.templates.commands.ClimberEnabledAndDisabledActions;
 /**
  * Dynamic Climber Variable Store.
  *
@@ -9,31 +8,30 @@ import edu.wpi.first.wpilibj.templates.commands.ClimberEnabledAndDisabledActions
  */
 public final class DVstClimber {
 
-    private static boolean climberEnabled;
-
-    public static boolean climberEnabled() {
-        return climberEnabled;
-    }
-
-    public static void setClimberEnabled(final boolean climberEnabledSet) {
-        if (climberEnabledSet != climberEnabled) {
-            if (climberEnabledSet) {
-                climberEnabledActions();
-            } else {
-                climberDisabledActions();
-            }
-        }
-        climberEnabled = climberEnabledSet;
-    }
-
-    private static void climberEnabledActions() {
-        ClimberEnabledAndDisabledActions.climberEnabledActions();
-    }
-
-    private static void climberDisabledActions() {
-        ClimberEnabledAndDisabledActions.climberDisabledActions();
-    }
-
+//    private static boolean climberEnabled;
+//
+//    public static boolean climberEnabled() {
+//        return climberEnabled;
+//    }
+//
+//    public static void setClimberEnabled(final boolean climberEnabledSet) {
+//        if (climberEnabledSet != climberEnabled) {
+//            if (climberEnabledSet) {
+//                climberEnabledActions();
+//            } else {
+//                climberDisabledActions();
+//            }
+//        }
+//        climberEnabled = climberEnabledSet;
+//    }
+//
+//    private static void climberEnabledActions() {
+//        ClimberEnabledAndDisabledActions.climberEnabledActions();
+//    }
+//
+//    private static void climberDisabledActions() {
+//        ClimberEnabledAndDisabledActions.climberDisabledActions();
+//    }
     public static final class LimitSwitches {
 
         private static boolean upper;

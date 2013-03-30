@@ -1,7 +1,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
-import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstClimber;
+//import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
+//import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstClimber;
 
 /**
  *
@@ -20,10 +20,10 @@ public class FrisbeeDumperSolenoidRetract extends CommandBase {
     }
 
     protected void execute() {
-        if (DVstClimber.climberEnabled()) {
-            frisbeeDumperSolenoids.retract();
-            RobotDebugger.push(frisbeeDumperSolenoids);
-        }
+//        if (DVstClimber.climberEnabled()) {
+//            frisbeeDumperSolenoids.retract();
+//            RobotDebugger.push(frisbeeDumperSolenoids);
+//        }
         isFinished = true;
     }
 

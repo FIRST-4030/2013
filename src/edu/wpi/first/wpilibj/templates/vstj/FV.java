@@ -31,7 +31,7 @@ final class FV {
         protected static final class STAND_OF_JOYSTICK {
 
             protected static final int LEFT_TOP = 6;
-            protected static final int LEFT_BOTTM = 7;
+            protected static final int LEFT_BOTTOM = 7;
             protected static final int BOTTOM_LEFT = 8;
             protected static final int BOTTOM_RIGHT = 9;
             protected static final int RIGHT_BOTTOM = 10;

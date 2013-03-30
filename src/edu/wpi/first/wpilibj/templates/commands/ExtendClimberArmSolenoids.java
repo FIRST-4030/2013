@@ -1,7 +1,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
-import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstClimber;
+//import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstClimber;
 
 /**
  * This Command runs the Climber out-pushing solenoid from input received from
@@ -32,10 +32,10 @@ public class ExtendClimberArmSolenoids extends CommandBase {
      * a setting in the SmartDashboard.
      */
     protected void execute() {
-        if (DVstClimber.climberEnabled()) {
-            climberArmSolenoids.extend();
-            RobotDebugger.push(climberArmSolenoids);
-        }
+//        if (DVstClimber.climberEnabled()) {
+//            climberArmSolenoids.extend();
+//            RobotDebugger.push(climberArmSolenoids);
+//        }
         isFinished = true;
     }
 

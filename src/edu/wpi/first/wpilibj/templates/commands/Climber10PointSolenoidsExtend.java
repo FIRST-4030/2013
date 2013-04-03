@@ -2,17 +2,16 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 
-//import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstClimber;
 /**
  *
  * @author daboross
  */
-public class FrisbeeDumperSolenoidRetract extends CommandBase {
+public class Climber10PointSolenoidsExtend extends CommandBase {
 
     private boolean isFinished;
 
-    public FrisbeeDumperSolenoidRetract() {
-        requires(frisbeeDumperSolenoids);
+    public Climber10PointSolenoidsExtend() {
+        requires(climber10PointSolenoids);
     }
 
     protected void initialize() {
@@ -20,10 +19,8 @@ public class FrisbeeDumperSolenoidRetract extends CommandBase {
     }
 
     protected void execute() {
-//        if (DVstClimber.climberEnabled()) {
-        frisbeeDumperSolenoids.retract();
-        RobotDebugger.push(frisbeeDumperSolenoids);
-//        }
+        climber10PointSolenoids.extend();
+        RobotDebugger.push(climber10PointSolenoids);
         isFinished = true;
     }
 

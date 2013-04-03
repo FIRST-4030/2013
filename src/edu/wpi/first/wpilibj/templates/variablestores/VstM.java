@@ -26,27 +26,27 @@ public final class VstM {
         /**
          * CLIMBER_WEDGE_SIDE_1
          */
-        public static final int CLIMBER_WEDGE_EXTENDING_SIDE = 5;
+        public static final int CLIMB_10_POINT_EXTENDING_SIDE = 5;
         /**
          * CLIMBER_WEDGE_SIDE_2
          */
-        public static final int CLIMBER_WEDGE_RETRACTING_SIDE = 6;
+        public static final int CLIMB_10_POINT_RETRACTING_SIDE = 6;
         /**
          * FRISBEE_DUMP_1
          */
-        public static final int FRISBEE_DUMP_EXTENDING_SIDE = 7;
+        public static final int FRISBEE_HOLDER_EXTENDING_SIDE = 7;
         /**
          * FRISBEE_DUMP_2
          */
-        public static final int FRISBEE_DUMP_RETRACTING_SIDE = 8;
+        public static final int FRISBEE_HOLDER_RETRACTING_SIDE = 8;
     }
 
     public static final class DIGITAL_IO {
 
         public static final int PRESSURE_SWITCH = 1;
-        public static final int CLIMBER_LOWER_LIMIT_SWITCH = 2;
-        public static final int CLIMBER_UPPER_LIMIT_SWITCH = 3;
-        public static final int CLIMBER_DEPLOY_LIMIT_SWITCH = 4;
+        public static final int LADDER_LOWER_LIMIT_SWITCH = 2;
+        public static final int LADDER_UPPER_LIMIT_SWITCH = 3;
+        public static final int LADDER_DEPLOY_LIMIT_SWITCH = 4;
     }
 
     public static final class PWM {

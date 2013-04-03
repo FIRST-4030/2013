@@ -1,18 +1,17 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
-//import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstClimber;
 
 /**
  *
  * @author daboross
  */
-public class ClimberWedgeSolenoidsOff extends CommandBase {
+public class FrisbeeHolderSolenoidsExtend extends CommandBase {
 
     private boolean isFinished;
 
-    public ClimberWedgeSolenoidsOff() {
-        requires(climberWedgeSolenoids);
+    public FrisbeeHolderSolenoidsExtend() {
+        requires(frisbeeHolderSolenoids);
     }
 
     protected void initialize() {
@@ -20,10 +19,8 @@ public class ClimberWedgeSolenoidsOff extends CommandBase {
     }
 
     protected void execute() {
-//        if (DVstClimber.climberEnabled()) {
-        climberWedgeSolenoids.retract();
-        RobotDebugger.push(climberWedgeSolenoids);
-//        }
+        frisbeeHolderSolenoids.extend();
+        RobotDebugger.push(frisbeeHolderSolenoids);
         isFinished = true;
     }
 

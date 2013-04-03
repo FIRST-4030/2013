@@ -71,12 +71,12 @@ public class VstJ {
         return getJoystickButton(Mappings.driveControlReverseButtonJoystickNumber, Mappings.driveControlReverseButtonNumber);
     }
 
-    public static JoystickButton getFrisbeeDumpButton() {
-        return getJoystickButton(Mappings.frisbeeDumpButtonJoystickNumber, Mappings.frisbeeDumpButtonNumber);
+    public static JoystickButton getFrisbeeHolderExtendButton() {
+        return getJoystickButton(Mappings.frisbeeHolderExtendButtonJoystickNumber, Mappings.frisbeeHolderExtendButtonNumber);
     }
 
-    public static JoystickButton getFrisbeeUnDumpButton() {
-        return getJoystickButton(Mappings.frisbeeUnDumpButtonJoystickNumber, Mappings.frisbeeUnDumpButtonNumber);
+    public static JoystickButton getFrisbeeHolderRetractButton() {
+        return getJoystickButton(Mappings.frisbeeHolderRetractButtonJoystickNumber, Mappings.frisbeeHolderRetractButtonNumber);
     }
 
     public static JoystickButton getGroundDriveFastTurnLeftButton() {
@@ -117,11 +117,11 @@ public class VstJ {
         private static final int ladderControlAxisNumber = FV.AXIS.Y;
         private static final int ladderControlAxisJoystickNumber = FV.SHOOTER_JOYSTICK;
         //frisbeeDumpButton
-        private static final int frisbeeDumpButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.LEFT_TOP;
-        private static final int frisbeeDumpButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+        private static final int frisbeeHolderExtendButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.LEFT_TOP;
+        private static final int frisbeeHolderExtendButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
         //frisbeeUnDumpButton
-        private static final int frisbeeUnDumpButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.LEFT_BOTTOM;
-        private static final int frisbeeUnDumpButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+        private static final int frisbeeHolderRetractButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.LEFT_BOTTOM;
+        private static final int frisbeeHolderRetractButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
         ////Drive Joystick:
         //driveSpeedToggleButton
         private static final int driveSpeedToggleButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.MIDDLE;

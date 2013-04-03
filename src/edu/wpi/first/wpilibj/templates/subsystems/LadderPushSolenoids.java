@@ -14,11 +14,11 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstM;
  *
  * @author daboross
  */
-public final class ClimberArmSolenoids extends Subsystem implements Debuggable {
+public final class LadderPushSolenoids extends Subsystem implements Debuggable {
 
-    private SolenoidPair climberArmSolenoids = new SolenoidPair(VstM.SOLENOID.CLIMBER_ARM_EXTENDING_SIDE, VstM.SOLENOID.CLIMBER_ARM_RETRACTING_SIDE, false);
+    private SolenoidPair ladderPushSolenoids = new SolenoidPair(VstM.SOLENOID.CLIMBER_ARM_EXTENDING_SIDE, VstM.SOLENOID.CLIMBER_ARM_RETRACTING_SIDE, false);
 
-    public ClimberArmSolenoids() {
+    public LadderPushSolenoids() {
         System.out.println("SubSystem Created: ClimberArmSolenoids");
     }
 
@@ -26,14 +26,14 @@ public final class ClimberArmSolenoids extends Subsystem implements Debuggable {
     }
 
     public void extend() {
-        climberArmSolenoids.extend();
+        ladderPushSolenoids.extend();
     }
 
     public void retract() {
-        climberArmSolenoids.retract();
+        ladderPushSolenoids.retract();
     }
 
     public DebugOutput getStatus() {
-        return new InfoState("Ladder Drop State?", climberArmSolenoids.getState(), DebugLevel.HIGH);
+        return new InfoState("LadderPushSolenoids", ladderPushSolenoids.getState(), DebugLevel.HIGH);
     }
 }

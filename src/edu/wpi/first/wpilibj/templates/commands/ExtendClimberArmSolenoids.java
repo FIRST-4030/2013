@@ -13,8 +13,8 @@ public class ExtendClimberArmSolenoids extends CommandBase {
     private boolean isFinished;
 
     public ExtendClimberArmSolenoids() {
-        requires(climberArmSolenoids);
-        RobotDebugger.push(climberArmSolenoids);
+        requires(ladderPushSolenoids);
+        RobotDebugger.push(ladderPushSolenoids);
     }
 
     protected void initialize() {
@@ -32,10 +32,8 @@ public class ExtendClimberArmSolenoids extends CommandBase {
      * a setting in the SmartDashboard.
      */
     protected void execute() {
-//        if (DVstClimber.climberEnabled()) {
-//            climberArmSolenoids.extend();
-//            RobotDebugger.push(climberArmSolenoids);
-//        }
+//        ladderPushSolenoids.extend();
+//        RobotDebugger.push(ladderPushSolenoids);
         isFinished = true;
     }
 

@@ -12,11 +12,11 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstM;
  *
  * @author daboross
  */
-public final class FrisbeeDumperSolenoids extends Subsystem implements Debuggable {
+public final class FrisbeeHolderSolenoids extends Subsystem implements Debuggable {
 
-    private SolenoidPair frisbeeDumperSolenoids = new SolenoidPair(VstM.SOLENOID.FRISBEE_DUMP_EXTENDING_SIDE, VstM.SOLENOID.FRISBEE_DUMP_RETRACTING_SIDE, true);
+    private SolenoidPair frisbeeHolderSolenoids = new SolenoidPair(VstM.SOLENOID.FRISBEE_HOLDER_EXTENDING_SIDE, VstM.SOLENOID.FRISBEE_HOLDER_RETRACTING_SIDE, true);
 
-    public FrisbeeDumperSolenoids() {
+    public FrisbeeHolderSolenoids() {
         System.out.println("SubSystem Created: FrisbeeDumperSolenoids");
     }
 
@@ -25,14 +25,14 @@ public final class FrisbeeDumperSolenoids extends Subsystem implements Debuggabl
     }
 
     public void extend() {
-        frisbeeDumperSolenoids.extend();
+        frisbeeHolderSolenoids.extend();
     }
 
     public void retract() {
-        frisbeeDumperSolenoids.retract();
+        frisbeeHolderSolenoids.retract();
     }
 
     public DebugOutput getStatus() {
-        return new InfoState("FrisbeeDumperSolenoids:DumperState", frisbeeDumperSolenoids.getState(), DebugLevel.HIGHEST);
+        return new InfoState("FrisbeeHolderSolenoids:DumperState", frisbeeHolderSolenoids.getState(), DebugLevel.HIGHEST);
     }
 }

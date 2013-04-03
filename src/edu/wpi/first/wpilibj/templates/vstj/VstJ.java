@@ -87,12 +87,12 @@ public class VstJ {
         return getJoystickButton(Mappings.groundDriveFastTurnRightButtonJoystickNumber, Mappings.groundDriveFastTurnRightButtonNumber);
     }
 
-    public static JoystickButton getClimberWedgeSolenoidsOnButton() {
-        return getJoystickButton(Mappings.climberWedgeSolenoidsOnButtonJoystickNumber, Mappings.climberWedgeSolenoidsOnButtonNumber);
+    public static JoystickButton getClimber10PointSolenoidsExtendButton() {
+        return getJoystickButton(Mappings.climber10PointSolenoidsExtendButtonJoystickNumber, Mappings.climber10PointSolenoidsExtendButtonNumber);
     }
 
-    public static JoystickButton getClimberWedgeSolenoidsOffButton() {
-        return getJoystickButton(Mappings.climberWedgeSolenoidsOffButtonJoystickNumber, Mappings.climberWedgeSolenoidsOffButtonNumber);
+    public static JoystickButton getClimber10PointSolenoidsRetractButton() {
+        return getJoystickButton(Mappings.climber10PointSolenoidsRetractButtonJoystickNumber, Mappings.climber10PointSolenoidsRetractButtonNumber);
     }
 
     /**
@@ -136,10 +136,10 @@ public class VstJ {
         private static final int groundDriveFastTurnRightButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.RIGHT;
         private static final int groundDriveFastTurnRightButtonJoystickNumber = FV.DRIVE_JOYSTICK;
         //climberWedgeSolenoidsOnButton
-        private static final int climberWedgeSolenoidsOnButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.RIGHT_TOP;
-        private static final int climberWedgeSolenoidsOnButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+        private static final int climber10PointSolenoidsExtendButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.RIGHT_TOP;
+        private static final int climber10PointSolenoidsExtendButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
         //climberWedgeSolenoidsOffButton
-        private static final int climberWedgeSolenoidsOffButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.RIGHT_BOTTOM;
-        private static final int climberWedgeSolenoidsOffButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+        private static final int climber10PointSolenoidsRetractButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.RIGHT_BOTTOM;
+        private static final int climber10PointSolenoidsRetractButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
     }
 }

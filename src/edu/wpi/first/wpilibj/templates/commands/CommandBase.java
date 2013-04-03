@@ -59,8 +59,8 @@ public abstract class CommandBase extends Command {
         VstJ.getShooterMotorOnButton().whenPressed(new ShooterMotorSpeedOn());
         VstJ.getFrisbeeHolderExtendButton().whenPressed(new FrisbeeHolderSolenoidsExtend());
         VstJ.getFrisbeeHolderRetractButton().whenPressed(new FrisbeeHolderSolenoidsRetract());
-        VstJ.getClimberWedgeSolenoidsOnButton().whenPressed(new Climber10PointSolenoidsExtend());
-        VstJ.getClimberWedgeSolenoidsOffButton().whenPressed(new Climber10PointSolenoidsRetract());
+        VstJ.getClimber10PointSolenoidsExtendButton().whenPressed(new Climber10PointSolenoidsExtend());
+        VstJ.getClimber10PointSolenoidsRetractButton().whenPressed(new Climber10PointSolenoidsRetract());
         VstJ.getClimberArmSolenoidStartExtendButton().whenPressed(new ExtendClimberArmSolenoids());
         //Shooter Motor Handler
         dVstShooterMotors = new DVstShooterMotors(shooterMotors);

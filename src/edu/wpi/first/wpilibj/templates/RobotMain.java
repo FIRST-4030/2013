@@ -3,6 +3,7 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.networktables2.util.List;
 import edu.wpi.first.wpilibj.templates.commands.*;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 
@@ -53,7 +54,6 @@ public class RobotMain extends IterativeRobot {
             list[i].disable();
         }
         RobotDebugger.reMap();
-//        DashboardStore.reCreate();
     }
     private static DisableNotifable[] list = new DisableNotifable[0];
 

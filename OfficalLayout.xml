@@ -43,7 +43,7 @@
             <location x="1107" y="3"/>
         </widget>
         <widget field="TimeUpdate" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-            <location x="4" y="4"/>
+            <location x="0" y="0"/>
         </widget>
         <widget field="Auto Command Max Wait Time" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
             <location x="1061" y="26"/>
@@ -52,19 +52,19 @@
             <location x="99" y="428"/>
         </widget>
         <static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
-            <location x="237" y="136"/>
+            <location x="240" y="130"/>
             <property name="Text" value="Shooting"/>
         </static-widget>
         <static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
-            <location x="282" y="343"/>
+            <location x="240" y="340"/>
             <property name="Text" value="Settings"/>
         </static-widget>
         <static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
-            <location x="666" y="124"/>
+            <location x="660" y="130"/>
             <property name="Text" value="Climbing"/>
         </static-widget>
         <static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
-            <location x="682" y="343"/>
+            <location x="660" y="340"/>
             <property name="Text" value="Driving"/>
         </static-widget>
     </dashboard>

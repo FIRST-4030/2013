@@ -16,8 +16,8 @@ import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
  */
 public final class DashboardStore {
 
-    private static final double defaultClimberSpeedMultiplier = 1.0;
-    private static final double defaultShooterMotor1SpeedMultiplier = 0.7;
+    private static final double defaultClimberSpeedMultiplier = 0.5;
+    private static final double defaultShooterMotor1SpeedMultiplier = 0.4;
     private static final double defaultShooterMotor2SpeedMultiplier = 0.4;
     private static final int defaultAutoCommandTime = 7;
 

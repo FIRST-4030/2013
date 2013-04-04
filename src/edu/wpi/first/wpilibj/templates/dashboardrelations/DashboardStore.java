@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.tables.TableKeyNotDefinedException;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
-import edu.wpi.first.wpilibj.templates.debugging.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 
 /**
@@ -21,14 +20,6 @@ public final class DashboardStore {
     private static final double defaultShooterMotor1SpeedMultiplier = 0.7;
     private static final double defaultShooterMotor2SpeedMultiplier = 0.4;
     private static final int defaultAutoCommandTime = 7;
-    /**
-     * False is left, true is right.
-     */
-//    private static final BooleanDashObject cameraPosition;
-
-//    static {
-//        cameraPosition = new BooleanDashObject("aCameraPosition", "Camera Left", "Camera Right", true);
-//    }
 
     public static double getClimberSpeedMultiplier() {
         double val;
@@ -93,23 +84,4 @@ public final class DashboardStore {
         RobotDebugger.push(new DebugStatus("Auto Command Max Wait Time", val, DebugLevel.HIGHEST));
         return val;
     }
-
-//    public static boolean getIsClimberEnabled() {
-//        final boolean enabledGet = isClimberEnabledObject.getValue();
-//        RobotDebugger.push(new InfoState("Climber:Enabled", enabledGet ? "Yes" : "No", DebugLevel.HIGHEST));
-//        return enabledGet;
-//    }
-    /**
-     * True for left, False for right.
-     */
-//    public static boolean getCameraPosition() {
-//        final boolean enabledGet = cameraPosition.getValue();
-//        RobotDebugger.push(new InfoState("Camera:Position", enabledGet ? "Camera Left" : "Camera Right", DebugLevel.HIGHEST));
-//        return enabledGet;
-//    }
-
-//    public static void reCreate() {
-//        cameraPosition.reCreate();
-//        isClimberEnabledObject.reCreate();
-//    }
 }

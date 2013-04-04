@@ -21,7 +21,6 @@ public abstract class CommandBase extends Command {
     protected static ClimberLimitSwitch climberLimitSwitch;
     protected static ShooterSolenoids shooterSolenoids;
     protected static ShooterMotors shooterMotors;
-    protected static LadderPushSolenoids ladderPushSolenoids;
     protected static Climb10PointSolenoids climber10PointSolenoids;
     protected static FrisbeeHolderSolenoids frisbeeHolderSolenoids;
     /**
@@ -42,7 +41,6 @@ public abstract class CommandBase extends Command {
         pressureSwitch = new PressureSwitch();
         //SubSystems:Solenoids:
         shooterSolenoids = new ShooterSolenoids();
-        ladderPushSolenoids = new LadderPushSolenoids();
         climber10PointSolenoids = new Climb10PointSolenoids();
         frisbeeHolderSolenoids = new FrisbeeHolderSolenoids();
         //SubSystems:Switches:
@@ -61,7 +59,6 @@ public abstract class CommandBase extends Command {
         VstJ.getFrisbeeHolderRetractButton().whenPressed(new FrisbeeHolderSolenoidsRetract());
         VstJ.getClimber10PointSolenoidsExtendButton().whenPressed(new Climber10PointSolenoidsExtend());
         VstJ.getClimber10PointSolenoidsRetractButton().whenPressed(new Climber10PointSolenoidsRetract());
-        VstJ.getClimberArmSolenoidStartExtendButton().whenPressed(new ExtendClimberArmSolenoids());
         //Shooter Motor Handler
         dVstShooterMotors = new DVstShooterMotors(shooterMotors);
     }

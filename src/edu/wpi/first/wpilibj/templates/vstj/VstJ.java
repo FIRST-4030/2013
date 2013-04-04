@@ -63,10 +63,6 @@ public class VstJ {
         return getJoystickButton(Mappings.driveSpeedToggleButtonJoystickNumber, Mappings.driveSpeedToggleButtonNumber);
     }
 
-    public static JoystickButton getClimberArmSolenoidStartExtendButton() {
-        return getJoystickButton(Mappings.climberArmSolenoidStartExtendButtonJoystickNumber, Mappings.climberArmSolenoidStartExtendButtonNumber);
-    }
-
     public static JoystickButton getDriveControlReverseButton() {
         return getJoystickButton(Mappings.driveControlReverseButtonJoystickNumber, Mappings.driveControlReverseButtonNumber);
     }
@@ -101,9 +97,6 @@ public class VstJ {
     private static class Mappings {
 
         ////Shooter Joystick:
-        //climberArmSolenoidStartExtendButton
-        private static final int climberArmSolenoidStartExtendButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.BOTTOM_LEFT;
-        private static final int climberArmSolenoidStartExtendButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
         //shooterSolenoidPushButton
         private static final int shooterSolenoidPushButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.TRIGGER;
         private static final int shooterSolenoidPushButtonJoystickNumber = FV.SHOOTER_JOYSTICK;

@@ -21,7 +21,6 @@ public class RunShooterSolenoids extends CommandBase implements DisableNotifable
     }
 
     protected void initialize() {
-        System.out.println("[RunShooterSolenoids] Started");
         startTime = System.currentTimeMillis();
         RobotDebugger.push(shooterSolenoids);
         shooterSolenoids.retract();
@@ -39,7 +38,6 @@ public class RunShooterSolenoids extends CommandBase implements DisableNotifable
     }
 
     protected void end() {
-        System.out.println("[RunShooterSolenoids] Ended");
         shooterSolenoids.extend();
         RobotDebugger.push(shooterSolenoids);
         startTime = -1;

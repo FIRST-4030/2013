@@ -1,9 +1,9 @@
 <xml version="1.0">
 <dashboard>
 	<static-widget class="edu.wpi.first.smartdashboard.camera.WPICameraExtension">
-		<location x="609" y="1"/>
+		<location x="614" y="0"/>
 		<width>686</width>
-		<height>507</height>
+		<height>510</height>
 	</static-widget>
 	<widget field="Shooter Motor Speed 2 Multiplier Setter" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="0" y="383"/>
@@ -20,38 +20,8 @@
 	<widget field="aCameraPosition" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
 		<location x="13" y="30"/>
 	</widget>
-	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
-		<location x="518" y="122"/>
-		<width>85</width>
-		<property name="Text" value="Climbing"/>
-	</static-widget>
-	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
-		<location x="512" y="316"/>
-		<width>98</width>
-		<property name="Text" value="Climber - Untested"/>
-	</static-widget>
-	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
-		<location x="210" y="240"/>
-		<width>59</width>
-		<property name="Text" value="Driving"/>
-	</static-widget>
-	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
-		<location x="216" y="135"/>
-		<property name="Text" value="Shooting"/>
-	</static-widget>
-	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
-		<location x="194" y="336"/>
-		<width>80</width>
-		<property name="Text" value="Settings"/>
-	</static-widget>
-	<widget field="ClimberWedgeSolenoids|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="376" y="250"/>
-	</widget>
-	<widget field="FrisbeeDumperSolenoids|DumperState|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="307" y="274"/>
-	</widget>
 	<widget field="Climber|Speed-Multiplier" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="402" y="201"/>
+		<location x="399" y="137"/>
 		<height>20</height>
 	</widget>
 	<widget field="Climber Speed Multiplier Setter" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
@@ -69,26 +39,8 @@
 		<location x="23" y="283"/>
 		<height>20</height>
 	</widget>
-	<widget field="Ladder Drop State?|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="394" y="179"/>
-		<height>20</height>
-	</widget>
-	<widget field="ClimberLimitSwitch|DeploySwitch" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="369" y="381"/>
-		<height>20</height>
-	</widget>
-	<widget field="ClimberLimitSwitch|LowerSwitch" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="373" y="358"/>
-	</widget>
-	<widget field="ClimberLimitSwitch|UpperSwitch" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="373" y="335"/>
-		<height>20</height>
-	</widget>
 	<widget field="PressureSwitch|AtPressure" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="68" y="218"/>
-	</widget>
-	<widget field="Climber|Enabled|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="410" y="156"/>
 	</widget>
 	<widget field="Camera|Position|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="15" y="10"/>
@@ -111,9 +63,23 @@
 		<property name="Text" value="Climbing"/>
 	</static-widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
-		<location x="512" y="316"/>
-		<width>98</width>
-		<property name="Text" value="Climber - Untested"/>
+		<location x="210" y="240"/>
+		<width>59</width>
+		<property name="Text" value="Driving"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="216" y="135"/>
+		<property name="Text" value="Shooting"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="194" y="336"/>
+		<width>80</width>
+		<property name="Text" value="Settings"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="518" y="122"/>
+		<width>85</width>
+		<property name="Text" value="Climbing"/>
 	</static-widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
 		<location x="210" y="240"/>
@@ -135,9 +101,47 @@
 		<property name="Text" value="Climbing"/>
 	</static-widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
-		<location x="512" y="316"/>
-		<width>98</width>
-		<property name="Text" value="Climber - Untested"/>
+		<location x="210" y="240"/>
+		<width>59</width>
+		<property name="Text" value="Driving"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="216" y="135"/>
+		<property name="Text" value="Shooting"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="194" y="336"/>
+		<width>80</width>
+		<property name="Text" value="Settings"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="518" y="122"/>
+		<width>85</width>
+		<property name="Text" value="Climbing"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="210" y="240"/>
+		<width>59</width>
+		<property name="Text" value="Driving"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="216" y="135"/>
+		<property name="Text" value="Shooting"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="194" y="336"/>
+		<width>80</width>
+		<property name="Text" value="Settings"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.camera.WPICameraExtension">
+		<location x="614" y="0"/>
+		<width>686</width>
+		<height>510</height>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="518" y="122"/>
+		<width>85</width>
+		<property name="Text" value="Climbing"/>
 	</static-widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
 		<location x="210" y="240"/>
@@ -159,9 +163,42 @@
 		<property name="Text" value="Climbing"/>
 	</static-widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
-		<location x="512" y="316"/>
-		<width>98</width>
-		<property name="Text" value="Climber - Untested"/>
+		<location x="210" y="240"/>
+		<width>59</width>
+		<property name="Text" value="Driving"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="216" y="135"/>
+		<property name="Text" value="Shooting"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="194" y="336"/>
+		<width>80</width>
+		<property name="Text" value="Settings"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="518" y="122"/>
+		<width>85</width>
+		<property name="Text" value="Climbing"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="210" y="240"/>
+		<width>59</width>
+		<property name="Text" value="Driving"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="216" y="135"/>
+		<property name="Text" value="Shooting"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="194" y="336"/>
+		<width>80</width>
+		<property name="Text" value="Settings"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="518" y="122"/>
+		<width>85</width>
+		<property name="Text" value="Climbing"/>
 	</static-widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
 		<location x="210" y="240"/>
@@ -180,5 +217,8 @@
 </dashboard>
 <live-window>
 </live-window>
-	<hidden field="aIsClimberEnabled"/>
+	<hidden field="FrisbeeDumperSolenoids|DumperState|State"/>
+	<hidden field="ClimberWedgeSolenoids|State"/>
+	<hidden field="Climber|Enabled|State"/>
+	<hidden field="Ladder Drop State?|State"/>
 </xml>

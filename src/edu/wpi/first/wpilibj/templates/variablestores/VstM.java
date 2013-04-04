@@ -9,8 +9,8 @@ public final class VstM {
 
         public static final int SHOOTER_EXTENDING_SIDE = 1;
         public static final int SHOOTER_RETACTING_SIDE = 2;
-        public static final int FRISBEE_HOLDER_EXTENDING_SIDE = 3;
-        public static final int FRISBEE_HOLDER_RETRACTING_SIDE = 4;
+        public static final int FRISBEE_HOLDER_EXTENDING_SIDE = 4;
+        public static final int FRISBEE_HOLDER_RETRACTING_SIDE = 3;
         public static final int CLIMB_10_POINT_EXTENDING_SIDE = 5;
         public static final int CLIMB_10_POINT_RETRACTING_SIDE = 6;
     }

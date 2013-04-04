@@ -19,9 +19,9 @@ public class ClimberLimitSwitch extends Subsystem implements Debuggable {
     public ClimberLimitSwitch() {
         System.out.println("SubSystem Created: ClimberLimitSwitch");
     }
-    private final DigitalInput lowerSwitch = new DigitalInput(VstM.DIGITAL_IO.CLIMBER_LOWER_LIMIT_SWITCH);
-    private final DigitalInput upperSwitch = new DigitalInput(VstM.DIGITAL_IO.CLIMBER_UPPER_LIMIT_SWITCH);
-    private final DigitalInput deploySwitch = new DigitalInput(VstM.DIGITAL_IO.CLIMBER_DEPLOY_LIMIT_SWITCH);
+    private final DigitalInput lowerSwitch = new DigitalInput(VstM.DIGITAL_IO.LADDER_LOWER_LIMIT_SWITCH);
+    private final DigitalInput upperSwitch = new DigitalInput(VstM.DIGITAL_IO.LADDER_UPPER_LIMIT_SWITCH);
+    private final DigitalInput deploySwitch = new DigitalInput(VstM.DIGITAL_IO.LADDER_DEPLOY_LIMIT_SWITCH);
     private boolean upperLast;
     private boolean lowerLast;
     private boolean deployLast;

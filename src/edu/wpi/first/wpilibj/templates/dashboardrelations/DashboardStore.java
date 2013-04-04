@@ -21,16 +21,14 @@ public final class DashboardStore {
     private static final double defaultShooterMotor1SpeedMultiplier = 0.7;
     private static final double defaultShooterMotor2SpeedMultiplier = 0.4;
     private static final int defaultAutoCommandTime = 7;
-//    private static final BooleanDashObject isClimberEnabledObject;
     /**
      * False is left, true is right.
      */
-    private static final BooleanDashObject cameraPosition;
+//    private static final BooleanDashObject cameraPosition;
 
-    static {
-//        isClimberEnabledObject = new BooleanDashObject("aIsClimberEnabled", "Enable Climber", "Disable Climber", false);
-        cameraPosition = new BooleanDashObject("aCameraPosition", "Camera Left", "Camera Right", true);
-    }
+//    static {
+//        cameraPosition = new BooleanDashObject("aCameraPosition", "Camera Left", "Camera Right", true);
+//    }
 
     public static double getClimberSpeedMultiplier() {
         double val;
@@ -104,14 +102,14 @@ public final class DashboardStore {
     /**
      * True for left, False for right.
      */
-    public static boolean getCameraPosition() {
-        final boolean enabledGet = cameraPosition.getValue();
-        RobotDebugger.push(new InfoState("Camera:Position", enabledGet ? "Camera Left" : "Camera Right", DebugLevel.HIGHEST));
-        return enabledGet;
-    }
+//    public static boolean getCameraPosition() {
+//        final boolean enabledGet = cameraPosition.getValue();
+//        RobotDebugger.push(new InfoState("Camera:Position", enabledGet ? "Camera Left" : "Camera Right", DebugLevel.HIGHEST));
+//        return enabledGet;
+//    }
 
-    public static void reCreate() {
-        cameraPosition.reCreate();
+//    public static void reCreate() {
+//        cameraPosition.reCreate();
 //        isClimberEnabledObject.reCreate();
-    }
+//    }
 }

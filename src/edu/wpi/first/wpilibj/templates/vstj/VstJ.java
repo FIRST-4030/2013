@@ -63,20 +63,16 @@ public class VstJ {
         return getJoystickButton(Mappings.driveSpeedToggleButtonJoystickNumber, Mappings.driveSpeedToggleButtonNumber);
     }
 
-    public static JoystickButton getClimberArmSolenoidStartExtendButton() {
-        return getJoystickButton(Mappings.climberArmSolenoidStartExtendButtonJoystickNumber, Mappings.climberArmSolenoidStartExtendButtonNumber);
-    }
-
     public static JoystickButton getDriveControlReverseButton() {
         return getJoystickButton(Mappings.driveControlReverseButtonJoystickNumber, Mappings.driveControlReverseButtonNumber);
     }
 
-    public static JoystickButton getFrisbeeDumpButton() {
-        return getJoystickButton(Mappings.frisbeeDumpButtonJoystickNumber, Mappings.frisbeeDumpButtonNumber);
+    public static JoystickButton getFrisbeeHolderExtendButton() {
+        return getJoystickButton(Mappings.frisbeeHolderExtendButtonJoystickNumber, Mappings.frisbeeHolderExtendButtonNumber);
     }
 
-    public static JoystickButton getFrisbeeUnDumpButton() {
-        return getJoystickButton(Mappings.frisbeeUnDumpButtonJoystickNumber, Mappings.frisbeeUnDumpButtonNumber);
+    public static JoystickButton getFrisbeeHolderRetractButton() {
+        return getJoystickButton(Mappings.frisbeeHolderRetractButtonJoystickNumber, Mappings.frisbeeHolderRetractButtonNumber);
     }
 
     public static JoystickButton getGroundDriveFastTurnLeftButton() {
@@ -87,12 +83,12 @@ public class VstJ {
         return getJoystickButton(Mappings.groundDriveFastTurnRightButtonJoystickNumber, Mappings.groundDriveFastTurnRightButtonNumber);
     }
 
-    public static JoystickButton getClimberWedgeSolenoidsOnButton() {
-        return getJoystickButton(Mappings.climberWedgeSolenoidsOnButtonJoystickNumber, Mappings.climberWedgeSolenoidsOnButtonNumber);
+    public static JoystickButton getClimber10PointSolenoidsExtendButton() {
+        return getJoystickButton(Mappings.climber10PointSolenoidsExtendButtonJoystickNumber, Mappings.climber10PointSolenoidsExtendButtonNumber);
     }
 
-    public static JoystickButton getClimberWedgeSolenoidsOffButton() {
-        return getJoystickButton(Mappings.climberWedgeSolenoidsOffButtonJoystickNumber, Mappings.climberWedgeSolenoidsOffButtonNumber);
+    public static JoystickButton getClimber10PointSolenoidsRetractButton() {
+        return getJoystickButton(Mappings.climber10PointSolenoidsRetractButtonJoystickNumber, Mappings.climber10PointSolenoidsRetractButtonNumber);
     }
 
     /**
@@ -101,9 +97,6 @@ public class VstJ {
     private static class Mappings {
 
         ////Shooter Joystick:
-        //climberArmSolenoidStartExtendButton
-        private static final int climberArmSolenoidStartExtendButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.BOTTOM_LEFT;
-        private static final int climberArmSolenoidStartExtendButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
         //shooterSolenoidPushButton
         private static final int shooterSolenoidPushButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.TRIGGER;
         private static final int shooterSolenoidPushButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
@@ -117,11 +110,11 @@ public class VstJ {
         private static final int ladderControlAxisNumber = FV.AXIS.Y;
         private static final int ladderControlAxisJoystickNumber = FV.SHOOTER_JOYSTICK;
         //frisbeeDumpButton
-        private static final int frisbeeDumpButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.LEFT_TOP;
-        private static final int frisbeeDumpButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+        private static final int frisbeeHolderExtendButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.LEFT_TOP;
+        private static final int frisbeeHolderExtendButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
         //frisbeeUnDumpButton
-        private static final int frisbeeUnDumpButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.LEFT_BOTTOM;
-        private static final int frisbeeUnDumpButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+        private static final int frisbeeHolderRetractButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.LEFT_BOTTOM;
+        private static final int frisbeeHolderRetractButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
         ////Drive Joystick:
         //driveSpeedToggleButton
         private static final int driveSpeedToggleButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.MIDDLE;
@@ -136,10 +129,10 @@ public class VstJ {
         private static final int groundDriveFastTurnRightButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.RIGHT;
         private static final int groundDriveFastTurnRightButtonJoystickNumber = FV.DRIVE_JOYSTICK;
         //climberWedgeSolenoidsOnButton
-        private static final int climberWedgeSolenoidsOnButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.RIGHT_TOP;
-        private static final int climberWedgeSolenoidsOnButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+        private static final int climber10PointSolenoidsExtendButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.RIGHT_TOP;
+        private static final int climber10PointSolenoidsExtendButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
         //climberWedgeSolenoidsOffButton
-        private static final int climberWedgeSolenoidsOffButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.RIGHT_BOTTOM;
-        private static final int climberWedgeSolenoidsOffButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+        private static final int climber10PointSolenoidsRetractButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.RIGHT_BOTTOM;
+        private static final int climber10PointSolenoidsRetractButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
     }
 }

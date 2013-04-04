@@ -13,11 +13,11 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstM;
  *
  * @author daboross
  */
-public class ClimberWedgeSolenoids extends Subsystem implements Debuggable {
+public class Climb10PointSolenoids extends Subsystem implements Debuggable {
 
-    private SolenoidPair climberWedgeSolenoids = new SolenoidPair(VstM.SOLENOID.CLIMBER_WEDGE_EXTENDING_SIDE, VstM.SOLENOID.CLIMBER_WEDGE_RETRACTING_SIDE, false);
+    private SolenoidPair climb10PointSolenoids = new SolenoidPair(VstM.SOLENOID.CLIMB_10_POINT_EXTENDING_SIDE, VstM.SOLENOID.CLIMB_10_POINT_RETRACTING_SIDE, false);
 
-    public ClimberWedgeSolenoids() {
+    public Climb10PointSolenoids() {
         System.out.println("SubSystem Created: ClimberWedgeSolenoids");
     }
 
@@ -30,7 +30,7 @@ public class ClimberWedgeSolenoids extends Subsystem implements Debuggable {
      * To stop extending, call retract().
      */
     public void extend() {
-        climberWedgeSolenoids.extend();
+        climb10PointSolenoids.extend();
     }
 
     /**
@@ -39,10 +39,10 @@ public class ClimberWedgeSolenoids extends Subsystem implements Debuggable {
      * To stop retracting, call extend().
      */
     public void retract() {
-        climberWedgeSolenoids.retract();
+        climb10PointSolenoids.retract();
     }
 
     public DebugOutput getStatus() {
-        return new InfoState("ClimberWedgeSolenoids", climberWedgeSolenoids.getState(), DebugLevel.HIGHEST);
+        return new InfoState("10PointClimberSolenoids", climb10PointSolenoids.getState(), DebugLevel.HIGHEST);
     }
 }

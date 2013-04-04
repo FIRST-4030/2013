@@ -15,17 +15,14 @@ public abstract class CommandBase extends Command {
      * SubSystems.
      */
     protected static Compressor compressor;
-    protected static Camera mainCamera;
     protected static ClimberMotors climber;
     protected static PressureSwitch pressureSwitch;
     protected static GroundDrive groundDrive;
     protected static ClimberLimitSwitch climberLimitSwitch;
     protected static ShooterSolenoids shooterSolenoids;
     protected static ShooterMotors shooterMotors;
-    protected static ClimberArmSolenoids climberArmSolenoids;
-    protected static ClimberWedgeSolenoids climberWedgeSolenoids;
-    protected static FrisbeeDumperSolenoids frisbeeDumperSolenoids;
-    protected static CameraServo cameraServo;
+    protected static Climb10PointSolenoids climber10PointSolenoids;
+    protected static FrisbeeHolderSolenoids frisbeeHolderSolenoids;
     /**
      * Commands.
      */
@@ -44,29 +41,24 @@ public abstract class CommandBase extends Command {
         pressureSwitch = new PressureSwitch();
         //SubSystems:Solenoids:
         shooterSolenoids = new ShooterSolenoids();
-        climberArmSolenoids = new ClimberArmSolenoids();
-        climberWedgeSolenoids = new ClimberWedgeSolenoids();
-        frisbeeDumperSolenoids = new FrisbeeDumperSolenoids();
+        climber10PointSolenoids = new Climb10PointSolenoids();
+        frisbeeHolderSolenoids = new FrisbeeHolderSolenoids();
         //SubSystems:Switches:
         climberLimitSwitch = new ClimberLimitSwitch();
         //SubSystems:Motors:
         climber = new ClimberMotors();
         groundDrive = new GroundDrive();
-        cameraServo = new CameraServo();
         shooterMotors = new ShooterMotors();
-        //SubSystems:OtherThings:
-        mainCamera = new Camera();
         //Button Commands
         VstJ.getGroundDriveFastTurnLeftButton().whenPressed(new FastTurnRobotDriveLeft());
         VstJ.getGroundDriveFastTurnRightButton().whenPressed(new FastTurnRobotDriveRight());
         VstJ.getShooterSolenoidPushButton().whenPressed(new RunShooterSolenoids());
         VstJ.getShooterMotorOffButton().whenPressed(new ShooterMotorSpeedOff());
         VstJ.getShooterMotorOnButton().whenPressed(new ShooterMotorSpeedOn());
-        VstJ.getFrisbeeDumpButton().whenPressed(new FrisbeeDumperSolenoidRetract());
-        VstJ.getFrisbeeUnDumpButton().whenPressed(new FrisbeeDumperSolenoidExtend());
-        VstJ.getClimberWedgeSolenoidsOnButton().whenPressed(new ClimberWedgeSolenoidsOn());
-        VstJ.getClimberWedgeSolenoidsOffButton().whenPressed(new ClimberWedgeSolenoidsOff());
-        VstJ.getClimberArmSolenoidStartExtendButton().whenPressed(new ExtendClimberArmSolenoids());
+        VstJ.getFrisbeeHolderExtendButton().whenPressed(new FrisbeeHolderSolenoidsExtend());
+        VstJ.getFrisbeeHolderRetractButton().whenPressed(new FrisbeeHolderSolenoidsRetract());
+        VstJ.getClimber10PointSolenoidsExtendButton().whenPressed(new Climber10PointSolenoidsExtend());
+        VstJ.getClimber10PointSolenoidsRetractButton().whenPressed(new Climber10PointSolenoidsRetract());
         //Shooter Motor Handler
         dVstShooterMotors = new DVstShooterMotors(shooterMotors);
     }

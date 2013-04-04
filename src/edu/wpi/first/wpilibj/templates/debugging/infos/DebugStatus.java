@@ -1,6 +1,8 @@
-package edu.wpi.first.wpilibj.templates.debugging;
+package edu.wpi.first.wpilibj.templates.debugging.infos;
 
 import edu.wpi.first.wpilibj.templates.HM;
+import edu.wpi.first.wpilibj.templates.debugging.DebugInfo;
+import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 
 /**
  * Status Report of something. This should be used when reporting a variable

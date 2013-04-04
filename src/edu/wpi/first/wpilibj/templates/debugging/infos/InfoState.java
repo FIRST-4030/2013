@@ -1,4 +1,6 @@
-package edu.wpi.first.wpilibj.templates.debugging;
+package edu.wpi.first.wpilibj.templates.debugging.infos;
+
+import edu.wpi.first.wpilibj.templates.debugging.DebugInfo;
 
 /**
  * This is a DebugInfo that stores states of things. This will push only to the

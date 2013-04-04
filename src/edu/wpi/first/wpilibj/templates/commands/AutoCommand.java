@@ -3,7 +3,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
 import edu.wpi.first.wpilibj.templates.debugging.DebugOutput;
 import edu.wpi.first.wpilibj.templates.debugging.Debuggable;
-import edu.wpi.first.wpilibj.templates.debugging.InfoState;
+import edu.wpi.first.wpilibj.templates.debugging.infos.InfoState;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstAutoCommand;
 import edu.wpi.first.wpilibj.templates.variablestores.dynamic.DVstPressure;

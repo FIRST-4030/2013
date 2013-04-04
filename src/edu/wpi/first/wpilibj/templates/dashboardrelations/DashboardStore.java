@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.networktables2.TableKeyExistsWithDifferentTypeExcep
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.tables.TableKeyNotDefinedException;
 import edu.wpi.first.wpilibj.templates.debugging.DebugLevel;
-import edu.wpi.first.wpilibj.templates.debugging.DebugStatus;
+import edu.wpi.first.wpilibj.templates.debugging.infos.DebugStatus;
 import edu.wpi.first.wpilibj.templates.debugging.RobotDebugger;
 
 /**

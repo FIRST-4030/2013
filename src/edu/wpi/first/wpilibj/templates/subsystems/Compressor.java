@@ -30,18 +30,24 @@ public class Compressor extends Subsystem implements Debuggable {
      * This function starts the Compressor. This DOES auto-push this class.
      */
     public void start() {
+        boolean changed = !ranLast;
         ranLast = true;
         compressor.set(Relay.Value.kOn);
-        RobotDebugger.push(this);
+        if (changed) {
+            RobotDebugger.push(this);
+        }
     }
 
     /**
      * This function stops the Compressor. This DOES auto-push this class.
      */
     public void stop() {
+        boolean changed = ranLast;
         ranLast = false;
         compressor.set(Relay.Value.kOff);
-        RobotDebugger.push(this);
+        if (changed) {
+            RobotDebugger.push(this);
+        }
     }
 
     public DebugOutput getStatus() {

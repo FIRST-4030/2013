@@ -18,7 +18,6 @@ public abstract class CommandBase extends Command {
     protected static ClimberMotors climber;
     protected static PressureSwitch pressureSwitch;
     protected static GroundDrive groundDrive;
-    protected static ClimberLimitSwitch climberLimitSwitch;
     protected static ShooterSolenoids shooterSolenoids;
     protected static ShooterMotors shooterMotors;
     protected static Climb10PointSolenoids climber10PointSolenoids;
@@ -43,8 +42,6 @@ public abstract class CommandBase extends Command {
         shooterSolenoids = new ShooterSolenoids();
         climber10PointSolenoids = new Climb10PointSolenoids();
         frisbeeHolderSolenoids = new FrisbeeHolderSolenoids();
-        //SubSystems:Switches:
-        climberLimitSwitch = new ClimberLimitSwitch();
         //SubSystems:Motors:
         climber = new ClimberMotors();
         groundDrive = new GroundDrive();

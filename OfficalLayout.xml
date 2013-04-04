@@ -1,74 +1,89 @@
 <xml version="1.0">
-    <dashboard>
-        <widget field="10PointClimberSolenoids|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-            <location x="520" y="163"/>
-        </widget>
-        <widget field="FrisbeeHolderSolenoids|DumperState|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-            <location x="4" y="241"/>
-        </widget>
-        <widget field="Shooter Motor Speed 2 Multiplier Setter" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-            <location x="89" y="384"/>
-        </widget>
-        <widget field="Shooter Motor Speed 1 Multiplier Setter" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-            <location x="89" y="361"/>
-        </widget>
-        <widget field="ShooterMotors|SpeedWhenOn1" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-            <location x="59" y="176"/>
-        </widget>
-        <widget field="ShooterMotors|SpeedWhenOn2" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-            <location x="59" y="198"/>
-        </widget>
-        <widget field="aCameraPosition" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
-            <location x="13" y="30"/>
-        </widget>
-        <widget field="Climber|Speed-Multiplier" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-            <location x="551" y="141"/>
-        </widget>
-        <widget field="Climber Speed Multiplier Setter" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-            <location x="132" y="406"/>
-        </widget>
-        <widget field="ShooterMotors|Running" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-            <location x="98" y="154"/>
-        </widget>
-        <widget field="GroundDrive|Command|Reversed|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-            <location x="476" y="360"/>
-        </widget>
-        <widget field="GroundDrive|Command|Speed|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-            <location x="492" y="384"/>
-        </widget>
-        <widget field="PressureSwitch|AtPressure" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-            <location x="82" y="219"/>
-        </widget>
-        <widget field="AutoCommand|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-            <location x="1107" y="3"/>
-        </widget>
-        <widget field="TimeUpdate" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-            <location x="0" y="0"/>
-        </widget>
-        <widget field="Auto Command Max Wait Time" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-            <location x="1061" y="26"/>
-        </widget>
-        <widget field="Auto Command Max Wait Time Setter" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-            <location x="99" y="428"/>
-        </widget>
-        <static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
-            <location x="240" y="130"/>
-            <property name="Text" value="Shooting"/>
-        </static-widget>
-        <static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
-            <location x="240" y="340"/>
-            <property name="Text" value="Settings"/>
-        </static-widget>
-        <static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
-            <location x="660" y="130"/>
-            <property name="Text" value="Climbing"/>
-        </static-widget>
-        <static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
-            <location x="660" y="340"/>
-            <property name="Text" value="Driving"/>
-        </static-widget>
-    </dashboard>
-    <live-window>
-    </live-window>
-    <hidden field="Camera|Position|State"/>
+<dashboard>
+	<widget field="10PointClimberSolenoids|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="490" y="168"/>
+	</widget>
+	<widget field="FrisbeeHolderSolenoids|DumperState|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="4" y="237"/>
+	</widget>
+	<widget field="Shooter Motor Speed 2 Multiplier Setter" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="23" y="378"/>
+	</widget>
+	<widget field="Shooter Motor Speed 1 Multiplier Setter" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="23" y="356"/>
+	</widget>
+	<widget field="ShooterMotors|SpeedWhenOn1" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="59" y="171"/>
+	</widget>
+	<widget field="ShooterMotors|SpeedWhenOn2" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="59" y="193"/>
+	</widget>
+	<widget field="aCameraPosition" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
+		<location x="13" y="30"/>
+	</widget>
+	<widget field="Climber|Speed-Multiplier" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="521" y="147"/>
+	</widget>
+	<widget field="Climber Speed Multiplier Setter" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="66" y="400"/>
+	</widget>
+	<widget field="ShooterMotors|Running" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="98" y="149"/>
+	</widget>
+	<widget field="GroundDrive|Command|Reversed|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="438" y="355"/>
+	</widget>
+	<widget field="GroundDrive|Command|Speed|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="454" y="376"/>
+	</widget>
+	<widget field="PressureSwitch|AtPressure" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="82" y="215"/>
+	</widget>
+	<widget field="AutoCommand|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="1107" y="3"/>
+	</widget>
+	<widget field="TimeUpdate" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="0"/>
+	</widget>
+	<widget field="Auto Command Max Wait Time" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="1061" y="25"/>
+	</widget>
+	<widget field="Auto Command Max Wait Time Setter" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="33" y="422"/>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="240" y="130"/>
+		<property name="Text" value="Shooting"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="240" y="340"/>
+		<property name="Text" value="Settings"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="660" y="130"/>
+		<property name="Text" value="Climbing"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="660" y="340"/>
+		<property name="Text" value="Driving"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="240" y="130"/>
+		<property name="Text" value="Shooting"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="240" y="340"/>
+		<property name="Text" value="Settings"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="660" y="130"/>
+		<property name="Text" value="Climbing"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="660" y="340"/>
+		<property name="Text" value="Driving"/>
+	</static-widget>
+</dashboard>
+<live-window>
+</live-window>
 </xml>

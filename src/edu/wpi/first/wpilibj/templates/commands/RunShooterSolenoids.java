@@ -16,7 +16,7 @@ public class RunShooterSolenoids extends CommandBase implements DisableNotifable
 
     public RunShooterSolenoids() {
         requires(shooterSolenoids);
-        shooterSolenoids.retract();
+        shooterSolenoids.extend();
         RobotMain.addDisableNotifable(this);
     }
 
@@ -44,6 +44,6 @@ public class RunShooterSolenoids extends CommandBase implements DisableNotifable
     }
 
     public void disable() {
-        shooterSolenoids.retract();
+        shooterSolenoids.extend();
     }
 }

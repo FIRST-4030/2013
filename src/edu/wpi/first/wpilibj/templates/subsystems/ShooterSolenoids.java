@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.templates.variablestores.VstM;
  */
 public class ShooterSolenoids extends Subsystem implements Debuggable {
 
-    private SolenoidPair shooterSolenoids = new SolenoidPair(VstM.SOLENOID.SHOOTER_EXTENDING_SIDE, VstM.SOLENOID.SHOOTER_RETACTING_SIDE, false);
+    private SolenoidPair shooterSolenoids = new SolenoidPair(VstM.SOLENOID.SHOOTER_EXTENDING_SIDE, VstM.SOLENOID.SHOOTER_RETACTING_SIDE, true);
 
     public ShooterSolenoids() {
         System.out.println("SubSystem Created: ShooterSolenoids");

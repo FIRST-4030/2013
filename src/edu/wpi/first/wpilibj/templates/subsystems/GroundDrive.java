@@ -22,12 +22,17 @@ public class GroundDrive extends Subsystem implements Debuggable {
     private static Jaguar leftMotor = new Jaguar(VstM.PWM.LEFT_MOTOR_PORT);
     private static Jaguar rightMotor = new Jaguar(VstM.PWM.RIGHT_MOTOR_PORT);
     private static RobotDrive roboDrive;
+    private static final Object ROBODRIVE_LOCK = new Object();
 
     public GroundDrive() {
         System.out.println("SubSystem Created: GroundDrive");
-        roboDrive = new RobotDrive(leftMotor, rightMotor);
-        roboDrive.setSafetyEnabled(false);
-        roboDrive.stopMotor();
+        synchronized (ROBODRIVE_LOCK) {
+            if (roboDrive == null) {
+                roboDrive = new RobotDrive(leftMotor, rightMotor);
+                roboDrive.setSafetyEnabled(false);
+                roboDrive.stopMotor();
+            }
+        }
     }
 
     public void initDefaultCommand() {

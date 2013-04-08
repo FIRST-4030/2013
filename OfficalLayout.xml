@@ -1,7 +1,7 @@
 <xml version="1.0">
 <dashboard>
 	<widget field="10PointClimberSolenoids|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="490" y="168"/>
+		<location x="490" y="169"/>
 	</widget>
 	<widget field="FrisbeeHolderSolenoids|DumperState|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="4" y="237"/>
@@ -34,7 +34,7 @@
 		<location x="438" y="355"/>
 	</widget>
 	<widget field="GroundDrive|Command|Speed|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="454" y="376"/>
+		<location x="454" y="377"/>
 	</widget>
 	<widget field="PressureSwitch|AtPressure" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="82" y="215"/>

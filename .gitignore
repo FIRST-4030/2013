@@ -1,5 +1,7 @@
+*~
 nbproject/private
+nbproject/project.bak.xml
+nbproject/project.xml
 build
-dist
 *.class
-*.jar
+

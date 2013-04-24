@@ -1,4 +1,5 @@
-/build/
-image.suite
-image.sym
-*~
+/nbproject/private
+/build
+/dist
+*.class
+*.jar

@@ -14,8 +14,8 @@ import org.ingrahamrobotics.robot2013.variablestores.VstM;
  */
 public final class ShooterMotors extends Subsystem implements Debuggable {
 
-    private Jaguar firstMotor = new Jaguar(VstM.PWM.FIRST_SHOOTER_MOTOR_PORT);
-    private Jaguar secondMotor = new Jaguar(VstM.PWM.SECOND_SHOOTER_MOTOR_PORT);
+    private final Jaguar firstMotor = new Jaguar(VstM.PWM.FIRST_SHOOTER_MOTOR_PORT);
+    private final Jaguar secondMotor = new Jaguar(VstM.PWM.SECOND_SHOOTER_MOTOR_PORT);
 
     public ShooterMotors() {
         System.out.println("SubSystem Created: ShooterMotors");

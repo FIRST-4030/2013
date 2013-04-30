@@ -15,7 +15,8 @@ import org.ingrahamrobotics.robot2013.vstj.VstJ;
  */
 public class RunClimber extends CommandBase implements Debuggable, DisableNotifable {
 
-    private double speedMultiplier = 1;
+    private static final double DEFAULT_SPEED_MULTIPLIER = 0.5;
+    private double speedMultiplier = DEFAULT_SPEED_MULTIPLIER;
 
     public RunClimber() {
         requires(climber);

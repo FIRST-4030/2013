@@ -1,5 +1,6 @@
 package org.ingrahamrobotics.robot2013.commands;
 
+import org.ingrahamrobotics.robot2013.dashboardrelations.DashboardStore;
 import org.ingrahamrobotics.robot2013.debugging.DebugInfo;
 import org.ingrahamrobotics.robot2013.debugging.DebugInfoGroup;
 import org.ingrahamrobotics.robot2013.debugging.DebugLevel;
@@ -35,7 +36,8 @@ public class RunGroundDrive extends CommandBase implements Debuggable {
     protected void execute() {
         updateHighSpeed();
         updateReversed();
-        groundDrive.setSpeedMutliplier(highSpeed ? 1 : 0.7, reversed);
+        //groundDrive.setSpeedMutliplier(highSpeed ? 1 : 0.7, reversed);
+        groundDrive.setSpeedMutliplier(DashboardStore.getGroundDriveSpeedMultiplier(), reversed);
         groundDrive.driveWithDefaultController();
         RobotDebugger.push(groundDrive);
         RobotDebugger.push(this);

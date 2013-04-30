@@ -19,6 +19,7 @@ public final class DashboardStore {
     private static final double defaultClimberSpeedMultiplier = 0.5;
     private static final double defaultShooterMotor1SpeedMultiplier = 0.4;
     private static final double defaultShooterMotor2SpeedMultiplier = 0.4;
+    private static final double defaultGroundDriveSpeedMultiplier = 0.5;
     private static final int defaultAutoCommandTime = 7;
 
     public static double getClimberSpeedMultiplier() {
@@ -57,6 +58,22 @@ public final class DashboardStore {
         double val;
         try {
             val = SmartDashboard.getNumber("Shooter Motor Speed 2 Multiplier Setter");
+        } catch (TableKeyNotDefinedException tknde) {
+            val = 0;
+        } catch (TableKeyExistsWithDifferentTypeException tkewdte) {
+            val = 0;
+        }
+        if (val == 0) {
+            return defaultGroundDriveSpeedMultiplier;
+        } else {
+            return val;
+        }
+    }
+
+    public static double getGroundDriveSpeedMultiplier() {
+        double val;
+        try {
+            val = SmartDashboard.getNumber("Ground Drive Speed Multiplier Setter");
         } catch (TableKeyNotDefinedException tknde) {
             val = 0;
         } catch (TableKeyExistsWithDifferentTypeException tkewdte) {

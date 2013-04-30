@@ -15,7 +15,7 @@ import org.ingrahamrobotics.robot2013.variablestores.VstM;
  */
 public final class ClimberMotors extends Subsystem implements Debuggable {
 
-    private Jaguar climberMotors = new Jaguar(VstM.PWM.CLIMBER_MOTOR_PORT);
+    private final Jaguar climberMotors = new Jaguar(VstM.PWM.CLIMBER_MOTOR_PORT);
 
     public ClimberMotors() {
         System.out.println("SubSystem Created: Climber");

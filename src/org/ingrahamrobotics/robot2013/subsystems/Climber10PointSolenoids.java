@@ -13,11 +13,11 @@ import org.ingrahamrobotics.robot2013.variablestores.VstM;
  *
  * @author daboross
  */
-public class Climb10PointSolenoids extends Subsystem implements Debuggable {
+public class Climber10PointSolenoids extends Subsystem implements Debuggable {
 
-    private SolenoidPair climb10PointSolenoids = new SolenoidPair(VstM.SOLENOID.CLIMB_10_POINT_EXTENDING_SIDE, VstM.SOLENOID.CLIMB_10_POINT_RETRACTING_SIDE, false);
+    private final SolenoidPair climb10PointSolenoids = new SolenoidPair(VstM.SOLENOID.CLIMBER_10_POINT_EXTENDING_SIDE, VstM.SOLENOID.CLIMBER_10_POINT_RETRACTING_SIDE, false);
 
-    public Climb10PointSolenoids() {
+    public Climber10PointSolenoids() {
         System.out.println("SubSystem Created: ClimberWedgeSolenoids");
     }
 

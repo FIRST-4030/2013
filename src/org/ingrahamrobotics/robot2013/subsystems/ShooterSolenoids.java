@@ -13,7 +13,7 @@ import org.ingrahamrobotics.robot2013.variablestores.VstM;
  */
 public class ShooterSolenoids extends Subsystem implements Debuggable {
 
-    private SolenoidPair shooterSolenoids = new SolenoidPair(VstM.SOLENOID.SHOOTER_EXTENDING_SIDE, VstM.SOLENOID.SHOOTER_RETACTING_SIDE, true);
+    private final SolenoidPair shooterSolenoids = new SolenoidPair(VstM.SOLENOID.SHOOTER_EXTENDING_SIDE, VstM.SOLENOID.SHOOTER_RETACTING_SIDE, true);
 
     public ShooterSolenoids() {
         System.out.println("SubSystem Created: ShooterSolenoids");

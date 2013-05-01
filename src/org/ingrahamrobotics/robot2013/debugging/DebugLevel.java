@@ -45,7 +45,11 @@ public class DebugLevel {
      */
     public static final int NEVER = 0;
     /**
-     * Current Debugging Level.
+     * Minimum Debugging Level that shows on the dashboard.
      */
     public static final int CURRENT = HIGH;
+    /**
+     * Maximum Debugging Level that shows on the console.
+     */
+    public static final int CONSOLE = LOW;
 }

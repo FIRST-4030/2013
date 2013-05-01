@@ -40,7 +40,7 @@ public class FastTurnRobotDriveLeft extends CommandBase {
     protected void initialize() {
         state = 0;
         finished = false;
-        speed = groundDrive.getLastSpinMotion();
+        speed = 0;
     }
 
     protected void execute() {
@@ -70,7 +70,7 @@ public class FastTurnRobotDriveLeft extends CommandBase {
                 finished = true;
             }
         }
-        groundDrive.driveWithRaw(0, speed);
+        groundDrive.arcadeDriveWithRaw(0, speed);
     }
 
     protected boolean isFinished() {

@@ -8,7 +8,9 @@ package org.ingrahamrobotics.robot2013.vstj;
  */
 public final class FV {
 
-    public static final int DRIVE_JOYSTICK = 2;
+    public static final int TANK_DRIVE_LEFT_JOYSTICK = 2;
+    public static final int TANK_DRIVE_RIGHT_JOYSTICK = 3;
+    public static final int ARCADE_DRIVE_JOYSTICK = 2;
     public static final int SHOOTER_JOYSTICK = 1;
 
     public static class AXIS {

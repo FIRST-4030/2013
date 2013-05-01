@@ -19,20 +19,17 @@ import org.ingrahamrobotics.robot2013.vstj.VstJ;
 public class GroundDrive extends Subsystem implements Debuggable {
 
     private boolean driveReversed = false;
-    private static Jaguar leftMotor = new Jaguar(VstM.PWM.LEFT_MOTOR_PORT);
-    private static Jaguar rightMotor = new Jaguar(VstM.PWM.RIGHT_MOTOR_PORT);
-    private static RobotDrive roboDrive;
-    private static final Object ROBODRIVE_LOCK = new Object();
+    private static final Jaguar leftMotor = new Jaguar(VstM.PWM.LEFT_MOTOR_PORT);
+    private static final Jaguar rightMotor = new Jaguar(VstM.PWM.RIGHT_MOTOR_PORT);
+    private static final RobotDrive roboDrive = new RobotDrive(leftMotor, rightMotor);
+
+    static {
+        roboDrive.setSafetyEnabled(false);
+        roboDrive.stopMotor();
+    }
 
     public GroundDrive() {
         System.out.println("SubSystem Created: GroundDrive");
-        synchronized (ROBODRIVE_LOCK) {
-            if (roboDrive == null) {
-                roboDrive = new RobotDrive(leftMotor, rightMotor);
-                roboDrive.setSafetyEnabled(false);
-                roboDrive.stopMotor();
-            }
-        }
     }
 
     public void initDefaultCommand() {
@@ -52,35 +49,37 @@ public class GroundDrive extends Subsystem implements Debuggable {
     }
     private double multiplier;
 
-    public void driveWithDefaultController() {
-        driveWithController(VstJ.getDriveJoystick());
+    public void arcadeDriveRefresh() {
+        arcadeDriveRefresh(VstJ.getArcadeDriveJoystick());
     }
-    private Joystick lastController;
-    private double lastForwardMotion;
-    private double lastSpinMotion;
+
+    public void tankDriveRefresh() {
+        tankDriveRefresh(VstJ.getTankDriveLeftJoystick(), VstJ.getTankDriveRightJoystick());
+    }
 
     /**
      * The values will be changed by the speed multiplier and turn.
      */
-    public void driveWithController(Joystick js) {
+    private void arcadeDriveRefresh(Joystick js) {
         if (js == null) {
             return;
         }
-        lastController = js;
-        double turn = (lastSpinMotion = multiplier * js.getX());
-        double speed = (lastForwardMotion = multiplier * js.getY() * (driveReversed ? -1 : 1));
+        double turn = (js.getX() * multiplier);
+        double speed = (js.getY() * multiplier * (driveReversed ? -1 : 1));
         roboDrive.arcadeDrive(speed, turn);
+    }
+
+    private void tankDriveRefresh(Joystick leftJoystick, Joystick rightJoystick) {
+        double leftSpeed = (leftJoystick.getY() * multiplier * (driveReversed ? -1 : 1));
+        double rightSpeed = (rightJoystick.getY() * multiplier * (driveReversed ? -1 : 1));
+        roboDrive.tankDrive(leftSpeed, rightSpeed);
     }
 
     /**
      * The values will NOT be changed by the speed multiplier or turn.
      */
-    public void driveWithRaw(double speed, double turn) {
+    public void arcadeDriveWithRaw(double speed, double turn) {
         roboDrive.arcadeDrive(speed, turn);
-    }
-
-    public void driveWithLast() {
-        driveWithController(lastController);
     }
 
     public void stop() {
@@ -89,14 +88,6 @@ public class GroundDrive extends Subsystem implements Debuggable {
 
     public static void disabled() {
         roboDrive.stopMotor();
-    }
-
-    public double getLastForwardMotion() {
-        return lastForwardMotion;
-    }
-
-    public double getLastSpinMotion() {
-        return lastSpinMotion;
     }
 
     /**

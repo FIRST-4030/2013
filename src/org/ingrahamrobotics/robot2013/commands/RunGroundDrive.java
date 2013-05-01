@@ -21,6 +21,7 @@ public class RunGroundDrive extends CommandBase implements Debuggable {
     private boolean highSpeedLastPressed = false;
     private boolean reversedLastPressed = false;
     private boolean highSpeed = false;
+    private String highSpeedState = "Azdef";
     private boolean reversed = false;
 
     public RunGroundDrive() {
@@ -34,23 +35,30 @@ public class RunGroundDrive extends CommandBase implements Debuggable {
     }
 
     protected void execute() {
-        updateHighSpeed();
+        //updateHighSpeed();
         updateReversed();
         //groundDrive.setSpeedMutliplier(highSpeed ? 1 : 0.7, reversed);
-        groundDrive.setSpeedMutliplier(DashboardStore.getGroundDriveSpeedMultiplier(), reversed);
-        groundDrive.driveWithDefaultController();
+        double mul = DashboardStore.getGroundDriveSpeedMultiplier();
+        highSpeedState = String.valueOf(mul);
+        groundDrive.setSpeedMutliplier(mul, reversed);
+        if (DashboardStore.getGroundDriveTankMode()) {
+            groundDrive.tankDriveRefresh();
+        } else {
+            groundDrive.arcadeDriveRefresh();
+        }
         RobotDebugger.push(groundDrive);
         RobotDebugger.push(this);
     }
 
-    private void updateHighSpeed() {
-        if (VstJ.getDriveSpeedToggleButton().get() != highSpeedLastPressed) {
-            if (!highSpeedLastPressed) {
-                highSpeed = !highSpeed;
-            }
-            highSpeedLastPressed = !highSpeedLastPressed;
-        }
-    }
+//    private void updateHighSpeed() {
+//        if (VstJ.getDriveSpeedToggleButton().get() != highSpeedLastPressed) {
+//            if (!highSpeedLastPressed) {
+//                highSpeed = !highSpeed;
+//                highSpeedState = highSpeed ? "High" : "Low";
+//            }
+//            highSpeedLastPressed = !highSpeedLastPressed;
+//        }
+//    }
 
     private void updateReversed() {
         if (VstJ.getDriveControlReverseButton().get() != reversedLastPressed) {
@@ -71,7 +79,7 @@ public class RunGroundDrive extends CommandBase implements Debuggable {
 
     public DebugOutput getStatus() {
         return new DebugInfoGroup(new DebugInfo[]{
-            new InfoState("GroundDrive:Command:Speed", highSpeed ? "High" : "Low", DebugLevel.HIGHEST),
+            new InfoState("GroundDrive:Command:Speed", highSpeedState, DebugLevel.HIGHEST),
             new InfoState("GroundDrive:Command:Reversed", reversed ? "Yes" : "No", DebugLevel.HIGHEST)
         });
     }

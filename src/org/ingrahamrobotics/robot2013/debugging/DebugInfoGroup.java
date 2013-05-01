@@ -9,7 +9,8 @@ public class DebugInfoGroup extends DebugOutput {
     private final DebugInfo[] infos;
 
     public DebugInfoGroup(final DebugInfo[] listOfInfo) {
-        infos = listOfInfo;
+        infos = new DebugInfo[listOfInfo.length];
+        System.arraycopy(listOfInfo, 0, infos, 0, listOfInfo.length);
     }
 
     protected void debug() {

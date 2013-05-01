@@ -1,7 +1,7 @@
 package org.ingrahamrobotics.robot2013.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import org.ingrahamrobotics.robot2013.subsystems.Climb10PointSolenoids;
+import org.ingrahamrobotics.robot2013.subsystems.Climber10PointSolenoids;
 import org.ingrahamrobotics.robot2013.subsystems.ClimberMotors;
 import org.ingrahamrobotics.robot2013.subsystems.Compressor;
 import org.ingrahamrobotics.robot2013.subsystems.FrisbeeHolderSolenoids;
@@ -21,38 +21,27 @@ public abstract class CommandBase extends Command {
     /**
      * SubSystems.
      */
-    protected static Compressor compressor;
-    protected static ClimberMotors climber;
-    protected static PressureSwitch pressureSwitch;
-    protected static GroundDrive groundDrive;
-    protected static ShooterSolenoids shooterSolenoids;
-    protected static ShooterMotors shooterMotors;
-    protected static Climb10PointSolenoids climber10PointSolenoids;
-    protected static FrisbeeHolderSolenoids frisbeeHolderSolenoids;
+    protected static final Compressor compressor = new Compressor();
+    protected static final ClimberMotors climberMotors = new ClimberMotors();
+    protected static final PressureSwitch pressureSwitch = new PressureSwitch();
+    protected static final GroundDrive groundDrive = new GroundDrive();
+    protected static final ShooterSolenoids shooterSolenoids = new ShooterSolenoids();
+    protected static final ShooterMotors shooterMotors = new ShooterMotors();
+    protected static final Climber10PointSolenoids climber10PointSolenoids = new Climber10PointSolenoids();
+    protected static final FrisbeeHolderSolenoids frisbeeHolderSolenoids = new FrisbeeHolderSolenoids();
     /**
      * Commands.
      */
-    protected static DashboardValueRefresh dashboardValueRefresh;
+    protected static final DashboardValueRefresh dashboardValueRefresh = new DashboardValueRefresh();
+
     /**
      * Shooter Motor Handler.
      */
-    protected static DVstShooterMotors dVstShooterMotors;
+    protected static final DVstShooterMotors dVstShooterMotors = new DVstShooterMotors(shooterMotors);
 
     public static void init() {
         //Commands
-        dashboardValueRefresh = new DashboardValueRefresh();
         dashboardValueRefresh.start();
-        //SubSystems:CompressorThings:
-        compressor = new Compressor();
-        pressureSwitch = new PressureSwitch();
-        //SubSystems:Solenoids:
-        shooterSolenoids = new ShooterSolenoids();
-        climber10PointSolenoids = new Climb10PointSolenoids();
-        frisbeeHolderSolenoids = new FrisbeeHolderSolenoids();
-        //SubSystems:Motors:
-        climber = new ClimberMotors();
-        groundDrive = new GroundDrive();
-        shooterMotors = new ShooterMotors();
         //Button Commands
         VstJ.getGroundDriveFastTurnLeftButton().whenPressed(new FastTurnRobotDriveLeft());
         VstJ.getGroundDriveFastTurnRightButton().whenPressed(new FastTurnRobotDriveRight());
@@ -64,7 +53,6 @@ public abstract class CommandBase extends Command {
         VstJ.getClimber10PointSolenoidsExtendButton().whenPressed(new Climber10PointSolenoidsExtend());
         VstJ.getClimber10PointSolenoidsRetractButton().whenPressed(new Climber10PointSolenoidsRetract());
         //Shooter Motor Handler
-        dVstShooterMotors = new DVstShooterMotors(shooterMotors);
     }
 
     public CommandBase(String name) {

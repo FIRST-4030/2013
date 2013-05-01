@@ -14,7 +14,7 @@ import org.ingrahamrobotics.robot2013.variablestores.VstM;
  */
 public final class FrisbeeHolderSolenoids extends Subsystem implements Debuggable {
 
-    private SolenoidPair frisbeeHolderSolenoids = new SolenoidPair(VstM.SOLENOID.FRISBEE_HOLDER_EXTENDING_SIDE, VstM.SOLENOID.FRISBEE_HOLDER_RETRACTING_SIDE, true);
+    private final SolenoidPair frisbeeHolderSolenoids = new SolenoidPair(VstM.SOLENOID.FRISBEE_HOLDER_EXTENDING_SIDE, VstM.SOLENOID.FRISBEE_HOLDER_RETRACTING_SIDE, true);
 
     public FrisbeeHolderSolenoids() {
         System.out.println("SubSystem Created: FrisbeeDumperSolenoids");

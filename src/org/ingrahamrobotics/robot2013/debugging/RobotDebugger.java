@@ -10,8 +10,8 @@ import java.util.Hashtable;
  */
 public class RobotDebugger {
 
-    private static Hashtable consoleTable = new Hashtable();
-    private static Hashtable dashTable = new Hashtable();
+    private static final Hashtable consoleTable = new Hashtable();
+    private static final Hashtable dashTable = new Hashtable();
 
     private static void consoleRawPush(String key, String value) {
         System.out.println("[Debugger] " + key + ": " + value);
@@ -38,7 +38,7 @@ public class RobotDebugger {
                 oldConVal = dInfo.message();
             }
             if (oldConVal == null || !oldConVal.equals(val)) {
-                if (level >= DebugLevel.CURRENT) {
+                if (level >= DebugLevel.CONSOLE) {
                     consoleRawPush(key, val);
                 }
             }

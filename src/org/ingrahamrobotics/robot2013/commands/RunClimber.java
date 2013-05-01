@@ -11,46 +11,68 @@ import org.ingrahamrobotics.robot2013.debugging.RobotDebugger;
 import org.ingrahamrobotics.robot2013.vstj.VstJ;
 
 /**
- * This Command runs the climber motors with a joystick.
+ * This Command runs the climberMotors motors with a joystick.
  */
 public class RunClimber extends CommandBase implements Debuggable, DisableNotifable {
 
     private static final double DEFAULT_SPEED_MULTIPLIER = 0.5;
     private double speedMultiplier = DEFAULT_SPEED_MULTIPLIER;
 
+    /**
+     * Default Constructor
+     */
     public RunClimber() {
-        requires(climber);
+        requires(climberMotors);
     }
 
+    /**
+     * Initializes this command. (Preparation for execute())
+     */
     protected void initialize() {
         RobotMain.addDisableNotifable(this);
-        climber.stop();
+        climberMotors.stop();
     }
 
+    /**
+     * Execute this command. (Called multiple times through execution)
+     */
     protected void execute() {
         speedMultiplier = DashboardStore.getClimberSpeedMultiplier();
-        climber.runLadder(VstJ.getLadderControlAxisValue() * speedMultiplier);
+        climberMotors.runLadder(VstJ.getLadderControlAxisValue() * speedMultiplier);
         RobotDebugger.push(this);
-        RobotDebugger.push(climber);
+        RobotDebugger.push(climberMotors);
     }
 
+    /**
+     * @return whether or not this command is finished.
+     */
     protected boolean isFinished() {
         return false;
     }
 
+    /**
+     * Ends this command (Called after isFinished returns true)
+     */
     protected void end() {
-        climber.stop();
+        climberMotors.stop();
         RobotDebugger.push(this);
-        RobotDebugger.push(climber);
+        RobotDebugger.push(climberMotors);
 
     }
 
+    /**
+     * Runs actions that should be run when the robot is disabled. Mainly
+     * turning off the climber motors
+     */
     public void disable() {
-        climber.stop();
+        climberMotors.stop();
         RobotDebugger.push(this);
-        RobotDebugger.push(climber);
+        RobotDebugger.push(climberMotors);
     }
 
+    /**
+     * @return a DebugOutput representing the status of this command.
+     */
     public DebugOutput getStatus() {
         return new DebugStatus("Climber:Speed-Multiplier", speedMultiplier, DebugLevel.HIGHEST);
     }

@@ -8,10 +8,11 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class VstJ {
 
+    private static final int numJoysticks = 3;
     private static Joystick[] joySticks;
 
     protected static void joyStickInit() {
-        joySticks = new Joystick[2];
+        joySticks = new Joystick[numJoysticks];
         for (int i = 0; i < joySticks.length; i++) {
             joySticks[i] = new Joystick(i + 1);
         }
@@ -21,7 +22,7 @@ public class VstJ {
         if (joySticks == null) {
             joyStickInit();
         }
-        if (number < 1 || number > 2) {
+        if (number < 1 || number > numJoysticks) {
             throw new IllegalArgumentException("[VstJ] To High/Low number for " + VstJ.class.getName() + ".getJoystick(int)");
         }
         return joySticks[number - 1];
@@ -35,8 +36,16 @@ public class VstJ {
         return getJoystick(joyStick).getRawAxis(axisNumber);
     }
 
-    public static Joystick getDriveJoystick() {
-        return getJoystick(FV.DRIVE_JOYSTICK);
+    public static Joystick getArcadeDriveJoystick() {
+        return getJoystick(FV.ARCADE_DRIVE_JOYSTICK);
+    }
+
+    public static Joystick getTankDriveLeftJoystick() {
+        return getJoystick(FV.TANK_DRIVE_LEFT_JOYSTICK);
+    }
+
+    public static Joystick getTankDriveRightJoystick() {
+        return getJoystick(FV.TANK_DRIVE_RIGHT_JOYSTICK);
     }
 
     public static Joystick getShooterJoystick() {
@@ -118,16 +127,16 @@ public class VstJ {
         ////Drive Joystick:
         //driveSpeedToggleButton
         private static final int driveSpeedToggleButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.MIDDLE;
-        private static final int driveSpeedToggleButtonJoystickNumber = FV.DRIVE_JOYSTICK;
+        private static final int driveSpeedToggleButtonJoystickNumber = FV.ARCADE_DRIVE_JOYSTICK;
         //driveControlReverseButton
         private static final int driveControlReverseButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.BOTTOM;
-        private static final int driveControlReverseButtonJoystickNumber = FV.DRIVE_JOYSTICK;
+        private static final int driveControlReverseButtonJoystickNumber = FV.ARCADE_DRIVE_JOYSTICK;
         //groundDriveFastTurnLeftButton
         private static final int groundDriveFastTurnLeftButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.LEFT;
-        private static final int groundDriveFastTurnLeftButtonJoystickNumber = FV.DRIVE_JOYSTICK;
+        private static final int groundDriveFastTurnLeftButtonJoystickNumber = FV.ARCADE_DRIVE_JOYSTICK;
         //groundDriveFastTurnRightButton
         private static final int groundDriveFastTurnRightButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.RIGHT;
-        private static final int groundDriveFastTurnRightButtonJoystickNumber = FV.DRIVE_JOYSTICK;
+        private static final int groundDriveFastTurnRightButtonJoystickNumber = FV.ARCADE_DRIVE_JOYSTICK;
         //climberWedgeSolenoidsOnButton
         private static final int climber10PointSolenoidsExtendButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.RIGHT_TOP;
         private static final int climber10PointSolenoidsExtendButtonJoystickNumber = FV.SHOOTER_JOYSTICK;

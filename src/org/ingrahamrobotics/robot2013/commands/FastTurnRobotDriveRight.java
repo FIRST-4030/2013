@@ -33,16 +33,25 @@ public class FastTurnRobotDriveRight extends CommandBase {
      */
     private long doneTimeStamp;
 
+    /**
+     * New FastTurnRobotDriveRight()
+     */
     public FastTurnRobotDriveRight() {
         requires(groundDrive);
     }
 
+    /**
+     * Initializes this command. (Preparation for execute())
+     */
     protected void initialize() {
         state = 0;
         finished = false;
-        speed = groundDrive.getLastSpinMotion();
+        speed = 0;
     }
 
+    /**
+     * Execute this command. (Called multiple times through execution)
+     */
     protected void execute() {
         if (state == 0) {
             if (speed + speedDif >= 1) {
@@ -70,13 +79,19 @@ public class FastTurnRobotDriveRight extends CommandBase {
                 finished = true;
             }
         }
-        groundDrive.driveWithRaw(0, speed);
+        groundDrive.arcadeDriveWithRaw(0, speed);
     }
 
+    /**
+     * @return whether or not this command is finished.
+     */
     protected boolean isFinished() {
         return finished;
     }
 
+    /**
+     * Ends this command (Called after isFinished returns true)
+     */
     protected void end() {
     }
 }

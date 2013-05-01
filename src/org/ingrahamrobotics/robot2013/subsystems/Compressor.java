@@ -18,10 +18,16 @@ public class Compressor extends Subsystem implements Debuggable {
     private final Relay compressor = new Relay(VstM.RELAY.COMPRESSOR_SPIKE);
     private boolean ranLast = false;
 
+    /**
+     * Default Constructor
+     */
     public Compressor() {
         System.out.println("SubSystem Created: Compressor");
     }
 
+    /**
+     * Calls this.setDefaultCommand(new RunCompressor());
+     */
     public void initDefaultCommand() {
         setDefaultCommand(new RunCompressor());
     }
@@ -50,6 +56,9 @@ public class Compressor extends Subsystem implements Debuggable {
         }
     }
 
+    /**
+     * @return a DebugOutput representing the status of this command.
+     */
     public DebugOutput getStatus() {
         return new DebugStatus("Compressor:RanLast", ranLast, DebugLevel.MID);
     }

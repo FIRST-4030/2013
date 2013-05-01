@@ -50,6 +50,9 @@ public class AutoCommand extends CommandBase implements Debuggable {
     private long lastStateChangeTime;
     private long startTime;
 
+    /**
+     * @return A string that represents the state of AutoCommand.
+     */
     private String getReadableState() {
         if (state == 0) {
             return "Speeding Up";
@@ -74,6 +77,9 @@ public class AutoCommand extends CommandBase implements Debuggable {
         return (timeSinceStart < timeTillFirstMillis) ? false : ((timeSinceStart > maxWaitTimeMillis) ? true : DVstPressure.atPressure());
     }
 
+    /**
+     * @return if this command is ready to change to the next state.
+     */
     private boolean readyForNextAction() {
         if (state == 0) {
             return isReadyToShoot();
@@ -86,16 +92,25 @@ public class AutoCommand extends CommandBase implements Debuggable {
         return true;
     }
 
+    /**
+     * Default Constructor
+     */
     public AutoCommand() {
         requires(groundDrive);
         requires(shooterMotors);
         requires(shooterSolenoids);
     }
 
+    /**
+     * Re-initializes this command.
+     */
     public void reInitValues() {
         initialize();
     }
 
+    /**
+     * Initializes this command. (Preparation for execute())
+     */
     protected void initialize() {
         setState(0);
         groundDrive.stop();
@@ -103,6 +118,9 @@ public class AutoCommand extends CommandBase implements Debuggable {
         dVstShooterMotors.turnOn();
     }
 
+    /**
+     * Execute this command. (Called multiple times through execution)
+     */
     protected void execute() {
         maxWaitTimeMillis = DVstAutoCommand.getAutoCommandWaitTime();
         if (state == 0) {
@@ -142,15 +160,24 @@ public class AutoCommand extends CommandBase implements Debuggable {
         RobotDebugger.push(this);
     }
 
+    /**
+     * @return whether or not this command is finished.
+     */
     protected boolean isFinished() {
         return false;
     }
 
+    /**
+     * Ends this command (Called after isFinished returns true)
+     */
     protected void end() {
         dVstShooterMotors.turnOff();
         setState(0);
     }
 
+    /**
+     * @return Gets a DebugOutput representing the status of this command.
+     */
     public DebugOutput getStatus() {
         return new InfoState("AutoCommand", getReadableState(), DebugLevel.HIGH);
     }

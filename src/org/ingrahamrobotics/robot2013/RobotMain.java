@@ -20,11 +20,16 @@ public class RobotMain extends IterativeRobot {
      */
     public void robotInit() {
         CommandBase.init();
-        auto = new AutoCommand();
+        if (auto == null) {
+            auto = new AutoCommand();
+        }
         System.out.println("Robot Ready!");
     }
 
     public void autonomousInit() {
+        if (auto == null) {
+            auto = new AutoCommand();
+        }
         auto.reInitValues();
         auto.start();
     }
@@ -34,7 +39,9 @@ public class RobotMain extends IterativeRobot {
     }
 
     public void teleopInit() {
-        auto.cancel();
+        if (auto != null) {
+            auto.cancel();
+        }
     }
 
     public void teleopPeriodic() {
@@ -49,7 +56,9 @@ public class RobotMain extends IterativeRobot {
     }
 
     public void disabledInit() {
-        auto.cancel();
+        if (auto != null) {
+            auto.cancel();
+        }
         for (int i = 0; i < list.length; i++) {
             list[i].disable();
         }

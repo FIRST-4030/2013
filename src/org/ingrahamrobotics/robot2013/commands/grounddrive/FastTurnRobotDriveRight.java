@@ -1,4 +1,6 @@
-package org.ingrahamrobotics.robot2013.commands;
+package org.ingrahamrobotics.robot2013.commands.grounddrive;
+
+import org.ingrahamrobotics.robot2013.commands.CommandBase;
 
 /**
  *

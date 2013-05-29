@@ -22,6 +22,9 @@ public class VstJ {
         if (joySticks == null) {
             joyStickInit();
         }
+        if (number == FV.CURRENT_ARCADE_DRIVE_JOYSTICK_PLACEHOLDER) {
+            number = FV.CHANGING.getCurrentArcadeDriveJoystick();
+        }
         if (number < 1 || number > numJoysticks) {
             throw new IllegalArgumentException("[VstJ] To High/Low number for " + VstJ.class.getName() + ".getJoystick(int)");
         }
@@ -37,7 +40,7 @@ public class VstJ {
     }
 
     public static Joystick getArcadeDriveJoystick() {
-        return getJoystick(FV.ARCADE_DRIVE_JOYSTICK);
+        return getJoystick(FV.CURRENT_ARCADE_DRIVE_JOYSTICK_PLACEHOLDER);
     }
 
     public static Joystick getTankDriveLeftJoystick() {
@@ -68,12 +71,12 @@ public class VstJ {
         return getJoystickButton(Mappings.shooterMotorOffButtonJoystickNumber, Mappings.shooterMotorOffButtonNumber);
     }
 
-    public static JoystickButton getDriveSpeedToggleButton() {
-        return getJoystickButton(Mappings.driveSpeedToggleButtonJoystickNumber, Mappings.driveSpeedToggleButtonNumber);
+    public static JoystickButton getDriveControlReverseButton1() {
+        return getJoystickButton(Mappings.driveControlReverseButtonJoystickNumber1, Mappings.driveControlReverseButtonNumber);
     }
 
-    public static JoystickButton getDriveControlReverseButton() {
-        return getJoystickButton(Mappings.driveControlReverseButtonJoystickNumber, Mappings.driveControlReverseButtonNumber);
+    public static JoystickButton getDriveControlReverseButton2() {
+        return getJoystickButton(Mappings.driveControlReverseButtonJoystickNumber2, Mappings.driveControlReverseButtonNumber);
     }
 
     public static JoystickButton getFrisbeeHolderExtendButton() {
@@ -84,12 +87,20 @@ public class VstJ {
         return getJoystickButton(Mappings.frisbeeHolderRetractButtonJoystickNumber, Mappings.frisbeeHolderRetractButtonNumber);
     }
 
-    public static JoystickButton getGroundDriveFastTurnLeftButton() {
-        return getJoystickButton(Mappings.groundDriveFastTurnLeftButtonJoystickNumber, Mappings.groundDriveFastTurnLeftButtonNumber);
+    public static JoystickButton getGroundDriveFastTurnLeftButton1() {
+        return getJoystickButton(Mappings.groundDriveFastTurnLeftButtonJoystickNumber1, Mappings.groundDriveFastTurnLeftButtonNumber);
     }
 
-    public static JoystickButton getGroundDriveFastTurnRightButton() {
-        return getJoystickButton(Mappings.groundDriveFastTurnRightButtonJoystickNumber, Mappings.groundDriveFastTurnRightButtonNumber);
+    public static JoystickButton getGroundDriveFastTurnLeftButton2() {
+        return getJoystickButton(Mappings.groundDriveFastTurnLeftButtonJoystickNumber2, Mappings.groundDriveFastTurnLeftButtonNumber);
+    }
+
+    public static JoystickButton getGroundDriveFastTurnRightButton1() {
+        return getJoystickButton(Mappings.groundDriveFastTurnRightButtonJoystickNumber1, Mappings.groundDriveFastTurnRightButtonNumber);
+    }
+
+    public static JoystickButton getGroundDriveFastTurnRightButton2() {
+        return getJoystickButton(Mappings.groundDriveFastTurnRightButtonJoystickNumber2, Mappings.groundDriveFastTurnRightButtonNumber);
     }
 
     public static JoystickButton getClimber10PointSolenoidsExtendButton() {
@@ -98,6 +109,14 @@ public class VstJ {
 
     public static JoystickButton getClimber10PointSolenoidsRetractButton() {
         return getJoystickButton(Mappings.climber10PointSolenoidsRetractButtonJoystickNumber, Mappings.climber10PointSolenoidsRetractButtonNumber);
+    }
+
+    public static JoystickButton getSwitchToFirstDriveModeButton() {
+        return getJoystickButton(Mappings.switchToFirstModeJoystickNumber, Mappings.switchDriveModeButtonNumber);
+    }
+
+    public static JoystickButton getSwitchToSecondDriveModeButton() {
+        return getJoystickButton(Mappings.switchToSecondModeJoystickNumber, Mappings.switchDriveModeButtonNumber);
     }
 
     /**
@@ -124,24 +143,28 @@ public class VstJ {
         //frisbeeUnDumpButton
         private static final int frisbeeHolderRetractButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.LEFT_BOTTOM;
         private static final int frisbeeHolderRetractButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
-        ////Drive Joystick:
-        //driveSpeedToggleButton
-        private static final int driveSpeedToggleButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.MIDDLE;
-        private static final int driveSpeedToggleButtonJoystickNumber = FV.ARCADE_DRIVE_JOYSTICK;
-        //driveControlReverseButton
-        private static final int driveControlReverseButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.BOTTOM;
-        private static final int driveControlReverseButtonJoystickNumber = FV.ARCADE_DRIVE_JOYSTICK;
-        //groundDriveFastTurnLeftButton
-        private static final int groundDriveFastTurnLeftButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.LEFT;
-        private static final int groundDriveFastTurnLeftButtonJoystickNumber = FV.ARCADE_DRIVE_JOYSTICK;
-        //groundDriveFastTurnRightButton
-        private static final int groundDriveFastTurnRightButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.RIGHT;
-        private static final int groundDriveFastTurnRightButtonJoystickNumber = FV.ARCADE_DRIVE_JOYSTICK;
         //climberWedgeSolenoidsOnButton
         private static final int climber10PointSolenoidsExtendButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.RIGHT_TOP;
         private static final int climber10PointSolenoidsExtendButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
         //climberWedgeSolenoidsOffButton
         private static final int climber10PointSolenoidsRetractButtonNumber = FV.BUTTON.STAND_OF_JOYSTICK.RIGHT_BOTTOM;
         private static final int climber10PointSolenoidsRetractButtonJoystickNumber = FV.SHOOTER_JOYSTICK;
+        ////Drive Joystick:
+        //driveControlReverseButton
+        private static final int driveControlReverseButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.BOTTOM;
+        private static final int driveControlReverseButtonJoystickNumber1 = FV.FIRST_POSSIBLE_ARCADE_DRIVE_JOYSTICK;
+        private static final int driveControlReverseButtonJoystickNumber2 = FV.SECOND_POSSIBLE_ARCADE_DRIVE_JOYSTICK;
+        //groundDriveFastTurnLeftButton
+        private static final int groundDriveFastTurnLeftButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.LEFT;
+        private static final int groundDriveFastTurnLeftButtonJoystickNumber1 = FV.FIRST_POSSIBLE_ARCADE_DRIVE_JOYSTICK;
+        private static final int groundDriveFastTurnLeftButtonJoystickNumber2 = FV.SECOND_POSSIBLE_ARCADE_DRIVE_JOYSTICK;
+        //groundDriveFastTurnRightButton
+        private static final int groundDriveFastTurnRightButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.RIGHT;
+        private static final int groundDriveFastTurnRightButtonJoystickNumber1 = FV.FIRST_POSSIBLE_ARCADE_DRIVE_JOYSTICK;
+        private static final int groundDriveFastTurnRightButtonJoystickNumber2 = FV.SECOND_POSSIBLE_ARCADE_DRIVE_JOYSTICK;
+        //switch drive mode button
+        private static final int switchDriveModeButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.TRIGGER;
+        private static final int switchToFirstModeJoystickNumber = FV.FIRST_POSSIBLE_ARCADE_DRIVE_JOYSTICK;
+        private static final int switchToSecondModeJoystickNumber = FV.SECOND_POSSIBLE_ARCADE_DRIVE_JOYSTICK;
     }
 }

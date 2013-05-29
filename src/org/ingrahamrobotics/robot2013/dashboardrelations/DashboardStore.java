@@ -21,11 +21,6 @@ public final class DashboardStore {
     private static final double defaultShooterMotor2SpeedMultiplier = 0.4;
     private static final double defaultGroundDriveSpeedMultiplier = 0.5;
     private static final int defaultAutoCommandTime = 7;
-    private static final BooleanDashObject groundDriveMode = new BooleanDashObject("GroundDrive Mode", "Tank Drive Mode", "Arcade Drive Mode", false);
-
-    public static boolean getGroundDriveTankMode() {
-        return groundDriveMode.getValue();
-    }
 
     public static double getClimberSpeedMultiplier() {
         double val;

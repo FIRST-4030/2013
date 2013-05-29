@@ -1,6 +1,11 @@
 package org.ingrahamrobotics.robot2013.commands;
 
+import org.ingrahamrobotics.robot2013.commands.grounddrive.FastTurnRobotDriveLeft;
+import org.ingrahamrobotics.robot2013.commands.grounddrive.FastTurnRobotDriveRight;
+import org.ingrahamrobotics.robot2013.commands.grounddrive.ReverseDriveControl;
 import edu.wpi.first.wpilibj.command.Command;
+import org.ingrahamrobotics.robot2013.commands.joystickswitching.FirstJoystickButtonPressed;
+import org.ingrahamrobotics.robot2013.commands.joystickswitching.SecondJoystickButtonPressed;
 import org.ingrahamrobotics.robot2013.subsystems.Climber10PointSolenoids;
 import org.ingrahamrobotics.robot2013.subsystems.ClimberMotors;
 import org.ingrahamrobotics.robot2013.subsystems.Compressor;
@@ -33,7 +38,6 @@ public abstract class CommandBase extends Command {
      * Commands.
      */
     protected static final DashboardValueRefresh dashboardValueRefresh = new DashboardValueRefresh();
-
     /**
      * Shooter Motor Handler.
      */
@@ -43,8 +47,15 @@ public abstract class CommandBase extends Command {
         //Commands
         dashboardValueRefresh.start();
         //Button Commands
-        VstJ.getGroundDriveFastTurnLeftButton().whenPressed(new FastTurnRobotDriveLeft());
-        VstJ.getGroundDriveFastTurnRightButton().whenPressed(new FastTurnRobotDriveRight());
+        FastTurnRobotDriveLeft ftrdl = new FastTurnRobotDriveLeft();
+        FastTurnRobotDriveRight ftrdr = new FastTurnRobotDriveRight();
+        ReverseDriveControl rdc = new ReverseDriveControl();
+        VstJ.getGroundDriveFastTurnLeftButton1().whenPressed(ftrdl);
+        VstJ.getGroundDriveFastTurnLeftButton2().whenPressed(ftrdl);
+        VstJ.getGroundDriveFastTurnRightButton1().whenPressed(ftrdr);
+        VstJ.getGroundDriveFastTurnRightButton2().whenPressed(ftrdr);
+        VstJ.getDriveControlReverseButton1().whenPressed(rdc);
+        VstJ.getDriveControlReverseButton2().whenPressed(rdc);
         VstJ.getShooterSolenoidPushButton().whenPressed(new RunShooterSolenoids());
         VstJ.getShooterMotorOffButton().whenPressed(new ShooterMotorSpeedOff());
         VstJ.getShooterMotorOnButton().whenPressed(new ShooterMotorSpeedOn());
@@ -52,6 +63,8 @@ public abstract class CommandBase extends Command {
         VstJ.getFrisbeeHolderRetractButton().whenPressed(new FrisbeeHolderSolenoidsRetract());
         VstJ.getClimber10PointSolenoidsExtendButton().whenPressed(new Climber10PointSolenoidsExtend());
         VstJ.getClimber10PointSolenoidsRetractButton().whenPressed(new Climber10PointSolenoidsRetract());
+        VstJ.getSwitchToFirstDriveModeButton().whenPressed(new FirstJoystickButtonPressed());
+        VstJ.getSwitchToSecondDriveModeButton().whenPressed(new SecondJoystickButtonPressed());
         //Shooter Motor Handler
     }
 

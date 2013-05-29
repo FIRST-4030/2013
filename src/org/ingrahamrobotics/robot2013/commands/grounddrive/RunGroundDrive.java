@@ -1,5 +1,6 @@
-package org.ingrahamrobotics.robot2013.commands;
+package org.ingrahamrobotics.robot2013.commands.grounddrive;
 
+import org.ingrahamrobotics.robot2013.commands.CommandBase;
 import org.ingrahamrobotics.robot2013.dashboardrelations.DashboardStore;
 import org.ingrahamrobotics.robot2013.debugging.DebugInfo;
 import org.ingrahamrobotics.robot2013.debugging.DebugInfoGroup;
@@ -8,7 +9,7 @@ import org.ingrahamrobotics.robot2013.debugging.DebugOutput;
 import org.ingrahamrobotics.robot2013.debugging.Debuggable;
 import org.ingrahamrobotics.robot2013.debugging.infos.InfoState;
 import org.ingrahamrobotics.robot2013.debugging.RobotDebugger;
-import org.ingrahamrobotics.robot2013.vstj.VstJ;
+import org.ingrahamrobotics.robot2013.variablestores.dynamic.DVstGroundDrive;
 
 /**
  * Ground Drive Command. This command takes input from the default joystick and
@@ -18,11 +19,7 @@ import org.ingrahamrobotics.robot2013.vstj.VstJ;
  */
 public class RunGroundDrive extends CommandBase implements Debuggable {
 
-    private boolean highSpeedLastPressed = false;
-    private boolean reversedLastPressed = false;
-    private boolean highSpeed = false;
     private String highSpeedState = "Azdef";
-    private boolean reversed = false;
 
     public RunGroundDrive() {
         requires(groundDrive);
@@ -35,38 +32,16 @@ public class RunGroundDrive extends CommandBase implements Debuggable {
     }
 
     protected void execute() {
-        //updateHighSpeed();
-        updateReversed();
-        //groundDrive.setSpeedMutliplier(highSpeed ? 1 : 0.7, reversed);
         double mul = DashboardStore.getGroundDriveSpeedMultiplier();
         highSpeedState = String.valueOf(mul);
-        groundDrive.setSpeedMutliplier(mul, reversed);
-        if (DashboardStore.getGroundDriveTankMode()) {
+        groundDrive.setSpeedMutliplier(mul, DVstGroundDrive.isReversed());
+        if (DVstGroundDrive.isTankDrive()) {
             groundDrive.tankDriveRefresh();
         } else {
             groundDrive.arcadeDriveRefresh();
         }
         RobotDebugger.push(groundDrive);
         RobotDebugger.push(this);
-    }
-
-//    private void updateHighSpeed() {
-//        if (VstJ.getDriveSpeedToggleButton().get() != highSpeedLastPressed) {
-//            if (!highSpeedLastPressed) {
-//                highSpeed = !highSpeed;
-//                highSpeedState = highSpeed ? "High" : "Low";
-//            }
-//            highSpeedLastPressed = !highSpeedLastPressed;
-//        }
-//    }
-
-    private void updateReversed() {
-        if (VstJ.getDriveControlReverseButton().get() != reversedLastPressed) {
-            if (!reversedLastPressed) {
-                reversed = !reversed;
-            }
-            reversedLastPressed = !reversedLastPressed;
-        }
     }
 
     protected boolean isFinished() {
@@ -80,7 +55,7 @@ public class RunGroundDrive extends CommandBase implements Debuggable {
     public DebugOutput getStatus() {
         return new DebugInfoGroup(new DebugInfo[]{
             new InfoState("GroundDrive:Command:Speed", highSpeedState, DebugLevel.HIGHEST),
-            new InfoState("GroundDrive:Command:Reversed", reversed ? "Yes" : "No", DebugLevel.HIGHEST)
+            new InfoState("GroundDrive:Command:Reversed", DVstGroundDrive.isReversed() ? "Yes" : "No", DebugLevel.HIGHEST)
         });
     }
 }

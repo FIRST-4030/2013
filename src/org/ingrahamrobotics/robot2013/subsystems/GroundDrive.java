@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import org.ingrahamrobotics.robot2013.commands.RunGroundDrive;
+import org.ingrahamrobotics.robot2013.commands.grounddrive.RunGroundDrive;
 import org.ingrahamrobotics.robot2013.debugging.infos.DebugStatus;
 import org.ingrahamrobotics.robot2013.debugging.DebugInfoGroup;
 import org.ingrahamrobotics.robot2013.debugging.DebugLevel;

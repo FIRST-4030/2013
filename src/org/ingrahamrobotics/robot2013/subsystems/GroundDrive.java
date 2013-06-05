@@ -72,7 +72,11 @@ public class GroundDrive extends Subsystem implements Debuggable {
     private void tankDriveRefresh(Joystick leftJoystick, Joystick rightJoystick) {
         double leftSpeed = (leftJoystick.getY() * multiplier * (driveReversed ? -1 : 1));
         double rightSpeed = (rightJoystick.getY() * multiplier * (driveReversed ? -1 : 1));
-        roboDrive.tankDrive(leftSpeed, rightSpeed);
+        if (driveReversed) {
+            roboDrive.tankDrive(rightSpeed, leftSpeed);
+        } else {
+            roboDrive.tankDrive(leftSpeed, rightSpeed);
+        }
     }
 
     /**

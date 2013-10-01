@@ -7,7 +7,6 @@ import org.ingrahamrobotics.robot2013.RobotMain;
 
 /**
  *
- * @author daboross
  */
 public final class BooleanDashObject implements DisableNotifable {
 

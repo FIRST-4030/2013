@@ -2,7 +2,6 @@ package org.ingrahamrobotics.robot2013.commands;
 
 /**
  *
- * @author daboross
  */
 public class ShooterMotorSpeedOff extends CommandBase {
 

@@ -1,13 +1,7 @@
-/*
- * Author: Dabo Ross
- * Website: www.daboross.net
- * Email: daboross@daboross.net
- */
 package org.ingrahamrobotics.robot2013.variablestores.dynamic;
 
 /**
  *
- * @author daboross
  */
 public class DVstGroundDrive {
 

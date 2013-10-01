@@ -8,8 +8,6 @@ import org.ingrahamrobotics.robot2013.debugging.DebugInfo;
  * or three different "states", each that is identified with a String. For
  * instance, use this with something that has a "Extending" and "Retracting"
  * state.
- *
- * @author daboross
  */
 public class InfoState extends DebugInfo {
 

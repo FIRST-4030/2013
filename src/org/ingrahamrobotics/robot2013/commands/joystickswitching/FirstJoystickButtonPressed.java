@@ -1,8 +1,3 @@
-/*
- * Author: Dabo Ross
- * Website: www.daboross.net
- * Email: daboross@daboross.net
- */
 package org.ingrahamrobotics.robot2013.commands.joystickswitching;
 
 import org.ingrahamrobotics.robot2013.commands.CommandBase;
@@ -12,7 +7,6 @@ import org.ingrahamrobotics.robot2013.vstj.VstJ;
 
 /**
  *
- * @author daboross
  */
 public class FirstJoystickButtonPressed extends CommandBase {
 

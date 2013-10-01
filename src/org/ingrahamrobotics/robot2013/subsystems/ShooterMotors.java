@@ -28,7 +28,8 @@ public final class ShooterMotors extends Subsystem implements Debuggable {
     /**
      * Sets the speed of the shooter motors to this speed.
      *
-     * @param speed the speed of the second motor.
+     * @param speed1 the speed of the first motor.
+     * @param speed2 the speed of the second motor.
      * @throws IllegalArgumentException If the given double is less then 0 or
      * more then 1.
      */

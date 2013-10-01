@@ -20,6 +20,7 @@ public class HM {
     /**
      * This calls round(100, value).
      *
+     * @param value The value to round
      * @return round(100, value)
      */
     public static double round(double value) {

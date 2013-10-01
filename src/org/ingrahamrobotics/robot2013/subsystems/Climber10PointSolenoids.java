@@ -10,8 +10,6 @@ import org.ingrahamrobotics.robot2013.variablestores.VstM;
 
 /**
  * Solenoids for Climber 'Wedgies'.
- *
- * @author daboross
  */
 public class Climber10PointSolenoids extends Subsystem implements Debuggable {
 

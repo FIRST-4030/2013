@@ -11,8 +11,6 @@ import org.ingrahamrobotics.robot2013.debugging.RobotDebugger;
  * This is a variable store that stores values that are on the SmartDashboard.
  * Each time you ask for one it will check the SmartDashboard and return you the
  * value the SmartDashboard gives it.
- *
- * @author daboross
  */
 public final class DashboardStore {
 
@@ -26,9 +24,9 @@ public final class DashboardStore {
         double val;
         try {
             val = SmartDashboard.getNumber("Climber Speed Multiplier Setter");
-        } catch (TableKeyNotDefinedException tknde) {
+        } catch (TableKeyNotDefinedException ex) {
             val = 0;
-        } catch (TableKeyExistsWithDifferentTypeException tkewdte) {
+        } catch (TableKeyExistsWithDifferentTypeException ex) {
             val = 0;
         }
         if (val == 0) {
@@ -90,9 +88,9 @@ public final class DashboardStore {
         int val;
         try {
             val = (int) (SmartDashboard.getNumber("Auto Command Max Wait Time Setter") * 1000);
-        } catch (TableKeyNotDefinedException tknde) {
+        } catch (TableKeyNotDefinedException ex) {
             val = 0;
-        } catch (TableKeyExistsWithDifferentTypeException tkewdte) {
+        } catch (TableKeyExistsWithDifferentTypeException ex) {
             val = 0;
         }
         if (val == 0) {

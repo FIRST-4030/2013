@@ -70,6 +70,7 @@ public class RobotMain extends IterativeRobot {
      * Add a DisableNotifable to be notified when the robot is disabled. When
      * the robot is disabled RobotMain will go through these classes and run
      * each of their disable() methods.
+     * @param d The DisableNotifiable to notify.
      */
     public static void addDisableNotifable(DisableNotifable d) {
         for (int i = 0; i < list.length; i++) {

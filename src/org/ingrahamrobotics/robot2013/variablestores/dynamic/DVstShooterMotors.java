@@ -13,7 +13,6 @@ import org.ingrahamrobotics.robot2013.subsystems.ShooterMotors;
 
 /**
  *
- * @author daboross
  */
 public class DVstShooterMotors implements Debuggable {
 

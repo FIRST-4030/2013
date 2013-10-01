@@ -2,8 +2,6 @@ package org.ingrahamrobotics.robot2013.variablestores.dynamic;
 
 /**
  * Dynamic Climber Variable Store.
- *
- * @author daboross
  */
 public final class DVstLimitSwitches {
 

@@ -8,11 +8,11 @@ import org.ingrahamrobotics.robot2013.debugging.DebugLevel;
  * Status Report of something. This should be used when reporting a variable
  * speed, or the actual state of something, as apposed to the state of a
  * variable in a program.
- *
+ * <br>
  * For instance, this should not be used if you are outputting a stored
  * variable.
- *
- * And it SHOULD be used if you are outputting something that is gotten from a
+ * <br>
+ * It should be used if you are outputting something that is gotten from a
  * motor/switch/something real.
  */
 public class DebugStatus extends DebugInfo {

@@ -9,8 +9,6 @@ package org.ingrahamrobotics.robot2013.debugging;
  * MID should be for things that are displaying what a motor/solenoid is.
  *
  * HIGH+ will almost always be displayed.
- *
- * @author daboross
  */
 public class DebugLevel {
 

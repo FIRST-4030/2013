@@ -4,7 +4,6 @@ import org.ingrahamrobotics.robot2013.debugging.RobotDebugger;
 
 /**
  *
- * @author daboross
  */
 public class FrisbeeHolderSolenoidsRetract extends CommandBase {
 

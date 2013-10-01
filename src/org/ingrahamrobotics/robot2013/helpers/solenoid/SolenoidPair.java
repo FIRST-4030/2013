@@ -3,8 +3,8 @@ package org.ingrahamrobotics.robot2013.helpers.solenoid;
 import edu.wpi.first.wpilibj.Solenoid;
 
 /**
- *
- * @author daboross
+ * Represents a 'solenoid pair'. This is usually just one solenoid, but with two
+ * outputs to handle.
  */
 public class SolenoidPair {
 

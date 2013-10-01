@@ -10,8 +10,6 @@ import org.ingrahamrobotics.robot2013.variablestores.dynamic.DVstPressure;
 
 /**
  * Autonomous Command.
- *
- * @author daboross
  */
 public class AutoCommand extends CommandBase implements Debuggable {
 

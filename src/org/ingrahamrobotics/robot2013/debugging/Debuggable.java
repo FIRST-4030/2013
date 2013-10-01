@@ -8,7 +8,7 @@ package org.ingrahamrobotics.robot2013.debugging;
 public interface Debuggable {
 
     /**
-     * This should ALWAYS contain a group with the same keys!!!!. (And Levels)
+     * @return An output for this debug status. It should always contain the same keys and levels.
      */
     public DebugOutput getStatus();
 }

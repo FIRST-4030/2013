@@ -2,7 +2,6 @@ package org.ingrahamrobotics.robot2013.variablestores.dynamic;
 
 /**
  *
- * @author daboross
  */
 public class DVstAutoCommand {
 

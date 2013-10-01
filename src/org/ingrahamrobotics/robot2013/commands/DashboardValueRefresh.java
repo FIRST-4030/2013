@@ -7,8 +7,6 @@ import org.ingrahamrobotics.robot2013.variablestores.dynamic.DVstAutoCommand;
 
 /**
  * Command to refresh values on and from the SmartDashboard.
- *
- * @author daboross
  */
 public class DashboardValueRefresh extends CommandBase {
 

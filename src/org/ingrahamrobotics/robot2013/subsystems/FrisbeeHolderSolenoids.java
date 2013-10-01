@@ -10,7 +10,6 @@ import org.ingrahamrobotics.robot2013.variablestores.VstM;
 
 /**
  *
- * @author daboross
  */
 public final class FrisbeeHolderSolenoids extends Subsystem implements Debuggable {
 

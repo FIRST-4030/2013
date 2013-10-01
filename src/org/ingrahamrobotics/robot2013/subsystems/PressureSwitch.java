@@ -33,7 +33,7 @@ public class PressureSwitch extends Subsystem implements Debuggable {
 
     /**
      * This function checks with the Pressure Switch configured in VstM.Digital,
-     * and sets VstP.atPressure(). This Does auto-push the class.
+     * and sets VstP.atPressure(). This does auto-push the class.
      */
     public void checkPressure() {
         // Switch is normally closed, so invert the reading

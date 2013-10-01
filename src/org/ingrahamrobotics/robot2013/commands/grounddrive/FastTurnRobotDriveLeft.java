@@ -4,7 +4,6 @@ import org.ingrahamrobotics.robot2013.commands.CommandBase;
 
 /**
  *
- * @author daboross
  */
 public class FastTurnRobotDriveLeft extends CommandBase {
 

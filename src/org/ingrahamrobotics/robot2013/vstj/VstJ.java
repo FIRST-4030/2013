@@ -103,6 +103,14 @@ public class VstJ {
         return getJoystickButton(Mappings.groundDriveFastTurnRightButtonJoystickNumber2, Mappings.groundDriveFastTurnRightButtonNumber);
     }
 
+    public static JoystickButton getGroundDriveSpeedMultiplierSwitchButton1() {
+        return getJoystickButton(Mappings.groundDriveSpeedMultiplierSwitchJoystickNumber1, Mappings.groundDriveSpeedMultiplierSwitchButtonNumber);
+    }
+
+    public static JoystickButton getGroundDriveSpeedMultiplierSwitchButton2() {
+        return getJoystickButton(Mappings.groundDriveSpeedMultiplierSwitchJoystickNumber2, Mappings.groundDriveSpeedMultiplierSwitchButtonNumber);
+    }
+
     public static JoystickButton getClimber10PointSolenoidsExtendButton() {
         return getJoystickButton(Mappings.climber10PointSolenoidsExtendButtonJoystickNumber, Mappings.climber10PointSolenoidsExtendButtonNumber);
     }
@@ -162,6 +170,10 @@ public class VstJ {
         private static final int groundDriveFastTurnRightButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.RIGHT;
         private static final int groundDriveFastTurnRightButtonJoystickNumber1 = FV.FIRST_POSSIBLE_ARCADE_DRIVE_JOYSTICK;
         private static final int groundDriveFastTurnRightButtonJoystickNumber2 = FV.SECOND_POSSIBLE_ARCADE_DRIVE_JOYSTICK;
+        //groundDriveSpeedMultiplierSwitchButton
+        private static final int groundDriveSpeedMultiplierSwitchButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.MIDDLE;
+        private static final int groundDriveSpeedMultiplierSwitchJoystickNumber1 = FV.FIRST_POSSIBLE_ARCADE_DRIVE_JOYSTICK;
+        private static final int groundDriveSpeedMultiplierSwitchJoystickNumber2 = FV.SECOND_POSSIBLE_ARCADE_DRIVE_JOYSTICK;
         //switch drive mode button
         private static final int switchDriveModeButtonNumber = FV.BUTTON.TOP_OF_JOYSTICK.TRIGGER;
         private static final int switchToFirstModeJoystickNumber = FV.FIRST_POSSIBLE_ARCADE_DRIVE_JOYSTICK;

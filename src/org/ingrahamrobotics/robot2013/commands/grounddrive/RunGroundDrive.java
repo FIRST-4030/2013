@@ -1,7 +1,6 @@
 package org.ingrahamrobotics.robot2013.commands.grounddrive;
 
 import org.ingrahamrobotics.robot2013.commands.CommandBase;
-import org.ingrahamrobotics.robot2013.dashboardrelations.DashboardStore;
 import org.ingrahamrobotics.robot2013.debugging.DebugInfo;
 import org.ingrahamrobotics.robot2013.debugging.DebugInfoGroup;
 import org.ingrahamrobotics.robot2013.debugging.DebugLevel;
@@ -19,7 +18,7 @@ import org.ingrahamrobotics.robot2013.variablestores.dynamic.DVstGroundDrive;
  */
 public class RunGroundDrive extends CommandBase implements Debuggable {
 
-    private String highSpeedState = "Azdef";
+    private String highSpeedState = "Default HighSpeedState";
 
     public RunGroundDrive() {
         requires(groundDrive);
@@ -32,9 +31,9 @@ public class RunGroundDrive extends CommandBase implements Debuggable {
     }
 
     protected void execute() {
-        double mul = DashboardStore.getGroundDriveSpeedMultiplier();
-        highSpeedState = String.valueOf(mul);
-        groundDrive.setSpeedMutliplier(mul, DVstGroundDrive.isReversed());
+        double speedMultiplier = DVstGroundDrive.getSpeedMultiplier();
+        highSpeedState = String.valueOf(speedMultiplier);
+        groundDrive.setSpeedMutliplier(speedMultiplier, DVstGroundDrive.isReversed());
         if (DVstGroundDrive.isTankDrive()) {
             groundDrive.tankDriveRefresh();
         } else {

@@ -4,6 +4,7 @@ import org.ingrahamrobotics.robot2013.commands.grounddrive.FastTurnRobotDriveLef
 import org.ingrahamrobotics.robot2013.commands.grounddrive.FastTurnRobotDriveRight;
 import org.ingrahamrobotics.robot2013.commands.grounddrive.ReverseDriveControl;
 import edu.wpi.first.wpilibj.command.Command;
+import org.ingrahamrobotics.robot2013.commands.grounddrive.AdjustSpeedMultiplier;
 import org.ingrahamrobotics.robot2013.commands.joystickswitching.FirstJoystickButtonPressed;
 import org.ingrahamrobotics.robot2013.commands.joystickswitching.SecondJoystickButtonPressed;
 import org.ingrahamrobotics.robot2013.subsystems.Climber10PointSolenoids;
@@ -47,15 +48,18 @@ public abstract class CommandBase extends Command {
         //Commands
         dashboardValueRefresh.start();
         //Button Commands
-        FastTurnRobotDriveLeft ftrdl = new FastTurnRobotDriveLeft();
-        FastTurnRobotDriveRight ftrdr = new FastTurnRobotDriveRight();
-        ReverseDriveControl rdc = new ReverseDriveControl();
-        VstJ.getGroundDriveFastTurnLeftButton1().whenPressed(ftrdl);
-        VstJ.getGroundDriveFastTurnLeftButton2().whenPressed(ftrdl);
-        VstJ.getGroundDriveFastTurnRightButton1().whenPressed(ftrdr);
-        VstJ.getGroundDriveFastTurnRightButton2().whenPressed(ftrdr);
-        VstJ.getDriveControlReverseButton1().whenPressed(rdc);
-        VstJ.getDriveControlReverseButton2().whenPressed(rdc);
+        FastTurnRobotDriveLeft fastTurnLeft = new FastTurnRobotDriveLeft();
+        FastTurnRobotDriveRight fastTurnRight = new FastTurnRobotDriveRight();
+        ReverseDriveControl reverseDriveControl = new ReverseDriveControl();
+        AdjustSpeedMultiplier adjustSpeedMultiplier = new AdjustSpeedMultiplier();
+        VstJ.getGroundDriveFastTurnLeftButton1().whenPressed(fastTurnLeft);
+        VstJ.getGroundDriveFastTurnLeftButton2().whenPressed(fastTurnLeft);
+        VstJ.getGroundDriveFastTurnRightButton1().whenPressed(fastTurnRight);
+        VstJ.getGroundDriveFastTurnRightButton2().whenPressed(fastTurnRight);
+        VstJ.getGroundDriveSpeedMultiplierSwitchButton1().whenPressed(adjustSpeedMultiplier);
+        VstJ.getGroundDriveSpeedMultiplierSwitchButton2().whenPressed(adjustSpeedMultiplier);
+        VstJ.getDriveControlReverseButton1().whenPressed(reverseDriveControl);
+        VstJ.getDriveControlReverseButton2().whenPressed(reverseDriveControl);
         VstJ.getShooterSolenoidPushButton().whenPressed(new RunShooterSolenoids());
         VstJ.getShooterMotorOffButton().whenPressed(new ShooterMotorSpeedOff());
         VstJ.getShooterMotorOnButton().whenPressed(new ShooterMotorSpeedOn());

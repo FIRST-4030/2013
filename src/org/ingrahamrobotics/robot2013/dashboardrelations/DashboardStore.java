@@ -40,9 +40,9 @@ public final class DashboardStore {
         double val;
         try {
             val = SmartDashboard.getNumber("Shooter Motor Speed 1 Multiplier Setter");
-        } catch (TableKeyNotDefinedException tknde) {
+        } catch (TableKeyNotDefinedException ex) {
             val = 0;
-        } catch (TableKeyExistsWithDifferentTypeException tkewdte) {
+        } catch (TableKeyExistsWithDifferentTypeException ex) {
             val = 0;
         }
         if (val == 0) {
@@ -56,9 +56,9 @@ public final class DashboardStore {
         double val;
         try {
             val = SmartDashboard.getNumber("Shooter Motor Speed 2 Multiplier Setter");
-        } catch (TableKeyNotDefinedException tknde) {
+        } catch (TableKeyNotDefinedException ex) {
             val = 0;
-        } catch (TableKeyExistsWithDifferentTypeException tkewdte) {
+        } catch (TableKeyExistsWithDifferentTypeException ex) {
             val = 0;
         }
         if (val == 0) {
@@ -72,9 +72,9 @@ public final class DashboardStore {
         double val;
         try {
             val = SmartDashboard.getNumber("Ground Drive Speed Multiplier Setter");
-        } catch (TableKeyNotDefinedException tknde) {
+        } catch (TableKeyNotDefinedException ex) {
             val = 0;
-        } catch (TableKeyExistsWithDifferentTypeException tkewdte) {
+        } catch (TableKeyExistsWithDifferentTypeException ex) {
             val = 0;
         }
         if (val == 0) {

@@ -8,7 +8,8 @@ package org.ingrahamrobotics.robot2013.debugging;
 public interface Debuggable {
 
     /**
-     * @return An output for this debug status. It should always contain the same keys and levels.
+     * @return An output for this debug status. It should always contain the
+     * same keys and levels.
      */
     public DebugOutput getStatus();
 }

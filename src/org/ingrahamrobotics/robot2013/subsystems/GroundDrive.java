@@ -39,8 +39,9 @@ public class GroundDrive extends Subsystem implements Debuggable {
     /**
      * Sets a variable that will be multiplied by the input from whatever
      * joystick there is. Must be between 0 and 1.
+     *
      * @param d The speed multiplier
-     * @param reversed Whether or not the motors should be reversed. 
+     * @param reversed Whether or not the motors should be reversed.
      */
     public void setSpeedMutliplier(double d, boolean reversed) {
         driveReversed = reversed;

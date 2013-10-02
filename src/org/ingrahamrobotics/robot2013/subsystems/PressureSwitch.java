@@ -4,9 +4,6 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.ingrahamrobotics.robot2013.commands.ReadPressureSwitch;
 import org.ingrahamrobotics.robot2013.debugging.DebugLevel;
-import org.ingrahamrobotics.robot2013.debugging.infos.DebugStatus;
-import org.ingrahamrobotics.robot2013.debugging.DebugOutput;
-import org.ingrahamrobotics.robot2013.debugging.Debuggable;
 import org.ingrahamrobotics.robot2013.debugging.RobotDebugger;
 import org.ingrahamrobotics.robot2013.variablestores.VstM;
 import org.ingrahamrobotics.robot2013.variablestores.dynamic.DVstPressure;
@@ -16,7 +13,7 @@ import org.ingrahamrobotics.robot2013.variablestores.dynamic.DVstPressure;
  *
  * This is the pressure switch in the compressor system.
  */
-public class PressureSwitch extends Subsystem implements Debuggable {
+public class PressureSwitch extends Subsystem {
 
     /**
      * This is a Digital Pressure Switch.
@@ -37,11 +34,14 @@ public class PressureSwitch extends Subsystem implements Debuggable {
      */
     public void checkPressure() {
         // Switch is normally closed, so invert the reading
-        DVstPressure.setAtPressure(!pSwitch.get());
-        RobotDebugger.push(this);
+        boolean newVal = !pSwitch.get();
+        if (newVal != DVstPressure.atPressure()) {
+            DVstPressure.setAtPressure(newVal);
+            outputStatus();
+        }
     }
 
-    public DebugOutput getStatus() {
-        return new DebugStatus("PressureSwitch:AtPressure", DVstPressure.atPressure(), DebugLevel.HIGHEST);
+    public void outputStatus() {
+        RobotDebugger.output(DebugLevel.HIGHEST, "PressureSwitch:AtPressure", DVstPressure.atPressure());
     }
 }

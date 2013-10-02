@@ -4,16 +4,13 @@ import org.ingrahamrobotics.robot2013.DisableNotifable;
 import org.ingrahamrobotics.robot2013.RobotMain;
 import org.ingrahamrobotics.robot2013.dashboardrelations.DashboardStore;
 import org.ingrahamrobotics.robot2013.debugging.DebugLevel;
-import org.ingrahamrobotics.robot2013.debugging.DebugOutput;
-import org.ingrahamrobotics.robot2013.debugging.infos.DebugStatus;
-import org.ingrahamrobotics.robot2013.debugging.Debuggable;
 import org.ingrahamrobotics.robot2013.debugging.RobotDebugger;
 import org.ingrahamrobotics.robot2013.vstj.VstJ;
 
 /**
  * This Command runs the climberMotors motors with a joystick.
  */
-public class RunClimber extends CommandBase implements Debuggable, DisableNotifable {
+public class RunClimber extends CommandBase implements DisableNotifable {
 
     private static final double DEFAULT_SPEED_MULTIPLIER = 0.5;
     private double speedMultiplier = DEFAULT_SPEED_MULTIPLIER;
@@ -39,8 +36,8 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
     protected void execute() {
         speedMultiplier = DashboardStore.getClimberSpeedMultiplier();
         climberMotors.runLadder(VstJ.getLadderControlAxisValue() * speedMultiplier);
-        RobotDebugger.push(this);
-        RobotDebugger.push(climberMotors);
+        this.outputStatus();
+        climberMotors.outputStatus();
     }
 
     /**
@@ -55,8 +52,8 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
      */
     protected void end() {
         climberMotors.stop();
-        RobotDebugger.push(this);
-        RobotDebugger.push(climberMotors);
+        this.outputStatus();
+        climberMotors.outputStatus();
 
     }
 
@@ -66,14 +63,11 @@ public class RunClimber extends CommandBase implements Debuggable, DisableNotifa
      */
     public void disable() {
         climberMotors.stop();
-        RobotDebugger.push(this);
-        RobotDebugger.push(climberMotors);
+        this.outputStatus();
+        climberMotors.outputStatus();
     }
 
-    /**
-     * @return a DebugOutput representing the status of this command.
-     */
-    public DebugOutput getStatus() {
-        return new DebugStatus("Climber:Speed-Multiplier", speedMultiplier, DebugLevel.HIGHEST);
+    public void outputStatus() {
+        RobotDebugger.output(DebugLevel.HIGHEST, "Climber:Speed-Multiplier", speedMultiplier);
     }
 }

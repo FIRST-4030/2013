@@ -2,17 +2,14 @@ package org.ingrahamrobotics.robot2013.subsystems;
 
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import org.ingrahamrobotics.robot2013.debugging.infos.DebugStatus;
-import org.ingrahamrobotics.robot2013.debugging.DebugInfoGroup;
 import org.ingrahamrobotics.robot2013.debugging.DebugLevel;
-import org.ingrahamrobotics.robot2013.debugging.DebugOutput;
-import org.ingrahamrobotics.robot2013.debugging.Debuggable;
+import org.ingrahamrobotics.robot2013.debugging.RobotDebugger;
 import org.ingrahamrobotics.robot2013.variablestores.VstM;
 
 /**
  * This is a SubSystem for the Shooter Motors.
  */
-public final class ShooterMotors extends Subsystem implements Debuggable {
+public final class ShooterMotors extends Subsystem {
 
     private final Jaguar firstMotor = new Jaguar(VstM.PWM.FIRST_SHOOTER_MOTOR_PORT);
     private final Jaguar secondMotor = new Jaguar(VstM.PWM.SECOND_SHOOTER_MOTOR_PORT);
@@ -41,10 +38,8 @@ public final class ShooterMotors extends Subsystem implements Debuggable {
         secondMotor.set(speed2);
     }
 
-    public DebugOutput getStatus() {
-        DebugStatus[] infoList = new DebugStatus[2];
-        infoList[0] = new DebugStatus("ShooterMotors:FirstMotor:Speed", firstMotor.get(), DebugLevel.MID);
-        infoList[1] = new DebugStatus("ShooterMotors:SecondMotor:Speed", secondMotor.get(), DebugLevel.MID);
-        return new DebugInfoGroup(infoList);
+    public void outputStatus() {
+        RobotDebugger.output(DebugLevel.MID, "ShooterMotors:FirstMotor:Speed", firstMotor.get());
+        RobotDebugger.output(DebugLevel.MID, "ShooterMotors:SecondMotor:Speed", secondMotor.get());
     }
 }

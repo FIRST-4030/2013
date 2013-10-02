@@ -19,7 +19,7 @@ public class Climber10PointSolenoidsRetract extends CommandBase {
 
     protected void execute() {
         climber10PointSolenoids.retract();
-        RobotDebugger.push(climber10PointSolenoids);
+        climber10PointSolenoids.outputStatus();
         isFinished = true;
     }
 

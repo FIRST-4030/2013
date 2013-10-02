@@ -2,16 +2,14 @@ package org.ingrahamrobotics.robot2013.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.ingrahamrobotics.robot2013.debugging.DebugLevel;
-import org.ingrahamrobotics.robot2013.debugging.DebugOutput;
-import org.ingrahamrobotics.robot2013.debugging.Debuggable;
-import org.ingrahamrobotics.robot2013.debugging.infos.InfoState;
+import org.ingrahamrobotics.robot2013.debugging.RobotDebugger;
 import org.ingrahamrobotics.robot2013.helpers.solenoid.SolenoidPair;
 import org.ingrahamrobotics.robot2013.variablestores.VstM;
 
 /**
  *
  */
-public final class FrisbeeHolderSolenoids extends Subsystem implements Debuggable {
+public final class FrisbeeHolderSolenoids extends Subsystem {
 
     private final SolenoidPair frisbeeHolderSolenoids = new SolenoidPair(VstM.SOLENOID.FRISBEE_HOLDER_EXTENDING_SIDE, VstM.SOLENOID.FRISBEE_HOLDER_RETRACTING_SIDE, true);
 
@@ -31,7 +29,7 @@ public final class FrisbeeHolderSolenoids extends Subsystem implements Debuggabl
         frisbeeHolderSolenoids.retract();
     }
 
-    public DebugOutput getStatus() {
-        return new InfoState("FrisbeeHolderSolenoids:DumperState", frisbeeHolderSolenoids.getState(), DebugLevel.HIGHEST);
+    public void outputStatus() {
+        RobotDebugger.output(DebugLevel.HIGHEST, "FrisbeeHolderSolenoids:DumperState", frisbeeHolderSolenoids.getState());
     }
 }

@@ -4,16 +4,13 @@ import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.ingrahamrobotics.robot2013.commands.RunCompressor;
 import org.ingrahamrobotics.robot2013.debugging.DebugLevel;
-import org.ingrahamrobotics.robot2013.debugging.infos.DebugStatus;
-import org.ingrahamrobotics.robot2013.debugging.DebugOutput;
-import org.ingrahamrobotics.robot2013.debugging.Debuggable;
 import org.ingrahamrobotics.robot2013.debugging.RobotDebugger;
 import org.ingrahamrobotics.robot2013.variablestores.VstM;
 
 /**
  * This is the subsystem to handle the Compressor.
  */
-public class Compressor extends Subsystem implements Debuggable {
+public class Compressor extends Subsystem {
 
     private final Relay compressor = new Relay(VstM.RELAY.COMPRESSOR_SPIKE);
     private boolean ranLast = false;
@@ -40,7 +37,7 @@ public class Compressor extends Subsystem implements Debuggable {
         ranLast = true;
         compressor.set(Relay.Value.kOn);
         if (changed) {
-            RobotDebugger.push(this);
+            this.outputStatus();
         }
     }
 
@@ -52,14 +49,11 @@ public class Compressor extends Subsystem implements Debuggable {
         ranLast = false;
         compressor.set(Relay.Value.kOff);
         if (changed) {
-            RobotDebugger.push(this);
+            this.outputStatus();
         }
     }
 
-    /**
-     * @return a DebugOutput representing the status of this command.
-     */
-    public DebugOutput getStatus() {
-        return new DebugStatus("Compressor:RanLast", ranLast, DebugLevel.MID);
+    public void outputStatus() {
+        RobotDebugger.output(DebugLevel.MID, "Compressor:RanLast", ranLast);
     }
 }

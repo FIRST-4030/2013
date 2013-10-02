@@ -19,7 +19,7 @@ public class FrisbeeHolderSolenoidsRetract extends CommandBase {
 
     protected void execute() {
         frisbeeHolderSolenoids.retract();
-        RobotDebugger.push(frisbeeHolderSolenoids);
+        frisbeeHolderSolenoids.outputStatus();
         isFinished = true;
     }
 

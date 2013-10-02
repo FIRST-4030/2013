@@ -2,8 +2,6 @@ package org.ingrahamrobotics.robot2013.commands;
 
 import org.ingrahamrobotics.robot2013.debugging.DebugLevel;
 import org.ingrahamrobotics.robot2013.debugging.DebugOutput;
-import org.ingrahamrobotics.robot2013.debugging.Debuggable;
-import org.ingrahamrobotics.robot2013.debugging.infos.InfoState;
 import org.ingrahamrobotics.robot2013.debugging.RobotDebugger;
 import org.ingrahamrobotics.robot2013.variablestores.dynamic.DVstAutoCommand;
 import org.ingrahamrobotics.robot2013.variablestores.dynamic.DVstPressure;
@@ -11,7 +9,7 @@ import org.ingrahamrobotics.robot2013.variablestores.dynamic.DVstPressure;
 /**
  * Autonomous Command.
  */
-public class AutoCommand extends CommandBase implements Debuggable {
+public class AutoCommand extends CommandBase {
 
     /**
      * This is how long the robot should keep the solenoid extended before
@@ -155,7 +153,7 @@ public class AutoCommand extends CommandBase implements Debuggable {
             throw new IllegalArgumentException("Invalid State");
         }
         this.state = setState;
-        RobotDebugger.push(this);
+        this.outputStatus();
     }
 
     /**
@@ -173,10 +171,7 @@ public class AutoCommand extends CommandBase implements Debuggable {
         setState(0);
     }
 
-    /**
-     * @return Gets a DebugOutput representing the status of this command.
-     */
-    public DebugOutput getStatus() {
-        return new InfoState("AutoCommand", getReadableState(), DebugLevel.HIGH);
+    public void outputStatus() {
+        RobotDebugger.output(DebugLevel.HIGH, "AutoCommand", getReadableState());
     }
 }

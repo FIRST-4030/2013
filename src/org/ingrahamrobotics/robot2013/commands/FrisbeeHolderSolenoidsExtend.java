@@ -1,7 +1,5 @@
 package org.ingrahamrobotics.robot2013.commands;
 
-import org.ingrahamrobotics.robot2013.debugging.RobotDebugger;
-
 /**
  *
  */
@@ -28,7 +26,7 @@ public class FrisbeeHolderSolenoidsExtend extends CommandBase {
      */
     protected void execute() {
         frisbeeHolderSolenoids.extend();
-        RobotDebugger.push(frisbeeHolderSolenoids);
+        frisbeeHolderSolenoids.outputStatus();
         isFinished = true;
     }
 

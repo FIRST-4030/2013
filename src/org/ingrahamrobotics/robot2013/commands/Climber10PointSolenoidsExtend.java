@@ -19,7 +19,7 @@ public class Climber10PointSolenoidsExtend extends CommandBase {
 
     protected void execute() {
         climber10PointSolenoids.extend();
-        RobotDebugger.push(climber10PointSolenoids);
+        climber10PointSolenoids.outputStatus();
         isFinished = true;
     }
 

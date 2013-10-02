@@ -2,7 +2,6 @@ package org.ingrahamrobotics.robot2013.commands;
 
 import org.ingrahamrobotics.robot2013.DisableNotifable;
 import org.ingrahamrobotics.robot2013.RobotMain;
-import org.ingrahamrobotics.robot2013.debugging.RobotDebugger;
 
 /**
  * This Command runs the shooter push solenoid according to the input received
@@ -22,8 +21,8 @@ public class RunShooterSolenoids extends CommandBase implements DisableNotifable
 
     protected void initialize() {
         startTime = System.currentTimeMillis();
-        RobotDebugger.push(shooterSolenoids);
         shooterSolenoids.retract();
+        shooterSolenoids.outputStatus();
         isFinished = false;
     }
 
@@ -39,7 +38,7 @@ public class RunShooterSolenoids extends CommandBase implements DisableNotifable
 
     protected void end() {
         shooterSolenoids.extend();
-        RobotDebugger.push(shooterSolenoids);
+        shooterSolenoids.outputStatus();
         startTime = -1;
     }
 

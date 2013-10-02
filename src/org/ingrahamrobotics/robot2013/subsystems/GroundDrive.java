@@ -5,18 +5,15 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.ingrahamrobotics.robot2013.commands.grounddrive.RunGroundDrive;
-import org.ingrahamrobotics.robot2013.debugging.infos.DebugStatus;
-import org.ingrahamrobotics.robot2013.debugging.DebugInfoGroup;
 import org.ingrahamrobotics.robot2013.debugging.DebugLevel;
-import org.ingrahamrobotics.robot2013.debugging.DebugOutput;
-import org.ingrahamrobotics.robot2013.debugging.Debuggable;
+import org.ingrahamrobotics.robot2013.debugging.RobotDebugger;
 import org.ingrahamrobotics.robot2013.variablestores.VstM;
 import org.ingrahamrobotics.robot2013.vstj.VstJ;
 
 /**
  * Robot SubSystem GroundDrive. This is the main Driving SubSystem.
  */
-public class GroundDrive extends Subsystem implements Debuggable {
+public class GroundDrive extends Subsystem {
 
     private boolean driveReversed = false;
     private static final Jaguar leftMotor = new Jaguar(VstM.PWM.LEFT_MOTOR_PORT);
@@ -84,6 +81,9 @@ public class GroundDrive extends Subsystem implements Debuggable {
 
     /**
      * The values will NOT be changed by the speed multiplier or turn.
+     *
+     * @param speed The speed for arcadeDrive
+     * @param turn The turn for the arcadeDrive
      */
     public void arcadeDriveWithRaw(double speed, double turn) {
         roboDrive.arcadeDrive(speed, turn);
@@ -97,15 +97,10 @@ public class GroundDrive extends Subsystem implements Debuggable {
         roboDrive.stopMotor();
     }
 
-    /**
-     * Get Current Status Info.
-     */
-    public DebugOutput getStatus() {
-        DebugStatus[] infoList = new DebugStatus[4];
-        infoList[0] = new DebugStatus("GroundDrive:LeftMotor:Speed", leftMotor.get(), DebugLevel.MID);
-        infoList[1] = new DebugStatus("GroundDrive:RightMotor:Speed", rightMotor.get(), DebugLevel.MID);
-        infoList[2] = new DebugStatus("GroundDrive:Reversed", driveReversed, DebugLevel.MID);
-        infoList[3] = new DebugStatus("GroundDrive:SpeedMultiplier", multiplier, DebugLevel.MID);
-        return new DebugInfoGroup(infoList);
+    public void outputStatus() {
+        RobotDebugger.output(DebugLevel.MID, "GroundDrive:LeftMotor:Speed", leftMotor.get());
+        RobotDebugger.output(DebugLevel.MID, "GroundDrive:RightMotor:Speed", rightMotor.get());
+        RobotDebugger.output(DebugLevel.MID, "GroundDrive:Reversed", driveReversed);
+        RobotDebugger.output(DebugLevel.MID, "GroundDrive:SpeedMultiplier", multiplier);
     }
 }

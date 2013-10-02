@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj.networktables2.TableKeyExistsWithDifferentTypeExcep
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.tables.TableKeyNotDefinedException;
 import org.ingrahamrobotics.robot2013.debugging.DebugLevel;
-import org.ingrahamrobotics.robot2013.debugging.infos.DebugStatus;
 import org.ingrahamrobotics.robot2013.debugging.RobotDebugger;
 
 /**
@@ -96,7 +95,7 @@ public final class DashboardStore {
         if (val == 0) {
             val = defaultAutoCommandTime * 1000;
         }
-        RobotDebugger.push(new DebugStatus("Auto Command Max Wait Time", val, DebugLevel.HIGHEST));
+        RobotDebugger.output(DebugLevel.HIGHEST, "Auto Command Max Wait Time", val);
         return val;
     }
 }

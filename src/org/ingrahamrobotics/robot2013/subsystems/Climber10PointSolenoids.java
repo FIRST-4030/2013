@@ -2,16 +2,14 @@ package org.ingrahamrobotics.robot2013.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.ingrahamrobotics.robot2013.debugging.DebugLevel;
-import org.ingrahamrobotics.robot2013.debugging.DebugOutput;
-import org.ingrahamrobotics.robot2013.debugging.Debuggable;
-import org.ingrahamrobotics.robot2013.debugging.infos.InfoState;
+import org.ingrahamrobotics.robot2013.debugging.RobotDebugger;
 import org.ingrahamrobotics.robot2013.helpers.solenoid.SolenoidPair;
 import org.ingrahamrobotics.robot2013.variablestores.VstM;
 
 /**
  * Solenoids for Climber 'Wedgies'.
  */
-public class Climber10PointSolenoids extends Subsystem implements Debuggable {
+public class Climber10PointSolenoids extends Subsystem {
 
     private final SolenoidPair climb10PointSolenoids = new SolenoidPair(VstM.SOLENOID.CLIMBER_10_POINT_EXTENDING_SIDE, VstM.SOLENOID.CLIMBER_10_POINT_RETRACTING_SIDE, false);
 
@@ -40,7 +38,7 @@ public class Climber10PointSolenoids extends Subsystem implements Debuggable {
         climb10PointSolenoids.retract();
     }
 
-    public DebugOutput getStatus() {
-        return new InfoState("10PointClimberSolenoids", climb10PointSolenoids.getState(), DebugLevel.HIGHEST);
+    public void outputStatus() {
+        RobotDebugger.output(DebugLevel.HIGHEST, "10PointClimberSolenoids", climb10PointSolenoids.getState());
     }
 }

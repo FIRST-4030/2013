@@ -1,9 +1,9 @@
 <xml version="1.0">
 <dashboard>
-	<widget field="10PointClimberSolenoids|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+	<widget field="10PointClimberSolenoids" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="490" y="169"/>
 	</widget>
-	<widget field="FrisbeeHolderSolenoids|DumperState|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+	<widget field="FrisbeeHolderSolenoids|DumperState" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="4" y="237"/>
 	</widget>
 	<widget field="Shooter Motor Speed 2 Multiplier Setter" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
@@ -30,10 +30,10 @@
 	<widget field="ShooterMotors|Running" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="98" y="149"/>
 	</widget>
-	<widget field="GroundDrive|Command|Reversed|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+	<widget field="GroundDrive|Command|Reversed" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="438" y="355"/>
 	</widget>
-	<widget field="GroundDrive|Command|Speed|State" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+	<widget field="GroundDrive|Command|Speed" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="454" y="377"/>
 	</widget>
 	<widget field="PressureSwitch|AtPressure" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">

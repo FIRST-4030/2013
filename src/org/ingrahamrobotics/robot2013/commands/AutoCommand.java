@@ -172,6 +172,6 @@ public class AutoCommand extends CommandBase {
     }
 
     public void outputStatus() {
-        RobotDebugger.output(DebugLevel.HIGH, "AutoCommand", getReadableState());
+        RobotDebugger.output(DebugLevel.HIGH, "AutoCommand|State", getReadableState());
     }
 }

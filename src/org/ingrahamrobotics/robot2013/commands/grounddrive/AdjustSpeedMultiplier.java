@@ -24,6 +24,7 @@ public class AdjustSpeedMultiplier extends CommandBase {
     protected void execute() {
         lastStateHighSpeed = !lastStateHighSpeed;
         DVstGroundDrive.setSpeedMultiplier(lastStateHighSpeed ? 1.0 : 0.5);
+        executed = true;
     }
 
     protected boolean isFinished() {
